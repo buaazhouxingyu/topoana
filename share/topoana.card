@@ -1,0 +1,214 @@
+# In the card, "#", "%", and the pair of "{" and "}" are used for commenting, prompting, and grouping, respectively.
+
+# The following two items are indispensable. They can't be removed or left empty.
+
+# One file per line without tailing characters, such as comma, semicolon, and period. In addition, wildcards "[]?*" are supported in the item just like in the method Add() of the class TChain. Besides, both the absolute and relative paths are supported in the item.
+% Names of input root files
+{
+ 
+}
+
+% Tree name
+{
+  
+}
+
+# The following thirty-two items are optional. They can be removed or left empty.
+
+# Here, AI, VI, MIV, and MDV are short for array of integers, vector of integers, multiple integer variables, and multiple double variables.
+% Storage type of the raw input topology data (Four options: AI, VI, MIV, and MDV. Default: AI)
+{
+
+}
+
+% Branch name of the number of particles (Default: nMCGen)
+{
+
+}
+
+% Branch name of the PDG codes of particles (Default: MCGenPDG)
+{
+
+}
+
+% Branch name of the mother indeces of particles (Default: MCGenMothIndex)
+{
+
+}
+
+% Maximum number of entries to be processed
+{
+
+}
+
+# Only single-line cuts are supported in the item just like in the method Draw() and GetEntries() of the class TTree.
+% Cut to select entries
+{
+
+}
+
+# In the following item, T (F) means that true (false) as long as one instance is true (false).
+% Method to apply cut to array variables (Two options: T and F. Default: F)
+{
+
+}
+
+# The value inputted here should be a positive integer.
+% Maximum hierarchy of heading decay branches to be processed in each event
+{
+  
+}
+
+% Ignore the decay of the following particles
+{
+
+}
+
+% Ignore the decay of the daughters of the following particles
+{
+  
+}
+
+# Here, gISR photons are defined as photons who have no mothers in the arrays of the PDG codes and mother indeces of particles, and "g" in "gISR" is short for "generalized".
+% Ignore gISR photons (Two options: Y and N. Default: N)
+{
+
+}
+
+# Here, gFSR photons are defined as photons who have at least one e/mu/pi/K/p sister, and "g" in "gFSR" is short for "generalized".
+% Ignore gFSR photons (Two options: Y and N. Default: N)
+{
+
+}
+
+% Component analysis --- decay trees
+{
+
+}
+
+% Component analysis --- decay initial-final states
+{
+
+}
+
+# This item is used for the analysis of the decay branches of the following particles. The maximum numbers of decay branches to be printed for the particles can be optionally specified on their right sides.
+% Component analysis --- particles
+{
+
+}
+
+# This item is used for the analysis of the exclusive components of the following inclusive decay branches. The maximum numbers of exclusive components to be printed for the inclusive decays can be optionally specified on the right sides of their heading particles.
+% Component analysis --- inclusive decay branches
+{
+
+}
+
+# This item is used for the analysis of the internal structures involved in the following intermediate-resonance-allowed decay branches. The maximum numbers of exclusive components to be printed for the intermediate-resonance-allowed decays can be optionally specified on the right sides of their heading particles.
+% Component analysis --- intermediate-resonance-allowed decay branches
+{
+
+}
+
+% Signal identification --- decay trees
+{
+
+}
+
+% Signal identification --- decay initial-final states
+{
+
+}
+
+% Signal identification --- particles
+{
+  
+}
+
+% Signal identification --- decay branches
+{
+ 
+}
+
+% Signal identification --- inclusive decay branches
+{
+  
+}
+
+% Signal identification --- cascade decay branches
+{
+  
+}
+
+# The star symbol "*" can be used as a short version of the word "anything" in order to simplify your input. 
+% Signal identification --- inclusive cascade decay branches
+{
+
+}
+
+% Signal identification --- intermediate-resonance-allowed decay branches 
+{
+
+}
+
+% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches
+{
+
+}
+
+% Process charge conjugate objects together (Two options: Y and N. Default: N)
+{
+
+}
+
+% Analysis tasks for signal identifications (Three options: TC, T and C. Default: TC)
+{
+
+}
+
+#by number of cases or entries from large to small
+% Sort the topology structures for signal identifications (Two options: Y and N. Default: N)
+{
+
+}
+
+# The option "Y" set up in the item comes into effect only in the cases that there are only three particles in the branches.
+% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)
+{
+
+}
+
+# Four files with the same name but in different (root/txt/tex/pdf) formats will be outputed. The filename extensions are appended automatically by the program as suffixes. Thus, to avoid repetition, any filename extension is not recommended to be used in the name as a suffix.
+% Main name of output files (Default: Main name of the card file)
+{
+
+}
+
+% Center decay objects in the output pdf files (Two options: Y and N. Default: N)
+{
+
+}
+
+% Suppress the topology tags in the output pdf files (Two options: Y and N. Default: N)
+{
+  
+}
+
+% One output root file by one input root file (Two options: Y and N. Default: N)
+{
+
+}
+
+% Maximum number of entries to be saved in a single output root file
+{
+
+}
+
+% Use array branches to store topology tags in the output root files when possible (Two options: Y and N. Default: N)
+{
+
+}
+
+% Copy the input branches to the output root files (Two options: Y and N. Default: Y)
+{
+  
+}

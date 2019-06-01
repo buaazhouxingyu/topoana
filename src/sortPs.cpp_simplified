@@ -1,0 +1,160 @@
+#include "../include/topoana.h"
+#include <iostream>
+#include <cstdlib>
+
+void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
+{
+  if(vPid.size()!=vMidx.size())
+    {
+      cerr<<"Error: The two vectors vPid and vMidx have different sizes!"<<endl;
+      cerr<<"Infor: The size of the vector vPid is "<<vPid.size()<<"."<<endl;
+      cerr<<"Infor: The size of the vector vMidx is "<<vMidx.size()<<"."<<endl;
+      cerr<<"Infor: Please check them."<<endl;
+      exit(-1);
+    }
+
+  /*cout<<"Before sort:"<<endl;
+  for(unsigned int i=0;i<vPid.size();i++)
+    {
+      cout<<"Idx: "<<i<<"\t"<<"Pid: "<<vPid[i]<<"\t"<<"Midx: "<<vMidx[i]<<endl;
+    }*/
+
+  vector<int> vPidFnl,vMidxFnl,vIdxFnl;
+
+  vector<int> vPidOld,vMidxOld,vIdxOld,vNSmPidsOld;
+  for(unsigned int i=0;i<vPid.size();i++)
+    {
+      if((((unsigned int) vMidx[i])==i)||(vMidx[i]==-1))
+	{
+          vPidOld.push_back(vPid[i]);
+          vMidxOld.push_back(i);
+          vIdxOld.push_back(i);
+	}
+    }
+  sortByPidAndPchrg(vPidOld,vMidxOld,vIdxOld,vNSmPidsOld);
+
+  for(unsigned int i=0;i<vPidOld.size();i++)
+    {
+      vPidFnl.push_back(vPidOld[i]);
+      vMidxFnl.push_back(vMidxOld[i]);
+      vIdxFnl.push_back(vIdxOld[i]);
+    }
+
+  unsigned int nCmltSmPids;
+  vector<int> vIdxYng, vNSmPidsYng;
+  vector< vector<int> > vVPidYngSbst,vVMidxYngSbst,vVIdxYngSbst,vVNSmPidsYngSbst;
+  vector<int> vPidYngSbst,vMidxYngSbst,vIdxYngSbst,vNSmPidsYngSbst;
+  while(vIdxOld.size()!=0)
+    {
+      vIdxYng.clear();
+      vNSmPidsYng.clear();
+      nCmltSmPids=0;
+      for(unsigned int i=0;i<vNSmPidsOld.size();i++)
+        {
+          vVPidYngSbst.clear();
+          vVMidxYngSbst.clear();
+          vVIdxYngSbst.clear();
+          vVNSmPidsYngSbst.clear();
+          for(unsigned int j=0;j<((unsigned int) vNSmPidsOld[i]);j++)
+            {
+              vPidYngSbst.clear();
+              vMidxYngSbst.clear();
+              vIdxYngSbst.clear();
+              vNSmPidsYngSbst.clear();
+              for(unsigned int k=0;k<vPid.size();k++)
+	        {
+                  if(((((unsigned int) vMidx[k])!=k)&&(vMidx[k]!=-1))&&(vMidx[k]==vIdxOld[nCmltSmPids+j]))
+	            {
+                      vPidYngSbst.push_back(vPid[k]);
+	              vMidxYngSbst.push_back(vMidx[k]);
+	              vIdxYngSbst.push_back(k);
+	            }
+	        }
+              if(vPidYngSbst.size()>0)
+                {
+                  sortByPidAndPchrg(vPidYngSbst,vMidxYngSbst,vIdxYngSbst,vNSmPidsYngSbst);
+                  // The following four statements should be put in the scope of the if statement, otherwise empty vectors might be pushed back to these vectors of vector. 
+                  vVPidYngSbst.push_back(vPidYngSbst);
+                  vVMidxYngSbst.push_back(vMidxYngSbst);
+                  vVIdxYngSbst.push_back(vIdxYngSbst);
+                  vVNSmPidsYngSbst.push_back(vNSmPidsYngSbst);
+                }
+            }
+          if(vVPidYngSbst.size()>1) sortBySzPidAndPchrg(vVPidYngSbst,vVMidxYngSbst,vVIdxYngSbst,vVNSmPidsYngSbst);
+          for(unsigned int j=0;j<vVPidYngSbst.size();j++)
+            {
+              for(unsigned int k=0;k<vVPidYngSbst[j].size();k++)
+	        {
+	          vPidFnl.push_back(vVPidYngSbst[j][k]);
+	          vMidxFnl.push_back(vVMidxYngSbst[j][k]);
+                  vIdxFnl.push_back(vVIdxYngSbst[j][k]);
+                }
+              for(unsigned int k=0;k<vVPidYngSbst[j].size();k++)
+                {
+	          vIdxYng.push_back(vVIdxYngSbst[j][k]);
+	        }
+              for(unsigned int k=0;k<vVNSmPidsYngSbst[j].size();k++)
+                {
+                  vNSmPidsYng.push_back(vVNSmPidsYngSbst[j][k]);
+                }
+            }
+          nCmltSmPids=nCmltSmPids+vNSmPidsOld[i];
+        }
+      vIdxOld.clear();
+      vIdxOld=vIdxYng;
+      vNSmPidsOld.clear();
+      vNSmPidsOld=vNSmPidsYng;
+    }
+
+  for(unsigned int i=0;i<vMidxFnl.size();i++)
+    {
+      for(unsigned int j=0;j<vIdxFnl.size();j++)
+        {
+          if(vIdxFnl[j]==vMidxFnl[i])
+            {
+              vMidxFnl[i]=j;
+              break;
+            }
+        }
+    }
+  vPid.clear();
+  vMidx.clear();
+  vPid=vPidFnl;
+  vMidx=vMidxFnl;
+
+  vector<int> vPidYngi, vPidYngj;
+  vector<int> vIdxYngi, vIdxYngj;
+  for(unsigned int i=0;i<vPid.size();i++)
+    for(unsigned int j=i+1;j<vPid.size();j++)
+      {
+        if(vPid[j]==vPid[i]&&vMidx[j]==vMidx[i])
+          {
+            vPidYngi.clear(); vPidYngj.clear();
+            vIdxYngi.clear(); vIdxYngj.clear();
+            for(unsigned int k=j+1;k<vPid.size();k++)
+              {
+                if(((unsigned int) vMidx[k])==i)
+                  {
+                    vPidYngi.push_back(vPid[k]);
+                    vIdxYngi.push_back(k);
+                  }
+                else if(((unsigned int) vMidx[k])==j)
+                  {
+                    vPidYngj.push_back(vPid[k]);
+                    vIdxYngj.push_back(k);
+                  }
+                else if(((unsigned int) vMidx[k])>j)
+                  {
+                    break;
+                  }
+              }
+            if((vPidYngi.size()!=0)&&(vPidYngi==vPidYngj)) recurHighHierExchOrd(vIdxYngi,vIdxYngj,vPid,vMidx);
+          }
+      }
+
+  /*cout<<"After sort:"<<endl;
+  for(unsigned int i=0;i<vPid.size();i++)
+    {
+      cout<<"Idx: "<<i<<"\t"<<"Pid: "<<vPid[i]<<"\t"<<"Midx: "<<vMidx[i]<<endl; 
+    }*/
+}

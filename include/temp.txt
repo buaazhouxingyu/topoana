@@ -1,0 +1,7 @@
+[zhouxy@cw06 include]$ grep m_useArrayBrsIpt topoana.h 
+    bool m_useArrayBrsIpt;
+      m_useArrayBrsIpt=false;
+[zhouxy@cw06 include]$ vi topoana.h 
+[zhouxy@cw06 include]$ grep m_doubleIptQts topoana.h 
+    bool m_doubleIptQts;
+      m_doubleIptQts=true;
