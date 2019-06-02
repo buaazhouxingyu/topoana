@@ -1,6 +1,6 @@
 # * Author: Remco de Boer <remco.de.boer@ihep.ac.cn>
 # * Date: January 11th, 2019
-# * Based on the NIKHEFproject2018 repository
+# * Based on the BOSS_Afterburner repository
 # * For explanations, see:
 # * - https://www.gnu.org/software/make/manual/make.html
 # * - http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/
@@ -9,6 +9,7 @@
 # * PATH DEFINITIONS * #
 SUFFIXES += .d
 dirINC     := inc
+dirLIB     := lib
 dirSOURCES := src
 dirSCRIPTS := src
 
@@ -16,8 +17,14 @@ dirDEP := .d
 dirBIN := bin
 dirEXE := bin
 
+extHEADER := h
+extSOURCE := cpp
+extSCRIPT := C
+extOBJECT := o
+extEXE    := exe
+
 LIBNAME = TopoAna
-OUTLIBF = lib${LIBNAME}.a
+OUTLIBF = ${dirLIB}/lib${LIBNAME}.a
 INCLUDE_PATHS = -I${dirINC}
 
 
@@ -28,7 +35,7 @@ ROOTCFLAGS := $(shell root-config --cflags)
 ROOTLIBS   := $(shell root-config --libs --evelibs --glibs)
 CFLAGS   = \
 	-fPIC -w -g -W ${ROOTCFLAGS} \
-	-Wfatal-errors -Wall -Wextra -Wpedantic -Wconversion -Wshadow
+	-Wfatal-errors -Wall
 LFLAGS   = ${ROOTLIBS} -lTreePlayer -g -lGenVector \
 	-lRooFit -lRooFitCore -lRooStats -lMinuit
 DEPFLAGS = -MT $@ -MMD -MP -MF $(dirDEP)/$*.Td
@@ -36,22 +43,22 @@ POSTCOMPILE = @mv -f $(dirDEP)/$*.Td $(dirDEP)/$*.d && touch $@
 
 
 # * INVENTORIES OF FILES * #
-SOURCES = $(wildcard ${dirSOURCES}/*.cpp) $(wildcard ${dirSOURCES}/**/*.cpp)
-SCRIPTS = $(wildcard ${dirSCRIPTS}/*.C) $(wildcard ${dirSCRIPTS}/**/*.C)
+SOURCES = $(wildcard ${dirSOURCES}/*.${extSOURCE}) $(wildcard ${dirSOURCES}/**/*.${extSOURCE})
+SCRIPTS = $(wildcard ${dirSCRIPTS}/*.${extSCRIPT}) $(wildcard ${dirSCRIPTS}/**/*.${extSCRIPT})
 
 # * for the binaries
 BIN := $(SOURCES:${dirSOURCES}/%=${dirBIN}/%)
-BIN := $(BIN:.cpp=.o)
+BIN := $(BIN:.${extSOURCE}=.${extOBJECT})
 
 # * for the executables
 EXE := $(SCRIPTS:${dirSCRIPTS}/%=${dirEXE}/%)
-EXE := $(EXE:.C=.exe)
+EXE := $(EXE:.${extSCRIPT}=.${extEXE})
 
 # * for the dependencies
 DEP_C := $(SCRIPTS:${dirSCRIPTS}/%=${dirDEP}/%)
 DEP_X := $(SOURCES:${dirSOURCES}/%=${dirDEP}/%)
-DEP_C := $(DEP_C:.C=.d)
-DEP_X := $(DEP_X:.cxx=.d)
+DEP_C := $(DEP_C:.${extSCRIPT}=.d)
+DEP_X := $(DEP_X:.${extSCRIPT}xx=.d)
 DEP   := ${DEP_C} ${DEP_X}
 
 # * COMPILE RULES * #
@@ -62,7 +69,7 @@ all : ${BIN} $(OUTLIBF) ${EXE}
 
 
 # * for the objects (inc and src)
-${dirBIN}/%.o : ${dirSOURCES}/%.cpp $(dirDEP)/%.d #  ${dirINC}/%.h
+${dirBIN}/%.${extOBJECT} : ${dirSOURCES}/%.${extSOURCE} $(dirDEP)/%.d #  ${dirINC}/%.h
 	@echo "Compiling object \"$(notdir $<)\""
 	@mkdir -p $(@D) > /dev/null
 	@$(CC) $(CFLAGS) ${INCLUDE_PATHS} ${DEPFLAGS} -c $< -o $@
@@ -70,11 +77,12 @@ ${dirBIN}/%.o : ${dirSOURCES}/%.cpp $(dirDEP)/%.d #  ${dirINC}/%.h
 
 # * for linking the objects generated above.
 $(OUTLIBF) : ${BIN}
+	@mkdir -p "${dirLIB}"
 	@ar rU $@ $^ > /dev/null
 	@ranlib $@
 
 # * for the scripts (executables)
-${dirEXE}/%.exe : ${dirSCRIPTS}/%.C $(dirDEP)/%.d $(OUTLIBF)
+${dirEXE}/%.${extEXE} : ${dirSCRIPTS}/%.${extSCRIPT} $(dirDEP)/%.d $(OUTLIBF)
 	@echo "Compiling script \"$(notdir $<)\""
 	@mkdir -p $(@D) > /dev/null
 	@$(CC) $< -o $@ ${CFLAGS} ${INCLUDE_PATHS} ${DEPFLAGS} -L. ${BIN} ${LFLAGS}
