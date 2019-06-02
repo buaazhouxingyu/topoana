@@ -54,3 +54,5 @@ echo "1) In case of bash, please copy the following statement and paste it into 
 echo "   export PATH=${TopoAna}/bin:\$PATH"
 echo "2) In case of (t)csh, please copy the following statement and paste it into ~/.(t)cshrc,"
 echo "   setenv PATH ${TopoAna}/bin:\$PATH"
+
+source "utilities/Functions.sh"
