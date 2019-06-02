@@ -1,4 +1,0 @@
-var offlum_2mc_2bhabha_2ana_2evt__lev_2digamma__with__all__clsts_2BGx1_2PhaseII__Y4Sonpeak__mc__bhaba214248386aed3205548cf068b20c6e4 =
-[
-    [ "PhaseII_Y4Sonpeak_mc_bhabha_ana_evt_lev_digamma_with_all_clsts_BGx1_num", "offlum_2mc_2bhabha_2ana_2evt__lev_2digamma__with__all__clsts_2BGx1_2PhaseII__Y4Sonpeak__mc__bhaba214248386aed3205548cf068b20c6e4.html#a26def2ebe227dbd4d15e2dff2564a46d", null ]
-];

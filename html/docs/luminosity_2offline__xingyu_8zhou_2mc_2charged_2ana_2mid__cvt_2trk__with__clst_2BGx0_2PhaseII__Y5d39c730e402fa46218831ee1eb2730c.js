@@ -1,4 +1,0 @@
-var luminosity_2offline__xingyu_8zhou_2mc_2charged_2ana_2mid__cvt_2trk__with__clst_2BGx0_2PhaseII__Y5d39c730e402fa46218831ee1eb2730c =
-[
-    [ "PhaseII_Y4Sonpeak_mc_charged_ana_mid_cvt_trk_with_clst_BGx0_num", "luminosity_2offline__xingyu_8zhou_2mc_2charged_2ana_2mid__cvt_2trk__with__clst_2BGx0_2PhaseII__Y5d39c730e402fa46218831ee1eb2730c.html#a0792440778b32d6f22a088365a1bf731", null ]
-];

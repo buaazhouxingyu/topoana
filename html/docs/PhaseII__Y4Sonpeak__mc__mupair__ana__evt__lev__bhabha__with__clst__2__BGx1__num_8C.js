@@ -1,4 +1,0 @@
-var PhaseII__Y4Sonpeak__mc__mupair__ana__evt__lev__bhabha__with__clst__2__BGx1__num_8C =
-[
-    [ "PhaseII_Y4Sonpeak_mc_mupair_ana_evt_lev_bhabha_with_clst_2_BGx1_num", "PhaseII__Y4Sonpeak__mc__mupair__ana__evt__lev__bhabha__with__clst__2__BGx1__num_8C.html#a7bc70c76d9ac56eb5feba3d1d0355aef", null ]
-];

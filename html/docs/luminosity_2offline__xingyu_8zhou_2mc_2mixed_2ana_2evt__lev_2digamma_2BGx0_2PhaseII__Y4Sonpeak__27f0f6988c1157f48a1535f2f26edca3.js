@@ -1,4 +1,0 @@
-var luminosity_2offline__xingyu_8zhou_2mc_2mixed_2ana_2evt__lev_2digamma_2BGx0_2PhaseII__Y4Sonpeak__27f0f6988c1157f48a1535f2f26edca3 =
-[
-    [ "PhaseII_Y4Sonpeak_mc_mixed_ana_evt_lev_digamma_BGx0_num", "luminosity_2offline__xingyu_8zhou_2mc_2mixed_2ana_2evt__lev_2digamma_2BGx0_2PhaseII__Y4Sonpeak__27f0f6988c1157f48a1535f2f26edca3.html#aa6b5a80fc0abe14330e4e712981c0fc4", null ]
-];

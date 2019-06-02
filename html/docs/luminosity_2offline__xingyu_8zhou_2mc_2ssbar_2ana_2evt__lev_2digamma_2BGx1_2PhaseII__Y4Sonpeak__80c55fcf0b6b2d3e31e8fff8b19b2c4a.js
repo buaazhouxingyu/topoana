@@ -1,4 +1,0 @@
-var luminosity_2offline__xingyu_8zhou_2mc_2ssbar_2ana_2evt__lev_2digamma_2BGx1_2PhaseII__Y4Sonpeak__80c55fcf0b6b2d3e31e8fff8b19b2c4a =
-[
-    [ "PhaseII_Y4Sonpeak_mc_ssbar_ana_evt_lev_digamma_BGx1_num", "luminosity_2offline__xingyu_8zhou_2mc_2ssbar_2ana_2evt__lev_2digamma_2BGx1_2PhaseII__Y4Sonpeak__80c55fcf0b6b2d3e31e8fff8b19b2c4a.html#a56aeba1fab27e921ff50330b0abd6c1f", null ]
-];

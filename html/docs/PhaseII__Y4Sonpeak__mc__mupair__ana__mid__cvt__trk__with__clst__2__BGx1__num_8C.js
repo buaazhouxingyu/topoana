@@ -1,4 +1,0 @@
-var PhaseII__Y4Sonpeak__mc__mupair__ana__mid__cvt__trk__with__clst__2__BGx1__num_8C =
-[
-    [ "PhaseII_Y4Sonpeak_mc_mupair_ana_mid_cvt_trk_with_clst_2_BGx1_num", "PhaseII__Y4Sonpeak__mc__mupair__ana__mid__cvt__trk__with__clst__2__BGx1__num_8C.html#aaaed6cab74f29abf37a6f0ff0045f00f", null ]
-];

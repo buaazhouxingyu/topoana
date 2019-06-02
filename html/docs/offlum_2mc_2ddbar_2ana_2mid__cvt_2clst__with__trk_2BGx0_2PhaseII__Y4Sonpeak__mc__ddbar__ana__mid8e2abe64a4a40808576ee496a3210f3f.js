@@ -1,4 +1,0 @@
-var offlum_2mc_2ddbar_2ana_2mid__cvt_2clst__with__trk_2BGx0_2PhaseII__Y4Sonpeak__mc__ddbar__ana__mid8e2abe64a4a40808576ee496a3210f3f =
-[
-    [ "PhaseII_Y4Sonpeak_mc_ddbar_ana_mid_cvt_clst_with_trk_BGx0_num", "offlum_2mc_2ddbar_2ana_2mid__cvt_2clst__with__trk_2BGx0_2PhaseII__Y4Sonpeak__mc__ddbar__ana__mid8e2abe64a4a40808576ee496a3210f3f.html#ac09d0540ce2fe9a9c21e217998024f4d", null ]
-];

@@ -1,4 +1,0 @@
-var offlum_2data_2prod5_2ana_2evt__lev_2digamma_2PhaseII__Y4Sonpeak__data__prod5__ana__evt__lev__digamma__exp__run__num_8C =
-[
-    [ "PhaseII_Y4Sonpeak_data_prod5_ana_evt_lev_digamma_exp_run_num", "offlum_2data_2prod5_2ana_2evt__lev_2digamma_2PhaseII__Y4Sonpeak__data__prod5__ana__evt__lev__digamma__exp__run__num_8C.html#ac559398bf2fbff1a906094ace67eb69d", null ]
-];

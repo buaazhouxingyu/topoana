@@ -1,4 +1,0 @@
-var offlum_2mc_2digamma_2ana_2mid__cvt_2trk__with__clst_2BGx1_2PhaseII__Y4Sonpeak__mc__digamma__ana_d6c7ae34ea68e6594e3ae8f3a7c84ddf =
-[
-    [ "PhaseII_Y4Sonpeak_mc_digamma_ana_mid_cvt_trk_with_clst_BGx1_num", "offlum_2mc_2digamma_2ana_2mid__cvt_2trk__with__clst_2BGx1_2PhaseII__Y4Sonpeak__mc__digamma__ana_d6c7ae34ea68e6594e3ae8f3a7c84ddf.html#aebcdcfb530065baee862aa45e8c151e8", null ]
-];

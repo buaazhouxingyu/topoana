@@ -1,4 +1,0 @@
-var PhaseII__Y4Sonpeak__mc__digamma__ana__mid__cvt__trk__with__clst__2__BGx1__num_8C =
-[
-    [ "PhaseII_Y4Sonpeak_mc_digamma_ana_mid_cvt_trk_with_clst_2_BGx1_num", "PhaseII__Y4Sonpeak__mc__digamma__ana__mid__cvt__trk__with__clst__2__BGx1__num_8C.html#a0fefc00e1588f45aa2a6ac9ecc55c8be", null ]
-];

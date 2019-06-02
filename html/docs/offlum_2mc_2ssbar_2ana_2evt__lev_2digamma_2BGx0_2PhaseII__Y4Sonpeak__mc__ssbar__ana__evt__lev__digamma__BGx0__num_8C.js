@@ -1,4 +1,0 @@
-var offlum_2mc_2ssbar_2ana_2evt__lev_2digamma_2BGx0_2PhaseII__Y4Sonpeak__mc__ssbar__ana__evt__lev__digamma__BGx0__num_8C =
-[
-    [ "PhaseII_Y4Sonpeak_mc_ssbar_ana_evt_lev_digamma_BGx0_num", "offlum_2mc_2ssbar_2ana_2evt__lev_2digamma_2BGx0_2PhaseII__Y4Sonpeak__mc__ssbar__ana__evt__lev__digamma__BGx0__num_8C.html#ab836b1093af3ed18a911483c13df8bc5", null ]
-];
