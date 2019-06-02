@@ -1,0 +1,4 @@
+var luminosity_2offline__xingyu_8zhou_2mc_2ccbar_2ana_2mid__cvt_2trk_2BGx1_2PhaseII__Y4Sonpeak__mc__cc95b5554c97941f94a82dff73679403 =
+[
+    [ "PhaseII_Y4Sonpeak_mc_ccbar_ana_mid_cvt_trk_BGx1_num", "luminosity_2offline__xingyu_8zhou_2mc_2ccbar_2ana_2mid__cvt_2trk_2BGx1_2PhaseII__Y4Sonpeak__mc__cc95b5554c97941f94a82dff73679403.html#ae321adbeb30b6564c653b684f1652387", null ]
+];

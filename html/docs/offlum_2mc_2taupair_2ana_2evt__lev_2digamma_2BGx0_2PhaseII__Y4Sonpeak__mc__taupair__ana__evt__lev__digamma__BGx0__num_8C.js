@@ -1,0 +1,4 @@
+var offlum_2mc_2taupair_2ana_2evt__lev_2digamma_2BGx0_2PhaseII__Y4Sonpeak__mc__taupair__ana__evt__lev__digamma__BGx0__num_8C =
+[
+    [ "PhaseII_Y4Sonpeak_mc_taupair_ana_evt_lev_digamma_BGx0_num", "offlum_2mc_2taupair_2ana_2evt__lev_2digamma_2BGx0_2PhaseII__Y4Sonpeak__mc__taupair__ana__evt__lev__digamma__BGx0__num_8C.html#aa686fe0b26d44a28895bbe2c568deee7", null ]
+];
