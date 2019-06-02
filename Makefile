@@ -35,6 +35,7 @@ ROOTCFLAGS := $(shell root-config --cflags)
 ROOTLIBS   := $(shell root-config --libs --evelibs --glibs)
 CFLAGS   = \
 	-fPIC -w -g -W ${ROOTCFLAGS} \
+	-std=c++0x \
 	-Wfatal-errors -Wall
 LFLAGS   = ${ROOTLIBS} -lTreePlayer -g -lGenVector \
 	-lRooFit -lRooFitCore -lRooStats -lMinuit
@@ -64,8 +65,8 @@ DEP   := ${DEP_C} ${DEP_X}
 # * COMPILE RULES * #
 # * (dependencies are constructed too)
 .PHONY: all
-all : ${BIN} $(OUTLIBF) ${EXE}
-	@echo "\e[92;1mCOMPILING DONE\e[0m"
+all : ${BIN} ${EXE}
+	@echo -e "\e[92;1mCOMPILING DONE\e[0m"
 
 
 # * for the objects (inc and src)
@@ -82,7 +83,7 @@ $(OUTLIBF) : ${BIN}
 	@ranlib $@
 
 # * for the scripts (executables)
-${dirEXE}/%.${extEXE} : ${dirSCRIPTS}/%.${extSCRIPT} $(dirDEP)/%.d $(OUTLIBF)
+${dirEXE}/%.${extEXE} : ${dirSCRIPTS}/%.${extSCRIPT} $(dirDEP)/%.d
 	@echo "Compiling script \"$(notdir $<)\""
 	@mkdir -p $(@D) > /dev/null
 	@$(CC) $< -o $@ ${CFLAGS} ${INCLUDE_PATHS} ${DEPFLAGS} -L. ${BIN} ${LFLAGS}
