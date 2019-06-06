@@ -2,30 +2,30 @@
 #include <cmath>
 void topoana::reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & Nps, int Pid[], int Midx[])
 {
-  int idx=0;
   const unsigned int Npsi=Npsd;
-  int Idx[Npsi];
+  int newIdx=0;
+  int NewIdx[Npsi];
   for(unsigned int i=0;i<Npsi;i++)
     {
-      if(isnormal(Pidd[i]))
+      if(isnormal(Pidd[i])||(Pidd[i]==-999))
         {
-          Idx[i]=idx;
-          idx++;
+          NewIdx[i]=newIdx;
+          newIdx++;
         }
       else
         {
-          Idx[i]=-1;
+          NewIdx[i]=-1;
         }
     }
-  Nps=idx;
+  Nps=newIdx;
   for(unsigned int i=0;i<Npsi;i++)
     {
-      if(Idx[i]!=-1)
+      if(NewIdx[i]!=-1)
         {
-          idx=Idx[i];
-          Pid[idx]=Pidd[i];
-          if(Midxd[i]!=i&&Idx[int(Midxd[i])]!=-1) Midx[idx]=Idx[int(Midxd[i])];
-          else Midx[idx]=-1;
+          newIdx=NewIdx[i];
+          Pid[newIdx]=Pidd[i];
+          if((Midxd[i]!=-999)&&(Midxd[i]!=i)&&(NewIdx[int(Midxd[i])]!=-1)) Midx[newIdx]=NewIdx[int(Midxd[i])];
+          else Midx[newIdx]=-1;
         }
     }  
-} 
+}
