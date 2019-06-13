@@ -40,7 +40,7 @@ CFLAGS     := $(shell gcc --version | sed -n '1p' \
 CFLAGS     += -g -Wfatal-errors -Wall -Wextra ${ROOTCFLAGS}
 LFLAGS     := ${ROOTLFLAGS} -lTreePlayer
 DEPFLAGS = -MT $@ -MMD -MP -MF ${dirDEP}/$*.Td
-POSTCOMPILE = @mv -f ${dirDEP}/$*.Td ${dirDEP}/$*.d && touch $@
+POSTCOMPILE = @mv -f ${dirDEP}/$*.Td ${dirDEP}/$*.${extDEP} && touch $@
 
 
 # * INVENTORIES OF FILES * #
@@ -75,15 +75,15 @@ DEPS_SCRIPT := $(DEPS_SCRIPT:.${extSCRIPT}=.${extDEP})
 all : ${EXES}
 
 # * for the executables
-${dirEXE}/%.${extEXE} : ${dirSCRIPT}/%.${extSCRIPT} ${OBJECTS} ${dirDEP}/%.d
-        @echo "Compiling script file \"$(notdir $<)\""
-        @mkdir -p $(@D) > /dev/null
-        @${CC} $< -o $@ ${CFLAGS} ${DEPFLAGS} ${OBJECTS} ${LFLAGS}
-        ${POSTCOMPILE}
-        @echo -e "\e[32;1m\"$(notdir $@)\" installed successfully!\e[0m"
+${dirEXE}/%.${extEXE} : ${dirSCRIPT}/%.${extSCRIPT} ${OBJECTS} ${dirDEP}/%.${extDEP}
+	@echo "Compiling script file \"$(notdir $<)\""
+	@mkdir -p $(@D) > /dev/null
+	@${CC} $< -o $@ ${CFLAGS} ${DEPFLAGS} ${OBJECTS} ${LFLAGS}
+	${POSTCOMPILE}
+	@echo -e "\e[32;1m\"$(notdir $@)\" installed successfully!\e[0m"
 
 # * for the objects
-${dirOBJECT}/%.${extOBJECT} : ${dirSOURCE}/%.${extSOURCE} ${dirDEP}/%.d
+${dirOBJECT}/%.${extOBJECT} : ${dirSOURCE}/%.${extSOURCE} ${dirDEP}/%.${extDEP}
 # * The following sleep statement is used specially for the lxslc6.ihep.ac.cn 
 # * machines to have all of the object files in place.
 	@sleep 10s
@@ -93,9 +93,9 @@ ${dirOBJECT}/%.${extOBJECT} : ${dirSOURCE}/%.${extSOURCE} ${dirDEP}/%.d
 	${POSTCOMPILE}
 
 # * for the dependencies
-${dirDEP}/%.d:
+${dirDEP}/%.${extDEP}:
 	@mkdir -p $(@D)
-.PRECIOUS: ${dirDEP}/%.d
+.PRECIOUS: ${dirDEP}/%.${extDEP}
 
 
 # * CLEAN RULES * #
