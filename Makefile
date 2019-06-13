@@ -85,7 +85,7 @@ ${dirOBJECT}/%.${extOBJECT} : ${dirSOURCE}/%.${extSOURCE} ${dirDEP}/%.d
 	${POSTCOMPILE}
 
 # * for the executables
-${dirEXE}/%.${extEXE} : ${dirSCRIPT}/%.${extSCRIPT} ${dirDEP}/%.d
+${dirEXE}/%.${extEXE} : ${dirSCRIPT}/%.${extSCRIPT} ${OBJECTS} ${dirDEP}/%.d
 	@echo "Compiling script file \"$(notdir $<)\""
 	@mkdir -p $(@D) > /dev/null
 	@${CC} $< -o $@ ${CFLAGS} ${DEPFLAGS} ${OBJECTS} ${LFLAGS}
