@@ -33,7 +33,7 @@ ROOTLFLAGS := $(shell root-config --libs --glibs)
 # * "-std=c++0x" to the variable "CFLAGS" according to the current version of "gcc".
 # * If the version number is lower than or equal to 4.6, then assign "-std=c++0x" 
 # * to "CFLAGS". Otherwise, no assignment is performed. Here, version 4.6 is used
-# * as the wartershed because "gcc" starts to support c++ 11 from version 4.7.
+# * as the watershed because "gcc" starts to support c++ 11 from version 4.7.
 CFLAGS     := $(shell gcc --version | sed -n '1p' \
               | awk '{print $$3}' | awk -F \. '{print $$1$$2}' \
               | awk '{if($$1<=46) {print "-std=c++0x"}}')
