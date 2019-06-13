@@ -173,8 +173,8 @@ class topoana
   public:
     topoana()
     {
-      m_pkgPath="/home/belle2/zhouxy/studyarea/c++/tools/topoana/versions/v1.8.7/";
-      m_verNum="v1.8.7";
+      m_pkgPath="/home/belle2/zhouxy/workarea/repositories/topoana/";
+      m_verNum="1.8.7";
       m_cardFlNm0=m_pkgPath+"share/topoana.card_with_preconfigured_items";
 
       m_nmsOfIptRootFls.clear();
@@ -282,7 +282,7 @@ class topoana
     unsigned int   countCascDcyBrsInDcyTr(vector< list<int> > & cascDcyBrs, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);
     unsigned int   countIncCascDcyBrsInDcyTr(vector<int> vIIncIncCascDcyBrs, vector< list<int> > & incCascDcyBrs, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);
     void           getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vMidx, unsigned int idx);
-    bool	   isPaADescendantOfPb(vector<int> vMidx, unsigned int idxA, unsigned int idxB);
+    bool	   isPaADescendantOfPb(vector<int> vMidx, int idxA, int idxB);
     unsigned int   countIncOrIRACascDcyBrsInDcyTr(vector<int> vIIncIncOrIRACascDcyBrs, vector<int> vIIRAIncOrIRACascDcyBrs, vector< list<int> > & incOrIRACascDcyBrs, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2, vector<int> vPid, vector<int> vMidx);
     void           flatArrayBrs(string nmOfOptRootFl);
     void           rmIptBrs(string nmOfOptRootFl);
