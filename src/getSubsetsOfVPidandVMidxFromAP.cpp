@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vMidx, unsigned int idx)
+void topoana::getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vMidx, int idx)
 {
   if(vPid.size()!=vMidx.size())
     {
@@ -13,7 +13,7 @@ void topoana::getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vM
       exit(-1);
     }
 
-  if(idx<0||idx>=vPid.size())
+  if(idx<0||((unsigned int) idx)>=vPid.size())
     {
       cerr<<"Error: The integer is not a reasonable index for the two vectors vPid and vMidx!"<<endl;
       cerr<<"Infor: The integer is "<<idx<<"."<<endl;

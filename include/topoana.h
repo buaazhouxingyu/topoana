@@ -281,7 +281,7 @@ class topoana
     bool	   isLiaMatchedWithLib(list<int> & lia, list<int> & lib);
     unsigned int   countCascDcyBrsInDcyTr(vector< list<int> > & cascDcyBrs, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);
     unsigned int   countIncCascDcyBrsInDcyTr(vector<int> vIIncIncCascDcyBrs, vector< list<int> > & incCascDcyBrs, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);
-    void           getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vMidx, unsigned int idx);
+    void           getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vMidx, int idx);
     bool	   isPaADescendantOfPb(vector<int> vMidx, int idxA, int idxB);
     unsigned int   countIncOrIRACascDcyBrsInDcyTr(vector<int> vIIncIncOrIRACascDcyBrs, vector<int> vIIRAIncOrIRACascDcyBrs, vector< list<int> > & incOrIRACascDcyBrs, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2, vector<int> vPid, vector<int> vMidx);
     void           flatArrayBrs(string nmOfOptRootFl);
