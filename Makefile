@@ -72,7 +72,15 @@ DEPS_SCRIPT := $(DEPS_SCRIPT:.${extSCRIPT}=.${extDEP})
 # * (dependencies are constructed too)
 
 .PHONY: all
-all : ${OBJECTS} ${EXES}
+all : ${EXES}
+
+# * for the executables
+${dirEXE}/%.${extEXE} : ${dirSCRIPT}/%.${extSCRIPT} ${OBJECTS} ${dirDEP}/%.d
+        @echo "Compiling script file \"$(notdir $<)\""
+        @mkdir -p $(@D) > /dev/null
+        @${CC} $< -o $@ ${CFLAGS} ${DEPFLAGS} ${OBJECTS} ${LFLAGS}
+        ${POSTCOMPILE}
+        @echo -e "\e[32;1m\"$(notdir $@)\" installed successfully!\e[0m"
 
 # * for the objects
 ${dirOBJECT}/%.${extOBJECT} : ${dirSOURCE}/%.${extSOURCE} ${dirDEP}/%.d
@@ -83,14 +91,6 @@ ${dirOBJECT}/%.${extOBJECT} : ${dirSOURCE}/%.${extSOURCE} ${dirDEP}/%.d
 	@mkdir -p $(@D) > /dev/null
 	@${CC} ${CFLAGS} ${DEPFLAGS} -c $< -o $@
 	${POSTCOMPILE}
-
-# * for the executables
-${dirEXE}/%.${extEXE} : ${dirSCRIPT}/%.${extSCRIPT} ${OBJECTS} ${dirDEP}/%.d
-	@echo "Compiling script file \"$(notdir $<)\""
-	@mkdir -p $(@D) > /dev/null
-	@${CC} $< -o $@ ${CFLAGS} ${DEPFLAGS} ${OBJECTS} ${LFLAGS}
-	${POSTCOMPILE}
-	@echo -e "\e[32;1m\"$(notdir $@)\" installed successfully!\e[0m"
 
 # * for the dependencies
 ${dirDEP}/%.d:
