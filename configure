@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# This script sets the package path automatically.
+
+pkgPath=`pwd`
+sed -i 's:m_pkgPath=.*:m_pkgPath=\"'$pkgPath'\/\";:g' include/topoana.h 
+sed -i 's:RequirePackage.*ifxetex:RequirePackage{'$pkgPath'/share/ifxetex:g' share/geometry.sty
+
+exit 0
