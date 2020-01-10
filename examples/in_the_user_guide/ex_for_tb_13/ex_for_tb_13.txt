@@ -1,9 +1,0 @@
-
-Signal decay initial-final states:
-
-rowNo:  1	iSigDcyIFSts:  0	nEtr:  18	nCEtr:  18
-  Upsilon(4S) ---> mu+ nu_mu pi0 pi0 pi0 pi+ pi+ pi+ pi- pi- pi- pi- K+ K-
-
-rowNo:  2	iSigDcyIFSts:  1	nEtr:  18	nCEtr:  36
-  Upsilon(4S) ---> pi0 pi0 pi0 pi0 pi0 pi+ pi+ pi+ pi+ pi+ pi- pi- pi- pi- pi- K+ K-
-

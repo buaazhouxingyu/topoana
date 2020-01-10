@@ -1,9 +1,0 @@
-
-Signal inclusive decay branches:
-
-rowNo:  1	iSigIncDcyBr:  0	nCase:  41751	nCCase:  41751
-  anti-B0 --> D*+ + anything
-
-rowNo:  2	iSigIncDcyBr:  1	nCase:  153	nCCase:  41904
-  B0 --> K_S0 + anything
-

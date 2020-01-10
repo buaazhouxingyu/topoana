@@ -1,7 +1,0 @@
-
-Signal particles:
-
-rowNo:  1	SigP:  D*+	iSigP:  0	nCase:   45886	nCCase:  45886
-
-rowNo:  2	SigP:  J/psi	iSigP:  1	nCase:   2654	nCCase:  48540
-
