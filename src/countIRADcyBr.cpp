@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 
-// The fourth argument is appended for the special usage in the "countIncOrIRACascDcyBrsInDcyTr" method. 
+// The fourth argument is appended for the special usage in the "countIncOrIRACascDcyBrInDcyTr" method. 
 unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched, vector< vector< list<int> > > * vDcyBrIRADcyBr)
 {
   vector<int> vIdx;
@@ -111,9 +111,7 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
               // The following condition "abs(vPid[j])==22" is exerted specially for the comparison without final state photons.
               if(fromTheP==true)
                 {
-                  // If the gFSR photons are ignored, then they don't show themselves up here. If they are not ignored, then their PDG codes are modified to be -22 or m_pidOfGFSRGam in the "sortPs" function.
-                  if(m_ignoreGFSR==true) IRADcyBrTmp.push_back(vPid[j]);
-                  else if(abs(vPid[j])!=-22&&vPid[j]!=m_pidOfGFSRGam) IRADcyBrTmp.push_back(vPid[j]);
+                  IRADcyBrTmp.push_back(vPid[j]);
                 }
             } 
         }
@@ -134,7 +132,7 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
          if(IRADcyBrTmp==IRADcyBr)
            {
              nCount++;
-             if(m_vCompIRADcyBr.size()>0)
+             if(vDcyBrIRADcyBr!=0)
                {
                  dcyBrIRADcyBr.clear();
                  subDcyBrIRADcyBr.clear();
@@ -143,16 +141,8 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
                      // The condition "vIdx[i]==-1&&((unsigned int) vMidx[j]==j)" is used for the special IRADcyBr started with the initial e+ and e-.
                      if((vIdx[i]==-1&&((unsigned int) vMidx[j]==j))||(vIdx[i]!=-1&&vMidx[j]==vIdx[i]))
                        {
-                         if(m_ignoreGFSR==true)
-                           {
-                             subDcyBrIRADcyBr.push_back(vPid[j]);
-                             vIdxOld.push_back(j);
-                           }
-                         else if(abs(vPid[j])!=-22&&vPid[j]!=m_pidOfGFSRGam)
-                           {
-                             subDcyBrIRADcyBr.push_back(vPid[j]);
-                             vIdxOld.push_back(j);
-                           }
+                         subDcyBrIRADcyBr.push_back(vPid[j]);
+                         vIdxOld.push_back(j);
                        }
                    }
                  // The condition "vIdx[i]!=-1" is used for the special IRADcyBr started with the initial e+ and e-.
@@ -189,16 +179,8 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
                                {
                                  if(vMidx[k]==vIdxOld[j])
                                    {
-                                     if(m_ignoreGFSR==true)
-                                       {
-                                         subDcyBrIRADcyBr.push_back(vPid[k]);
-                                         vIdxYng.push_back(k);
-                                       }
-                                     else if(abs(vPid[k])!=-22&&vPid[k]!=m_pidOfGFSRGam)
-                                       {
-                                         subDcyBrIRADcyBr.push_back(vPid[k]);
-                                         vIdxYng.push_back(k);
-                                       }
+                                     subDcyBrIRADcyBr.push_back(vPid[k]);
+                                     vIdxYng.push_back(k);
                                    }
                                }
                              dcyBrIRADcyBr.push_back(subDcyBrIRADcyBr);

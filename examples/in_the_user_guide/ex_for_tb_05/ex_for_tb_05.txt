@@ -1,0 +1,42 @@
+
+Production branches of D*+:
+
+rowNo:  1	iProdBrP:  9	nCase:  4154	nCCase:  4154
+  anti-B0 --> mu- anti-nu_mu D*+
+
+rowNo:  2	iProdBrP:  7	nCase:  2886	nCCase:  7040
+  anti-B0 --> e- anti-nu_e D*+
+
+rowNo:  3	iProdBrP:  4	nCase:  1691	nCCase:  8731
+  anti-B0 --> D*+ D_s*-
+
+rowNo:  4	iProdBrP:  10	nCase:  1623	nCCase:  10354
+  anti-B0 --> e- anti-nu_e D*+ gammaF
+
+rowNo:  5	iProdBrP:  40	nCase:  1429	nCCase:  11783
+  anti-B0 --> pi0 pi+ pi- pi- D*+
+
+rowNo:  rest	iProdBrP:  ---	nCase:  34103	nCCase:  45886
+  others (3272 in total)
+
+
+Production branches of J/psi:
+
+rowNo:  1	iProdBrP:  29	nCase:  169	nCCase:  169
+  chi_c1 --> J/psi gamma
+
+rowNo:  2	iProdBrP:  6	nCase:  139	nCCase:  308
+  B0 --> J/psi K_10
+
+rowNo:  3	iProdBrP:  11	nCase:  137	nCCase:  445
+  psi(2S) --> pi+ pi- J/psi
+
+rowNo:  4	iProdBrP:  15	nCase:  126	nCCase:  571
+  anti-B0 --> J/psi anti-K_10
+
+rowNo:  5	iProdBrP:  20	nCase:  114	nCCase:  685
+  B0 --> K*0 J/psi
+
+rowNo:  rest	iProdBrP:  ---	nCase:  1969	nCCase:  2654
+  others (210 in total)
+

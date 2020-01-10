@@ -1,10 +1,10 @@
 #include "../include/topoana.h"
 #include <iostream>
 
-unsigned int topoana::countCascDcyBrsInDcyTr(vector< list<int> > & cascDcyBrs, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2)
+unsigned int topoana::countCascDcyBrInDcyTr(vector< list<int> > & cascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2)
 {
   unsigned int nCount=0;
-  if(cascDcyBrs.size()==0)
+  if(cascDcyBr.size()==0)
     {
       cerr<<"Infor: The size of the vector for the cascade decay branches is zero!"<<endl<<endl;
       return nCount;
@@ -14,12 +14,12 @@ unsigned int topoana::countCascDcyBrsInDcyTr(vector< list<int> > & cascDcyBrs, v
       cerr<<"Infor: The size of the vector for the decay tree is zero!"<<endl<<endl;
       return nCount;
     }
-  if(cascDcyBrs.size()<=dcyTr.size())
+  if(cascDcyBr.size()<=dcyTr.size())
     {
-      /*for(unsigned int i=0;i<cascDcyBrs.size();i++)
+      /*for(unsigned int i=0;i<cascDcyBr.size();i++)
         {
-          list<int>::iterator liit,liitTmp=cascDcyBrs[i].end();liitTmp--;
-          for(liit=cascDcyBrs[i].begin();liit!=cascDcyBrs[i].end();liit++)
+          list<int>::iterator liit,liitTmp=cascDcyBr[i].end();liitTmp--;
+          for(liit=cascDcyBr[i].begin();liit!=cascDcyBr[i].end();liit++)
             {
               if(liit!=liitTmp) cout<<(*liit)<<"\t";
               else cout<<(*liit)<<endl;
@@ -39,7 +39,7 @@ unsigned int topoana::countCascDcyBrsInDcyTr(vector< list<int> > & cascDcyBrs, v
 
       vector<int> vMIDcyBr1WRTIDcyBr1;
       vMIDcyBr1WRTIDcyBr1.push_back(-1);
-      for(unsigned int i=1;i<cascDcyBrs.size();i++)
+      for(unsigned int i=1;i<cascDcyBr.size();i++)
         {
           if(vIdxOfHead1[i]==vMidxOfHead1[i])
             {
@@ -63,7 +63,7 @@ unsigned int topoana::countCascDcyBrsInDcyTr(vector< list<int> > & cascDcyBrs, v
       vector<int> vIDcyBr2WRTIDcyBr1;
       for(unsigned int i=0;i<dcyTr.size();i++)
         {
-          if(dcyTr[i]==cascDcyBrs[0])
+          if(dcyTr[i]==cascDcyBr[0])
             {
               vIDcyBr2WRTIDcyBr1.clear();
               vIDcyBr2WRTIDcyBr1.push_back(i);
@@ -73,11 +73,11 @@ unsigned int topoana::countCascDcyBrsInDcyTr(vector< list<int> > & cascDcyBrs, v
 
       for(unsigned int i=0;i<vVIDcyBr2WRTIDcyBr1.size();i++)
         {
-          for(unsigned int j=1;j<cascDcyBrs.size();j++)
+          for(unsigned int j=1;j<cascDcyBr.size();j++)
             {
               for(unsigned int k=vVIDcyBr2WRTIDcyBr1[i][j-1]+1;k<dcyTr.size();k++)
                 {
-                  if(dcyTr[k]==cascDcyBrs[j]&&(vMidxOfHead2[k]==vIdxOfHead2[k]||vMidxOfHead2[k]==vIdxOfHead2[(unsigned int) vVIDcyBr2WRTIDcyBr1[i][(unsigned int) vMIDcyBr1WRTIDcyBr1[j]]]))
+                  if(dcyTr[k]==cascDcyBr[j]&&(vMidxOfHead2[k]==vIdxOfHead2[k]||vMidxOfHead2[k]==vIdxOfHead2[(unsigned int) vVIDcyBr2WRTIDcyBr1[i][(unsigned int) vMIDcyBr1WRTIDcyBr1[j]]]))
                     {
                       vVIDcyBr2WRTIDcyBr1[i].push_back(k);
                       break;
@@ -85,7 +85,7 @@ unsigned int topoana::countCascDcyBrsInDcyTr(vector< list<int> > & cascDcyBrs, v
                 }
               if(vVIDcyBr2WRTIDcyBr1[i].size()!=j+1) break;
             }
-          if(vVIDcyBr2WRTIDcyBr1[i].size()==cascDcyBrs.size()) nCount++;
+          if(vVIDcyBr2WRTIDcyBr1[i].size()==cascDcyBr.size()) nCount++;
         }
     }
 

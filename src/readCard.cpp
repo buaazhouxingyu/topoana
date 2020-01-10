@@ -56,81 +56,81 @@ void topoana::readCard(string cardFlNm)
                 }
             }
 	}
-      else if(line=="% Tree name")
+      else if(line=="% TTree name")
         {
-          readOpenCurly(fin,line,"% Tree name");
-          read1stLineOrCloseCurly(fin,line,true,"No tree name is found in the item with the prompt \"% Tree name");
-          m_trNm=line;
-          readCloseCurly(fin,line,"% Tree name");
+          readOpenCurly(fin,line,"% TTree name");
+          read1stLineOrCloseCurly(fin,line,true,"No tree name is found in the item with the prompt \"% TTree name");
+          m_ttrNm=line;
+          readCloseCurly(fin,line,"% TTree name");
         }
-      else if(line=="% Storage type of the raw input topology data (Four options: AI, VI, MIV, and MDV. Default: AI)")
+      else if(line=="% Storage type of input raw topology data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)")
         {
-          readOpenCurly(fin,line,"% Storage type of the raw input topology data (Four options: AI, VI, MIV, and MDV. Default: AI)");
-          m_strgTpOfRawIptTopoDat="AI";
-          read1stLineOrCloseCurly(fin,line,false,"% Storage type of the raw input topology data (Four options: AI, VI, MIV, and MDV. Default: AI)");
+          readOpenCurly(fin,line,"% Storage type of input raw topology data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
+          m_strgTpOfRawIptTopoDat="AOI";
+          read1stLineOrCloseCurly(fin,line,false,"% Storage type of input raw topology data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
           if(line!="}")
             {
-              if(line=="AI"||line=="VI"||line=="MIV"||line=="MDV")
+              if(line=="AOI"||line=="VOI"||line=="MSI"||line=="MSD")
                 {
                   m_strgTpOfRawIptTopoDat=line;
                 }
               else
                 {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Storage type of the raw input topology data\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"AI\", \"VI\", \"MIV\" or \"MDV\"."<<endl;
+                  cerr<<"Error: The input \""<<line<<"\" for the item \"Storage type of input raw topology data\" is invalid!"<<endl;
+                  cerr<<"Infor: It should be \"AI\", \"VI\", \"MSI\" or \"MSD\"."<<endl;
                   cerr<<"Infor: Please check it."<<endl;
                   exit(-1);
                 }
-              readCloseCurly(fin,line,"% Storage type of the raw input topology data (Four options: AI, VI, MIV, and MDV. Default: AI)");
+              readCloseCurly(fin,line,"% Storage type of input raw topology data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
             }
         }
-      else if(line=="% Branch name of the number of particles (Default: nMCGen)")
+      else if(line=="% TBranch name of the number of particles (Default: nMCGen)")
         {
-          readOpenCurly(fin,line,"% Branch name of the number of particles (Default: nMCGen)");
-          read1stLineOrCloseCurly(fin,line,false,"No branch name of the number of particles is found in the item with the prompt \"% Branch name of the number of particles (Default: nMCGen)");
+          readOpenCurly(fin,line,"% TBranch name of the number of particles (Default: nMCGen)");
+          read1stLineOrCloseCurly(fin,line,false,"No branch name of the number of particles is found in the item with the prompt \"% TBranch name of the number of particles (Default: nMCGen)");
           if(line!="}")
             {
-              m_brNmOfNps=line;
-              readCloseCurly(fin,line,"% Branch name of the number of particles (Default: nMCGen)");
+              m_tbrNmOfNps=line;
+              readCloseCurly(fin,line,"% TBranch name of the number of particles (Default: nMCGen)");
             }
         }
-      else if(line=="% Branch name of the PDG codes of particles (Default: MCGenPDG)")
+      else if(line=="% TBranch name of the PDG codes of particles (Default: MCGenPDG)")
         {
-          readOpenCurly(fin,line,"% Branch name of the PDG codes of particles (Default: MCGenPDG)");
-          read1stLineOrCloseCurly(fin,line,false,"No branch name of the PDG codes of particles is found in the item with the prompt \"% Branch name of the PDG codes of particles (Default: MCGenPDG)");
+          readOpenCurly(fin,line,"% TBranch name of the PDG codes of particles (Default: MCGenPDG)");
+          read1stLineOrCloseCurly(fin,line,false,"No branch name of the PDG codes of particles is found in the item with the prompt \"% TBranch name of the PDG codes of particles (Default: MCGenPDG)");
           if(line!="}")
             {
-              m_brNmOfPid=line;
-              readCloseCurly(fin,line,"% Branch name of the PDG codes of particles (Default: MCGenPDG)");     
+              m_tbrNmOfPid=line;
+              readCloseCurly(fin,line,"% TBranch name of the PDG codes of particles (Default: MCGenPDG)");     
             }
         }
-      else if(line=="% Branch name of the mother indeces of particles (Default: MCGenMothIndex)")
+      else if(line=="% TBranch name of the mother indices of particles (Default: MCGenMothIndex)")
         {
-          readOpenCurly(fin,line,"% Branch name of the mother indeces of particles (Default: MCGenMothIndex)");
-          read1stLineOrCloseCurly(fin,line,false,"No branch name of the mother indeces of particles is found in the item with the prompt \"% Branch name of the mother indeces of particles (Default: MCGenMothIndex)");
+          readOpenCurly(fin,line,"% TBranch name of the mother indices of particles (Default: MCGenMothIndex)");
+          read1stLineOrCloseCurly(fin,line,false,"No branch name of the mother indices of particles is found in the item with the prompt \"% TBranch name of the mother indices of particles (Default: MCGenMothIndex)");
           if(line!="}")
             {
-              m_brNmOfMidx=line;
-              readCloseCurly(fin,line,"% Branch name of the mother indeces of particles (Default: MCGenMothIndex)");  
+              m_tbrNmOfMidx=line;
+              readCloseCurly(fin,line,"% TBranch name of the mother indices of particles (Default: MCGenMothIndex)");  
+            }
+        }
+      else if(line=="% Avoid over counting for candidate based analysis (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Avoid over counting for candidate based analysis (Two options: Y and N. Default: N)", m_avoidOverCounting);
+        }
+      else if(line=="TBranch name of the indices of candidates in an event (Default: __candidate__)")
+        {
+          readOpenCurly(fin,line,"TBranch name of the indices of candidates in an event (Default: __candidate__)");
+          read1stLineOrCloseCurly(fin,line,false,"No branch name of the number of particles is found in the item with the prompt \"TBranch name of the indices of candidates in an event (Default: __candidate__)");
+          if(line!="}")
+            { 
+              m_tbrNmOfIcandi=line;
+              readCloseCurly(fin,line,"TBranch name of the indices of candidates in an event (Default: __candidate__)");   
             }
         }
       else if(line=="% Maximum number of entries to be processed")
         {
-          readOpenCurly(fin,line,"% Maximum number of entries to be processed");
-          m_nEtrsMax=ULONG_MAX;
-          read1stLineOrCloseCurly(fin,line,false,"% Maximum number of entries to be processed");
-          if(line!="}")
-            {
-              if(line.find_first_not_of("0123456789")==string::npos) m_nEtrsMax=strtoul(line.c_str(),NULL,10);
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Maximum number of entries to be processed\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be an unsigned long integer if it is not left empty."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Maximum number of entries to be processed");
-            }
+          readNumItem(fin, line, "% Maximum number of entries to be processed", m_nEtrMax);
         }
       else if(line=="% Cut to select entries")
         {
@@ -168,114 +168,70 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% Maximum hierarchy of heading decay branches to be processed in each event")
         {
-          readOpenCurly(fin,line,"% Maximum hierarchy of heading decay branches to be processed in each event");
-          m_hHdDcyBrsMax=UINT_MAX;
-          read1stLineOrCloseCurly(fin,line,false,"% Maximum hierarchy of heading decay branches to be processed in each event");
-          if(line!="}")
-            {
-              if(line.find_first_not_of("0123456789")==string::npos) m_hHdDcyBrsMax=strtoul(line.c_str(),NULL,10);
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Maximum hierarchy of heading decay branches to be processed in each event\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be an unsigned integer if it is not left empty."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Maximum hierarchy of heading decay branches to be processed in each event");
-            }
+          readNumItem(fin, line, "% Maximum hierarchy of heading decay branches to be processed in each event", m_hHdDcyBrsMax);
         }
       else if(line=="% Ignore the decay of the following particles")
         {
-          readOpenCurly(fin,line,"% Ignore the decay of the following particles");
-          read1stLineOrCloseCurly(fin,line,false,"% Ignore the decay of the following particles");
-          if(line!="}")
-            {
-              int pid=getPidFromTxtPnm(line);
-              m_vIdPid.push_back(pid);
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Ignore the decay of the following particles");
-                  if(line=="}")
-                    {
-                      break;
-                    }
-                  else
-                    {
-                      pid=getPidFromTxtPnm(line);
-                      m_vIdPid.push_back(pid);
-                    }
-                }
-            }
+          readVPItem(fin, line, "% Ignore the decay of the following particles", m_vIdPid);
         }
       else if(line=="% Ignore the decay of the daughters of the following particles")
         {
-          readOpenCurly(fin,line,"% Ignore the decay of the daughters of the following particles");
-          read1stLineOrCloseCurly(fin,line,false,"% Ignore the decay of the daughters of the following particles");
-          if(line!="}")
-            {
-              int pid=getPidFromTxtPnm(line);
-              m_vIddPid.push_back(pid);
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Ignore the decay of the daughters of the following particles");
-                  if(line=="}")
-                    {
-                      break;
-                    }
-                  else
-                    {
-                      pid=getPidFromTxtPnm(line);
-                      m_vIddPid.push_back(pid);
-                    }
-                }
-            }
+          readVPItem(fin, line, "% Ignore the decay of the daughters of the following particles", m_vIddPid);
         }
-      else if(line=="% Ignore gISR photons (Two options: Y and N. Default: N)")
+      else if(line=="% Retain the decay of pi0 to gamma gamma (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Ignore gISR photons (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% Ignore gISR photons (Two options: Y and N. Default: N)");
+          readYNItem(fin, line, "% Retain the decay of pi0 to gamma gamma (Two options: Y and N. Default: N)", m_retainPi02GamGam);
+        }
+      else if(line=="% Ignore the following final decay branches")
+        {
+          readSmpDcyItem(fin, line, "% Ignore the following final decay branches", m_vVPid_ignoreFDcyBr);
+        }
+      else if(line=="% PDG code of ISR photons (Default: 222222222)")
+        {
+          readNumItem(fin, line, "% PDG code of ISR photons (Default: 222222222)", m_pidOfSISRGamUser);
+        }
+      else if(line=="% PDG code of FSR photons (Default: -22)")
+        {
+          readNumItem(fin, line, "% PDG code of FSR photons (Default: -22)", m_pidOfSFSRGamUser);
+        }
+      else if(line=="Ignore ISR photons (Three options: Ys, Yg and N. Default: N)")
+        {
+          readOpenCurly(fin,line,"% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)");  
+          read1stLineOrCloseCurly(fin,line,false,"% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)");
           if(line!="}")
-            {
-              if(line=="Y")
-                {
-                  m_ignoreGISR=true;
-                }
-              else if(line=="N")
-                {
-                  m_ignoreGISR=false;
+            { 
+              if(line=="Ys"||line=="Yg"||line=="N")
+                { 
+                  m_ignoreISR=line;
                 }
               else
                 {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Ignore gISR photons\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
+                  cerr<<"Error: The input \""<<line<<"\" for the item \"Ignore ISR photons\" is invalid!"<<endl;
+                  cerr<<"Infor: It should be \"Ys\", \"Yg\" or \"N\"."<<endl;
                   cerr<<"Infor: Please check it."<<endl;
                   exit(-1);
                 }
-              readCloseCurly(fin,line,"% Ignore gISR photons (Two options: Y and N. Default: N)");
+              readCloseCurly(fin,line,"% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)");
             }
         }
-      else if(line=="% Ignore gFSR photons (Two options: Y and N. Default: N)")
+      else if(line=="Ignore FSR photons (Three options: Ys, Yg and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Ignore gFSR photons (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% Ignore gFSR photons (Two options: Y and N. Default: N)");
+          readOpenCurly(fin,line,"% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)");
+          read1stLineOrCloseCurly(fin,line,false,"% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)");
           if(line!="}")
             {
-              if(line=="Y")
+              if(line=="Ys"||line=="Yg"||line=="N")
                 {
-                  m_ignoreGFSR=true;
-                }
-              else if(line=="N")
-                {
-                  m_ignoreGFSR=false;
+                  m_ignoreFSR=line;
                 }
               else
                 {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Ignore gFSR photons\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
+                  cerr<<"Error: The input \""<<line<<"\" for the item \"Ignore FSR photons\" is invalid!"<<endl;
+                  cerr<<"Infor: It should be \"Ys\", \"Yg\" or \"N\"."<<endl;
                   cerr<<"Infor: Please check it."<<endl;
                   exit(-1);
-                } 
-              readCloseCurly(fin,line,"% Ignore gFSR photons (Two options: Y and N. Default: N)");
+                }
+              readCloseCurly(fin,line,"% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)");
             }
         }
       else if(line=="% Component analysis --- decay trees")
@@ -321,32 +277,17 @@ void topoana::readCard(string cardFlNm)
               if(!iss.eof()) 
                 {
                   iss>>line;
-                  if(line.find_first_not_of("0123456789")==string::npos) m_nDcyIFStsToBePrtdMax=strtoul(line.c_str(),NULL,10);        
-                  else if(line=="-") m_nDcyIFStsToBePrtdMax=ULONG_MAX;
-                  else
-                    { 
-                      cerr<<"Error: The third input parameter \""<<line<<"\" for the item \"Component analysis --- decay trees\" is invalid!"<<endl;
-                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                      cerr<<"Infor: It can also be \"-\" as a place holder if there is a fourth input parameter following it."<<endl;
-                      cerr<<"Infor: Please check it."<<endl;
-                      exit(-1);
-                    }
-                }
-              else m_nDcyIFStsToBePrtdMax=ULONG_MAX;
-              if(!iss.eof()) 
-                {
-                  iss>>line;
                   if(line=="Y")
                     {
-                      m_adjDcyIFStsIntoACol=true;
+                      m_dcyIFStsUnderDcyTr=true;
                     }
                   else if(line=="N")
                     {
-                      m_adjDcyIFStsIntoACol=false;
+                      m_dcyIFStsUnderDcyTr=false;
                     }
                   else
                     {
-                      cerr<<"Error: The fourth input parameter \""<<line<<"\" for the item \"Component analysis --- decay trees\" is invalid!"<<endl;
+                      cerr<<"Error: The third input parameter \""<<line<<"\" for the item \"Component analysis --- decay trees\" is invalid!"<<endl;
                       cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
                       cerr<<"Infor: Please check it."<<endl;
                       exit(-1);
@@ -398,934 +339,75 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% Component analysis --- decay branches of particles")
         {
-          readOpenCurly(fin,line,"% Component analysis --- decay branches of particles");
-          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- decay branches of particles");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              string txtPnm;
-              int pid;
-              unsigned long nMax;
-              string nm;
-
-              iss.str(line);
-              iss>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              m_vPid_compDcyBrP.push_back(pid);
-              if(!iss.eof())
-                { 
-                  iss>>line;
-                  if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);        
-                  else if(line=="-") nMax=ULONG_MAX;
-                  else
-                    {                       
-                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- decay branches of particles\" is invalid!"<<endl;
-                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                      cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                      cerr<<"Infor: Please check it."<<endl;
-                      exit(-1);
-                    }
-                }
-              else nMax=ULONG_MAX;
-              m_vNDcyBrsToBePrtdMax.push_back(nMax);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_compDcyBrP.push_back(nm);
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- decay branches of particles");
-                  if(line=="}")
-                    {
-                      break;
-                    }
-                  else
-                    {
-                      iss.clear();
-                      iss.str(line);
-                      iss>>txtPnm;
-                      pid=getPidFromTxtPnm(txtPnm);
-                      m_vPid_compDcyBrP.push_back(pid);
-                      if(!iss.eof())
-                        {
-                          iss>>line;
-                          if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);                        else if(line=="-") nMax=ULONG_MAX;
-                          else
-                            {
-                              cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- decay branches of particles\" is invalid!"<<endl;
-                              cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                              cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                              cerr<<"Infor: Please check it."<<endl;
-                              exit(-1);
-                            }
-                        }
-                      else nMax=ULONG_MAX;
-                      m_vNDcyBrsToBePrtdMax.push_back(nMax);
-                      if(!iss.eof()) iss>>nm;
-                      else nm="";
-                      m_vNm_compDcyBrP.push_back(nm);
-                    }
-                }
-            }
+          readPItem(fin,line, "% Component analysis --- decay branches of particles", m_vPid_compDcyBrP, m_vNm_compDcyBrP, &m_vNDcyBrToBePrtdMax);
+        }
+      else if(line=="% Component analysis --- cascade decay branches of particles")
+        {
+          readPItem(fin,line, "% Component analysis --- cascade decay branches of particles", m_vPid_compCascDcyBrP, m_vNm_compCascDcyBrP, &m_vNCascDcyBrToBePrtdMax, &m_vHCascDcyBrMax);
+        }
+      else if(line=="% Component analysis --- decay final states of particles")
+        {
+          readPItem(fin,line, "% Component analysis --- decay final states of particles", m_vPid_compDcyFStP, m_vNm_compDcyFStP, &m_vNDcyFStToBePrtdMax, &m_vNDcyFStP);
         }
       else if(line=="% Component analysis --- production branches of particles")
         {
-          readOpenCurly(fin,line,"% Component analysis --- production branches of particles");
-          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- production branches of particles");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              string txtPnm;
-              int pid;
-              unsigned long nMax;
-              string nm;
-
-              iss.str(line);
-              iss>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              m_vPid_compProdBrP.push_back(pid);
-              if(!iss.eof())
-                { 
-                  iss>>line;
-                  if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);        
-                  else if(line=="-") nMax=ULONG_MAX;
-                  else
-                    {                       
-                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- production branches of particles\" is invalid!"<<endl;
-                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                      cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                      cerr<<"Infor: Please check it."<<endl;
-                      exit(-1);
-                    }
-                }
-              else nMax=ULONG_MAX;
-              m_vNProdBrsToBePrtdMax.push_back(nMax);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_compProdBrP.push_back(nm);
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- production branches of particles");
-                  if(line=="}")
-                    {
-                      break;
-                    }
-                  else
-                    {
-                      iss.clear();
-                      iss.str(line);
-                      iss>>txtPnm;
-                      pid=getPidFromTxtPnm(txtPnm);
-                      m_vPid_compProdBrP.push_back(pid);
-                      if(!iss.eof())
-                        {
-                          iss>>line;
-                          if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);                        else if(line=="-") nMax=ULONG_MAX;
-                          else
-                            {
-                              cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- production branches of particles\" is invalid!"<<endl;
-                              cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                              cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                              cerr<<"Infor: Please check it."<<endl;
-                              exit(-1);
-                            }
-                        }
-                      else nMax=ULONG_MAX;
-                      m_vNProdBrsToBePrtdMax.push_back(nMax);
-                      if(!iss.eof()) iss>>nm;
-                      else nm="";
-                      m_vNm_compProdBrP.push_back(nm);
-                    }
-                }
-            }
+          readPItem(fin, line, "% Component analysis --- production branches of particles", m_vPid_compProdBrP, m_vNm_compProdBrP, &m_vNProdBrToBePrtdMax);
         }
       else if(line=="% Component analysis --- mothers of particles")
         {
-          readOpenCurly(fin,line,"% Component analysis --- mothers of particles");
-          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- mothers of particles");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              string txtPnm;
-              int pid;
-              unsigned long nMax;
-              string nm;
-
-              iss.str(line);
-              iss>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              m_vPid_compMP.push_back(pid);
-              if(!iss.eof())
-                { 
-                  iss>>line;
-                  if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);        
-                  else if(line=="-") nMax=ULONG_MAX;
-                  else
-                    {                       
-                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- mothers of particles\" is invalid!"<<endl;
-                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                      cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                      cerr<<"Infor: Please check it."<<endl;
-                      exit(-1);
-                    }
-                }
-              else nMax=ULONG_MAX;
-              m_vNMsToBePrtdMax.push_back(nMax);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_compMP.push_back(nm);
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- mothers of particles");
-                  if(line=="}")
-                    {
-                      break;
-                    }
-                  else
-                    {
-                      iss.clear();
-                      iss.str(line);
-                      iss>>txtPnm;
-                      pid=getPidFromTxtPnm(txtPnm);
-                      m_vPid_compMP.push_back(pid);
-                      if(!iss.eof())
-                        {
-                          iss>>line;
-                          if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);                        else if(line=="-") nMax=ULONG_MAX;
-                          else
-                            {
-                              cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- mothers of particles\" is invalid!"<<endl;
-                              cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                              cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                              cerr<<"Infor: Please check it."<<endl;
-                              exit(-1);
-                            }
-                        }
-                      else nMax=ULONG_MAX;
-                      m_vNMsToBePrtdMax.push_back(nMax);
-                      if(!iss.eof()) iss>>nm;
-                      else nm="";
-                      m_vNm_compMP.push_back(nm);
-                    }
-                }
-            }
+          readPItem(fin, line, "% Component analysis --- mothers of particles", m_vPid_compMP, m_vNm_compMP, &m_vNMToBePrtdMax);
         }
       else if(line=="% Component analysis --- inclusive decay branches")
         {
-          readOpenCurly(fin,line,"% Component analysis --- inclusive decay branches");
-          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- inclusive decay branches");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              string txtPnm;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              unsigned long nMax;
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              if(!iss.eof())
-                { 
-                  iss>>line;
-                  if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);        
-                  else if(line=="-") nMax=ULONG_MAX;
-                  else
-                    {                       
-                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- inclusive decay branches\" is invalid!"<<endl;
-                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                      cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                      cerr<<"Infor: Please check it."<<endl;
-                      exit(-1);
-                    }
-                }
-              else nMax=ULONG_MAX;
-              m_vNExcCompsToBePrtdMax.push_back(nMax);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_compIncDcyBr.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- inclusive decay branches");
-                  if(line=="}")
-                    {
-                      m_vVPid_compIncDcyBr.push_back(vPid);
-                      vPid.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm;
-                      if(idx==0)
-                        {
-                          m_vVPid_compIncDcyBr.push_back(vPid);
-                          vPid.clear();
-                        }
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      if(idx==0)
-                        {
-                          if(!iss.eof())
-                            {
-                              iss>>line;
-                              if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);                        else if(line=="-") nMax=ULONG_MAX;
-                              else
-                                {
-                                  cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- inclusive decay branches\" is invalid!"<<endl;
-                                  cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                                  cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                                  cerr<<"Infor: Please check it."<<endl;
-                                  exit(-1);
-                                }
-                            }
-                          else nMax=ULONG_MAX;
-                          m_vNExcCompsToBePrtdMax.push_back(nMax);
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_compIncDcyBr.push_back(nm);
-                        }
-                      iss.clear();
-                    }
-                }
-            }
+          readSmpDcyItem(fin, line, "% Component analysis --- inclusive decay branches", m_vVPid_compIncDcyBr, &m_vNm_compIncDcyBr, &m_vNExcCompsToBePrtdMax);
 	}
       else if(line=="% Component analysis --- intermediate-resonance-allowed decay branches")
         {
-          readOpenCurly(fin,line,"% Component analysis --- intermediate-resonance-allowed decay branches");
-          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- intermediate-resonance-allowed decay branches");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              string txtPnm;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              unsigned long nMax;
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              if(!iss.eof())
-                { 
-                  iss>>line;
-                  if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);        
-                  else if(line=="-") nMax=ULONG_MAX;
-                  else
-                    {                       
-                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- intermediate-resonance-allowed decay branches\" is invalid!"<<endl;
-                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                      cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                      cerr<<"Infor: Please check it."<<endl;
-                      exit(-1);
-                    }
-                }
-              else nMax=ULONG_MAX;
-              m_vNIntStrusToBePrtdMax.push_back(nMax);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_compIRADcyBr.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- intermediate-resonance-allowed decay branches");
-                  if(line=="}")
-                    {
-                      m_vVPid_compIRADcyBr.push_back(vPid);
-                      vPid.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm;
-                      if(idx==0)
-                        {
-                          m_vVPid_compIRADcyBr.push_back(vPid);
-                          vPid.clear();
-                        }
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      if(idx==0)
-                        {
-                          if(!iss.eof())
-                            {
-                              iss>>line;
-                              if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);                        else if(line=="-") nMax=ULONG_MAX;
-                              else
-                                {
-                                  cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- intermediate-resonance-allowed decay branches\" is invalid!"<<endl;
-                                  cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
-                                  cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
-                                  cerr<<"Infor: Please check it."<<endl;
-                                  exit(-1);
-                                }
-                            }
-                          else nMax=ULONG_MAX;
-                          m_vNIntStrusToBePrtdMax.push_back(nMax);
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_compIRADcyBr.push_back(nm);
-                        } 
-                      iss.clear();
-                    }
-                }
-            }
+          readSmpDcyItem(fin, line, "% Component analysis --- intermediate-resonance-allowed decay branches", m_vVPid_compIRADcyBr, &m_vNm_compIRADcyBr, &m_vNIntStrusToBePrtdMax);
 	}
       else if(line=="% Signal identification --- decay trees")
         {
-          readOpenCurly(fin,line,"% Signal identification --- decay trees");
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- decay trees");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              string txtPnm;
-              int midx;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              vector<int> vMidx;
-              vMidx.clear();
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm>>midx;
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              vMidx.push_back(midx);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigDcyTr.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- decay trees");
-                  if(line=="}")
-                    {
-                      m_vVPid_sigDcyTr.push_back(vPid);
-                      vPid.clear();
-                      m_vVMidx_sigDcyTr.push_back(vMidx);
-                      vMidx.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm>>midx;
-                      if(idx==0)
-                        {
-                          m_vVPid_sigDcyTr.push_back(vPid);
-                          vPid.clear();
-                          m_vVMidx_sigDcyTr.push_back(vMidx);
-                          vMidx.clear();
-                        }
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      vMidx.push_back(midx);
-                      if(idx==0)
-                        {
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_sigDcyTr.push_back(nm);
-                        }
-                      iss.clear();
-                    }
-                }
-            }
+          readCmplxDcyItem(fin, line, "% Signal identification --- decay trees", m_vVPid_sigDcyTr, m_vVMidx_sigDcyTr, m_vNm_sigDcyTr);
 	}
+      else if(line=="% Signal identification --- decay initial-final states related to decay trees (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Signal identification --- decay initial-final states related to decay trees (Two options: Y and N. Default: N)", m_sigDcyIFSts_tr);
+        }
       else if(line=="% Signal identification --- decay initial-final states")
         {
-          readOpenCurly(fin,line,"% Signal identification --- decay initial-final states");
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- decay initial-final states");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              string txtPnm;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigDcyIFSts2.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- decay initial-final states");
-                  if(line=="}")
-                    {
-                      m_vVPid_sigDcyIFSts2.push_back(vPid);
-                      vPid.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm;
-                      if(idx==0)
-                        {
-                          m_vVPid_sigDcyIFSts2.push_back(vPid);
-                          vPid.clear();
-                        }
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      if(idx==0)
-                        {
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_sigDcyIFSts2.push_back(nm);
-                        }
-                      iss.clear();
-                    }
-                }
-            }
+          readSmpDcyItem(fin, line, "% Signal identification --- decay initial-final states", m_vVPid_sigDcyIFSts, &m_vNm_sigDcyIFSts);
 	}
       else if(line=="% Signal identification --- particles")
         {
-          readOpenCurly(fin,line,"% Signal identification --- particles");
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- particles");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              string txtPnm;
-              int pid;
-              string nm;
-
-              iss.str(line);
-              iss>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              m_vPid_sigP.push_back(pid);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigP.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- particles");
-                  if(line=="}")
-                    {
-                      break;
-                    }
-                  else 
-                    {
-                      iss.str(line);
-                      iss>>txtPnm;
-                      pid=getPidFromTxtPnm(txtPnm);
-                      m_vPid_sigP.push_back(pid);
-                      if(!iss.eof()) iss>>nm;
-                      else nm="";
-                      m_vNm_sigP.push_back(nm);
-                      iss.clear();
-                    }
-                }
-            }
+          readPItem(fin, line, "% Signal identification --- particles", m_vPid_sigP, m_vNm_sigP);
 	}
       else if(line=="% Signal identification --- decay branches")
         {
-          readOpenCurly(fin,line,"% Signal identification --- decay branches");
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- decay branches");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              string txtPnm;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigDcyBr.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- decay branches");
-                  if(line=="}")
-                    {
-                      m_vVPid_sigDcyBr.push_back(vPid);
-                      vPid.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm;
-                      if(idx==0)
-                        {
-                          m_vVPid_sigDcyBr.push_back(vPid);
-                          vPid.clear();
-                        }
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      if(idx==0)
-                        {
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_sigDcyBr.push_back(nm);
-                        }
-                      iss.clear();
-                    }
-                }
-            }
+          readSmpDcyItem(fin, line, "% Signal identification --- decay branches", m_vVPid_sigDcyBr, &m_vNm_sigDcyBr);
 	} 
       else if(line=="% Signal identification --- inclusive decay branches")
         {
-          readOpenCurly(fin,line,"% Signal identification --- inclusive decay branches");
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- inclusive decay branches");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              string txtPnm;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigIncDcyBr.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- inclusive decay branches");
-                  if(line=="}")
-                    {
-                      m_vVPid_sigIncDcyBr.push_back(vPid);
-                      vPid.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm;
-                      if(idx==0)
-                        {
-                          m_vVPid_sigIncDcyBr.push_back(vPid);
-                          vPid.clear();
-                        }
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      if(idx==0)
-                        {
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_sigIncDcyBr.push_back(nm);
-                        }
-                      iss.clear();
-                    }
-                }
-            }
+          readSmpDcyItem(fin, line, "% Signal identification --- inclusive decay branches", m_vVPid_sigIncDcyBr, &m_vNm_sigIncDcyBr);
 	}
       else if(line=="% Signal identification --- cascade decay branches")
         {
-          readOpenCurly(fin,line,"% Signal identification --- cascade decay branches");
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- cascade decay branches");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              string txtPnm;
-              int midx;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              vector<int> vMidx;
-              vMidx.clear();
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm>>midx;
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              vMidx.push_back(midx);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigCascDcyBrs.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- cascade decay branches");
-                  if(line=="}")
-                    {
-                      m_vVPid_sigCascDcyBrs.push_back(vPid);
-                      vPid.clear();
-                      m_vVMidx_sigCascDcyBrs.push_back(vMidx);
-                      vMidx.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm>>midx;
-                      if(idx==0)
-                        {
-                          m_vVPid_sigCascDcyBrs.push_back(vPid);
-                          vPid.clear();
-                          m_vVMidx_sigCascDcyBrs.push_back(vMidx);
-                          vMidx.clear();
-                        }
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      vMidx.push_back(midx);
-                      if(idx==0)
-                        {
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_sigCascDcyBrs.push_back(nm);
-                        }
-                      iss.clear();
-                    }
-                }
-            }
+          readCmplxDcyItem(fin, line, "% Signal identification --- cascade decay branches", m_vVPid_sigCascDcyBr, m_vVMidx_sigCascDcyBr, m_vNm_sigCascDcyBr);
 	}
       else if(line=="% Signal identification --- inclusive cascade decay branches")
         {
-          readOpenCurly(fin,line,"% Signal identification --- inclusive cascade decay branches");
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- inclusive cascade decay branches");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              // The asterisk symbol "*" is used as a short version of the word "anything" in order to simplify the user's input.
-              string txtPnm,asterisk="*";
-              int midx;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              vector<int> vMidx;
-              vMidx.clear();
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm>>midx;
-              // Pay attention to that if txtPnm==asterisk, then 1 is returned. Please do not get this wrong.
-              if(txtPnm==asterisk) txtPnm="anything";
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              vMidx.push_back(midx);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigIncCascDcyBrs.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- inclusive cascade decay branches");
-                  if(line=="}")
-                    {
-                      m_vVPid_sigIncCascDcyBrs.push_back(vPid);
-                      vPid.clear();
-                      m_vVMidx_sigIncCascDcyBrs.push_back(vMidx);
-                      vMidx.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm>>midx;
-                      if(idx==0)
-                        {
-                          m_vVPid_sigIncCascDcyBrs.push_back(vPid);
-                          vPid.clear();
-                          m_vVMidx_sigIncCascDcyBrs.push_back(vMidx);
-                          vMidx.clear();
-                        }
-                      // Pay attention to that if txtPnm==asterisk, then 1 is returned. Please do not get this wrong.
-                      if(txtPnm==asterisk) txtPnm="anything";
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      vMidx.push_back(midx);
-                      iss.clear();
-                      if(idx==0)
-                        {
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_sigIncCascDcyBrs.push_back(nm);
-                        }
-                    }
-                }
-            }
+          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive cascade decay branches", m_vVPid_sigIncCascDcyBr, m_vVMidx_sigIncCascDcyBr, m_vNm_sigIncCascDcyBr, true);
 	}
       else if(line=="% Signal identification --- intermediate-resonance-allowed decay branches")
         {
-          readOpenCurly(fin,line,"% Signal identification --- intermediate-resonance-allowed decay branches");          
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- intermediate-resonance-allowed decay branches");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              string txtPnm;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              string nm;
-
-              iss.str(line);
-              iss>>idx>>txtPnm;
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigIRADcyBr.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- intermediate-resonance-allowed decay branches");
-                  if(line=="}")
-                    {
-                      m_vVPid_sigIRADcyBr.push_back(vPid);
-                      vPid.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm;
-                      if(idx==0)
-                        {
-                          m_vVPid_sigIRADcyBr.push_back(vPid);
-                          vPid.clear();
-                        }
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      if(idx==0)
-                        {
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_sigIRADcyBr.push_back(nm);
-                        }
-                      iss.clear();
-                    }
-                }
-            }
+          readSmpDcyItem(fin, line, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vVPid_sigIRADcyBr, &m_vNm_sigIRADcyBr);
 	}
       else if(line=="% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches")
         {
-          readOpenCurly(fin,line,"% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches");
-          read1stLineOrCloseCurly(fin,line,false,"% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches");
-          if(line!="}")
-            {
-              istringstream iss;
-              iss.clear();
-              int idx;
-              // The asterisk symbol "*" is used as a short version of the word "anything" in order to simplify the user's input.
-              string txtPnm,asterisk="*";
-              int midx;
-              int pid;
-              vector<int> vPid;
-              vPid.clear();
-              vector<int> vMidx;
-              vMidx.clear();
-              string nm;
-              
-              iss.str(line);
-              iss>>idx>>txtPnm>>midx;
-              // Pay attention to that if txtPnm==asterisk, then 1 is returned. Please do not get this wrong.
-              if(txtPnm==asterisk) txtPnm="anything";
-              pid=getPidFromTxtPnm(txtPnm);
-              vPid.push_back(pid);
-              vMidx.push_back(midx);
-              if(!iss.eof()) iss>>nm;
-              else nm="";
-              m_vNm_sigIncOrIRACascDcyBrs.push_back(nm);
-              iss.clear();
-              while(1)
-                {
-                  readExtraLinesOrCloseCurly(fin,line,"% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches");
-                  if(line=="}")
-                    {
-                      m_vVPid_sigIncOrIRACascDcyBrs.push_back(vPid);
-                      vPid.clear();
-                      m_vVMidx_sigIncOrIRACascDcyBrs.push_back(vMidx);
-                      vMidx.clear();
-                      break;
-                    }
-                  else
-                    {
-                      iss.str(line);
-                      iss>>idx>>txtPnm>>midx;
-                      if(idx==0)
-                        {
-                          m_vVPid_sigIncOrIRACascDcyBrs.push_back(vPid);
-                          vPid.clear();
-                          m_vVMidx_sigIncOrIRACascDcyBrs.push_back(vMidx);
-                          vMidx.clear();
-                        }
-                      // Pay attention to that if txtPnm==asterisk, then 1 is returned. Please do not get this wrong.
-                      if(txtPnm==asterisk) txtPnm="anything";
-                      pid=getPidFromTxtPnm(txtPnm);
-                      vPid.push_back(pid);
-                      vMidx.push_back(midx);
-                      if(idx==0)
-                        {
-                          if(!iss.eof()) iss>>nm;
-                          else nm="";
-                          m_vNm_sigIncOrIRACascDcyBrs.push_back(nm);
-                        }
-                      iss.clear();
-                    }
-                }
-            }
+          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vVPid_sigIncOrIRACascDcyBr, m_vVMidx_sigIncOrIRACascDcyBr, m_vNm_sigIncOrIRACascDcyBr, true);
 	}
       else if(line=="% Process charge conjugate objects together (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Process charge conjugate objects together (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% Process charge conjugate objects together (Two options: Y and N. Default: N)");
-          if(line!="}")
-            {
-              if(line=="Y")
-                {
-                  m_ccSwitch=true;
-                }
-              else if(line=="N")
-                {
-                  m_ccSwitch=false;
-                }
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Process charge conjugate objects together\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                } 
-              readCloseCurly(fin,line,"% Process charge conjugate objects together (Two options: Y and N. Default: N)");
-            }
+          readYNItem(fin, line, "% Process charge conjugate objects together (Two options: Y and N. Default: N)", m_ccSwitch);
         }
       else if(line=="% Analysis tasks for signal identifications (Three options: TC, T and C. Default: TC)")
         {
@@ -1347,53 +429,13 @@ void topoana::readCard(string cardFlNm)
               readCloseCurly(fin,line,"% Analysis tasks for signal identifications (Three options: TC, T and C. Default: TC)");
             }
         }
-      else if(line=="% Sort the topology structures for signal identifications (Two options: Y and N. Default: N)")
+      else if(line=="% Sort the signals in the topology maps related to signal identifications (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Sort the topology structures for signal identifications (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% Sort the topology structures for signal identifications (Two options: Y and N. Default: N)");
-          if(line!="}")
-            {
-              if(line=="Y")
-                {
-                  m_sortTheToposForSigIds=true;
-                }
-              else if(line=="N")
-                {
-                  m_sortTheToposForSigIds=false;
-                }
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Sort the topology structures for signal identifications\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Sort the topology structures for signal identifications (Two options: Y and N. Default: N)");
-            }
+          readYNItem(fin, line, "% Sort the signals in the topology maps related to signal identifications (Two options: Y and N. Default: N)", m_sortSigsInTopoMapsRltdToSigIds);
         }
       else if(line=="% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)");
-          if(line!="}")
-            {
-              if(line=="Y")
-                {
-                  m_initEpEmSwitch=true;
-                }
-              else if(line=="N")
-                {
-                  m_initEpEmSwitch=false;
-                }
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Involve the initial e+ and e- uniformly in all the events\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)");
-            }
+          readYNItem(fin, line, "% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)", m_initEpEmSwitch);
         }
       else if(line=="% Main name of output files (Default: Main name of the card file)")
         {
@@ -1405,147 +447,41 @@ void topoana::readCard(string cardFlNm)
               readCloseCurly(fin,line,"% Main name of output files (Default: Main name of the card file)");
             }
         }
-      else if(line=="% Center decay objects in the output pdf files (Two options: Y and N. Default: N)")
+      else if(line=="% Complete horizontal and vertical lines in output pdf files (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Center decay objects in the output pdf files (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% Center decay objects in the output pdf files (Two options: Y and N. Default: N)");
-          if(line!="}")
-            {
-              if(line=="Y")
-                {
-                  m_centDcyObjs=true;
-                }
-              else if(line=="N")
-                {
-                  m_centDcyObjs=false;
-                }
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Center decay objects in the output pdf files\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Center decay objects in the output pdf files (Two options: Y and N. Default: N)");
-            }
+          readYNItem(fin, line, "% Complete horizontal and vertical lines in output pdf files (Two options: Y and N. Default: N)", m_cmpltHVLines);
         }
-      else if(line=="% Suppress the topology tags in the output pdf files (Two options: Y and N. Default: N)")
+      else if(line=="% Center decay objects in output pdf files (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Suppress the topology tags in the output pdf files (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% Suppress the topology tags in the output pdf files (Two options: Y and N. Default: N)");
-          if(line!="}")
-            {
-              if(line=="Y")
-                {
-                  m_sprTopoTags=true;
-                }
-              else if(line=="N")
-                {
-                  m_sprTopoTags=false;
-                }
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Suppress the topology tags in the output pdf files\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Suppress the topology tags in the output pdf files (Two options: Y and N. Default: N)");
-            }
+          readYNItem(fin, line, "% Center decay objects in output pdf files (Two options: Y and N. Default: N)", m_centDcyObjs);
         }
       else if(line=="% One output root file by one input root file (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% One output root file by one input root file (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% One output root file by one input root file (Two options: Y and N. Default: N)");
-          if(line!="}")
-            {
-              if(line=="Y")
-                {
-                  m_oneOptRootFlByOneIptRootFl=true;
-                }
-              else if(line=="N")
-                {
-                  m_oneOptRootFlByOneIptRootFl=false;
-                }
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"One output root file by one input root file\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% One output root file by one input root file (Two options: Y and N. Default: N)");
-            }
+          readYNItem(fin, line, "% One output root file by one input root file (Two options: Y and N. Default: N)", m_oneOptRootFlByOneIptRootFl);
         }
       else if(line=="% Maximum number of entries to be saved in a single output root file")
         {
-          readOpenCurly(fin,line,"% Maximum number of entries to be saved in a single output root file");
-          m_nEtrsMaxInASngOptRootFl=ULONG_MAX;
-          read1stLineOrCloseCurly(fin,line,false,"% Maximum number of entries to be saved in a single output root file");
-          if(line!="}")
-            {
-              if(line.find_first_not_of("0123456789")==string::npos) m_nEtrsMaxInASngOptRootFl=strtoul(line.c_str(),NULL,10);
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Maximum number of entries to be saved in a single output root file\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be an unsigned long integer if it is not left empty."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Maximum number of entries to be saved in a single output root file");
-            }
+          readNumItem(fin, line, "% Maximum number of entries to be saved in a single output root file", m_nEtrMaxInASngOptRootFl);
         }
-      else if(line=="% Use array branches to store topology tags in the output root files when possible (Two options: Y and N. Default: N)")
+      else if(line=="% Use array tbranches to store topology tags in output root files when possible (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Use array branches to store topology tags in the output root files when possible (Two options: Y and N. Default: N)");
-          read1stLineOrCloseCurly(fin,line,false,"% Use array branches to store topology tags in the output root files when possible (Two options: Y and N. Default: N)");
-          if(line!="}")
-            {
-              if(line=="Y")
-                {
-                  m_useArrayBrsOpt=true;
-                }
-              else if(line=="N")
-                {
-                  m_useArrayBrsOpt=false;
-                }
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Use array branches to store topology tags in the output root files when possible\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Use array branches to store topology tags in the output root files when possible (Two options: Y and N. Default: N)");
-            }
+          readYNItem(fin, line, "% Use array tbranches to store topology tags in output root files when possible (Two options: Y and N. Default: N)", m_useArrayTBrsOpt);
         }
-      else if(line=="% Copy the input branches to the output root files (Two options: Y and N. Default: Y)")
+      else if(line=="% Remove input tbranches from output root files (Two options: Y and N. Default: N)")
         {
-          readOpenCurly(fin,line,"% Copy the input branches to the output root files (Two options: Y and N. Default: Y)");
-          read1stLineOrCloseCurly(fin,line,false,"% Copy the input branches to the output root files (Two options: Y and N. Default: Y)");
-          if(line!="}")
-            {
-              if(line=="N")
-                {
-                  m_cpIptBrs=false;
-                }
-              else if(line=="Y")
-                {
-                  m_cpIptBrs=true;
-                }
-              else
-                {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Copy the input branches to the output root files\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                  cerr<<"Infor: Please check it."<<endl;
-                  exit(-1);
-                }
-              readCloseCurly(fin,line,"% Copy the input branches to the output root files (Two options: Y and N. Default: Y)");
-            }
+          readYNItem(fin, line, "% Remove input tbranches from output root files (Two options: Y and N. Default: N)", m_rmIptTBrs);
+        }
+      else if(line=="% Verbose level of standard output (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Verbose level of standard output (Two options: Y and N. Default: N)", m_vbsLevStdOut);
         }
       else
         {
           cerr<<"Error: The input line "<<line<<"\" is invalid!"<<endl;
+          string TempCardFlNm=m_pkgPath+"share/topoana.card";
+          cerr<<"Infor: If you have ever used the item prompted with the input line successfully but it doesn't work now, this is probably because I updated the prompt of the item in order to make it clearer and more concise. In this case, I apologize for the inconvenience and appreciate your understanding and support."<<endl;
+          cerr<<"Infor: There is also a probability that the input line is wrongly typed due to some reasons. Please note that the input line must be identical with the prompt of one item defined in the program."<<endl;
+          cerr<<"Infor: In both of the two cases, to find the updated/right version of the item you desire, please check and see the template card file in the following path: "<<TempCardFlNm<<". Please contact me (zhouxy@buaa.edu.cn), if you could not find it."<<endl;
           exit(-1);
         }
     }

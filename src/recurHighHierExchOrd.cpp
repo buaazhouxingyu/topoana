@@ -98,11 +98,6 @@ void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj
                 }
               if(exchOrd==true)
                 {
-/*cout<<"Before sort1:"<<endl;
-  for(unsigned int i=0;i<vPid.size();i++)
-    {
-      cout<<"Idx: "<<i<<"\t"<<"Pid: "<<vPid[i]<<"\t"<<"Midx: "<<vMidx[i]<<endl;
-    }*/
                   vector<int> vNewIdxYngYng, vOldIdxYngYng;
                   vNewIdxYngYng.clear(); vOldIdxYngYng.clear();
                   idxYngYng=vIdxYngYngi[0];
@@ -132,17 +127,7 @@ void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj
                   for(unsigned int k=0;k<vIdxYngYngj.size();k++) vOldIdxYngYng.push_back(vIdxYngYngj[k]);
                   for(unsigned int k=0;k<vIdxYngYngMid.size();k++) vOldIdxYngYng.push_back(vIdxYngYngMid[k]);
                   for(unsigned int k=0;k<vIdxYngYngi.size();k++) vOldIdxYngYng.push_back(vIdxYngYngi[k]);
-/*cout<<"Before sort2:"<<endl;
-  for(unsigned int i=0;i<vPid.size();i++)
-    {
-      cout<<"Idx: "<<i<<"\t"<<"Pid: "<<vPid[i]<<"\t"<<"Midx: "<<vMidx[i]<<endl;
-    }
                   recurHigherHierExchOrd(vNewIdxYngYng,vOldIdxYngYng,vPid,vMidx);
-cout<<"Before sort3:"<<endl;
-  for(unsigned int i=0;i<vPid.size();i++)
-    {
-      cout<<"Idx: "<<i<<"\t"<<"Pid: "<<vPid[i]<<"\t"<<"Midx: "<<vMidx[i]<<endl;
-    }*/
                   break;
                 }
               else

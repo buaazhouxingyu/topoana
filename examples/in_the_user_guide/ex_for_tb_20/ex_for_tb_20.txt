@@ -1,0 +1,12 @@
+
+Signal inclusive cascade decay branches:
+
+rowNo:  1	iSigIncCascDcyBr:  0	nCase:  28367	nCCase:  28367
+  anti-B0 --> D*+ anything
+  D*+ --> pi+ D0
+
+rowNo:  2	iSigIncCascDcyBr:  1	nCase:  1	nCCase:  28368
+  B0 --> K_S0 J/psi
+  K_S0 --> pi+ pi-
+  J/psi --> mu+ anything
+

@@ -24,7 +24,7 @@ void topoana::reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & N
         {
           newIdx=NewIdx[i];
           Pid[newIdx]=Pidd[i];
-          if((Midxd[i]!=-999)&&(Midxd[i]!=i)&&(NewIdx[int(Midxd[i])]!=-1)) Midx[newIdx]=NewIdx[int(Midxd[i])];
+          if((isnormal(Midxd[i])||Midxd[i]==0)&&(Midxd[i]!=-999)&&(Midxd[i]!=i)&&(NewIdx[int(Midxd[i])]!=-1)) Midx[newIdx]=NewIdx[int(Midxd[i])];
           else Midx[newIdx]=-1;
         }
     }  

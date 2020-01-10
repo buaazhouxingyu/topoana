@@ -1,0 +1,57 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  20870	nEtr:  3	nCcEtr:  0	nAllEtr:  3	nCEtr:  3
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> e+ nu_e D*- gammaF
+  anti-B0 --> mu- anti-nu_mu D*+
+  D*- --> pi- anti-D0
+  D*+ --> pi+ D0
+  anti-D0 --> pi0 pi- K+
+  D0 --> pi0 pi+ K-
+( Upsilon(4S) ---> e+ nu_e mu- anti-nu_mu pi0 pi0 pi+ pi+ pi- pi- K+ K- gammaF )
+
+rowNo:  2	iDcyTr:  3722	nEtr:  1	nCcEtr:  1	nAllEtr:  2	nCEtr:  5
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> mu+ nu_mu D-
+  anti-B0 --> e- anti-nu_e D*+
+  D- --> e- anti-nu_e pi- K+
+  D*+ --> pi+ D0
+  D0 --> pi0 pi+ K-
+( Upsilon(4S) ---> e- e- anti-nu_e anti-nu_e mu+ nu_mu pi0 pi+ pi+ pi- K+ K- )
+
+rowNo:  3	iDcyTr:  5295	nEtr:  2	nCcEtr:  0	nAllEtr:  2	nCEtr:  7
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> pi0 pi+ pi+ rho- D-
+  anti-B0 --> mu- anti-nu_mu D*+
+  rho- --> pi0 pi-
+  D- --> pi- pi- K+
+  D*+ --> pi+ D0
+  D0 --> K_L0 pi+ pi-
+( Upsilon(4S) ---> mu- anti-nu_mu pi0 pi0 K_L0 pi+ pi+ pi+ pi+ pi- pi- pi- pi- K+ )
+
+rowNo:  4	iDcyTr:  10206	nEtr:  1	nCcEtr:  1	nAllEtr:  2	nCEtr:  9
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> e+ nu_e D*- gammaF
+  anti-B0 --> pi0 pi+ pi- pi- D*+
+  D*- --> pi0 D-
+  D*+ --> pi+ D0
+  D- --> pi- pi- K+
+  D0 --> pi0 pi+ K-
+( Upsilon(4S) ---> e+ nu_e pi0 pi0 pi0 pi+ pi+ pi+ pi- pi- pi- pi- K+ K- gammaF )
+
+rowNo:  5	iDcyTr:  11916	nEtr:  1	nCcEtr:  1	nAllEtr:  2	nCEtr:  11
+  Upsilon(4S) --> B0 B0
+  B0 --> mu+ nu_mu D*-
+  B0 --> mu+ nu_mu D*-
+  D*- --> pi0 D-
+  D*- --> pi- anti-D0
+  D- --> pi0 pi- K_S0
+  anti-D0 --> pi0 pi- K+
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> mu+ mu+ nu_mu nu_mu pi0 pi0 pi0 pi+ pi- pi- pi- pi- K+ )
+
+rowNo:  rest	iDcyTr:  ---	nEtr:  ---	nCcEtr:  ---	nAllEtr:  99989	nCEtr:  100000
+  Upsilon(4S) --> others (99969 in total)
+( Upsilon(4S) ---> corresponding to others )
+

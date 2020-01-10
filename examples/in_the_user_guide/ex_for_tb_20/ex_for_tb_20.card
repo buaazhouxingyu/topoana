@@ -1,0 +1,20 @@
+% Names of input root files
+{
+  ../input/mixed1.root
+  ../input/mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Signal identification --- inclusive cascade decay branches
+{
+  0     &       anti-B0 --> D*+ *       &       -1
+  1     &       D*+ --> pi+ D0          &        0
+
+  0     &       B0 --> K_S0  J/psi      &       -1
+  1     &       K_S0 --> pi+ pi-        &        0
+  2     &       J/psi --> mu+ *        	&        0
+}

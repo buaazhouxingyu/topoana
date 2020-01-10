@@ -1,0 +1,133 @@
+\documentclass[landscape]{article}
+\usepackage{/workfs/bes/zhouxy/topoana/v1.9.7.8/share/geometry}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage{longtable}
+\usepackage{/workfs/bes/zhouxy/topoana/v1.9.7.8/share/makecell}
+\usepackage{color}
+\usepackage{amssymb} % The package is used for the \dashrightarrow
+\newcommand{\tablecaption}[1]{\caption{#1} \\}
+\usepackage{caption}
+\captionsetup{font=normalsize}
+\newcommand{\tableheader}[1]
+{
+  \hline
+  #1
+  \hline
+  \endfirsthead
+
+  \hline
+  #1
+  \hline
+  \endhead
+
+  \endfoot
+
+  \endlastfoot
+}
+\setcellgapes[t]{2pt}
+\makegapedcells
+\newcounter{rownumbers}
+\newcommand\rn{\stepcounter{rownumbers}\arabic{rownumbers}}
+\newcommand{\EOL}{\\ \hline}
+\newcommand{\topoTags}[1]{#1}
+%\newcommand{\topoTags}[1]{}
+\begin{document}
+\title{Topology Analysis \footnote{\normalsize{This package is implemented with reference to a program called {\sc Topo}, which is developed by Prof. Shuxian Du from Zhengzhou University in China and has been widely used by people in BESIII collaboration. Several years ago, when I was a PhD student working on BESIII experiment, I learned the idea of topology analysis and a lot of programming techniques from the {\sc Topo} program. So, I really appreciate Prof. Du's original work very much. To meet my own needs and to practice developing analysis tools with C++, ROOT and LaTex, I wrote the package from scratch. At that time, the package functioned well but was relatively simple. At the end of last year (2017), my co-supervisor, Prof. Chengping Shen reminded me that it could be a useful tool for Belle II experiment as well. So, I revised and extended it, making it more well-rounded and suitable for Belle II experiment. Here, I would like to thank Prof. Du for his orignial work, Prof. Shen for his suggestion and encouragement, and Xian Xiong, Wencheng Yan, Sen Jia, Yubo Li, Suxian Li, Longke Li, Guanda Gong, Junhao Yin, Xiaoping Qin, Xiqing Hao, HongPeng Wang, JiaWei Zhang, Yeqi Chen and Runqiu Ma for their efforts in helping me test the program. I would also like to thank my good friend Xi Chen, a professional programmer, for his suggestion in core algrithm and efficiency.}} \\ \vspace{0.1cm} \Large{(v1.9.7.8)}}
+\author{Xingyu Zhou \footnote{\normalsize{Email: zhouxy@buaa.edu.cn}} \\ \vspace{0.1cm} Beihang University}
+\maketitle
+
+\clearpage
+
+\newgeometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\listoftables
+
+\newgeometry{left=0.0cm,right=0.0cm,top=2.5cm,bottom=2.5cm}
+
+\clearpage
+
+\small
+\centering
+\setcounter{rownumbers}{0}
+\begin{longtable}{|c|l|c|c|c|c|}
+\tablecaption{Decay trees and their respective initial-final states.}
+\tableheader{rowNo & \thead{decay tree \\ (decay initial-final states)} & \topoTags{iDcyTr & }nEtr & nCEtr \\}
+
+% \rn = 1
+\rn & \makecell[l]{ $ 
+\Upsilon(4S) \rightarrow \bar{B}^{0} \bar{B}^{0} ,
+\bar{B}^{0} \rightarrow \eta J/\psi ,
+\bar{B}^{0} \rightarrow \mu^{-} \bar{\nu}_{\mu} D^{*+} ,
+\eta \rightarrow \gamma \gamma ,
+J/\psi \rightarrow e^{+} e^{-} \gamma^{F} ,
+D^{*+} \rightarrow \pi^{+} D^{0} ,
+$ \\ $
+D^{0} \rightarrow \pi^{0} \pi^{+} K^{-} 
+$ \\ ($
+\Upsilon(4S) \dashrightarrow e^{+} e^{-} \mu^{-} \bar{\nu}_{\mu} \pi^{0} \pi^{+} \pi^{+} K^{-} \gamma^{F} \gamma \gamma 
+$) } & \topoTags{207 & }22 & 22 \EOL
+
+% \rn = 2
+\rn & \makecell[l]{ $ 
+\Upsilon(4S) \rightarrow B^{0} \bar{B}^{0} ,
+B^{0} \rightarrow \eta J/\psi ,
+\bar{B}^{0} \rightarrow e^{-} \bar{\nu}_{e} D^{*+} ,
+\eta \rightarrow \gamma \gamma ,
+J/\psi \rightarrow e^{+} e^{-} \gamma^{F} ,
+D^{*+} \rightarrow \pi^{+} D^{0} ,
+$ \\ $
+D^{0} \rightarrow \pi^{0} \pi^{+} K^{-} 
+$ \\ ($
+\Upsilon(4S) \dashrightarrow e^{+} e^{-} e^{-} \bar{\nu}_{e} \pi^{0} \pi^{+} \pi^{+} K^{-} \gamma^{F} \gamma \gamma 
+$) } & \topoTags{268 & }22 & 44 \EOL
+
+% \rn = 3
+\rn & \makecell[l]{ $ 
+\Upsilon(4S) \rightarrow B^{0} \bar{B}^{0} ,
+B^{0} \rightarrow \eta J/\psi ,
+\bar{B}^{0} \rightarrow \mu^{-} \bar{\nu}_{\mu} D^{*+} ,
+\eta \rightarrow \gamma \gamma ,
+J/\psi \rightarrow e^{+} e^{-} \gamma^{F} ,
+D^{*+} \rightarrow \pi^{+} D^{0} ,
+$ \\ $
+D^{0} \rightarrow \pi^{0} \pi^{+} K^{-} 
+$ \\ ($
+\Upsilon(4S) \dashrightarrow e^{+} e^{-} \mu^{-} \bar{\nu}_{\mu} \pi^{0} \pi^{+} \pi^{+} K^{-} \gamma^{F} \gamma \gamma 
+$) } & \topoTags{6275 & }19 & 63 \EOL
+
+% \rn = 4
+\rn & \makecell[l]{ $ 
+\Upsilon(4S) \rightarrow B^{0} B^{0} ,
+B^{0} \rightarrow \eta J/\psi ,
+B^{0} \rightarrow \mu^{+} \nu_{\mu} D^{*-} ,
+\eta \rightarrow \gamma \gamma ,
+J/\psi \rightarrow e^{+} e^{-} \gamma^{F} ,
+D^{*-} \rightarrow \pi^{-} \bar{D}^{0} ,
+$ \\ $
+\bar{D}^{0} \rightarrow \pi^{0} \pi^{-} K^{+} 
+$ \\ ($
+\Upsilon(4S) \dashrightarrow e^{+} e^{-} \mu^{+} \nu_{\mu} \pi^{0} \pi^{-} \pi^{-} K^{+} \gamma^{F} \gamma \gamma 
+$) } & \topoTags{764 & }17 & 80 \EOL
+
+% \rn = 5
+\rn & \makecell[l]{ $ 
+\Upsilon(4S) \rightarrow \bar{B}^{0} \bar{B}^{0} ,
+\bar{B}^{0} \rightarrow \eta J/\psi ,
+\bar{B}^{0} \rightarrow e^{-} \bar{\nu}_{e} D^{*+} ,
+\eta \rightarrow \gamma \gamma ,
+J/\psi \rightarrow e^{+} e^{-} ,
+D^{*+} \rightarrow \pi^{+} D^{0} ,
+$ \\ $
+D^{0} \rightarrow \pi^{0} \pi^{+} K^{-} 
+$ \\ ($
+\Upsilon(4S) \dashrightarrow e^{+} e^{-} e^{-} \bar{\nu}_{e} \pi^{0} \pi^{+} \pi^{+} K^{-} \gamma \gamma 
+$) } & \topoTags{4281 & }15 & 95 \EOL
+
+rest & \makecell[l]{ $ 
+\Upsilon(4S) \rightarrow \rm{others \  (44978 \  in \  total)}
+$ \\ ($
+\Upsilon(4S) \dashrightarrow \rm{corresponding\ to\ others}
+$) } & \topoTags{--- & }47432 & 47527 \EOL
+
+\end{longtable}
+\end{document}

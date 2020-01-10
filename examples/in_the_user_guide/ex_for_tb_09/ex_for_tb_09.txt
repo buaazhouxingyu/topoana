@@ -1,0 +1,42 @@
+
+Exclusive components of anti-B0 --> D*+ + anything:
+
+rowNo:  1	iDcyBrIncDcyBr:  7	nCase:  4154	nCCase:  4154
+  anti-B0 --> mu- anti-nu_mu D*+
+
+rowNo:  2	iDcyBrIncDcyBr:  6	nCase:  2886	nCCase:  7040
+  anti-B0 --> e- anti-nu_e D*+
+
+rowNo:  3	iDcyBrIncDcyBr:  3	nCase:  1691	nCCase:  8731
+  anti-B0 --> D*+ D_s*-
+
+rowNo:  4	iDcyBrIncDcyBr:  8	nCase:  1623	nCCase:  10354
+  anti-B0 --> e- anti-nu_e D*+ gammaF
+
+rowNo:  5	iDcyBrIncDcyBr:  35	nCase:  1429	nCCase:  11783
+  anti-B0 --> pi0 pi+ pi- pi- D*+
+
+rowNo:  rest	iDcyBrIncDcyBr:  ---	nCase:  29968	nCCase:  41751
+  anti-B0 --> D*+ + others (3028 in total)
+
+
+Exclusive components of B0 --> K_S0 + anything:
+
+rowNo:  1	iDcyBrIncDcyBr:  0	nCase:  45	nCCase:  45
+  B0 --> K_S0 J/psi
+
+rowNo:  2	iDcyBrIncDcyBr:  1	nCase:  40	nCCase:  85
+  B0 --> K_S0 eta_c
+
+rowNo:  3	iDcyBrIncDcyBr:  3	nCase:  33	nCCase:  118
+  B0 --> K_S0 psi(2S)
+
+rowNo:  4	iDcyBrIncDcyBr:  2	nCase:  20	nCCase:  138
+  B0 --> K_S0 chi_c1
+
+rowNo:  5	iDcyBrIncDcyBr:  4	nCase:  6	nCCase:  144
+  B0 --> K_S0 chi_c0
+
+rowNo:  rest	iDcyBrIncDcyBr:  ---	nCase:  9	nCCase:  153
+  B0 --> K_S0 + others (5 in total)
+

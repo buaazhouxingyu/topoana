@@ -1,0 +1,19 @@
+% Names of input root files
+{
+  ../MCGenTopo.root
+}
+
+% TTree name
+{
+  mc_gen_topo_e
+}
+
+% Storage type of input raw topology data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)
+{
+  MSD
+}
+
+% Component analysis --- decay trees
+{
+  Y 	5     Y
+}

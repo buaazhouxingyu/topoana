@@ -1,0 +1,12 @@
+
+Signal cascade decay branches:
+
+rowNo:  1	iSigCascDcyBr:  0	nCase:  1119	nCCase:  1119
+  B0 --> D*- D_s*+
+  D*- --> pi- anti-D0
+  D_s*+ --> D_s+ gamma
+
+rowNo:  2	iSigCascDcyBr:  1	nCase:  1180	nCCase:  2299
+  B0 --> D*- D_s*+
+  D*- --> pi- anti-D0
+

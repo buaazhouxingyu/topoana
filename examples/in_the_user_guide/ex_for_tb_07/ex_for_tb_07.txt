@@ -1,0 +1,51 @@
+
+Cascade decay branches of B0 (only the first two hierarchies are involved):
+
+rowNo:  1	iCascDcyBrP:  12	nCase:  2912	nCCase:  2912
+  B0 --> mu+ nu_mu D*-
+  D*- --> pi- anti-D0
+
+rowNo:  2	iCascDcyBrP:  6	nCase:  1991	nCCase:  4903
+  B0 --> e+ nu_e D*-
+  D*- --> pi- anti-D0
+
+rowNo:  3	iCascDcyBrP:  70	nCase:  1283	nCCase:  6186
+  B0 --> mu+ nu_mu D*-
+  D*- --> pi0 D-
+
+rowNo:  4	iCascDcyBrP:  18	nCase:  1132	nCCase:  7318
+  B0 --> e+ nu_e D*- gammaF
+  D*- --> pi- anti-D0
+
+rowNo:  5	iCascDcyBrP:  20	nCase:  1119	nCCase:  8437
+  B0 --> D*- D_s*+
+  D*- --> pi- anti-D0
+  D_s*+ --> D_s+ gamma
+
+rowNo:  rest	iCascDcyBrP:  ---	nCase:  91594	nCCase:  100031
+  B0 --> others (42074 in total)
+
+
+Cascade decay branches of D0 (only the first two hierarchies are involved):
+
+rowNo:  1	iCascDcyBrP:  7	nCase:  6258	nCCase:  6258
+  D0 --> pi0 pi+ K-
+
+rowNo:  2	iCascDcyBrP:  0	nCase:  2120	nCCase:  8378
+  D0 --> rho+ K*-
+  rho+ --> pi0 pi+
+  K*- --> pi- anti-K0
+
+rowNo:  3	iCascDcyBrP:  48	nCase:  1631	nCCase:  10009
+  D0 --> pi+ K-
+
+rowNo:  4	iCascDcyBrP:  36	nCase:  1526	nCCase:  11535
+  D0 --> pi0 pi+ pi- K_S0
+  K_S0 --> pi+ pi-
+
+rowNo:  5	iCascDcyBrP:  35	nCase:  1487	nCCase:  13022
+  D0 --> mu+ nu_mu K-
+
+rowNo:  rest	iCascDcyBrP:  ---	nCase:  38349	nCCase:  51371
+  D0 --> others (972 in total)
+

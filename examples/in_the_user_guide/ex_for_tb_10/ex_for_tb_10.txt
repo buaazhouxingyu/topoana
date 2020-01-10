@@ -1,0 +1,29 @@
+
+Exclusive components of D*+ --->  pi0 pi+ pi+ K-
+
+rowNo:  1	iDcyBrIRADcyBr:  0	nCase:  3869	nCCase:  3869
+  D*+ --> pi+ D0
+  D0 --> pi0 pi+ K-
+
+rowNo:  2	iDcyBrIRADcyBr:  1	nCase:  1102	nCCase:  4971
+  D*+ --> pi0 D+
+  D+ --> pi+ pi+ K-
+
+
+Exclusive components of J/psi --->  pi0 pi+ pi-
+
+rowNo:  1	iDcyBrIRADcyBr:  0	nCase:  31	nCCase:  31
+  J/psi --> pi0 pi+ pi-
+
+rowNo:  2	iDcyBrIRADcyBr:  1	nCase:  12	nCCase:  43
+  J/psi --> pi0 rho0
+  rho0 --> pi+ pi-
+
+rowNo:  3	iDcyBrIRADcyBr:  2	nCase:  9	nCCase:  52
+  J/psi --> pi- rho+
+  rho+ --> pi0 pi+
+
+rowNo:  4	iDcyBrIRADcyBr:  3	nCase:  7	nCCase:  59
+  J/psi --> pi+ rho-
+  rho- --> pi0 pi-
+

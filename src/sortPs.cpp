@@ -19,6 +19,14 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
       cout<<"Idx: "<<i<<"\t"<<"Pid: "<<vPid[i]<<"\t"<<"Midx: "<<vMidx[i]<<endl;
     }*/
 
+  if(m_pidOfSISRGamUser!=m_pidOfSISRGam) 
+    for(unsigned int i=0;i<vPid.size();i++) 
+      if(vPid[i]==m_pidOfSISRGamUser) vPid[i]=m_pidOfSISRGam;
+
+  if(m_pidOfSFSRGamUser!=m_pidOfSFSRGam) 
+    for(unsigned int i=0;i<vPid.size();i++) 
+      if(vPid[i]==m_pidOfSFSRGamUser) vPid[i]=m_pidOfSFSRGam;
+
   vector<int> vPidFnl,vMidxFnl,vIdxFnl;
   vector<int> vPidOld,vMidxOld,vIdxOld,vNSmPidsOld;
   for(unsigned int i=0;i<vPid.size();i++)
@@ -26,9 +34,18 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
       //if(((unsigned int) vMidx[i])==i) Sometimes, users may set Midx[i] at -1 rather than i when the pid of the mother of the partilce i does not appear in the array Pid. Note that the arrays Pid and Midx are the branches stored in the tree of the input root files. In order to make the program can handle such cases as well, this statement is revised to be the following one.
       if((((unsigned int) vMidx[i])==i)||(vMidx[i]==-1))
 	{
-          if(vPid[i]!=22) vPidOld.push_back(vPid[i]);
-          else if(m_ignoreGISR==false) vPidOld.push_back(m_pidOfGISRGam);
-          else continue;
+          if(vPid[i]==m_pidOfSISRGam)
+            {
+              if(m_ignoreISR=="N") vPidOld.push_back(m_pidOfSISRGam);
+              else continue;
+            }
+          else if(vPid[i]==22)
+            {
+              if(m_ignoreISR!="Yg") vPidOld.push_back(m_pidOfGISRGam);
+              else continue;
+            }
+          else vPidOld.push_back(vPid[i]);
+
           //vMidxOld.push_back(vMidx[i]); Sometimes, users may set Midx[i] at -1 rather than i when the pid of the mother of the partilce i does not appear in the array Pid. Note that the arrays Pid and Midx are the branches stored in the tree of the input root files. In order to make the program can handle such cases as well, this statement is revised to be the following one. Then, the following parts of the program do not have to change any more.
           vMidxOld.push_back(i);
           vIdxOld.push_back(i);
@@ -103,14 +120,18 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
                         {
                           vPidYngSbst.push_back(vPid[k]);
                         }
-                      else if(vPid[k]==-22)
+                      else if(vPid[k]==m_pidOfSFSRGam)
                         {
-                          if(m_ignoreGFSR==false) vPidYngSbst.push_back(vPid[k]);
+                          if(m_ignoreFSR=="N") vPidYngSbst.push_back(m_pidOfSFSRGam);
                           else continue;
                         }
                       else
                         { 
                           bool isGFSR=false;
+                          // The following two variables are defined and used in order to avoid mistaking photons in decays like rho+ --> pi+ gamma as generalized FSR photons.
+                          unsigned int nSister=0;
+                          bool hasAemupiKpSister=false; 
+
                           // In the following conditions, (k-l) is necessary to be converted from (unsigned int) type to (int) type. Or, the condition will lose its effectiveness when k<l.
                           for(unsigned int l=1;((k+l)<vPid.size()||((int)(k-l))>=0);l++)
                             {
@@ -118,10 +139,12 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
                                 {
                                   if(vMidx[k+l]==vMidx[k])
                                     {
-                                      if(abs(vPid[k+l])==11||abs(vPid[k+l])==13||abs(vPid[k+l])==211||abs(vPid[k+l])==321||abs(vPid[k+l])==2212)
+                                      if(vPid[k+l]!=22) nSister++;
+                                      if(abs(vPid[k+l])==11||abs(vPid[k+l])==13||abs(vPid[k+l])==211||abs(vPid[k+l])==321||abs(vPid[k+l])==2212) hasAemupiKpSister=true;
+                                      if(nSister>=2&&hasAemupiKpSister==true)
                                         {
-                                           isGFSR=true;
-                                           break;
+                                          isGFSR=true;
+                                          break;
                                         }
                                     }
                                 }
@@ -129,17 +152,19 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
                                 {
                                   if(vMidx[k-l]==vMidx[k])
                                     {
-                                      if(abs(vPid[k-l])==11||abs(vPid[k-l])==13||abs(vPid[k-l])==211||abs(vPid[k-l])==321||abs(vPid[k-l])==2212)
+                                      if(vPid[k-l]!=22) nSister++;
+                                      if(abs(vPid[k-l])==11||abs(vPid[k-l])==13||abs(vPid[k-l])==211||abs(vPid[k-l])==321||abs(vPid[k-l])==2212) hasAemupiKpSister=true;
+                                      if(nSister>=2&&hasAemupiKpSister==true)
                                         {
-                                           isGFSR=true;
-                                           break;
+                                          isGFSR=true;
+                                          break;
                                         }
                                     }
                                 }                                      
                             }
                           if(isGFSR==true)
                             {
-                              if(m_ignoreGFSR==false) vPidYngSbst.push_back(m_pidOfGFSRGam);
+                              if(m_ignoreFSR!="Yg") vPidYngSbst.push_back(m_pidOfGFSRGam);
                               else continue;
                             }
                           else
@@ -153,7 +178,9 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
 	        }
               if(vPidYngSbst.size()>0)
                 {
+                  if((m_retainPi02GamGam==false)&&(vPid[vMidxYngSbst[0]]==111)&&(vPidYngSbst.size()==2)&&(vPidYngSbst[0]==22)&&(vPidYngSbst[1]==22)) continue; // This statement is added to remove the decay of pi0 to gamma gamma. Here, note that vMidxYngSbst[0] is equal to vIdxOld[nCSmPids+j], which has the same mother with vIdxOld[nCSmPids]. 
                   sortByPidAndPchrg(vPidYngSbst,vMidxYngSbst,vIdxYngSbst,vNSmPidsYngSbst);
+                  if(isIgnoreFDcyBr(vPid[vMidxYngSbst[0]],vPidYngSbst,m_vIgnoreFDcyBr)==true) continue;
                   // The following four statements should be put in the scope of the if statement, otherwise empty vectors might be pushed back to these vectors of vector. 
                   vVPidYngSbst.push_back(vPidYngSbst);
                   vVMidxYngSbst.push_back(vMidxYngSbst);

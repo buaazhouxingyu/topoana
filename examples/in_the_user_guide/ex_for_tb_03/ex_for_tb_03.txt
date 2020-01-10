@@ -1,0 +1,21 @@
+
+Decay initial-final states:
+
+rowNo:  1	iDcyIFSts:  41	nEtr:  18	nCEtr:  18
+  Upsilon(4S) ---> mu+ nu_mu pi0 pi0 pi0 pi+ pi+ pi+ pi- pi- pi- pi- K+ K-
+
+rowNo:  2	iDcyIFSts:  887	nEtr:  18	nCEtr:  36
+  Upsilon(4S) ---> pi0 pi0 pi0 pi0 pi0 pi+ pi+ pi+ pi+ pi+ pi- pi- pi- pi- pi- K+ K-
+
+rowNo:  3	iDcyIFSts:  3350	nEtr:  18	nCEtr:  54
+  Upsilon(4S) ---> mu- anti-nu_mu pi0 pi0 pi0 pi0 pi+ pi+ pi+ pi+ pi+ pi- pi- pi- pi- K+ K-
+
+rowNo:  4	iDcyIFSts:  1215	nEtr:  17	nCEtr:  71
+  Upsilon(4S) ---> pi0 pi0 pi0 pi0 pi0 pi0 pi+ pi+ pi+ pi+ pi+ pi+ pi- pi- pi- pi- pi- pi- K+ K-
+
+rowNo:  5	iDcyIFSts:  1207	nEtr:  17	nCEtr:  88
+  Upsilon(4S) ---> pi0 pi0 pi0 pi0 pi0 pi0 K_L0 pi+ pi+ pi+ pi+ pi+ pi- pi- pi- pi- K-
+
+rowNo:  rest	iDcyIFSts:  ---	nEtr:  99912	nCEtr:  100000
+  Upsilon(4S) ---> others (78208 in total)
+

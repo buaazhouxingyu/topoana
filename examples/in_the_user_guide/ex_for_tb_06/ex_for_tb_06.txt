@@ -1,0 +1,18 @@
+
+Mothers of D*+:
+rowNo:  1	Mother:   anti-B0	PDGMoth:  -511	nCase:  41751	nCCase:  41751
+rowNo:  2	Mother:   B0	PDGMoth:  511	nCase:  2983	nCCase:  44734
+rowNo:  3	Mother:   D'_1+	PDGMoth:  20413	nCase:  455	nCCase:  45189
+rowNo:  4	Mother:   D_1+	PDGMoth:  10413	nCase:  368	nCCase:  45557
+rowNo:  5	Mother:   D_2*+	PDGMoth:  415	nCase:  247	nCCase:  45804
+rowNo:  rest	Mother:  others (1 in total)	PDGMoth:  Corresponding to others	nCase:  82	nCCase:  45886
+
+
+Mothers of J/psi:
+rowNo:  1	Mother:   B0	PDGMoth:  511	nCase:  1093	nCCase:  1093
+rowNo:  2	Mother:   anti-B0	PDGMoth:  -511	nCase:  1091	nCCase:  2184
+rowNo:  3	Mother:   psi(2S)	PDGMoth:  100443	nCase:  255	nCCase:  2439
+rowNo:  4	Mother:   chi_c1	PDGMoth:  20443	nCase:  169	nCCase:  2608
+rowNo:  5	Mother:   chi_c2	PDGMoth:  445	nCase:  41	nCCase:  2649
+rowNo:  rest	Mother:  others (2 in total)	PDGMoth:  Corresponding to others	nCase:  5	nCCase:  2654
+

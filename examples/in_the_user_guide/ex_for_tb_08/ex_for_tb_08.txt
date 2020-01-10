@@ -1,0 +1,42 @@
+
+Decay final states of B0 (only three-body final states are involved):
+
+rowNo:  1	iDcyFStP:  2	nCase:  14	nCCase:  14
+  B0 ---> mu+ nu_mu pi-
+
+rowNo:  2	iDcyFStP:  5	nCase:  8	nCCase:  22
+  B0 ---> e+ nu_e pi-
+
+rowNo:  3	iDcyFStP:  3	nCase:  7	nCCase:  29
+  B0 ---> pi0 pi- K+
+
+rowNo:  4	iDcyFStP:  0	nCase:  7	nCCase:  36
+  B0 ---> K_L0 pi+ pi-
+
+rowNo:  5	iDcyFStP:  1	nCase:  6	nCCase:  42
+  B0 ---> pi- K+ gamma
+
+rowNo:  rest	iDcyFStP:  ---	nCase:  16	nCCase:  58
+  B0 ---> others (11 in total)
+
+
+Decay final states of D0 (only three-body final states are involved):
+
+rowNo:  1	iDcyFStP:  2	nCase:  6258	nCCase:  6258
+  D0 ---> pi0 pi+ K-
+
+rowNo:  2	iDcyFStP:  5	nCase:  1487	nCCase:  7745
+  D0 ---> mu+ nu_mu K-
+
+rowNo:  3	iDcyFStP:  1	nCase:  1162	nCCase:  8907
+  D0 ---> pi0 pi+ pi-
+
+rowNo:  4	iDcyFStP:  3	nCase:  1158	nCCase:  10065
+  D0 ---> K_L0 pi+ pi-
+
+rowNo:  5	iDcyFStP:  11	nCase:  1148	nCCase:  11213
+  D0 ---> e+ nu_e K-
+
+rowNo:  rest	iDcyFStP:  ---	nCase:  2407	nCCase:  13620
+  D0 ---> others (24 in total)
+

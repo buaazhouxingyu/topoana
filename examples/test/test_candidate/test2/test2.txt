@@ -1,0 +1,57 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  207	nEtr:  22	nCEtr:  22
+  Upsilon(4S) --> anti-B0 anti-B0
+  anti-B0 --> eta J/psi
+  anti-B0 --> mu- anti-nu_mu D*+
+  eta --> gamma gamma
+  J/psi --> e+ e- gammaF
+  D*+ --> pi+ D0
+  D0 --> pi0 pi+ K-
+( Upsilon(4S) ---> e+ e- mu- anti-nu_mu pi0 pi+ pi+ K- gammaF gamma gamma )
+
+rowNo:  2	iDcyTr:  268	nEtr:  22	nCEtr:  44
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> eta J/psi
+  anti-B0 --> e- anti-nu_e D*+
+  eta --> gamma gamma
+  J/psi --> e+ e- gammaF
+  D*+ --> pi+ D0
+  D0 --> pi0 pi+ K-
+( Upsilon(4S) ---> e+ e- e- anti-nu_e pi0 pi+ pi+ K- gammaF gamma gamma )
+
+rowNo:  3	iDcyTr:  6275	nEtr:  19	nCEtr:  63
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> eta J/psi
+  anti-B0 --> mu- anti-nu_mu D*+
+  eta --> gamma gamma
+  J/psi --> e+ e- gammaF
+  D*+ --> pi+ D0
+  D0 --> pi0 pi+ K-
+( Upsilon(4S) ---> e+ e- mu- anti-nu_mu pi0 pi+ pi+ K- gammaF gamma gamma )
+
+rowNo:  4	iDcyTr:  764	nEtr:  17	nCEtr:  80
+  Upsilon(4S) --> B0 B0
+  B0 --> eta J/psi
+  B0 --> mu+ nu_mu D*-
+  eta --> gamma gamma
+  J/psi --> e+ e- gammaF
+  D*- --> pi- anti-D0
+  anti-D0 --> pi0 pi- K+
+( Upsilon(4S) ---> e+ e- mu+ nu_mu pi0 pi- pi- K+ gammaF gamma gamma )
+
+rowNo:  5	iDcyTr:  4281	nEtr:  15	nCEtr:  95
+  Upsilon(4S) --> anti-B0 anti-B0
+  anti-B0 --> eta J/psi
+  anti-B0 --> e- anti-nu_e D*+
+  eta --> gamma gamma
+  J/psi --> e+ e-
+  D*+ --> pi+ D0
+  D0 --> pi0 pi+ K-
+( Upsilon(4S) ---> e+ e- e- anti-nu_e pi0 pi+ pi+ K- gamma gamma )
+
+rowNo:  rest	iDcyTr:  ---	nEtr:  47432	nCEtr:  47527
+  Upsilon(4S) --> others (44978 in total)
+( Upsilon(4S) ---> corresponding to others )
+

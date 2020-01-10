@@ -8,30 +8,30 @@
  
 }
 
-% Tree name
+% TTree name
 {
   
 }
 
 # The following thirty-two items are optional. They can be removed or left empty.
 
-# Here, AI, VI, MIV, and MDV are short for array of integers, vector of integers, multiple integer variables, and multiple double variables.
-% Storage type of the raw input topology data (Four options: AI, VI, MIV, and MDV. Default: AI)
+# Here, AOI, VOI, MSI, and MSD are short for array of integers, vector of integers, multiple scalar integers, and multiple scalar doubles.
+% Storage type of input raw topology data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)
 {
 
 }
 
-% Branch name of the number of particles (Default: nMCGen)
+% TBranch name of the number of particles (Default: nMCGen)
 {
 
 }
 
-% Branch name of the PDG codes of particles (Default: MCGenPDG)
+% TBranch name of the PDG codes of particles (Default: MCGenPDG)
 {
 
 }
 
-% Branch name of the mother indeces of particles (Default: MCGenMothIndex)
+% TBranch name of the mother indices of particles (Default: MCGenMothIndex)
 {
 
 }
@@ -69,14 +69,34 @@
   
 }
 
+% Retain the decay of pi0 to gamma gamma (Two options: Y and N. Default: N)
+{
+
+}
+
+% Ignore the following final decay branches
+{
+
+}
+
+% PDG code of ISR photons (Default: 222222222)
+{
+
+}
+
+% PDG code of FSR photons (Default: -22)
+{
+
+}
+
 # Here, gISR photons are defined as photons who have no mothers in the arrays of the PDG codes and mother indeces of particles, and "g" in "gISR" is short for "generalized".
-% Ignore gISR photons (Two options: Y and N. Default: N)
+% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)
 {
 
 }
 
 # Here, gFSR photons are defined as photons who have at least one e/mu/pi/K/p sister, and "g" in "gFSR" is short for "generalized".
-% Ignore gFSR photons (Two options: Y and N. Default: N)
+% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)
 {
 
 }
@@ -95,6 +115,16 @@
 % Component analysis --- decay branches of particles
 {
 
+}
+
+% Component analysis --- cascade decay branches of particles
+{
+
+}
+
+% Component analysis --- decay final states of particles
+{
+  
 }
 
 # This item is used for the analysis of the production branches of the following particles. The maximum numbers of production branches to be printed for the particles can be optionally specified on their right sides.
@@ -122,6 +152,11 @@
 }
 
 % Signal identification --- decay trees
+{
+
+}
+
+% Signal identification --- decay initial-final states related to decay trees (Two options: Y and N. Default: N)
 {
 
 }
@@ -172,18 +207,28 @@
 
 }
 
+% Avoid over counting for candidate based analysis (Two options: Y and N. Default: N)
+{
+
+}
+
+% TBranch name of the indices of candidates in an event (Default: __candidate__)
+{
+
+}
+
 % Analysis tasks for signal identifications (Three options: TC, T and C. Default: TC)
 {
 
 }
 
 #by number of cases or entries from large to small
-% Sort the topology structures for signal identifications (Two options: Y and N. Default: N)
+% Sort the sigals in the topology maps related to signal identifications (Two options: Y and N. Default: N)
 {
 
 }
 
-# The option "Y" set up in the item comes into effect only in the cases that there are only three particles in the branches.
+# The option "Y" set up in the item comes into effect only in the cases that there are only three particles in the decay branches.
 % Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)
 {
 
@@ -195,14 +240,14 @@
 
 }
 
-% Center decay objects in the output pdf files (Two options: Y and N. Default: N)
+% Complete horizontal and vertical lines in output pdf files (Two options: Y and N. Default: N)
 {
 
 }
 
-% Suppress the topology tags in the output pdf files (Two options: Y and N. Default: N)
+% Center decay objects in output pdf files (Two options: Y and N. Default: N)
 {
-  
+
 }
 
 % One output root file by one input root file (Two options: Y and N. Default: N)
@@ -215,12 +260,17 @@
 
 }
 
-% Use array branches to store topology tags in the output root files when possible (Two options: Y and N. Default: N)
+% Use array tbranches to store topology tags in output root files when possible (Two options: Y and N. Default: N)
 {
 
 }
 
-% Copy the input branches to the output root files (Two options: Y and N. Default: Y)
+% Remove input tbranches from output root files (Two options: Y and N. Default: N)
 {
   
+}
+
+% Verbose level of standard output (Two options: Y and N. Default: N)
+{
+
 }

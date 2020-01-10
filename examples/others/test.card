@@ -1,0 +1,52 @@
+% Names of input root files
+{
+  mixed1.root
+  mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Component analysis --- decay trees
+{
+  Y 5 Y	
+}
+
+% Component analysis --- decay initial-final states
+{ 
+  Y 5
+}
+
+% Signal identification --- decay trees
+{
+  0     &       Upsilon(4S) --> B0 anti-B0              &       -1
+  1     &       B0 --> e+ nu_e D*- gammaF               &        0
+  2     &       anti-B0 --> mu- anti-nu_mu D*+          &        0
+  3     &       D*- --> pi- anti-D0                     &        1
+  4     &       D*+ --> pi+ D0                          &        2
+  5     &       anti-D0 --> pi0 pi- K+                  &        3
+  6     &       D0 --> pi0 pi+ K-                       &        4
+
+  0     &       Upsilon(4S) --> B0 anti-B0              &       -1
+  1     &       B0 --> pi0 pi+ pi+ rho- D-              &        0
+  2     &       anti-B0 --> mu- anti-nu_mu D*+          &        0
+  3     &       rho- --> pi0 pi-                        &        1
+  4     &       D- --> pi- pi- K+                       &        1
+  5     &       D*+ --> pi+ D0                          &        2
+  6     &       D0 --> K_L0 pi+ pi-                     &        5
+}
+
+% Signal identification --- decay initial-final states
+{ 
+  Upsilon(4S) --> mu+ nu_mu pi0 pi0 pi0 pi+ pi+ pi+ pi- pi- pi- pi- K+ K- 
+  Upsilon(4S) --> pi0 pi0 pi0 pi0 pi0 pi+ pi+ pi+ pi+ pi+ pi- pi- pi- pi- pi- K+ K-
+}
+
+% Process charge conjugate objects together (Two options: Y and N. Default: N)
+{
+  Y
+}
+
+

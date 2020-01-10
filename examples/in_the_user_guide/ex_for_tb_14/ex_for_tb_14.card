@@ -1,0 +1,16 @@
+% Names of input root files
+{
+  ../input/mixed1.root
+  ../input/mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Signal identification --- particles
+{
+  D*+		Dsp
+  J/psi		Jpsi
+}

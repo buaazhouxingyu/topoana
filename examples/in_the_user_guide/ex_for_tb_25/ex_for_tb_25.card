@@ -1,0 +1,20 @@
+% Names of input root files
+{
+  ../input/mixed1.root
+  ../input/mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Component analysis --- decay trees
+{
+  Y 	5     Y
+}
+
+% Process charge conjugate objects together (Two options: Y and N. Default: N)
+{
+  Y
+}

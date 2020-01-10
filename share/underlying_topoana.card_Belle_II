@@ -1,0 +1,9 @@
+% Storage type of input raw topology data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)
+{
+  MSD
+}
+
+% Component analysis --- decay trees
+{
+  N	-	Y
+}

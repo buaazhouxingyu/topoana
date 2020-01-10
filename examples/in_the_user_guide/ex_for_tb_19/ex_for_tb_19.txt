@@ -1,0 +1,9 @@
+
+Signal intermediate-resonance-allowed decay branches:
+
+rowNo:  1	iSigIRADcyBr:  0	nCase:  4971	nCCase:  4971
+  D*+ ---> pi0 pi+ pi+ K-
+
+rowNo:  2	iSigIRADcyBr:  1	nCase:  59	nCCase:  5030
+  J/psi ---> pi0 pi+ pi-
+

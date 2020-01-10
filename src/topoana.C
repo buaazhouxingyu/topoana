@@ -4,6 +4,7 @@ int main(int argc,char *argv[])
 {
   topoana ta;
   ta.makeMapsOnPdata();
+  ta.makeNNmMap();
   ta.readCard(ta.getCardFlNm0());
   if(argc>1) ta.setCardFlNmAndDftMainNmOfOptFls(argv[1]);
   else ta.setCardFlNmAndDftMainNmOfOptFls("topoana.card");

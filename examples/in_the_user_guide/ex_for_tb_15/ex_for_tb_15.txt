@@ -1,0 +1,9 @@
+
+Signal decay branches:
+
+rowNo:  1	iSigDcyBr:  0	nCase:  4154	nCCase:  4154
+  anti-B0 --> mu- anti-nu_mu D*+
+
+rowNo:  2	iSigDcyBr:  1	nCase:  45	nCCase:  4199
+  B0 --> K_S0 J/psi
+
