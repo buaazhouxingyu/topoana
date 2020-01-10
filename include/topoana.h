@@ -42,9 +42,15 @@ class topoana
     bool m_adjDcyIFStsIntoACol;
     bool m_compAnaOfDcyIFSts;
     unsigned long m_nDcyIFStsToBePrtdMax;
-    vector<int> m_vPid_compP;
+    vector<int> m_vPid_compDcyBrP;
     vector<unsigned long> m_vNDcyBrsToBePrtdMax;
-    vector<string> m_vNm_compP;
+    vector<string> m_vNm_compDcyBrP;
+    vector<int> m_vPid_compProdBrP;
+    vector<unsigned long> m_vNProdBrsToBePrtdMax;
+    vector<string> m_vNm_compProdBrP;
+    vector<int> m_vPid_compMP;
+    vector<unsigned long> m_vNMsToBePrtdMax;
+    vector<string> m_vNm_compMP;
     vector< vector<int> > m_vVPid_compIncDcyBr;
     vector<unsigned long> m_vNExcCompsToBePrtdMax;
     vector<string> m_vNm_compIncDcyBr;
@@ -102,12 +108,24 @@ class topoana
     vector<int> m_vNDcyIFSts, m_vNCcDcyIFSts;
     unordered_map<string,int> m_uomDcyIFSts, m_uomCcDcyIFSts;
     map<int,int> m_iDcyTrIDcyIFStsMap, m_iDcyTrICcDcyIFStsMap;
-    vector<int> m_vPid_ccCompP;
-    vector<int> m_vICcCompP;
+    vector<int> m_vPid_ccCompDcyBrP;
+    vector<int> m_vICcCompDcyBrP;
     // Pay attention to that m_vVDcyBrCcP, m_vVIDcyBrCcP and m_vVNDcyBrCcP equate to m_vVCcDcyBrP, m_vVICcDcyBrP and m_vVNCcDcyBrP for self-charge-conjugate particles.
     vector< vector< list<int> > > m_vVDcyBrP, m_vVDcyBrCcP;
     vector< vector<int> > m_vVIDcyBrP, m_vVIDcyBrCcP;
     vector< vector<int> > m_vVNDcyBrP, m_vVNDcyBrCcP;
+    vector<int> m_vPid_ccCompProdBrP;
+    vector<int> m_vICcCompProdBrP;
+    // Pay attention to that m_vVProdBrCcP, m_vVIProdBrCcP and m_vVNProdBrCcP equate to m_vVCcProdBrP, m_vVICcProdBrP and m_vVNCcProdBrP for self-charge-conjugate particles.
+    vector< vector< list<int> > > m_vVProdBrP, m_vVProdBrCcP;
+    vector< vector<int> > m_vVIProdBrP, m_vVIProdBrCcP;
+    vector< vector<int> > m_vVNProdBrP, m_vVNProdBrCcP;
+    vector<int> m_vPid_ccCompMP;
+    vector<int> m_vICcCompMP;
+    // Pay attention to that m_vVMCcP, m_vVIMCcP and m_vVNMCcP equate to m_vVCcMP, m_vVICcMP and m_vVNCcMP for self-charge-conjugate particles.
+    vector< vector<int> > m_vVMpidP, m_vVMpidCcP;
+    vector< vector<int> > m_vVIMP, m_vVIMCcP;
+    vector< vector<int> > m_vVNMP, m_vVNMCcP;
     vector< list<int> > m_vCompIncDcyBr,m_vCompCcIncDcyBr;
     vector<int> m_vCompICcIncDcyBr;
     // Pay attention to that m_vVDcyBrCcIncDcyBr, m_vVIDcyBrCcIncDcyBr and m_vVNDcyBrCcIncDcyBr equate to m_vVCcDcyBrIncDcyBr, m_vVICcDcyBrIncDcyBr and m_vVNCcDcyBrIncDcyBr for self-charge-conjugate inclusive decays.
@@ -196,9 +214,15 @@ class topoana
       m_compAnaOfDcyIFSts=false;
       m_nDcyIFStsToBePrtdMax=ULONG_MAX;
 
-      m_vPid_compP.clear();
+      m_vPid_compDcyBrP.clear();
       m_vNDcyBrsToBePrtdMax.clear();
-      m_vNm_compP.clear();
+      m_vNm_compDcyBrP.clear();
+      m_vPid_compProdBrP.clear();
+      m_vNProdBrsToBePrtdMax.clear();
+      m_vNm_compProdBrP.clear();
+      m_vPid_compMP.clear();
+      m_vNMsToBePrtdMax.clear();
+      m_vNm_compMP.clear();
       m_vVPid_compIncDcyBr.clear();
       m_vNExcCompsToBePrtdMax.clear();
       m_vNm_compIncDcyBr.clear();

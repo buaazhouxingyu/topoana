@@ -72,6 +72,22 @@ void topoana::getRslt()
   bool closeTheOptRootFl3;
   const unsigned long nTotBytesMaxOfASngOptRootFl=(unsigned long) 3*1024*1024*1024; // The size of a single output root file in memory is 3G.
 
+  int iDcyTr,iCcDcyTr,iDcyIFSts,iCcDcyIFSts;
+  const unsigned int sAtdbPid=m_vPid_compDcyBrP.size()>0?m_vPid_compDcyBrP.size():1;
+  int nP_DcyBr[sAtdbPid],iCcP_DcyBr[sAtdbPid],nCcP_DcyBr[sAtdbPid],nTotP_DcyBr[sAtdbPid];
+  int iDcyBrP[sAtdbPid][200],iCcDcyBrP[sAtdbPid][200],iDcyBrCcP[sAtdbPid][200];
+  const unsigned int sAtpbPid=m_vPid_compProdBrP.size()>0?m_vPid_compProdBrP.size():1;
+  int nP_ProdBr[sAtpbPid],iCcP_ProdBr[sAtpbPid],nCcP_ProdBr[sAtpbPid],nTotP_ProdBr[sAtpbPid];
+  int iProdBrP[sAtpbPid][200],iCcProdBrP[sAtpbPid][200],iProdBrCcP[sAtpbPid][200];
+  const unsigned int sAtmPid=m_vPid_compMP.size()>0?m_vPid_compMP.size():1;
+  int nP_M[sAtmPid],iCcP_M[sAtmPid],nCcP_M[sAtmPid],nTotP_M[sAtmPid];
+  int MpidP[sAtmPid][200],iCcMP[sAtmPid][200],MpidCcP[sAtmPid][200];
+  const unsigned int sVAtecIncDcyBr=m_vCompIncDcyBr.size()>0?m_vCompIncDcyBr.size():1;
+  int nIncDcyBr[sVAtecIncDcyBr],iCcIncDcyBr[sVAtecIncDcyBr],nCcIncDcyBr[sVAtecIncDcyBr],nTotIncDcyBr[sVAtecIncDcyBr];
+  int iDcyBrIncDcyBr[sVAtecIncDcyBr][200],iCcDcyBrIncDcyBr[sVAtecIncDcyBr][200],iDcyBrCcIncDcyBr[sVAtecIncDcyBr][200];
+  const unsigned int sVAtecIRADcyBr=m_vCompIRADcyBr.size()>0?m_vCompIRADcyBr.size():1;
+  int nIRADcyBr[sVAtecIRADcyBr],iCcIRADcyBr[sVAtecIRADcyBr],nCcIRADcyBr[sVAtecIRADcyBr],nTotIRADcyBr[sVAtecIRADcyBr];
+  int iDcyBrIRADcyBr[sVAtecIRADcyBr][200],iCcDcyBrIRADcyBr[sVAtecIRADcyBr][200],iDcyBrCcIRADcyBr[sVAtecIRADcyBr][200];
   const unsigned int sSigP=m_vPid_sigP.size()>0?m_vPid_sigP.size():1;
   int nSigP[sSigP],nCcSigP[sSigP],nTotSigP[sSigP],iCcSigP[sSigP];
   const unsigned int sSigDcyBr=m_vSigDcyBr.size()>0?m_vSigDcyBr.size():1;
@@ -88,16 +104,6 @@ void topoana::getRslt()
   int nSigIncOrIRACascDcyBrs[sSigIncOrIRACascDcyBrs],nCcSigIncOrIRACascDcyBrs[sSigIncOrIRACascDcyBrs],nTotSigIncOrIRACascDcyBrs[sSigIncOrIRACascDcyBrs],iCcSigIncOrIRACascDcyBrs[sSigIncOrIRACascDcyBrs];
   char nmSigDcyTr[200]; int iSigDcyTr,iCcSigDcyTr,iSigDcyIFSts,iCcSigDcyIFSts;
   char nmSigDcyIFSts2[200]; int iSigDcyIFSts2,iCcSigDcyIFSts2;
-  const unsigned int sAtdbPid=m_vPid_compP.size()>0?m_vPid_compP.size():1;
-  int nP[sAtdbPid],iCcP[sAtdbPid],nCcP[sAtdbPid],nTotP[sAtdbPid];
-  int iDcyBrP[sAtdbPid][200],iCcDcyBrP[sAtdbPid][200],iDcyBrCcP[sAtdbPid][200];
-  const unsigned int sVAtecIncDcyBr=m_vCompIncDcyBr.size()>0?m_vCompIncDcyBr.size():1;
-  int nIncDcyBr[sVAtecIncDcyBr],iCcIncDcyBr[sVAtecIncDcyBr],nCcIncDcyBr[sVAtecIncDcyBr],nTotIncDcyBr[sVAtecIncDcyBr];
-  int iDcyBrIncDcyBr[sVAtecIncDcyBr][200],iCcDcyBrIncDcyBr[sVAtecIncDcyBr][200],iDcyBrCcIncDcyBr[sVAtecIncDcyBr][200];
-  const unsigned int sVAtecIRADcyBr=m_vCompIRADcyBr.size()>0?m_vCompIRADcyBr.size():1;
-  int nIRADcyBr[sVAtecIRADcyBr],iCcIRADcyBr[sVAtecIRADcyBr],nCcIRADcyBr[sVAtecIRADcyBr],nTotIRADcyBr[sVAtecIRADcyBr];
-  int iDcyBrIRADcyBr[sVAtecIRADcyBr][200],iCcDcyBrIRADcyBr[sVAtecIRADcyBr][200],iDcyBrCcIRADcyBr[sVAtecIRADcyBr][200];
-  int iDcyTr,iCcDcyTr,iDcyIFSts,iCcDcyIFSts;
 
   TTreeFormula * trfml;
   unsigned int nInsts=1;
@@ -171,174 +177,309 @@ void topoana::getRslt()
                   tr->Branch("iDcyIFSts", &iDcyIFSts, "iDcyIFSts/I");
                   if(m_ccSwitch==true) tr->Branch("iCcDcyIFSts", &iCcDcyIFSts, "iCcDcyIFSts/I");
                 }
-              if(m_vPid_compP.size()>0)
+              if(m_vPid_compDcyBrP.size()>0)
                 {
-                  char nmCompP[20];
+                  char nmDcyBrP[20],nm2DcyBrP[20];
                   char specifier1[100],specifier2[100];
-                  for(unsigned int i=0;i<m_vPid_compP.size();i++)
+                  for(unsigned int i=0;i<m_vPid_compDcyBrP.size();i++)
                     {
-                      if(m_vNm_compP[i].empty()) sprintf(nmCompP, "CompP%d", i);
-                      else sprintf(nmCompP, "_%s", m_vNm_compP[i].c_str());
-                      // else strcpy(nmCompP, m_vNm_compP[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmCompP".
+                      if(m_vNm_compDcyBrP[i].empty())
+                        {
+                          sprintf(nmDcyBrP, "_P%d_DcyBr", i);
+                          sprintf(nm2DcyBrP, "_P%d", i);
+                        }
+                      else
+                        {
+                          sprintf(nmDcyBrP, "_%s_DcyBr", m_vNm_compDcyBrP[i].c_str());
+                          sprintf(nm2DcyBrP, "_%s", m_vNm_compDcyBrP[i].c_str());
+                        }
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier1, "iCc%s", nmCompP);
-                          sprintf(specifier2, "iCc%s/I", nmCompP);
-                          tr->Branch(specifier1, &iCcP[i], specifier2);
-                          iCcP[i]=m_vICcCompP[i];
-                          if(iCcP[i]==0)
+                          sprintf(specifier1, "iCc%s", nmDcyBrP);
+                          sprintf(specifier2, "iCc%s/I", nmDcyBrP);
+                          tr->Branch(specifier1, &iCcP_DcyBr[i], specifier2);
+                          iCcP_DcyBr[i]=m_vICcCompDcyBrP[i];
+                          if(iCcP_DcyBr[i]==0)
                             {
-                              sprintf(specifier1, "n%s", nmCompP);
-                              sprintf(specifier2, "n%s/I", nmCompP);
-                              tr->Branch(specifier1, &nP[i], specifier2);
-                              sprintf(specifier1, "iDcyBr%s", nmCompP);
-                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompP, nmCompP);
+                              sprintf(specifier1, "n%s", nmDcyBrP);
+                              sprintf(specifier2, "n%s/I", nmDcyBrP);
+                              tr->Branch(specifier1, &nP_DcyBr[i], specifier2);
+                              sprintf(specifier1, "iDcyBr%s", nm2DcyBrP);
+                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nm2DcyBrP, nmDcyBrP);
                               tr->Branch(specifier1, &iDcyBrP[i], specifier2);
-                              sprintf(specifier1, "iCcDcyBr%s", nmCompP);
-                              sprintf(specifier2, "iCcDcyBr%s[n%s]/I", nmCompP, nmCompP);
+                              sprintf(specifier1, "iCcDcyBr%s", nm2DcyBrP);
+                              sprintf(specifier2, "iCcDcyBr%s[n%s]/I", nm2DcyBrP, nmDcyBrP);
                               tr->Branch(specifier1, &iCcDcyBrP[i], specifier2);                  
                             }
                           else
                             {
-                              sprintf(specifier1, "n%s", nmCompP);
-                              sprintf(specifier2, "n%s/I", nmCompP);
-                              tr->Branch(specifier1, &nP[i], specifier2);
-                              sprintf(specifier1, "iDcyBr%s", nmCompP);
-                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompP, nmCompP);
+                              sprintf(specifier1, "n%s", nmDcyBrP);
+                              sprintf(specifier2, "n%s/I", nmDcyBrP);
+                              tr->Branch(specifier1, &nP_DcyBr[i], specifier2);
+                              sprintf(specifier1, "iDcyBr%s", nm2DcyBrP);
+                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nm2DcyBrP, nmDcyBrP);
                               tr->Branch(specifier1, &iDcyBrP[i], specifier2);
-                              sprintf(specifier1, "nCc%s", nmCompP);
-                              sprintf(specifier2, "nCc%s/I", nmCompP);
-                              tr->Branch(specifier1, &nCcP[i], specifier2);
-                              sprintf(specifier1, "iDcyBrCc%s", nmCompP);
-                              sprintf(specifier2, "iDcyBrCc%s[nCc%s]/I", nmCompP, nmCompP);
+                              sprintf(specifier1, "nCc%s", nmDcyBrP);
+                              sprintf(specifier2, "nCc%s/I", nmDcyBrP);
+                              tr->Branch(specifier1, &nCcP_DcyBr[i], specifier2);
+                              sprintf(specifier1, "iDcyBrCc%s", nm2DcyBrP);
+                              sprintf(specifier2, "iDcyBrCc%s[nCc%s]/I", nm2DcyBrP, nmDcyBrP);
                               tr->Branch(specifier1, &iDcyBrCcP[i], specifier2);              
-                              sprintf(specifier1, "nTot%s", nmCompP);
-                              sprintf(specifier2, "nTot%s/I", nmCompP);
-                              tr->Branch(specifier1, &nTotP[i], specifier2);
+                              sprintf(specifier1, "nTot%s", nmDcyBrP);
+                              sprintf(specifier2, "nTot%s/I", nmDcyBrP);
+                              tr->Branch(specifier1, &nTotP_DcyBr[i], specifier2);
                             }
                         }
                       else
                         {
-                          sprintf(specifier1, "n%s", nmCompP);
-                          sprintf(specifier2, "n%s/I", nmCompP);
-                          tr->Branch(specifier1, &nP[i], specifier2);
-                          sprintf(specifier1, "iDcyBr%s", nmCompP);
-                          sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompP, nmCompP);
+                          sprintf(specifier1, "n%s", nmDcyBrP);
+                          sprintf(specifier2, "n%s/I", nmDcyBrP);
+                          tr->Branch(specifier1, &nP_DcyBr[i], specifier2);
+                          sprintf(specifier1, "iDcyBr%s", nm2DcyBrP);
+                          sprintf(specifier2, "iDcyBr%s[n%s]/I", nm2DcyBrP, nmDcyBrP);
                           tr->Branch(specifier1, &iDcyBrP[i], specifier2);
+                        }
+                    }
+                }
+              if(m_vPid_compProdBrP.size()>0)
+                {
+                  char nmProdBrP[20],nm2ProdBrP[20];
+                  char specifier1[100],specifier2[100];
+                  for(unsigned int i=0;i<m_vPid_compProdBrP.size();i++)
+                    {
+                      if(m_vNm_compProdBrP[i].empty())
+                        {
+                          sprintf(nmProdBrP, "_P%d_ProdBr", i);
+                          sprintf(nm2ProdBrP, "_P%d", i);
+                        }
+                      else
+                        {
+                          sprintf(nmProdBrP, "_%s_ProdBr", m_vNm_compProdBrP[i].c_str());
+                          sprintf(nm2ProdBrP, "_%s", m_vNm_compProdBrP[i].c_str());
+                        }
+                      if(m_ccSwitch==true)
+                        {
+                          sprintf(specifier1, "iCc%s", nmProdBrP);
+                          sprintf(specifier2, "iCc%s/I", nmProdBrP);
+                          tr->Branch(specifier1, &iCcP_ProdBr[i], specifier2);
+                          iCcP_ProdBr[i]=m_vICcCompProdBrP[i];
+                          if(iCcP_ProdBr[i]==0)
+                            {
+                              sprintf(specifier1, "n%s", nmProdBrP);
+                              sprintf(specifier2, "n%s/I", nmProdBrP);
+                              tr->Branch(specifier1, &nP_ProdBr[i], specifier2);
+                              sprintf(specifier1, "iProdBr%s", nm2ProdBrP);
+                              sprintf(specifier2, "iProdBr%s[n%s]/I", nm2ProdBrP, nmProdBrP);
+                              tr->Branch(specifier1, &iProdBrP[i], specifier2);
+                              sprintf(specifier1, "iCcProdBr%s", nm2ProdBrP);
+                              sprintf(specifier2, "iCcProdBr%s[n%s]/I", nm2ProdBrP, nmProdBrP);
+                              tr->Branch(specifier1, &iCcProdBrP[i], specifier2);                  
+                            }
+                          else
+                            {
+                              sprintf(specifier1, "n%s", nmProdBrP);
+                              sprintf(specifier2, "n%s/I", nmProdBrP);
+                              tr->Branch(specifier1, &nP_ProdBr[i], specifier2);
+                              sprintf(specifier1, "iProdBr%s", nm2ProdBrP);
+                              sprintf(specifier2, "iProdBr%s[n%s]/I", nm2ProdBrP, nmProdBrP);
+                              tr->Branch(specifier1, &iProdBrP[i], specifier2);
+                              sprintf(specifier1, "nCc%s", nmProdBrP);
+                              sprintf(specifier2, "nCc%s/I", nmProdBrP);
+                              tr->Branch(specifier1, &nCcP_ProdBr[i], specifier2);
+                              sprintf(specifier1, "iProdBrCc%s", nm2ProdBrP);
+                              sprintf(specifier2, "iProdBrCc%s[nCc%s]/I", nm2ProdBrP, nmProdBrP);
+                              tr->Branch(specifier1, &iProdBrCcP[i], specifier2);              
+                              sprintf(specifier1, "nTot%s", nmProdBrP);
+                              sprintf(specifier2, "nTot%s/I", nmProdBrP);
+                              tr->Branch(specifier1, &nTotP_ProdBr[i], specifier2);
+                            }
+                        }
+                      else
+                        {
+                          sprintf(specifier1, "n%s", nmProdBrP);
+                          sprintf(specifier2, "n%s/I", nmProdBrP);
+                          tr->Branch(specifier1, &nP_ProdBr[i], specifier2);
+                          sprintf(specifier1, "iProdBr%s", nm2ProdBrP);
+                          sprintf(specifier2, "iProdBr%s[n%s]/I", nm2ProdBrP, nmProdBrP);
+                          tr->Branch(specifier1, &iProdBrP[i], specifier2);
+                        }
+                    }
+                }
+              if(m_vPid_compMP.size()>0)
+                {
+                  char nmMP[20],nm2MP[20];
+                  char specifier1[100],specifier2[100];
+                  for(unsigned int i=0;i<m_vPid_compMP.size();i++)
+                    {
+                      if(m_vNm_compMP[i].empty())
+                        {
+                          sprintf(nmMP, "_P%d_Moth", i);
+                          sprintf(nm2MP, "_P%d", i);
+                        }
+                      else
+                        {
+                          sprintf(nmMP, "_%s_Moth", m_vNm_compMP[i].c_str());
+                          sprintf(nm2MP, "_%s", m_vNm_compMP[i].c_str());
+                        }
+                      if(m_ccSwitch==true)
+                        {
+                          sprintf(specifier1, "iCc%s", nmMP);
+                          sprintf(specifier2, "iCc%s/I", nmMP);
+                          tr->Branch(specifier1, &iCcP_M[i], specifier2);
+                          iCcP_M[i]=m_vICcCompMP[i];
+                          if(iCcP_M[i]==0)
+                            {
+                              sprintf(specifier1, "n%s", nmMP);
+                              sprintf(specifier2, "n%s/I", nmMP);
+                              tr->Branch(specifier1, &nP_M[i], specifier2);
+                              sprintf(specifier1, "MothPDG%s", nm2MP);
+                              sprintf(specifier2, "MothPDG%s[n%s]/I", nm2MP, nmMP);
+                              tr->Branch(specifier1, &MpidP[i], specifier2);
+                              sprintf(specifier1, "iCcMoth%s", nm2MP);
+                              sprintf(specifier2, "iCcMoth%s[n%s]/I", nm2MP, nmMP);
+                              tr->Branch(specifier1, &iCcMP[i], specifier2);                  
+                            }
+                          else
+                            {
+                              sprintf(specifier1, "n%s", nmMP);
+                              sprintf(specifier2, "n%s/I", nmMP);
+                              tr->Branch(specifier1, &nP_M[i], specifier2);
+                              sprintf(specifier1, "MothPDG%s", nm2MP);
+                              sprintf(specifier2, "MothPDG%s[n%s]/I", nm2MP, nmMP);
+                              tr->Branch(specifier1, &MpidP[i], specifier2);
+                              sprintf(specifier1, "nCc%s", nmMP);
+                              sprintf(specifier2, "nCc%s/I", nmMP);
+                              tr->Branch(specifier1, &nCcP_M[i], specifier2);
+                              sprintf(specifier1, "MothPDGCc%s", nm2MP);
+                              sprintf(specifier2, "MothPDGCc%s[nCc%s]/I", nm2MP, nmMP);
+                              tr->Branch(specifier1, &MpidCcP[i], specifier2);              
+                              sprintf(specifier1, "nTot%s", nmMP);
+                              sprintf(specifier2, "nTot%s/I", nmMP);
+                              tr->Branch(specifier1, &nTotP_M[i], specifier2);
+                            }
+                        }
+                      else
+                        {
+                          sprintf(specifier1, "n%s", nmMP);
+                          sprintf(specifier2, "n%s/I", nmMP);
+                          tr->Branch(specifier1, &nP_M[i], specifier2);
+                          sprintf(specifier1, "MothPDG%s", nm2MP);
+                          sprintf(specifier2, "MothPDG%s[n%s]/I", nm2MP, nmMP);
+                          tr->Branch(specifier1, &MpidP[i], specifier2);
                         }
                     }
                 }
               if(m_vCompIncDcyBr.size()>0)
                 {
-                  char nmCompIncDcyBr[20];
+                  char nmIncDcyBr[20];
                   char specifier1[100],specifier2[100];
                   list<int>::iterator liit;
                   for(unsigned int i=0;i<m_vCompIncDcyBr.size();i++)
                     {
-                      if(m_vNm_compIncDcyBr[i].empty()) sprintf(nmCompIncDcyBr, "CompIncDcyBr%d", i);
-                      else sprintf(nmCompIncDcyBr, "_%s", m_vNm_compIncDcyBr[i].c_str());
-                      // else strcpy(nmCompIncDcyBr, m_vNm_compIncDcyBr[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmCompIncDcyBr".
+                      if(m_vNm_compIncDcyBr[i].empty()) sprintf(nmIncDcyBr, "_IncDcyBr%d", i);
+                      else sprintf(nmIncDcyBr, "_%s", m_vNm_compIncDcyBr[i].c_str());
+                      // else strcpy(nmIncDcyBr, m_vNm_compIncDcyBr[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmIncDcyBr".
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier1, "iCc%s", nmCompIncDcyBr);
-                          sprintf(specifier2, "iCc%s/I", nmCompIncDcyBr);
+                          sprintf(specifier1, "iCc%s", nmIncDcyBr);
+                          sprintf(specifier2, "iCc%s/I", nmIncDcyBr);
                           tr->Branch(specifier1, &iCcIncDcyBr[i], specifier2);
                           iCcIncDcyBr[i]=m_vCompICcIncDcyBr[i];
                           if(iCcIncDcyBr[i]==0)
                             {
-                              sprintf(specifier1, "n%s", nmCompIncDcyBr);
-                              sprintf(specifier2, "n%s/I", nmCompIncDcyBr);
+                              sprintf(specifier1, "n%s", nmIncDcyBr);
+                              sprintf(specifier2, "n%s/I", nmIncDcyBr);
                               tr->Branch(specifier1, &nIncDcyBr[i], specifier2);
-                              sprintf(specifier1, "iDcyBr%s", nmCompIncDcyBr);
-                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompIncDcyBr, nmCompIncDcyBr);
+                              sprintf(specifier1, "iDcyBr%s", nmIncDcyBr);
+                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmIncDcyBr, nmIncDcyBr);
                               tr->Branch(specifier1, &iDcyBrIncDcyBr[i], specifier2);
-                              sprintf(specifier1, "iCcDcyBr%s", nmCompIncDcyBr);
-                              sprintf(specifier2, "iCcDcyBr%s[n%s]/I", nmCompIncDcyBr, nmCompIncDcyBr);
+                              sprintf(specifier1, "iCcDcyBr%s", nmIncDcyBr);
+                              sprintf(specifier2, "iCcDcyBr%s[n%s]/I", nmIncDcyBr, nmIncDcyBr);
                               tr->Branch(specifier1, &iCcDcyBrIncDcyBr[i], specifier2);                  
                             }
                           else
                             {
-                              sprintf(specifier1, "n%s", nmCompIncDcyBr);
-                              sprintf(specifier2, "n%s/I", nmCompIncDcyBr);
+                              sprintf(specifier1, "n%s", nmIncDcyBr);
+                              sprintf(specifier2, "n%s/I", nmIncDcyBr);
                               tr->Branch(specifier1, &nIncDcyBr[i], specifier2);
-                              sprintf(specifier1, "iDcyBr%s", nmCompIncDcyBr);
-                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompIncDcyBr, nmCompIncDcyBr);
+                              sprintf(specifier1, "iDcyBr%s", nmIncDcyBr);
+                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmIncDcyBr, nmIncDcyBr);
                               tr->Branch(specifier1, &iDcyBrIncDcyBr[i], specifier2);
-                              sprintf(specifier1, "nCc%s", nmCompIncDcyBr);
-                              sprintf(specifier2, "nCc%s/I", nmCompIncDcyBr);
+                              sprintf(specifier1, "nCc%s", nmIncDcyBr);
+                              sprintf(specifier2, "nCc%s/I", nmIncDcyBr);
                               tr->Branch(specifier1, &nCcIncDcyBr[i], specifier2);
-                              sprintf(specifier1, "iDcyBrCc%s", nmCompIncDcyBr);
-                              sprintf(specifier2, "iDcyBrCc%s[nCc%s]/I", nmCompIncDcyBr, nmCompIncDcyBr);
+                              sprintf(specifier1, "iDcyBrCc%s", nmIncDcyBr);
+                              sprintf(specifier2, "iDcyBrCc%s[nCc%s]/I", nmIncDcyBr, nmIncDcyBr);
                               tr->Branch(specifier1, &iDcyBrCcIncDcyBr[i], specifier2);              
-                              sprintf(specifier1, "nTot%s", nmCompIncDcyBr);
-                              sprintf(specifier2, "nTot%s/I", nmCompIncDcyBr);
+                              sprintf(specifier1, "nTot%s", nmIncDcyBr);
+                              sprintf(specifier2, "nTot%s/I", nmIncDcyBr);
                               tr->Branch(specifier1, &nTotIncDcyBr[i], specifier2);
                             }
                         }
                       else
                         {
-                          sprintf(specifier1, "n%s", nmCompIncDcyBr);
-                          sprintf(specifier2, "n%s/I", nmCompIncDcyBr);
+                          sprintf(specifier1, "n%s", nmIncDcyBr);
+                          sprintf(specifier2, "n%s/I", nmIncDcyBr);
                           tr->Branch(specifier1, &nIncDcyBr[i], specifier2);
-                          sprintf(specifier1, "iDcyBr%s", nmCompIncDcyBr);
-                          sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompIncDcyBr, nmCompIncDcyBr);
+                          sprintf(specifier1, "iDcyBr%s", nmIncDcyBr);
+                          sprintf(specifier2, "iDcyBr%s[n%s]/I", nmIncDcyBr, nmIncDcyBr);
                           tr->Branch(specifier1, &iDcyBrIncDcyBr[i], specifier2);
                         }
                     }
                 }
               if(m_vCompIRADcyBr.size()>0)
                 {
-                  char nmCompIRADcyBr[20];
+                  char nmIRADcyBr[20];
                   char specifier1[100],specifier2[100];
                   for(unsigned int i=0;i<m_vCompIRADcyBr.size();i++)
                     {
-                      if(m_vNm_compIRADcyBr[i].empty()) sprintf(nmCompIRADcyBr, "CompIRADcyBr%d", i);
-                      else sprintf(nmCompIRADcyBr, "_%s", m_vNm_compIRADcyBr[i].c_str());
-                      // else strcpy(nmCompIRADcyBr, m_vNm_compIRADcyBr[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmCompIRADcyBr".
+                      if(m_vNm_compIRADcyBr[i].empty()) sprintf(nmIRADcyBr, "_IRADcyBr%d", i);
+                      else sprintf(nmIRADcyBr, "_%s", m_vNm_compIRADcyBr[i].c_str());
+                      // else strcpy(nmIRADcyBr, m_vNm_compIRADcyBr[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmIRADcyBr".
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier1, "iCc%s", nmCompIRADcyBr);
-                          sprintf(specifier2, "iCc%s/I", nmCompIRADcyBr);
+                          sprintf(specifier1, "iCc%s", nmIRADcyBr);
+                          sprintf(specifier2, "iCc%s/I", nmIRADcyBr);
                           tr->Branch(specifier1, &iCcIRADcyBr[i], specifier2);
                           iCcIRADcyBr[i]=m_vCompICcIRADcyBr[i];
                           if(iCcIRADcyBr[i]==0)
                             {
-                              sprintf(specifier1, "n%s", nmCompIRADcyBr);
-                              sprintf(specifier2, "n%s/I", nmCompIRADcyBr);
+                              sprintf(specifier1, "n%s", nmIRADcyBr);
+                              sprintf(specifier2, "n%s/I", nmIRADcyBr);
                               tr->Branch(specifier1, &nIRADcyBr[i], specifier2);
-                              sprintf(specifier1, "iDcyBr%s", nmCompIRADcyBr);
-                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompIRADcyBr, nmCompIRADcyBr);
+                              sprintf(specifier1, "iDcyBr%s", nmIRADcyBr);
+                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmIRADcyBr, nmIRADcyBr);
                               tr->Branch(specifier1, &iDcyBrIRADcyBr[i], specifier2);
-                              sprintf(specifier1, "iCcDcyBr%s", nmCompIRADcyBr);
-                              sprintf(specifier2, "iCcDcyBr%s[n%s]/I", nmCompIRADcyBr, nmCompIRADcyBr);
+                              sprintf(specifier1, "iCcDcyBr%s", nmIRADcyBr);
+                              sprintf(specifier2, "iCcDcyBr%s[n%s]/I", nmIRADcyBr, nmIRADcyBr);
                               tr->Branch(specifier1, &iCcDcyBrIRADcyBr[i], specifier2);                  
                             }
                           else
                             {
-                              sprintf(specifier1, "n%s", nmCompIRADcyBr);
-                              sprintf(specifier2, "n%s/I", nmCompIRADcyBr);
+                              sprintf(specifier1, "n%s", nmIRADcyBr);
+                              sprintf(specifier2, "n%s/I", nmIRADcyBr);
                               tr->Branch(specifier1, &nIRADcyBr[i], specifier2);
-                              sprintf(specifier1, "iDcyBr%s", nmCompIRADcyBr);
-                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompIRADcyBr, nmCompIRADcyBr);
+                              sprintf(specifier1, "iDcyBr%s", nmIRADcyBr);
+                              sprintf(specifier2, "iDcyBr%s[n%s]/I", nmIRADcyBr, nmIRADcyBr);
                               tr->Branch(specifier1, &iDcyBrIRADcyBr[i], specifier2);
-                              sprintf(specifier1, "nCc%s", nmCompIRADcyBr);
-                              sprintf(specifier2, "nCc%s/I", nmCompIRADcyBr);
+                              sprintf(specifier1, "nCc%s", nmIRADcyBr);
+                              sprintf(specifier2, "nCc%s/I", nmIRADcyBr);
                               tr->Branch(specifier1, &nCcIRADcyBr[i], specifier2);
-                              sprintf(specifier1, "iDcyBrCc%s", nmCompIRADcyBr);
-                              sprintf(specifier2, "iDcyBrCc%s[nCc%s]/I", nmCompIRADcyBr, nmCompIRADcyBr);
+                              sprintf(specifier1, "iDcyBrCc%s", nmIRADcyBr);
+                              sprintf(specifier2, "iDcyBrCc%s[nCc%s]/I", nmIRADcyBr, nmIRADcyBr);
                               tr->Branch(specifier1, &iDcyBrCcIRADcyBr[i], specifier2);              
-                              sprintf(specifier1, "nTot%s", nmCompIRADcyBr);
-                              sprintf(specifier2, "nTot%s/I", nmCompIRADcyBr);
+                              sprintf(specifier1, "nTot%s", nmIRADcyBr);
+                              sprintf(specifier2, "nTot%s/I", nmIRADcyBr);
                               tr->Branch(specifier1, &nTotIRADcyBr[i], specifier2);
                             }
                         }
                       else
                         {
-                          sprintf(specifier1, "n%s", nmCompIRADcyBr);
-                          sprintf(specifier2, "n%s/I", nmCompIRADcyBr);
+                          sprintf(specifier1, "n%s", nmIRADcyBr);
+                          sprintf(specifier2, "n%s/I", nmIRADcyBr);
                           tr->Branch(specifier1, &nIRADcyBr[i], specifier2);
-                          sprintf(specifier1, "iDcyBr%s", nmCompIRADcyBr);
-                          sprintf(specifier2, "iDcyBr%s[n%s]/I", nmCompIRADcyBr, nmCompIRADcyBr);
+                          sprintf(specifier1, "iDcyBr%s", nmIRADcyBr);
+                          sprintf(specifier2, "iDcyBr%s[n%s]/I", nmIRADcyBr, nmIRADcyBr);
                           tr->Branch(specifier1, &iDcyBrIRADcyBr[i], specifier2);
                         }
                     }
@@ -370,20 +511,20 @@ void topoana::getRslt()
                       char specifier[30];
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier, "iCcSigP[%d]/I", int(sSigP));
-                          tr->Branch("iCcSigP", &iCcSigP, specifier);
+                          sprintf(specifier, "iCc_SigP[%d]/I", int(sSigP));
+                          tr->Branch("iCc_SigP", &iCcSigP, specifier);
                           for(unsigned int i=0;i<sSigP;i++) iCcSigP[i]=m_vICcSigP[i];
-                          sprintf(specifier, "nSigP[%d]/I", int(sSigP));
-                          tr->Branch("nSigP", &nSigP, specifier);
-                          sprintf(specifier, "nCcSigP[%d]/I", int(sSigP));
-                          tr->Branch("nCcSigP", &nCcSigP, specifier);
-                          sprintf(specifier, "nTotSigP[%d]/I", int(sSigP));
-                          tr->Branch("nTotSigP", &nTotSigP, specifier);
+                          sprintf(specifier, "n_SigP[%d]/I", int(sSigP));
+                          tr->Branch("n_SigP", &nSigP, specifier);
+                          sprintf(specifier, "nCc_SigP[%d]/I", int(sSigP));
+                          tr->Branch("nCc_SigP", &nCcSigP, specifier);
+                          sprintf(specifier, "nTot_SigP[%d]/I", int(sSigP));
+                          tr->Branch("nTot_SigP", &nTotSigP, specifier);
                         }
                       else
                         {
-                          sprintf(specifier, "nSigP[%d]/I", int(sSigP));
-                          tr->Branch("nSigP", &nSigP, specifier);
+                          sprintf(specifier, "n_SigP[%d]/I", int(sSigP));
+                          tr->Branch("n_SigP", &nSigP, specifier);
                         }
                     }
                   else
@@ -392,7 +533,7 @@ void topoana::getRslt()
                       char specifier1[30],specifier2[30];
                       for(unsigned int i=0;i<m_vPid_sigP.size();i++)
                         {
-                          if(m_vNm_sigP[i].empty()) sprintf(nmSigP, "SigP%d", i);
+                          if(m_vNm_sigP[i].empty()) sprintf(nmSigP, "_SigP%d", i);
                           else sprintf(nmSigP, "_%s", m_vNm_sigP[i].c_str());
                           // else strcpy(nmSigP,m_vNm_sigP[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmSigP".
                           if(m_ccSwitch==true)
@@ -427,20 +568,20 @@ void topoana::getRslt()
                       char specifier[30];
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier, "iCcSigIncDcyBr[%d]/I", int(sSigIncDcyBr));
-                          tr->Branch("iCcSigIncDcyBr", &iCcSigIncDcyBr, specifier);
+                          sprintf(specifier, "iCc_SigIncDcyBr[%d]/I", int(sSigIncDcyBr));
+                          tr->Branch("iCc_SigIncDcyBr", &iCcSigIncDcyBr, specifier);
                           for(unsigned int i=0;i<sSigIncDcyBr;i++) iCcSigIncDcyBr[i]=m_vICcSigIncDcyBr[i];
-                          sprintf(specifier, "nSigIncDcyBr[%d]/I", int(sSigIncDcyBr));
-                          tr->Branch("nSigIncDcyBr", &nSigIncDcyBr, specifier);
-                          sprintf(specifier, "nCcSigIncDcyBr[%d]/I", int(sSigIncDcyBr));
-                          tr->Branch("nCcSigIncDcyBr", &nCcSigIncDcyBr, specifier);
-                          sprintf(specifier, "nTotSigIncDcyBr[%d]/I", int(sSigIncDcyBr));
-                          tr->Branch("nTotSigIncDcyBr", &nTotSigIncDcyBr, specifier);
+                          sprintf(specifier, "n_SigIncDcyBr[%d]/I", int(sSigIncDcyBr));
+                          tr->Branch("n_SigIncDcyBr", &nSigIncDcyBr, specifier);
+                          sprintf(specifier, "nCc_SigIncDcyBr[%d]/I", int(sSigIncDcyBr));
+                          tr->Branch("nCc_SigIncDcyBr", &nCcSigIncDcyBr, specifier);
+                          sprintf(specifier, "nTot_SigIncDcyBr[%d]/I", int(sSigIncDcyBr));
+                          tr->Branch("nTot_SigIncDcyBr", &nTotSigIncDcyBr, specifier);
                         }
                       else
                         {
-                          sprintf(specifier, "nSigIncDcyBr[%d]/I", int(sSigIncDcyBr));
-                          tr->Branch("nSigIncDcyBr", &nSigIncDcyBr, specifier);
+                          sprintf(specifier, "n_SigIncDcyBr[%d]/I", int(sSigIncDcyBr));
+                          tr->Branch("n_SigIncDcyBr", &nSigIncDcyBr, specifier);
                         }
                     }
                   else
@@ -450,7 +591,7 @@ void topoana::getRslt()
                       list<int>::iterator liit;
                       for(unsigned int i=0;i<m_vSigIncDcyBr.size();i++)
                         {
-                          if(m_vNm_sigIncDcyBr[i].empty()) sprintf(nmSigIncDcyBr, "SigIncDcyBr%d", i);
+                          if(m_vNm_sigIncDcyBr[i].empty()) sprintf(nmSigIncDcyBr, "_SigIncDcyBr%d", i);
                           else sprintf(nmSigIncDcyBr, "_%s", m_vNm_sigIncDcyBr[i].c_str());
                           // else strcpy(nmSigIncDcyBr,m_vNm_sigIncDcyBr[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmSigIncDcyBr".
                           if(m_ccSwitch==true)
@@ -485,20 +626,20 @@ void topoana::getRslt()
                       char specifier[30];
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier, "iCcSigDcyBr[%d]/I", int(sSigDcyBr));
-                          tr->Branch("iCcSigDcyBr", &iCcSigDcyBr, specifier);
+                          sprintf(specifier, "iCc_SigDcyBr[%d]/I", int(sSigDcyBr));
+                          tr->Branch("iCc_SigDcyBr", &iCcSigDcyBr, specifier);
                           for(unsigned int i=0;i<sSigDcyBr;i++) iCcSigDcyBr[i]=m_vICcSigDcyBr[i];
-                          sprintf(specifier, "nSigDcyBr[%d]/I", int(sSigDcyBr));
-                          tr->Branch("nSigDcyBr", &nSigDcyBr, specifier);
-                          sprintf(specifier, "nCcSigDcyBr[%d]/I", int(sSigDcyBr));
-                          tr->Branch("nCcSigDcyBr", &nCcSigDcyBr, specifier);
-                          sprintf(specifier, "nTotSigDcyBr[%d]/I", int(sSigDcyBr));
-                          tr->Branch("nTotSigDcyBr", &nTotSigDcyBr, specifier);
+                          sprintf(specifier, "n_SigDcyBr[%d]/I", int(sSigDcyBr));
+                          tr->Branch("n_SigDcyBr", &nSigDcyBr, specifier);
+                          sprintf(specifier, "nCc_SigDcyBr[%d]/I", int(sSigDcyBr));
+                          tr->Branch("nCc_SigDcyBr", &nCcSigDcyBr, specifier);
+                          sprintf(specifier, "nTot_SigDcyBr[%d]/I", int(sSigDcyBr));
+                          tr->Branch("nTot_SigDcyBr", &nTotSigDcyBr, specifier);
                         }
                       else
                         {
-                          sprintf(specifier, "nSigDcyBr[%d]/I", int(sSigDcyBr));
-                          tr->Branch("nSigDcyBr", &nSigDcyBr, specifier);
+                          sprintf(specifier, "n_SigDcyBr[%d]/I", int(sSigDcyBr));
+                          tr->Branch("n_SigDcyBr", &nSigDcyBr, specifier);
                         }
                     }
                   else
@@ -508,7 +649,7 @@ void topoana::getRslt()
                       list<int>::iterator liit;
                       for(unsigned int i=0;i<m_vSigDcyBr.size();i++)
                         {
-                          if(m_vNm_sigDcyBr[i].empty()) sprintf(nmSigDcyBr, "SigDcyBr%d", i);
+                          if(m_vNm_sigDcyBr[i].empty()) sprintf(nmSigDcyBr, "_SigDcyBr%d", i);
                           else sprintf(nmSigDcyBr, "_%s", m_vNm_sigDcyBr[i].c_str());
                           // else strcpy(nmSigDcyBr,m_vNm_sigDcyBr[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmSigDcyBr".
                           if(m_ccSwitch==true)
@@ -543,20 +684,20 @@ void topoana::getRslt()
                       char specifier[30];
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier, "iCcSigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
-                          tr->Branch("iCcSigCascDcyBrs", &iCcSigCascDcyBrs, specifier);
+                          sprintf(specifier, "iCc_SigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
+                          tr->Branch("iCc_SigCascDcyBrs", &iCcSigCascDcyBrs, specifier);
                           for(unsigned int i=0;i<sSigCascDcyBrs;i++) iCcSigCascDcyBrs[i]=m_vICcSigCascDcyBrs[i];
-                          sprintf(specifier, "nSigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
-                          tr->Branch("nSigCascDcyBrs", &nSigCascDcyBrs, specifier);
-                          sprintf(specifier, "nCcSigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
-                          tr->Branch("nCcSigCascDcyBrs", &nCcSigCascDcyBrs, specifier);
-                          sprintf(specifier, "nTotSigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
-                          tr->Branch("nTotSigCascDcyBrs", &nTotSigCascDcyBrs, specifier);
+                          sprintf(specifier, "n_SigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
+                          tr->Branch("n_SigCascDcyBrs", &nSigCascDcyBrs, specifier);
+                          sprintf(specifier, "nCc_SigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
+                          tr->Branch("nCc_SigCascDcyBrs", &nCcSigCascDcyBrs, specifier);
+                          sprintf(specifier, "nTot_SigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
+                          tr->Branch("nTot_SigCascDcyBrs", &nTotSigCascDcyBrs, specifier);
                         }
                       else
                         {
-                          sprintf(specifier, "nSigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
-                          tr->Branch("nSigCascDcyBrs", &nSigCascDcyBrs, specifier);
+                          sprintf(specifier, "n_SigCascDcyBrs[%d]/I", int(sSigCascDcyBrs));
+                          tr->Branch("n_SigCascDcyBrs", &nSigCascDcyBrs, specifier);
                         }
                     }
                   else
@@ -565,7 +706,7 @@ void topoana::getRslt()
                       char specifier1[30], specifier2[30];
                       for(unsigned int i=0;i<m_vSigCascDcyBrs.size();i++)
                         {
-                          if(m_vNm_sigCascDcyBrs[i].empty()) sprintf(nmSigCascDcyBrs, "SigCascDcyBrs%d", i);
+                          if(m_vNm_sigCascDcyBrs[i].empty()) sprintf(nmSigCascDcyBrs, "_SigCascDcyBrs%d", i);
                           else sprintf(nmSigCascDcyBrs, "_%s", m_vNm_sigCascDcyBrs[i].c_str());
                           // else strcpy(nmSigCascDcyBrs,m_vNm_sigCascDcyBrs[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmSigCascDcyBrs".
                           if(m_ccSwitch==true)
@@ -600,20 +741,20 @@ void topoana::getRslt()
                       char specifier[30];
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier, "iCcSigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
-                          tr->Branch("iCcSigIncCascDcyBrs", &iCcSigIncCascDcyBrs, specifier);
+                          sprintf(specifier, "iCc_SigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
+                          tr->Branch("iCc_SigIncCascDcyBrs", &iCcSigIncCascDcyBrs, specifier);
                           for(unsigned int i=0;i<sSigIncCascDcyBrs;i++) iCcSigIncCascDcyBrs[i]=m_vICcSigIncCascDcyBrs[i];
-                          sprintf(specifier, "nSigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
-                          tr->Branch("nSigIncCascDcyBrs", &nSigIncCascDcyBrs, specifier);
-                          sprintf(specifier, "nCcSigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
-                          tr->Branch("nCcSigIncCascDcyBrs", &nCcSigIncCascDcyBrs, specifier);
-                          sprintf(specifier, "nTotSigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
-                          tr->Branch("nTotSigIncCascDcyBrs", &nTotSigIncCascDcyBrs, specifier);
+                          sprintf(specifier, "n_SigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
+                          tr->Branch("n_SigIncCascDcyBrs", &nSigIncCascDcyBrs, specifier);
+                          sprintf(specifier, "nCc_SigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
+                          tr->Branch("nCc_SigIncCascDcyBrs", &nCcSigIncCascDcyBrs, specifier);
+                          sprintf(specifier, "nTot_SigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
+                          tr->Branch("nTot_SigIncCascDcyBrs", &nTotSigIncCascDcyBrs, specifier);
                         }
                       else
                         {
-                          sprintf(specifier, "nSigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
-                          tr->Branch("nSigIncCascDcyBrs", &nSigIncCascDcyBrs, specifier);
+                          sprintf(specifier, "n_SigIncCascDcyBrs[%d]/I", int(sSigIncCascDcyBrs));
+                          tr->Branch("n_SigIncCascDcyBrs", &nSigIncCascDcyBrs, specifier);
                         }
                     }
                   else
@@ -622,7 +763,7 @@ void topoana::getRslt()
                       char specifier1[30], specifier2[30];
                       for(unsigned int i=0;i<m_vSigIncCascDcyBrs.size();i++)
                         {          
-                          if(m_vNm_sigIncCascDcyBrs[i].empty()) sprintf(nmSigIncCascDcyBrs, "SigIncCascDcyBrs%d", i);
+                          if(m_vNm_sigIncCascDcyBrs[i].empty()) sprintf(nmSigIncCascDcyBrs, "_SigIncCascDcyBrs%d", i);
                           else sprintf(nmSigIncCascDcyBrs, "_%s", m_vNm_sigIncCascDcyBrs[i].c_str());
                           // else strcpy(nmSigIncCascDcyBrs,m_vNm_sigIncCascDcyBrs[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmSigIncCascDcyBrs".
                           if(m_ccSwitch==true)
@@ -657,20 +798,20 @@ void topoana::getRslt()
                       char specifier[30];
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier, "iCcSigIRADcyBr[%d]/I", int(sSigIRADcyBr));
-                          tr->Branch("iCcSigIRADcyBr", &iCcSigIRADcyBr, specifier);
+                          sprintf(specifier, "iCc_SigIRADcyBr[%d]/I", int(sSigIRADcyBr));
+                          tr->Branch("iCc_SigIRADcyBr", &iCcSigIRADcyBr, specifier);
                           for(unsigned int i=0;i<sSigIRADcyBr;i++) iCcSigIRADcyBr[i]=m_vICcSigIRADcyBr[i];
-                          sprintf(specifier, "nSigIRADcyBr[%d]/I", int(sSigIRADcyBr));
-                          tr->Branch("nSigIRADcyBr", &nSigIRADcyBr, specifier);
-                          sprintf(specifier, "nCcSigIRADcyBr[%d]/I", int(sSigIRADcyBr));
-                          tr->Branch("nCcSigIRADcyBr", &nCcSigIRADcyBr, specifier);
-                          sprintf(specifier, "nTotSigIRADcyBr[%d]/I", int(sSigIRADcyBr));
-                          tr->Branch("nTotSigIRADcyBr", &nTotSigIRADcyBr, specifier);
+                          sprintf(specifier, "n_SigIRADcyBr[%d]/I", int(sSigIRADcyBr));
+                          tr->Branch("n_SigIRADcyBr", &nSigIRADcyBr, specifier);
+                          sprintf(specifier, "nCc_SigIRADcyBr[%d]/I", int(sSigIRADcyBr));
+                          tr->Branch("nCc_SigIRADcyBr", &nCcSigIRADcyBr, specifier);
+                          sprintf(specifier, "nTot_SigIRADcyBr[%d]/I", int(sSigIRADcyBr));
+                          tr->Branch("nTot_SigIRADcyBr", &nTotSigIRADcyBr, specifier);
                         }
                       else
                         {
-                          sprintf(specifier, "nSigIRADcyBr[%d]/I", int(sSigIRADcyBr));
-                          tr->Branch("nSigIRADcyBr", &nSigIRADcyBr, specifier);
+                          sprintf(specifier, "n_SigIRADcyBr[%d]/I", int(sSigIRADcyBr));
+                          tr->Branch("n_SigIRADcyBr", &nSigIRADcyBr, specifier);
                         }
                     }
                   else
@@ -679,7 +820,7 @@ void topoana::getRslt()
                       char specifier1[30], specifier2[30];
                       for(unsigned int i=0;i<m_vSigIRADcyBr.size();i++)
                         {
-                          if(m_vNm_sigIRADcyBr[i].empty()) sprintf(nmSigIRADcyBr, "SigIRADcyBr%d", i);
+                          if(m_vNm_sigIRADcyBr[i].empty()) sprintf(nmSigIRADcyBr, "_SigIRADcyBr%d", i);
                           else sprintf(nmSigIRADcyBr, "_%s", m_vNm_sigIRADcyBr[i].c_str());
                           // else strcpy(nmSigIRADcyBr,m_vNm_sigIRADcyBr[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmSigIRADcyBr".
                           if(m_ccSwitch==true)
@@ -714,20 +855,20 @@ void topoana::getRslt()
                       char specifier[50];
                       if(m_ccSwitch==true)
                         {
-                          sprintf(specifier, "iCcSigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
-                          tr->Branch("iCcSigIncOrIRACascDcyBrs", &iCcSigIncOrIRACascDcyBrs, specifier);
+                          sprintf(specifier, "iCc_SigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
+                          tr->Branch("iCc_SigIncOrIRACascDcyBrs", &iCcSigIncOrIRACascDcyBrs, specifier);
                           for(unsigned int i=0;i<sSigIncOrIRACascDcyBrs;i++) iCcSigIncOrIRACascDcyBrs[i]=m_vICcSigIncOrIRACascDcyBrs[i];
-                          sprintf(specifier, "nSigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
-                          tr->Branch("nSigIncOrIRACascDcyBrs", &nSigIncOrIRACascDcyBrs, specifier);
-                          sprintf(specifier, "nCcSigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
-                          tr->Branch("nCcSigIncOrIRACascDcyBrs", &nCcSigIncOrIRACascDcyBrs, specifier);
-                          sprintf(specifier, "nTotSigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
-                          tr->Branch("nTotSigIncOrIRACascDcyBrs", &nTotSigIncOrIRACascDcyBrs, specifier);
+                          sprintf(specifier, "n_SigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
+                          tr->Branch("n_SigIncOrIRACascDcyBrs", &nSigIncOrIRACascDcyBrs, specifier);
+                          sprintf(specifier, "nCc_SigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
+                          tr->Branch("nCc_SigIncOrIRACascDcyBrs", &nCcSigIncOrIRACascDcyBrs, specifier);
+                          sprintf(specifier, "nTot_SigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
+                          tr->Branch("nTot_SigIncOrIRACascDcyBrs", &nTotSigIncOrIRACascDcyBrs, specifier);
                         }
                       else
                         {
-                          sprintf(specifier, "nSigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
-                          tr->Branch("nSigIncOrIRACascDcyBrs", &nSigIncOrIRACascDcyBrs, specifier);
+                          sprintf(specifier, "n_SigIncOrIRACascDcyBrs[%d]/I", int(sSigIncOrIRACascDcyBrs));
+                          tr->Branch("n_SigIncOrIRACascDcyBrs", &nSigIncOrIRACascDcyBrs, specifier);
                         }
                     }
                   else
@@ -736,7 +877,7 @@ void topoana::getRslt()
                       char specifier1[50], specifier2[50];
                       for(unsigned int i=0;i<m_vSigIncOrIRACascDcyBrs.size();i++)
                         {
-                          if(m_vNm_sigIncOrIRACascDcyBrs[i].empty()) sprintf(nmSigIncOrIRACascDcyBrs, "SigIncOrIRACascDcyBrs%d", i);
+                          if(m_vNm_sigIncOrIRACascDcyBrs[i].empty()) sprintf(nmSigIncOrIRACascDcyBrs, "_SigIncOrIRACascDcyBrs%d", i);
                           else sprintf(nmSigIncOrIRACascDcyBrs, "_%s", m_vNm_sigIncOrIRACascDcyBrs[i].c_str());
                           // else strcpy(nmSigIncOrIRACascDcyBrs,m_vNm_sigIncOrIRACascDcyBrs[i].c_str()); // The statement is used for assign a value without the underscore "_" to the variable "nmSigIncOrIRACascDcyBrs".
                           if(m_ccSwitch==true)
@@ -1152,26 +1293,26 @@ void topoana::getRslt()
                 }
             }
 
-          if(m_vPid_compP.size()>0)
+          if(m_vPid_compDcyBrP.size()>0)
             {
               // Pay attention to that dcyBrCcP equate to ccDcyBrP for self-charge-conjugate particles.
               list<int> dcyBrP, dcyBrCcP;
               dcyBrP.clear(); dcyBrCcP.clear();
-              for(unsigned int j=0;j<m_vPid_compP.size();j++)
+              for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++)
                 {
-                  nP[j]=0;
-                  if(m_ccSwitch==true&&m_vICcCompP[j]!=0)
+                  nP_DcyBr[j]=0;
+                  if(m_ccSwitch==true&&m_vICcCompDcyBrP[j]!=0)
                     {
-                      nCcP[j]=0;
-                      nTotP[j]=0;
+                      nCcP_DcyBr[j]=0;
+                      nTotP_DcyBr[j]=0;
                     }
                 }     
               for(unsigned int j=0;j<dcyTr.size();j++)
                 {
                   list<int>::iterator liit=dcyTr[j].begin();
-                  for(unsigned int k=0;k<m_vPid_compP.size();k++)
+                  for(unsigned int k=0;k<m_vPid_compDcyBrP.size();k++)
                     {
-                      if((*liit)==m_vPid_compP[k])
+                      if((*liit)==m_vPid_compDcyBrP[k])
                         {
                           dcyBrP=dcyTr[j];
                           int _iDcyBrP=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the particle is a new decay branch of the particle.
@@ -1181,10 +1322,10 @@ void topoana::getRslt()
                               if(dcyBrP==m_vVDcyBrP[k][l])
                                 {
                                   _iDcyBrP=l;
-                                  if(m_ccSwitch==true&&m_vICcCompP[k]==0) _iCcDcyBrP=m_vVIDcyBrCcP[k][l];
+                                  if(m_ccSwitch==true&&m_vICcCompDcyBrP[k]==0) _iCcDcyBrP=m_vVIDcyBrCcP[k][l];
                                   break;
                                 }
-                              else if(m_ccSwitch==true&&m_vICcCompP[k]==0&&m_vVIDcyBrCcP[k][l]!=0&&dcyBrP==m_vVDcyBrCcP[k][l])
+                              else if(m_ccSwitch==true&&m_vICcCompDcyBrP[k]==0&&m_vVIDcyBrCcP[k][l]!=0&&dcyBrP==m_vVDcyBrCcP[k][l])
                                 {
                                   _iDcyBrP=l;
                                   _iCcDcyBrP=-1;
@@ -1194,7 +1335,7 @@ void topoana::getRslt()
                           if(_iDcyBrP==-1)
                             {
                               _iDcyBrP=m_vVDcyBrP[k].size();
-                              iDcyBrP[k][(unsigned int) (nP[k])]=_iDcyBrP;
+                              iDcyBrP[k][(unsigned int) (nP_DcyBr[k])]=_iDcyBrP;
                               m_vVDcyBrP[k].push_back(dcyBrP);
                               m_vVIDcyBrP[k].push_back(_iDcyBrP);
                               m_vVNDcyBrP[k].push_back(1);
@@ -1205,7 +1346,7 @@ void topoana::getRslt()
                                   for(liit++;liit!=dcyBrP.end();liit++) dcyBrCcP.push_back(getCcPid((*liit)));
                                   sortByPidAndPchrg(dcyBrCcP); 
                                   liit=dcyBrP.begin();
-                                  if(m_vICcCompP[k]!=0)
+                                  if(m_vICcCompDcyBrP[k]!=0)
                                     {
                                       dcyBrCcP.push_front(getCcPid((*liit))); // Here, (*liit) is not equal to getCcPid((*liit)).
                                       m_vVDcyBrCcP[k].push_back(dcyBrCcP);
@@ -1217,7 +1358,7 @@ void topoana::getRslt()
                                       dcyBrCcP.push_front((*liit)); // Here, (*liit) is equal to getCcPid((*liit)).
                                       if(dcyBrCcP==dcyBrP) _iCcDcyBrP=0;
                                       else _iCcDcyBrP=1;
-                                      iCcDcyBrP[k][(unsigned int) (nP[k])]=_iCcDcyBrP;
+                                      iCcDcyBrP[k][(unsigned int) (nP_DcyBr[k])]=_iCcDcyBrP;
                                       m_vVDcyBrCcP[k].push_back(dcyBrCcP);
                                       m_vVIDcyBrCcP[k].push_back(_iCcDcyBrP);
                                       m_vVNDcyBrCcP[k].push_back(0);
@@ -1226,10 +1367,10 @@ void topoana::getRslt()
                             }
                           else
                             {
-                              iDcyBrP[k][(unsigned int) (nP[k])]=_iDcyBrP;
-                              if(m_ccSwitch==true&&m_vICcCompP[k]==0)
+                              iDcyBrP[k][(unsigned int) (nP_DcyBr[k])]=_iDcyBrP;
+                              if(m_ccSwitch==true&&m_vICcCompDcyBrP[k]==0)
                                 {
-                                  iCcDcyBrP[k][(unsigned int) (nP[k])]=_iCcDcyBrP;
+                                  iCcDcyBrP[k][(unsigned int) (nP_DcyBr[k])]=_iCcDcyBrP;
                                   if(_iCcDcyBrP==-1) m_vVNDcyBrCcP[k][_iDcyBrP]++;
                                   else m_vVNDcyBrP[k][_iDcyBrP]++;
                                 }
@@ -1238,10 +1379,10 @@ void topoana::getRslt()
                                   m_vVNDcyBrP[k][_iDcyBrP]++;
                                 }
                             }
-                          nP[k]++;
+                          nP_DcyBr[k]++;
                           break;
-                        } // Here, "&&m_vICcCompP[k]!=0" in the following condition can be removed.
-                      else if(m_ccSwitch==true&&m_vICcCompP[k]!=0&&(*liit)==m_vPid_ccCompP[k])
+                        } // Here, "&&m_vICcCompDcyBrP[k]!=0" in the following condition can be removed.
+                      else if(m_ccSwitch==true&&m_vICcCompDcyBrP[k]!=0&&(*liit)==m_vPid_ccCompDcyBrP[k])
                         {
                           dcyBrCcP=dcyTr[j];
                           int _iDcyBrP=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the particle is a new decay branch of the particle.
@@ -1256,7 +1397,7 @@ void topoana::getRslt()
                           if(_iDcyBrP==-1)
                             {
                               _iDcyBrP=m_vVDcyBrP[k].size();
-                              iDcyBrCcP[k][(unsigned int) (nCcP[k])]=_iDcyBrP;
+                              iDcyBrCcP[k][(unsigned int) (nCcP_DcyBr[k])]=_iDcyBrP;
                               m_vVDcyBrCcP[k].push_back(dcyBrCcP);
                               m_vVIDcyBrCcP[k].push_back(_iDcyBrP);
                               m_vVNDcyBrCcP[k].push_back(1);
@@ -1273,17 +1414,284 @@ void topoana::getRslt()
                             }
                           else
                             {
-                              iDcyBrCcP[k][(unsigned int) (nCcP[k])]=_iDcyBrP;
+                              iDcyBrCcP[k][(unsigned int) (nCcP_DcyBr[k])]=_iDcyBrP;
                               m_vVNDcyBrCcP[k][_iDcyBrP]++;
                             }
-                          nCcP[k]++;
+                          nCcP_DcyBr[k]++;
                           break;                                    
                         }
                     }
                 }
-              if(m_ccSwitch==true) for(unsigned int j=0;j<m_vPid_compP.size();j++) if(m_vICcCompP[j]!=0) nTotP[j]=nP[j]+nCcP[j];
+              if(m_ccSwitch==true) for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++) if(m_vICcCompDcyBrP[j]!=0) nTotP_DcyBr[j]=nP_DcyBr[j]+nCcP_DcyBr[j];
             }
+          if(m_vPid_compProdBrP.size()>0)
+            {
+              // Pay attention to that prodBrCcP equate to ccProdBrP for self-charge-conjugate particles.
+              list<int> prodBrP, prodBrCcP;
+              prodBrP.clear(); prodBrCcP.clear();
+              for(unsigned int j=0;j<m_vPid_compProdBrP.size();j++)
+                {
+                  nP_ProdBr[j]=0;
+                  if(m_ccSwitch==true&&m_vICcCompProdBrP[j]!=0)
+                    {
+                      nCcP_ProdBr[j]=0;
+                      nTotP_ProdBr[j]=0;
+                    }
+                }     
+              for(unsigned int j=1;j<dcyTr.size();j++)
+                {
+                  list<int>::iterator liit=dcyTr[j].begin();
+                  for(unsigned int k=0;k<m_vPid_compProdBrP.size();k++)
+                    {
+                      if((*liit)==m_vPid_compProdBrP[k])
+                        {
+                          unsigned int mj;
+                          for(unsigned int l=0;l<vIdxOfHead.size();l++)
+                            {
+                              if(vIdxOfHead[l]==vMidxOfHead[j])
+                                {
+                                  mj=l;
+                                  break;
+                                }
+                            }
+                          prodBrP=dcyTr[mj];
+                          int _iProdBrP=-1; // If the variable is still equal to -1 after the following loop, then the production branch of the particle is a new production branch of the particle.
+                          int _iCcProdBrP=-9999;
+                          for(unsigned int l=0;l<m_vVProdBrP[k].size();l++)
+                            {
+                              if(prodBrP==m_vVProdBrP[k][l])
+                                {
+                                  _iProdBrP=l;
+                                  if(m_ccSwitch==true&&m_vICcCompProdBrP[k]==0) _iCcProdBrP=m_vVIProdBrCcP[k][l];
+                                  break;
+                                }
+                              else if(m_ccSwitch==true&&m_vICcCompProdBrP[k]==0&&m_vVIProdBrCcP[k][l]!=0&&prodBrP==m_vVProdBrCcP[k][l])
+                                {
+                                  _iProdBrP=l;
+                                  _iCcProdBrP=-1;
+                                  break;
+                                }
+                            }
+                          if(_iProdBrP==-1)
+                            {
+                              _iProdBrP=m_vVProdBrP[k].size();
+                              iProdBrP[k][(unsigned int) (nP_ProdBr[k])]=_iProdBrP;
+                              m_vVProdBrP[k].push_back(prodBrP);
+                              m_vVIProdBrP[k].push_back(_iProdBrP);
+                              m_vVNProdBrP[k].push_back(1);
+                              if(m_ccSwitch==true)
+                                {
+                                  prodBrCcP.clear();
+                                  list<int>::iterator liit=prodBrP.begin();
+                                  for(liit++;liit!=prodBrP.end();liit++) prodBrCcP.push_back(getCcPid((*liit)));
+                                  sortByPidAndPchrg(prodBrCcP); 
+                                  liit=prodBrP.begin();
+                                  if(m_vICcCompProdBrP[k]!=0)
+                                    {
+                                      prodBrCcP.push_front(getCcPid((*liit))); // Here, (*liit) is not equal to getCcPid((*liit)).
+                                      m_vVProdBrCcP[k].push_back(prodBrCcP);
+                                      m_vVIProdBrCcP[k].push_back(_iProdBrP);
+                                      m_vVNProdBrCcP[k].push_back(0);
+                                    }    
+                                  else
+                                    {
+                                      prodBrCcP.push_front((*liit)); // Here, (*liit) is equal to getCcPid((*liit)).
+                                      if(prodBrCcP==prodBrP) _iCcProdBrP=0;
+                                      else _iCcProdBrP=1;
+                                      iCcProdBrP[k][(unsigned int) (nP_ProdBr[k])]=_iCcProdBrP;
+                                      m_vVProdBrCcP[k].push_back(prodBrCcP);
+                                      m_vVIProdBrCcP[k].push_back(_iCcProdBrP);
+                                      m_vVNProdBrCcP[k].push_back(0);
+                                    }
+                                }
+                            }
+                          else
+                            {
+                              iProdBrP[k][(unsigned int) (nP_ProdBr[k])]=_iProdBrP;
+                              if(m_ccSwitch==true&&m_vICcCompProdBrP[k]==0)
+                                {
+                                  iCcProdBrP[k][(unsigned int) (nP_ProdBr[k])]=_iCcProdBrP;
+                                  if(_iCcProdBrP==-1) m_vVNProdBrCcP[k][_iProdBrP]++;
+                                  else m_vVNProdBrP[k][_iProdBrP]++;
+                                }
+                              else
+                                {
+                                  m_vVNProdBrP[k][_iProdBrP]++;
+                                }
+                            }
+                          nP_ProdBr[k]++;
+                          break;
+                        } // Here, "&&m_vICcCompProdBrP[k]!=0" in the following condition can be removed.
+                      else if(m_ccSwitch==true&&m_vICcCompProdBrP[k]!=0&&(*liit)==m_vPid_ccCompProdBrP[k])
+                        {
+                          unsigned int mj;
+                          for(unsigned int l=0;l<vIdxOfHead.size();l++)
+                            {
+                              if(vIdxOfHead[l]==vMidxOfHead[j])
+                                {
+                                  mj=l;
+                                  break;
+                                }
+                            }
+                          prodBrCcP=dcyTr[mj];
+                          int _iProdBrP=-1; // If the variable is still equal to -1 after the following loop, then the production branch of the particle is a new production branch of the particle.
+                          for(unsigned int l=0;l<m_vVProdBrCcP[k].size();l++)
+                            {
+                              if(prodBrCcP==m_vVProdBrCcP[k][l])
+                                {
+                                  _iProdBrP=l;
+                                  break;
+                                }
+                            }
+                          if(_iProdBrP==-1)
+                            {
+                              _iProdBrP=m_vVProdBrP[k].size();
+                              iProdBrCcP[k][(unsigned int) (nCcP_ProdBr[k])]=_iProdBrP;
+                              m_vVProdBrCcP[k].push_back(prodBrCcP);
+                              m_vVIProdBrCcP[k].push_back(_iProdBrP);
+                              m_vVNProdBrCcP[k].push_back(1);
 
+                              prodBrP.clear();
+                              list<int>::iterator liit=prodBrCcP.begin();
+                              for(liit++;liit!=prodBrCcP.end();liit++) prodBrP.push_back(getCcPid((*liit)));
+                              sortByPidAndPchrg(prodBrP);
+                              liit=prodBrCcP.begin();
+                              prodBrP.push_front(getCcPid((*liit))); // Here, (*liit) is not equal to getCcPid((*liit)).
+                              m_vVProdBrP[k].push_back(prodBrP);
+                              m_vVIProdBrP[k].push_back(_iProdBrP);
+                              m_vVNProdBrP[k].push_back(0);
+                            }
+                          else
+                            {
+                              iProdBrCcP[k][(unsigned int) (nCcP_ProdBr[k])]=_iProdBrP;
+                              m_vVNProdBrCcP[k][_iProdBrP]++;
+                            }
+                          nCcP_ProdBr[k]++;
+                          break;                                    
+                        }
+                    }
+                }
+              if(m_ccSwitch==true) for(unsigned int j=0;j<m_vPid_compProdBrP.size();j++) if(m_vICcCompProdBrP[j]!=0) nTotP_ProdBr[j]=nP_ProdBr[j]+nCcP_ProdBr[j];
+            }
+          if(m_vPid_compMP.size()>0)
+            {
+              int mpid,mpidCcP;
+              for(unsigned int j=0;j<m_vPid_compMP.size();j++)
+                {
+                  nP_M[j]=0;
+                  if(m_ccSwitch==true&&m_vICcCompMP[j]!=0)
+                    {
+                      nCcP_M[j]=0;
+                      nTotP_M[j]=0;
+                    }
+                }     
+              for(unsigned int j=1;j<dcyTr.size();j++)
+                {
+                  list<int>::iterator liit=dcyTr[j].begin();
+                  for(unsigned int k=0;k<m_vPid_compMP.size();k++)
+                    {
+                      if((*liit)==m_vPid_compMP[k])
+                        {
+                          mpid=vPid[vMidxOfHead[j]];
+                          int _iMP=-1; // If the variable is still equal to -1 after the following loop, then the mother of the particle is a new mother of the particle.
+                          int _iCcMP=-9999;
+                          for(unsigned int l=0;l<m_vVMpidP[k].size();l++)
+                            {
+                              if(mpid==m_vVMpidP[k][l])
+                                {
+                                  _iMP=l;
+                                  if(m_ccSwitch==true&&m_vICcCompMP[k]==0) _iCcMP=m_vVIMCcP[k][l];
+                                  break;
+                                }
+                              else if(m_ccSwitch==true&&m_vICcCompMP[k]==0&&m_vVIMCcP[k][l]!=0&&mpid==m_vVMpidCcP[k][l])
+                                {
+                                  _iMP=l;
+                                  _iCcMP=-1;
+                                  break;
+                                }
+                            }
+                          if(_iMP==-1)
+                            {
+                              _iMP=m_vVMpidP[k].size();
+                              MpidP[k][(unsigned int) (nP_M[k])]=mpid;
+                              m_vVMpidP[k].push_back(mpid);
+                              m_vVIMP[k].push_back(_iMP);
+                              m_vVNMP[k].push_back(1);
+                              if(m_ccSwitch==true)
+                                {
+                                  mpidCcP=getCcPid(mpid);
+                                  if(m_vICcCompMP[k]!=0)
+                                    {
+                                      m_vVMpidCcP[k].push_back(mpidCcP);
+                                      m_vVIMCcP[k].push_back(_iMP);
+                                      m_vVNMCcP[k].push_back(0);
+                                    }    
+                                  else
+                                    {
+                                      if(mpidCcP==mpid) _iCcMP=0;
+                                      else _iCcMP=1;
+                                      iCcMP[k][(unsigned int) (nP_M[k])]=_iCcMP;
+                                      m_vVMpidCcP[k].push_back(mpidCcP);
+                                      m_vVIMCcP[k].push_back(_iCcMP);
+                                      m_vVNMCcP[k].push_back(0);
+                                    }
+                                }
+                            }
+                          else
+                            {
+                              MpidP[k][(unsigned int) (nP_M[k])]=mpid;
+                              if(m_ccSwitch==true&&m_vICcCompMP[k]==0)
+                                {
+                                  iCcMP[k][(unsigned int) (nP_M[k])]=_iCcMP;
+                                  if(_iCcMP==-1) m_vVNMCcP[k][_iMP]++;
+                                  else m_vVNMP[k][_iMP]++;
+                                }
+                              else
+                                {
+                                  m_vVNMP[k][_iMP]++;
+                                }
+                            }
+                          nP_M[k]++;
+                          break;
+                        } // Here, "&&m_vICcCompMP[k]!=0" in the following condition can be removed.
+                      else if(m_ccSwitch==true&&m_vICcCompMP[k]!=0&&(*liit)==m_vPid_ccCompMP[k])
+                        {
+                          mpidCcP=vPid[vMidxOfHead[j]];
+                          int _iMP=-1; // If the variable is still equal to -1 after the following loop, then the mother of the particle is a new mother of the particle.
+                          for(unsigned int l=0;l<m_vVMpidCcP[k].size();l++)
+                            {
+                              if(mpidCcP==m_vVMpidCcP[k][l])
+                                {
+                                  _iMP=l;
+                                  break;
+                                }
+                            }
+                          if(_iMP==-1)
+                            {
+                              _iMP=m_vVMpidP[k].size();
+                              MpidCcP[k][(unsigned int) (nCcP_M[k])]=mpidCcP;
+                              m_vVMpidCcP[k].push_back(mpidCcP);
+                              m_vVIMCcP[k].push_back(_iMP);
+                              m_vVNMCcP[k].push_back(1);
+
+                              mpid=getCcPid(mpidCcP);
+
+                              m_vVMpidP[k].push_back(mpid);
+                              m_vVIMP[k].push_back(_iMP);
+                              m_vVNMP[k].push_back(0);
+                            }
+                          else
+                            {
+                              MpidCcP[k][(unsigned int) (nCcP_M[k])]=mpidCcP;
+                              m_vVNMCcP[k][_iMP]++;
+                            }
+                          nCcP_M[k]++;
+                          break;                                    
+                        }
+                    }
+                }
+              if(m_ccSwitch==true) for(unsigned int j=0;j<m_vPid_compMP.size();j++) if(m_vICcCompMP[j]!=0) nTotP_M[j]=nP_M[j]+nCcP_M[j];
+            }
           if(m_vCompIncDcyBr.size()>0)
             {
               // Pay attention to that dcyBrCcIncDcyBr equate to ccDcyBrIncDcyBr for self-charge-conjugate inclusive decays.
@@ -1879,9 +2287,9 @@ void topoana::getRslt()
         }
     }
 
-  if(m_vPid_compP.size()>0)
+  if(m_vPid_compDcyBrP.size()>0)
     {
-      for(unsigned int i=0;i<m_vPid_compP.size();i++)
+      for(unsigned int i=0;i<m_vPid_compDcyBrP.size();i++)
         {
           if(m_ccSwitch==true)
             {
@@ -1890,6 +2298,36 @@ void topoana::getRslt()
           else
             {
               sortBy1stFromLrgToSml(m_vVNDcyBrP[i],m_vVDcyBrP[i],m_vVIDcyBrP[i]);
+            }
+        }      
+    }
+
+  if(m_vPid_compProdBrP.size()>0)
+    {
+      for(unsigned int i=0;i<m_vPid_compProdBrP.size();i++)
+        {
+          if(m_ccSwitch==true)
+            {
+              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNProdBrP[i],m_vVNProdBrCcP[i],m_vVProdBrP[i],m_vVProdBrCcP[i],m_vVIProdBrP[i],m_vVIProdBrCcP[i]);
+            }
+          else
+            {
+              sortBy1stFromLrgToSml(m_vVNProdBrP[i],m_vVProdBrP[i],m_vVIProdBrP[i]);
+            }
+        }      
+    }
+
+  if(m_vPid_compMP.size()>0)
+    {
+      for(unsigned int i=0;i<m_vPid_compMP.size();i++)
+        {
+          if(m_ccSwitch==true)
+            {
+              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNMP[i],m_vVNMCcP[i],m_vVMpidP[i],m_vVMpidCcP[i],m_vVIMP[i],m_vVIMCcP[i]);
+            }
+          else
+            {
+              sortBy1stFromLrgToSml(m_vVNMP[i],m_vVMpidP[i],m_vVIMP[i]);
             }
         }      
     }

@@ -396,10 +396,10 @@ void topoana::readCard(string cardFlNm)
               readCloseCurly(fin,line,"% Component analysis --- decay initial-final states");
             }
         }
-      else if(line=="% Component analysis --- particles")
+      else if(line=="% Component analysis --- decay branches of particles")
         {
-          readOpenCurly(fin,line,"% Component analysis --- particles");
-          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- particles");
+          readOpenCurly(fin,line,"% Component analysis --- decay branches of particles");
+          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- decay branches of particles");
           if(line!="}")
             {
               istringstream iss;
@@ -412,7 +412,7 @@ void topoana::readCard(string cardFlNm)
               iss.str(line);
               iss>>txtPnm;
               pid=getPidFromTxtPnm(txtPnm);
-              m_vPid_compP.push_back(pid);
+              m_vPid_compDcyBrP.push_back(pid);
               if(!iss.eof())
                 { 
                   iss>>line;
@@ -420,7 +420,7 @@ void topoana::readCard(string cardFlNm)
                   else if(line=="-") nMax=ULONG_MAX;
                   else
                     {                       
-                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- particles\" is invalid!"<<endl;
+                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- decay branches of particles\" is invalid!"<<endl;
                       cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
                       cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
                       cerr<<"Infor: Please check it."<<endl;
@@ -431,10 +431,10 @@ void topoana::readCard(string cardFlNm)
               m_vNDcyBrsToBePrtdMax.push_back(nMax);
               if(!iss.eof()) iss>>nm;
               else nm="";
-              m_vNm_compP.push_back(nm);
+              m_vNm_compDcyBrP.push_back(nm);
               while(1)
                 {
-                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- particles");
+                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- decay branches of particles");
                   if(line=="}")
                     {
                       break;
@@ -445,14 +445,14 @@ void topoana::readCard(string cardFlNm)
                       iss.str(line);
                       iss>>txtPnm;
                       pid=getPidFromTxtPnm(txtPnm);
-                      m_vPid_compP.push_back(pid);
+                      m_vPid_compDcyBrP.push_back(pid);
                       if(!iss.eof())
                         {
                           iss>>line;
                           if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);                        else if(line=="-") nMax=ULONG_MAX;
                           else
                             {
-                              cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- particles\" is invalid!"<<endl;
+                              cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- decay branches of particles\" is invalid!"<<endl;
                               cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
                               cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
                               cerr<<"Infor: Please check it."<<endl;
@@ -463,7 +463,151 @@ void topoana::readCard(string cardFlNm)
                       m_vNDcyBrsToBePrtdMax.push_back(nMax);
                       if(!iss.eof()) iss>>nm;
                       else nm="";
-                      m_vNm_compP.push_back(nm);
+                      m_vNm_compDcyBrP.push_back(nm);
+                    }
+                }
+            }
+        }
+      else if(line=="% Component analysis --- production branches of particles")
+        {
+          readOpenCurly(fin,line,"% Component analysis --- production branches of particles");
+          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- production branches of particles");
+          if(line!="}")
+            {
+              istringstream iss;
+              iss.clear();
+              string txtPnm;
+              int pid;
+              unsigned long nMax;
+              string nm;
+
+              iss.str(line);
+              iss>>txtPnm;
+              pid=getPidFromTxtPnm(txtPnm);
+              m_vPid_compProdBrP.push_back(pid);
+              if(!iss.eof())
+                { 
+                  iss>>line;
+                  if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);        
+                  else if(line=="-") nMax=ULONG_MAX;
+                  else
+                    {                       
+                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- production branches of particles\" is invalid!"<<endl;
+                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
+                      cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
+                      cerr<<"Infor: Please check it."<<endl;
+                      exit(-1);
+                    }
+                }
+              else nMax=ULONG_MAX;
+              m_vNProdBrsToBePrtdMax.push_back(nMax);
+              if(!iss.eof()) iss>>nm;
+              else nm="";
+              m_vNm_compProdBrP.push_back(nm);
+              while(1)
+                {
+                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- production branches of particles");
+                  if(line=="}")
+                    {
+                      break;
+                    }
+                  else
+                    {
+                      iss.clear();
+                      iss.str(line);
+                      iss>>txtPnm;
+                      pid=getPidFromTxtPnm(txtPnm);
+                      m_vPid_compProdBrP.push_back(pid);
+                      if(!iss.eof())
+                        {
+                          iss>>line;
+                          if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);                        else if(line=="-") nMax=ULONG_MAX;
+                          else
+                            {
+                              cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- production branches of particles\" is invalid!"<<endl;
+                              cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
+                              cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
+                              cerr<<"Infor: Please check it."<<endl;
+                              exit(-1);
+                            }
+                        }
+                      else nMax=ULONG_MAX;
+                      m_vNProdBrsToBePrtdMax.push_back(nMax);
+                      if(!iss.eof()) iss>>nm;
+                      else nm="";
+                      m_vNm_compProdBrP.push_back(nm);
+                    }
+                }
+            }
+        }
+      else if(line=="% Component analysis --- mothers of particles")
+        {
+          readOpenCurly(fin,line,"% Component analysis --- mothers of particles");
+          read1stLineOrCloseCurly(fin,line,false,"% Component analysis --- mothers of particles");
+          if(line!="}")
+            {
+              istringstream iss;
+              iss.clear();
+              string txtPnm;
+              int pid;
+              unsigned long nMax;
+              string nm;
+
+              iss.str(line);
+              iss>>txtPnm;
+              pid=getPidFromTxtPnm(txtPnm);
+              m_vPid_compMP.push_back(pid);
+              if(!iss.eof())
+                { 
+                  iss>>line;
+                  if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);        
+                  else if(line=="-") nMax=ULONG_MAX;
+                  else
+                    {                       
+                      cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- mothers of particles\" is invalid!"<<endl;
+                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
+                      cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
+                      cerr<<"Infor: Please check it."<<endl;
+                      exit(-1);
+                    }
+                }
+              else nMax=ULONG_MAX;
+              m_vNMsToBePrtdMax.push_back(nMax);
+              if(!iss.eof()) iss>>nm;
+              else nm="";
+              m_vNm_compMP.push_back(nm);
+              while(1)
+                {
+                  readExtraLinesOrCloseCurly(fin,line,"% Component analysis --- mothers of particles");
+                  if(line=="}")
+                    {
+                      break;
+                    }
+                  else
+                    {
+                      iss.clear();
+                      iss.str(line);
+                      iss>>txtPnm;
+                      pid=getPidFromTxtPnm(txtPnm);
+                      m_vPid_compMP.push_back(pid);
+                      if(!iss.eof())
+                        {
+                          iss>>line;
+                          if(line.find_first_not_of("0123456789")==string::npos) nMax=strtoul(line.c_str(),NULL,10);                        else if(line=="-") nMax=ULONG_MAX;
+                          else
+                            {
+                              cerr<<"Error: The second column input parameter \""<<line<<"\" for the item \"Component analysis --- mothers of particles\" is invalid!"<<endl;
+                              cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
+                              cerr<<"Infor: It can also be \"-\" as a place holder if there is a third input parameter following it."<<endl;
+                              cerr<<"Infor: Please check it."<<endl;
+                              exit(-1);
+                            }
+                        }
+                      else nMax=ULONG_MAX;
+                      m_vNMsToBePrtdMax.push_back(nMax);
+                      if(!iss.eof()) iss>>nm;
+                      else nm="";
+                      m_vNm_compMP.push_back(nm);
                     }
                 }
             }

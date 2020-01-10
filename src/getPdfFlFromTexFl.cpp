@@ -3,7 +3,7 @@
 
 void topoana::getPdfFlFromTexFl()
 {
-  if(m_anaTasksForSigIds=="T"&&m_vPid_compP.size()==0&&m_vCompIncDcyBr.size()==0&&m_vCompIRADcyBr.size()==0&&m_compAnaOfDcyTrs==false&&m_compAnaOfDcyIFSts==false) return;
+  if(m_anaTasksForSigIds=="T"&&m_vPid_compDcyBrP.size()==0&&m_vCompIncDcyBr.size()==0&&m_vCompIRADcyBr.size()==0&&m_compAnaOfDcyTrs==false&&m_compAnaOfDcyIFSts==false) return;
 
   string NmOfOptTexFl=m_mainNmOfOptFls+".tex";
   string pdflatexcmd="pdflatex "+NmOfOptTexFl;

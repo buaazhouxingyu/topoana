@@ -92,7 +92,19 @@
 }
 
 # This item is used for the analysis of the decay branches of the following particles. The maximum numbers of decay branches to be printed for the particles can be optionally specified on their right sides.
-% Component analysis --- particles
+% Component analysis --- decay branches of particles
+{
+
+}
+
+# This item is used for the analysis of the production branches of the following particles. The maximum numbers of production branches to be printed for the particles can be optionally specified on their right sides.
+% Component analysis --- production branches of particles
+{
+
+}
+
+# This item is used for the analysis of the mothers of the following particles. The maximum numbers of mothers to be printed for the particles can be optionally specified on their right sides.
+% Component analysis --- mothers of particles
 {
 
 }

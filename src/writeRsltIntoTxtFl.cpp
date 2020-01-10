@@ -5,7 +5,7 @@
 
 void topoana::writeRsltIntoTxtFl()
 {
-  if(m_anaTasksForSigIds=="T"&&m_vPid_compP.size()==0&&m_vCompIncDcyBr.size()==0&&m_vCompIRADcyBr.size()==0&&m_compAnaOfDcyTrs==false&&m_compAnaOfDcyIFSts==false) return;
+  if(m_anaTasksForSigIds=="T"&&m_vPid_compDcyBrP.size()==0&&m_vCompIncDcyBr.size()==0&&m_vCompIRADcyBr.size()==0&&m_compAnaOfDcyTrs==false&&m_compAnaOfDcyIFSts==false) return;
 
   string NmOfOptTxtFl=m_mainNmOfOptFls+".txt";
   ofstream fout(NmOfOptTxtFl.c_str(),ios::out);
@@ -30,7 +30,7 @@ void topoana::writeRsltIntoTxtFl()
         { 
           dcyTr.clear();
           dcyTr=m_vDcyTr[i];
-          fout<<"iLine:  "<<i<<"\tiDcyTr:  "<<m_vIDcyTr[i]<<"\tiDcyIFSts:  "<<m_iDcyTrIDcyIFStsMap[m_vIDcyTr[i]]<<"\tnEtrs:  "<<m_vNDcyTr[i];
+          fout<<"rowNo:  "<<i+1<<"\tiDcyTr:  "<<m_vIDcyTr[i]<<"\tiDcyIFSts:  "<<m_iDcyTrIDcyIFStsMap[m_vIDcyTr[i]]<<"\tnEtrs:  "<<m_vNDcyTr[i];
           if(m_ccSwitch==true)
             {
               fout<<"\tnCcEtrs:  ";
@@ -89,7 +89,7 @@ void topoana::writeRsltIntoTxtFl()
         }
       if(nDcyTrsToBePrtd<m_vDcyTr.size())
         {
-          fout<<"iLine:  "<<"rest"<<"\tiDcyTr:  "<<"---"<<"\tiDcyIFSts:  "<<"---"<<"\tnEtrs:  ";
+          fout<<"rowNo:  "<<"rest"<<"\tiDcyTr:  "<<"---"<<"\tiDcyIFSts:  "<<"---"<<"\tnEtrs:  ";
           unsigned long nCEtrsOfRest=0;
           if(m_ccSwitch==true)
             {
@@ -165,7 +165,7 @@ void topoana::writeRsltIntoTxtFl()
         {
           dcyIFSts.clear();
           dcyIFSts=m_vDcyIFSts[i];
-          fout<<"iLine:  "<<i<<"\tiDcyIFSts:  "<<m_vIDcyIFSts[i]<<"\tnEtrs:  "<<m_vNDcyIFSts[i];
+          fout<<"rowNo:  "<<i+1<<"\tiDcyIFSts:  "<<m_vIDcyIFSts[i]<<"\tnEtrs:  "<<m_vNDcyIFSts[i];
           if(m_ccSwitch==true)
             {
               fout<<"\tnCcEtrs:  ";
@@ -193,7 +193,7 @@ void topoana::writeRsltIntoTxtFl()
         }
       if(nDcyIFStsToBePrtd<m_vDcyIFSts.size())
         {
-          fout<<"iLine:  "<<"rest"<<"\tiDcyIFSts:  "<<"---"<<"\tnEtrs:  ";
+          fout<<"rowNo:  "<<"rest"<<"\tiDcyIFSts:  "<<"---"<<"\tnEtrs:  ";
           unsigned long nCEtrsOfRest=0;
           if(m_ccSwitch==true)
             {
@@ -228,7 +228,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<endl;
 
           fout<<"Decay branches of";
-          writePnmFromPid(fout,"TxtPnm",m_vPid_compP[i]);
+          writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyBrP[i]);
           fout<<":"<<endl<<endl;
 
           list<int> dcyBrP;
@@ -238,11 +238,11 @@ void topoana::writeRsltIntoTxtFl()
             {
               dcyBrP.clear();
               dcyBrP=m_vVDcyBrP[i][j];
-              fout<<"iLine:  "<<j<<"\tiDcyBrP"<<i+1<<":  "<<m_vVIDcyBrP[i][j]<<"\tnCases:  "<<m_vVNDcyBrP[i][j];
+              fout<<"rowNo:  "<<j+1<<"\tiDcyBrP"<<i+1<<":  "<<m_vVIDcyBrP[i][j]<<"\tnCases:  "<<m_vVNDcyBrP[i][j];
               if(m_ccSwitch==true)
                 {
                   fout<<"\tnCcCases:  ";
-                  if(m_vICcCompP[i]==0&&m_vVIDcyBrCcP[i][j]==0) fout<<"---";
+                  if(m_vICcCompDcyBrP[i]==0&&m_vVIDcyBrCcP[i][j]==0) fout<<"---";
                   else fout<<m_vVNDcyBrCcP[i][j];
                   fout<<"\tnTotCases:  "<<m_vVNDcyBrP[i][j]+m_vVNDcyBrCcP[i][j]; 
                   nCCases=nCCases+m_vVNDcyBrP[i][j]+m_vVNDcyBrCcP[i][j];
@@ -261,11 +261,11 @@ void topoana::writeRsltIntoTxtFl()
             }
           if(nDcyBrPToBePrtd<m_vVDcyBrP[i].size())
             {
-              fout<<"iLine:  "<<"rest"<<"\tiDcyBrP"<<i+1<<":  "<<"---"<<"\tnCases:  ";
+              fout<<"rowNo:  "<<"rest"<<"\tiDcyBrP"<<i+1<<":  "<<"---"<<"\tnCases:  ";
               unsigned long nCCasesOfRest=0;
               if(m_ccSwitch==true)
                 {
-                  if(m_vICcCompP[i]==0)
+                  if(m_vICcCompDcyBrP[i]==0)
                     {
                       fout<<"---"<<"\tnCcCases:  "<<"---"<<"\tnTotCases:  ";
                     }
@@ -290,6 +290,142 @@ void topoana::writeRsltIntoTxtFl()
               writePnmFromPid(fout,"TxtPnm",(*liit));
               fout<<" --> others";
               fout<<endl<<endl;
+            }
+        }
+    }
+
+  if(m_vVProdBrP.size()>0)
+    {
+      for(unsigned int i=0;i<m_vVProdBrP.size();i++)
+        {
+          fout<<endl;
+
+          fout<<"Production branches of";
+          writePnmFromPid(fout,"TxtPnm",m_vPid_compProdBrP[i]);
+          fout<<":"<<endl<<endl;
+
+          list<int> prodBrP;
+          unsigned long nCCases=0;
+          unsigned long nProdBrPToBePrtd=m_vVProdBrP[i].size()<m_vNProdBrsToBePrtdMax[i]?m_vVProdBrP[i].size():m_vNProdBrsToBePrtdMax[i];
+          for(unsigned int j=0;j<nProdBrPToBePrtd;j++)
+            {
+              prodBrP.clear();
+              prodBrP=m_vVProdBrP[i][j];
+              fout<<"rowNo:  "<<j+1<<"\tiProdBr_P"<<i<<":  "<<m_vVIProdBrP[i][j]<<"\tnCases:  "<<m_vVNProdBrP[i][j];
+              if(m_ccSwitch==true)
+                {
+                  fout<<"\tnCcCases:  ";
+                  if(m_vICcCompProdBrP[i]==0&&m_vVIProdBrCcP[i][j]==0) fout<<"---";
+                  else fout<<m_vVNProdBrCcP[i][j];
+                  fout<<"\tnTotCases:  "<<m_vVNProdBrP[i][j]+m_vVNProdBrCcP[i][j]; 
+                  nCCases=nCCases+m_vVNProdBrP[i][j]+m_vVNProdBrCcP[i][j];
+                }
+              else
+                {
+                  nCCases=nCCases+m_vVNProdBrP[i][j];
+                }
+              fout<<"\tnCCases:  "<<nCCases<<endl;
+              fout<<" ";
+              list<int>::iterator liit=prodBrP.begin();
+              writePnmFromPid(fout,"TxtPnm",(*liit));
+              fout<<" -->";
+              for(liit++;liit!=prodBrP.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
+              fout<<endl<<endl;
+            }
+          if(nProdBrPToBePrtd<m_vVProdBrP[i].size())
+            {
+              fout<<"rowNo:  "<<"rest"<<"\tiProdBr_P"<<i<<":  "<<"---"<<"\tnCases:  ";
+              unsigned long nCCasesOfRest=0;
+              if(m_ccSwitch==true)
+                {
+                  if(m_vICcCompProdBrP[i]==0)
+                    {
+                      fout<<"---"<<"\tnCcCases:  "<<"---"<<"\tnTotCases:  ";
+                    }
+                  else
+                    {
+                      unsigned long nCCasesOfRestTemp1=0;
+                      unsigned long nCCasesOfRestTemp2=0;
+                      for(unsigned int j=nProdBrPToBePrtd;j<m_vVProdBrP[i].size();j++) nCCasesOfRestTemp1=nCCasesOfRestTemp1+m_vVNProdBrP[i][j];
+                      for(unsigned int j=nProdBrPToBePrtd;j<m_vVProdBrP[i].size();j++) nCCasesOfRestTemp2=nCCasesOfRestTemp2+m_vVNProdBrCcP[i][j];
+                      fout<<nCCasesOfRestTemp1<<"\tnCcCases:  "<<nCCasesOfRestTemp2<<"\tnTotCases:  ";
+                    }
+                  for(unsigned int j=nProdBrPToBePrtd;j<m_vVProdBrP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNProdBrP[i][j]+m_vVNProdBrCcP[i][j];
+                }
+              else
+                {
+                  for(unsigned int j=nProdBrPToBePrtd;j<m_vVProdBrP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNProdBrP[i][j];
+                }
+              nCCases=nCCases+nCCasesOfRest;
+              fout<<nCCasesOfRest<<"\tnCCases:  "<<nCCases<<endl;
+              fout<<"  others"<<endl<<endl;
+            }
+        }
+    }
+
+  if(m_vVMpidP.size()>0)
+    {
+      for(unsigned int i=0;i<m_vVMpidP.size();i++)
+        {
+          fout<<endl;
+
+          fout<<"Mothers of";
+          writePnmFromPid(fout,"TxtPnm",m_vPid_compMP[i]);
+          fout<<":"<<endl;
+
+          unsigned long nCCases=0;
+          unsigned long nMPToBePrtd=m_vVMpidP[i].size()<m_vNMsToBePrtdMax[i]?m_vVMpidP[i].size():m_vNMsToBePrtdMax[i];
+          for(unsigned int j=0;j<nMPToBePrtd;j++)
+            {
+              fout<<"rowNo:  "<<j+1<<"\tMother:  ";
+              writePnmFromPid(fout,"TxtPnm",m_vVMpidP[i][j]);
+              char brNmofMothPDGVar[100];
+              if(m_vNm_compMP[i].empty()) sprintf(brNmofMothPDGVar, "MothPDG_P%d", i);
+              else sprintf(brNmofMothPDGVar, "MothPDG_%s", m_vNm_compMP[i].c_str());
+              fout<<"\t"<<brNmofMothPDGVar<<":  "<<m_vVMpidP[i][j]<<"\tnCases:  "<<m_vVNMP[i][j];
+              if(m_ccSwitch==true)
+                {
+                  fout<<"\tnCcCases:  ";
+                  if(m_vICcCompMP[i]==0&&m_vVIMCcP[i][j]==0) fout<<"---";
+                  else fout<<m_vVNMCcP[i][j];
+                  fout<<"\tnTotCases:  "<<m_vVNMP[i][j]+m_vVNMCcP[i][j]; 
+                  nCCases=nCCases+m_vVNMP[i][j]+m_vVNMCcP[i][j];
+                }
+              else
+                {
+                  nCCases=nCCases+m_vVNMP[i][j];
+                }
+              fout<<"\tnCCases:  "<<nCCases<<endl;
+            }
+          if(nMPToBePrtd<m_vVMpidP[i].size())
+            {
+              char brNmofMothPDGVar[100];
+              if(m_vNm_compMP[i].empty()) sprintf(brNmofMothPDGVar, "MothPDG_P%d", i);
+              else sprintf(brNmofMothPDGVar, "MothPDG_%s", m_vNm_compMP[i].c_str());
+              fout<<"rowNo:  "<<"rest"<<"\tMother:  "<<"others"<<"\t"<<brNmofMothPDGVar<<":  "<<"Corresponding to others"<<"\tnCases:  ";
+              unsigned long nCCasesOfRest=0;
+              if(m_ccSwitch==true)
+                {
+                  if(m_vICcCompMP[i]==0)
+                    {
+                      fout<<"---"<<"\tnCcCases:  "<<"---"<<"\tnTotCases:  ";
+                    }
+                  else
+                    {
+                      unsigned long nCCasesOfRestTemp1=0;
+                      unsigned long nCCasesOfRestTemp2=0;
+                      for(unsigned int j=nMPToBePrtd;j<m_vVMpidP[i].size();j++) nCCasesOfRestTemp1=nCCasesOfRestTemp1+m_vVNMP[i][j];
+                      for(unsigned int j=nMPToBePrtd;j<m_vVMpidP[i].size();j++) nCCasesOfRestTemp2=nCCasesOfRestTemp2+m_vVNMCcP[i][j];
+                      fout<<nCCasesOfRestTemp1<<"\tnCcCases:  "<<nCCasesOfRestTemp2<<"\tnTotCases:  ";
+                    }
+                  for(unsigned int j=nMPToBePrtd;j<m_vVMpidP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNMP[i][j]+m_vVNMCcP[i][j];
+                }
+              else
+                {
+                  for(unsigned int j=nMPToBePrtd;j<m_vVMpidP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNMP[i][j];
+                }
+              nCCases=nCCases+nCCasesOfRest;
+              fout<<nCCasesOfRest<<"\tnCCases:  "<<nCCases<<endl<<endl;
             }
         }
     }
@@ -319,7 +455,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               dcyBrIncDcyBr.clear();
               dcyBrIncDcyBr=m_vVDcyBrIncDcyBr[i][j];
-              fout<<"iLine:  "<<j<<"\tiDcyBrIncDcyBr"<<i+1<<":  "<<m_vVIDcyBrIncDcyBr[i][j]<<"\tnCases:  "<<m_vVNDcyBrIncDcyBr[i][j];
+              fout<<"rowNo:  "<<j+1<<"\tiDcyBrIncDcyBr"<<i+1<<":  "<<m_vVIDcyBrIncDcyBr[i][j]<<"\tnCases:  "<<m_vVNDcyBrIncDcyBr[i][j];
               if(m_ccSwitch==true)
                 {
                   fout<<"\tnCcCases:  ";
@@ -348,7 +484,7 @@ void topoana::writeRsltIntoTxtFl()
             }
           if(nDcyBrIncDcyBrToBePrtd<m_vVDcyBrIncDcyBr[i].size())
             {
-              fout<<"iLine:  "<<"rest"<<"\tiDcyBrIncDcyBr"<<i+1<<":  "<<"---"<<"\tnCases:  ";
+              fout<<"rowNo:  "<<"rest"<<"\tiDcyBrIncDcyBr"<<i+1<<":  "<<"---"<<"\tnCases:  ";
               unsigned long nCCasesOfRest=0;
               if(m_ccSwitch==true)
                 {
@@ -412,7 +548,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               dcyBrIRADcyBr.clear();
               dcyBrIRADcyBr=m_vVDcyBrIRADcyBr[i][j];
-              fout<<"iLine:  "<<j<<"\tiDcyBrIRADcyBr"<<i+1<<":  "<<m_vVIDcyBrIRADcyBr[i][j]<<"\tnCases:  "<<m_vVNDcyBrIRADcyBr[i][j];
+              fout<<"rowNo:  "<<j+1<<"\tiDcyBrIRADcyBr"<<i+1<<":  "<<m_vVIDcyBrIRADcyBr[i][j]<<"\tnCases:  "<<m_vVNDcyBrIRADcyBr[i][j];
               if(m_ccSwitch==true)
                 {
                   fout<<"\tnCcCases:  ";
@@ -446,7 +582,7 @@ void topoana::writeRsltIntoTxtFl()
             }
           if(nDcyBrIRADcyBrToBePrtd<m_vVDcyBrIRADcyBr[i].size())
             {
-              fout<<"iLine:  "<<"rest"<<"\tiDcyBrIRADcyBr"<<i+1<<":  "<<"---"<<"\tnCases:  ";
+              fout<<"rowNo:  "<<"rest"<<"\tiDcyBrIRADcyBr"<<i+1<<":  "<<"---"<<"\tnCases:  ";
               unsigned long nCCasesOfRest=0;
               if(m_ccSwitch==true)
                 {
@@ -497,7 +633,7 @@ void topoana::writeRsltIntoTxtFl()
         { 
           sigDcyTr.clear();
           sigDcyTr=m_vSigDcyTr[i];
-          fout<<"iLine:  "<<i<<"\tiSigDcyTr:  "<<m_vISigDcyTr[i]<<"\tiSigDcyIFSts:  ";
+          fout<<"rowNo:  "<<i+1<<"\tiSigDcyTr:  "<<m_vISigDcyTr[i]<<"\tiSigDcyIFSts:  ";
           if(m_iSigDcyTrICcSigDcyIFStsMap[m_vISigDcyTr[i]]>=0) fout<<m_iSigDcyTrISigDcyIFStsMap[m_vISigDcyTr[i]];
           else fout<<m_iSigDcyTrISigDcyIFStsMap[m_vISigDcyTr[i]]<<"_cc";
           if(m_compAnaOfDcyTrs==true)
@@ -585,7 +721,7 @@ void topoana::writeRsltIntoTxtFl()
         {
           sigDcyIFSts.clear();
           sigDcyIFSts=m_vSigDcyIFSts[i];
-          fout<<"iLine:  "<<i<<"\tiSigDcyIFSts:  "<<m_vISigDcyIFSts[i];
+          fout<<"rowNo:  "<<i+1<<"\tiSigDcyIFSts:  "<<m_vISigDcyIFSts[i];
           if(m_compAnaOfDcyTrs==true||m_compAnaOfDcyIFSts==true)
             {
               fout<<"\tiDcyIFSts:  ";
@@ -636,7 +772,7 @@ void topoana::writeRsltIntoTxtFl()
         {
           sigDcyIFSts2.clear();
           sigDcyIFSts2=m_vSigDcyIFSts2[i];
-          fout<<"iLine:  "<<i<<"\tiSigDcyIFSts2:  "<<m_vISigDcyIFSts2[i];
+          fout<<"rowNo:  "<<i+1<<"\tiSigDcyIFSts2:  "<<m_vISigDcyIFSts2[i];
           if(m_compAnaOfDcyTrs==true||m_compAnaOfDcyIFSts==true)
             {
               fout<<"\tiDcyIFSts2:  ";
@@ -683,7 +819,7 @@ void topoana::writeRsltIntoTxtFl()
       unsigned long nCPs=0;
       for(unsigned int i=0;i<m_vNSigP.size();i++)
         {
-          fout<<"iLine:  "<<i<<"\tSigP: ";
+          fout<<"rowNo:  "<<i+1<<"\tSigP: ";
           writePnmFromPid(fout,"TxtPnm",m_vPid_sigP[i]);
           fout<<"\tiSigP:  "<<m_vISigP[i]<<"\tnPs:   "<<m_vNSigP[i];
           if(m_ccSwitch==true)
@@ -714,7 +850,7 @@ void topoana::writeRsltIntoTxtFl()
         {
           sigDcyBr.clear();
           sigDcyBr=m_vSigDcyBr[i];
-          fout<<"iLine:  "<<i<<"\tiSigDcyBr:  "<<m_vISigDcyBr[i]<<"\tnCases:  "<<m_vNSigDcyBr[i];
+          fout<<"rowNo:  "<<i+1<<"\tiSigDcyBr:  "<<m_vISigDcyBr[i]<<"\tnCases:  "<<m_vNSigDcyBr[i];
           if(m_ccSwitch==true)
             {
               fout<<"\tnCcCases:  ";
@@ -754,7 +890,7 @@ void topoana::writeRsltIntoTxtFl()
         {
           sigIncDcyBr.clear();
           sigIncDcyBr=m_vSigIncDcyBr[i];
-          fout<<"iLine:  "<<i<<"\tiSigIncDcyBr:  "<<m_vISigIncDcyBr[i]<<"\tnCases:  "<<m_vNSigIncDcyBr[i];
+          fout<<"rowNo:  "<<i+1<<"\tiSigIncDcyBr:  "<<m_vISigIncDcyBr[i]<<"\tnCases:  "<<m_vNSigIncDcyBr[i];
           if(m_ccSwitch==true)
             {
               fout<<"\tnCcCases:  ";
@@ -797,7 +933,7 @@ void topoana::writeRsltIntoTxtFl()
           sigCascDcyBrs.clear();
           sigCascDcyBrs=m_vSigCascDcyBrs[i];
           vSigCascDcyBrsIdxOfHead=m_vVSigCascDcyBrsIdxOfHead[i];
-          fout<<"iLine:  "<<i<<"\tiSigCascDcyBrs:  "<<m_vISigCascDcyBrs[i]<<"\tnCases:  "<<m_vNSigCascDcyBrs[i];
+          fout<<"rowNo:  "<<i+1<<"\tiSigCascDcyBrs:  "<<m_vISigCascDcyBrs[i]<<"\tnCases:  "<<m_vNSigCascDcyBrs[i];
           if(m_ccSwitch==true)
             { 
               fout<<"\tnCcCases:  ";
@@ -845,7 +981,7 @@ void topoana::writeRsltIntoTxtFl()
           sigIncCascDcyBrs.clear();
           sigIncCascDcyBrs=m_vSigIncCascDcyBrs[i];
           vSigIncCascDcyBrsIdxOfHead=m_vVSigIncCascDcyBrsIdxOfHead[i];
-          fout<<"iLine:  "<<i<<"\tiSigIncCascDcyBrs:  "<<m_vISigIncCascDcyBrs[i]<<"\tnCases:  "<<m_vNSigIncCascDcyBrs[i];
+          fout<<"rowNo:  "<<i+1<<"\tiSigIncCascDcyBrs:  "<<m_vISigIncCascDcyBrs[i]<<"\tnCases:  "<<m_vNSigIncCascDcyBrs[i];
           if(m_ccSwitch==true)
             { 
               fout<<"\tnCcCases:  ";
@@ -892,7 +1028,7 @@ void topoana::writeRsltIntoTxtFl()
         {
           sigIRADcyBr.clear();
           sigIRADcyBr=m_vSigIRADcyBr[i];
-          fout<<"iLine:  "<<i<<"\tiSigIRADcyBr:  "<<m_vISigIRADcyBr[i]<<"\tnCases:  "<<m_vNSigIRADcyBr[i];
+          fout<<"rowNo:  "<<i+1<<"\tiSigIRADcyBr:  "<<m_vISigIRADcyBr[i]<<"\tnCases:  "<<m_vNSigIRADcyBr[i];
           if(m_ccSwitch==true)
             { 
               fout<<"\tnCcCases:  ";
@@ -934,7 +1070,7 @@ void topoana::writeRsltIntoTxtFl()
           sigIncOrIRACascDcyBrs.clear();
           sigIncOrIRACascDcyBrs=m_vSigIncOrIRACascDcyBrs[i];
           vSigIncOrIRACascDcyBrsIdxOfHead=m_vVSigIncOrIRACascDcyBrsIdxOfHead[i];
-          fout<<"iLine:  "<<i<<"\tiSigIncOrIRACascDcyBrs:  "<<m_vISigIncOrIRACascDcyBrs[i]<<"\tnCases:  "<<m_vNSigIncOrIRACascDcyBrs[i];
+          fout<<"rowNo:  "<<i+1<<"\tiSigIncOrIRACascDcyBrs:  "<<m_vISigIncOrIRACascDcyBrs[i]<<"\tnCases:  "<<m_vNSigIncOrIRACascDcyBrs[i];
           if(m_ccSwitch==true)
             { 
               fout<<"\tnCcCases:  ";

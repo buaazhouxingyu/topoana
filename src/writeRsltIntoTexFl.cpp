@@ -6,7 +6,7 @@
 
 void topoana::writeRsltIntoTexFl()
 {
-  if(m_anaTasksForSigIds=="T"&&m_vPid_compP.size()==0&&m_vCompIncDcyBr.size()==0&&m_vCompIRADcyBr.size()==0&&m_compAnaOfDcyTrs==false&&m_compAnaOfDcyIFSts==false) return;
+  if(m_anaTasksForSigIds=="T"&&m_vPid_compDcyBrP.size()==0&&m_vCompIncDcyBr.size()==0&&m_vCompIRADcyBr.size()==0&&m_compAnaOfDcyTrs==false&&m_compAnaOfDcyIFSts==false) return;
 
   string NmOfOptTexFl=m_mainNmOfOptFls+".tex";
   ofstream fout(NmOfOptTexFl.c_str(),ios::out);
@@ -384,10 +384,10 @@ void topoana::writeRsltIntoTexFl()
                   if(m_ccSwitch==true) fout<<"c|c|";
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Decay branches of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compP[i]);
+                  writePnmFromPid(fout,"TexPnm",m_vPid_compDcyBrP[i]);
                   fout<<"$.}"<<endl;
                   fout<<"\\tableheader{rowNo & \\thead{decay branch of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compP[i]);
+                  writePnmFromPid(fout,"TexPnm",m_vPid_compDcyBrP[i]);
                   fout<<"$} & ";
                   if(m_sprTopoTags==false) fout<<"iDcyBrP"<<i+1<<" & ";
                   fout<<"nCases & ";
@@ -407,7 +407,7 @@ void topoana::writeRsltIntoTexFl()
               fout<<m_vVNDcyBrP[i][j]<<" & ";
               if(m_ccSwitch==true)
                 {
-                  if(m_vICcCompP[i]==0&&m_vVIDcyBrCcP[i][j]==0) fout<<"---";
+                  if(m_vICcCompDcyBrP[i]==0&&m_vVIDcyBrCcP[i][j]==0) fout<<"---";
                   else fout<<m_vVNDcyBrCcP[i][j];
                   fout<<" & "<<m_vVNDcyBrP[i][j]+m_vVNDcyBrCcP[i][j]<<" & ";
                   nCCases=nCCases+m_vVNDcyBrP[i][j]+m_vVNDcyBrCcP[i][j];
@@ -432,7 +432,7 @@ void topoana::writeRsltIntoTexFl()
                       unsigned long nCCasesOfRest=0;
                       if(m_ccSwitch==true)
                         {
-                          if(m_vICcCompP[i]==0)
+                          if(m_vICcCompDcyBrP[i]==0)
                             {
                               fout<<"---"<<" & "<<"---"<<" & ";
                             }
@@ -449,6 +449,187 @@ void topoana::writeRsltIntoTexFl()
                       else
                         {
                           for(unsigned int j=nDcyBrPToBePrtd;j<m_vVDcyBrP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNDcyBrP[i][j];
+                        }
+                      nCCases=nCCases+nCCasesOfRest;
+                      fout<<nCCasesOfRest<<" & "<<nCCases<<" \\EOL"<<endl<<endl;
+                    }
+                  fout<<"\\end{longtable}"<<endl;
+                }
+            }
+        }
+    }
+
+  if(m_vVProdBrP.size()>0)
+    {
+      for(unsigned int i=0;i<m_vVProdBrP.size();i++)
+        {
+          list<int> prodBrP;
+          unsigned long nCCases=0;
+          unsigned long nProdBrPToBePrtd=m_vVProdBrP[i].size()<m_vNProdBrsToBePrtdMax[i]?m_vVProdBrP[i].size():m_vNProdBrsToBePrtdMax[i];
+          for(unsigned int j=0;j<nProdBrPToBePrtd;j++)
+            {
+              if(j==0)
+                {
+                  fout<<endl<<"\\clearpage"<<endl<<endl;
+                  fout<<"\\small"<<endl;
+                  fout<<"\\centering"<<endl;
+                  fout<<"\\setcounter{rownumbers}{0}"<<endl;
+                  fout<<"\\begin{longtable}{|c|";
+                  if(m_centDcyObjs==false&&nProdBrPToBePrtd>1) fout<<"l|";
+                  else fout<<"c|";
+                  fout<<"c|c|c|";
+                  if(m_ccSwitch==true) fout<<"c|c|";
+                  fout<<"}"<<endl;
+                  fout<<"\\tablecaption{Production branches of $ ";
+                  writePnmFromPid(fout,"TexPnm",m_vPid_compProdBrP[i]);
+                  fout<<"$.}"<<endl;
+                  fout<<"\\tableheader{rowNo & \\thead{production branch of $ ";
+                  writePnmFromPid(fout,"TexPnm",m_vPid_compProdBrP[i]);
+                  fout<<"$} & ";
+                  if(m_sprTopoTags==false) fout<<"iProdBr\\_P"<<i<<" & ";
+                  fout<<"nCases & ";
+                  if(m_ccSwitch==true) fout<<"nCcCases & nTotCases & ";
+                  fout<<"nCCases \\\\}"<<endl<<endl;
+                }
+              fout<<"% \\rn = "<<j+1<<endl;
+              fout<<"\\rn & $ "; 
+              prodBrP.clear();
+              prodBrP=m_vVProdBrP[i][j];
+              list<int>::iterator liit=prodBrP.begin();
+              writePnmFromPid(fout,"TexPnm",(*liit));
+              fout<<"\\rightarrow ";
+              for(liit++;liit!=prodBrP.end();liit++)
+                {
+                  if((*liit)==m_vPid_compProdBrP[i]) fout<<"{\\color{blue}{ ";
+                  writePnmFromPid(fout,"TexPnm",(*liit));
+                  if((*liit)==m_vPid_compProdBrP[i]) fout<<"}} ";
+                }
+              fout<<"$ & ";
+              if(m_sprTopoTags==false) fout<<m_vVIProdBrP[i][j]<<" & ";
+              fout<<m_vVNProdBrP[i][j]<<" & ";
+              if(m_ccSwitch==true)
+                {
+                  if(m_vICcCompProdBrP[i]==0&&m_vVIProdBrCcP[i][j]==0) fout<<"---";
+                  else fout<<m_vVNProdBrCcP[i][j];
+                  fout<<" & "<<m_vVNProdBrP[i][j]+m_vVNProdBrCcP[i][j]<<" & ";
+                  nCCases=nCCases+m_vVNProdBrP[i][j]+m_vVNProdBrCcP[i][j];
+                }
+              else
+                {
+                  nCCases=nCCases+m_vVNProdBrP[i][j];
+                }
+              fout<<nCCases<<" \\EOL"<<endl<<endl;
+              if(j==nProdBrPToBePrtd-1)
+                {
+                  if(nProdBrPToBePrtd<m_vVProdBrP[i].size())
+                    {
+                      fout<<"rest"<<" & others & ";
+                      if(m_sprTopoTags==false) fout<<"---"<<" & ";
+                      unsigned long nCCasesOfRest=0;
+                      if(m_ccSwitch==true)
+                        {
+                          if(m_vICcCompProdBrP[i]==0)
+                            {
+                              fout<<"---"<<" & "<<"---"<<" & ";
+                            }
+                          else
+                            {
+                              unsigned long nCCasesOfRestTemp1=0;
+                              unsigned long nCCasesOfRestTemp2=0;
+                              for(unsigned int j=nProdBrPToBePrtd;j<m_vVProdBrP[i].size();j++) nCCasesOfRestTemp1=nCCasesOfRestTemp1+m_vVNProdBrP[i][j];
+                              for(unsigned int j=nProdBrPToBePrtd;j<m_vVProdBrP[i].size();j++) nCCasesOfRestTemp2=nCCasesOfRestTemp2+m_vVNProdBrCcP[i][j];
+                              fout<<nCCasesOfRestTemp1<<" & "<<nCCasesOfRestTemp2<<" & ";
+                            }
+                          for(unsigned int j=nProdBrPToBePrtd;j<m_vVProdBrP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNProdBrP[i][j]+m_vVNProdBrCcP[i][j];
+                        }
+                      else
+                        {
+                          for(unsigned int j=nProdBrPToBePrtd;j<m_vVProdBrP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNProdBrP[i][j];
+                        }
+                      nCCases=nCCases+nCCasesOfRest;
+                      fout<<nCCasesOfRest<<" & "<<nCCases<<" \\EOL"<<endl<<endl;
+                    }
+                  fout<<"\\end{longtable}"<<endl;
+                }
+            }
+        }
+    }
+
+  if(m_vVMpidP.size()>0)
+    {
+      for(unsigned int i=0;i<m_vVMpidP.size();i++)
+        {
+          unsigned long nCCases=0;
+          unsigned long nMPToBePrtd=m_vVMpidP[i].size()<m_vNMsToBePrtdMax[i]?m_vVMpidP[i].size():m_vNMsToBePrtdMax[i];
+          for(unsigned int j=0;j<nMPToBePrtd;j++)
+            {
+              if(j==0)
+                {
+                  fout<<endl<<"\\clearpage"<<endl<<endl;
+                  fout<<"\\small"<<endl;
+                  fout<<"\\centering"<<endl;
+                  fout<<"\\setcounter{rownumbers}{0}"<<endl;
+                  fout<<"\\begin{longtable}{|c|c|c|c|c|";
+                  if(m_ccSwitch==true) fout<<"c|c|";
+                  fout<<"}"<<endl;
+                  fout<<"\\tablecaption{Mothers of $ ";
+                  writePnmFromPid(fout,"TexPnm",m_vPid_compMP[i]);
+                  fout<<"$.}"<<endl;
+                  fout<<"\\tableheader{rowNo & \\thead{mother of $ ";
+                  writePnmFromPid(fout,"TexPnm",m_vPid_compMP[i]);
+                  fout<<"$} & ";
+                  char brNmofMothPDGVar[100];
+                  if(m_vNm_compMP[i].empty()) sprintf(brNmofMothPDGVar, "MothPDG\\_P%d", i);
+                  else sprintf(brNmofMothPDGVar, "MothPDG\\_%s", m_vNm_compMP[i].c_str());
+                  if(m_sprTopoTags==false) fout<<brNmofMothPDGVar<<" & ";
+                  fout<<"nCases & ";
+                  if(m_ccSwitch==true) fout<<"nCcCases & nTotCases & ";
+                  fout<<"nCCases \\\\}"<<endl<<endl;
+                }
+              fout<<"% \\rn = "<<j+1<<endl;
+              fout<<"\\rn & $ "; 
+              writePnmFromPid(fout,"TexPnm",m_vVMpidP[i][j]);
+              fout<<"$ & ";
+              if(m_sprTopoTags==false) fout<<m_vVMpidP[i][j]<<" & ";
+              fout<<m_vVNMP[i][j]<<" & ";
+              if(m_ccSwitch==true)
+                {
+                  if(m_vICcCompMP[i]==0&&m_vVIMCcP[i][j]==0) fout<<"---";
+                  else fout<<m_vVNMCcP[i][j];
+                  fout<<" & "<<m_vVNMP[i][j]+m_vVNMCcP[i][j]<<" & ";
+                  nCCases=nCCases+m_vVNMP[i][j]+m_vVNMCcP[i][j];
+                }
+              else
+                {
+                  nCCases=nCCases+m_vVNMP[i][j];
+                }
+              fout<<nCCases<<" \\EOL"<<endl<<endl;
+              if(j==nMPToBePrtd-1)
+                {
+                  if(nMPToBePrtd<m_vVMpidP[i].size())
+                    {
+                      fout<<"rest"<<" & others & ";
+                      if(m_sprTopoTags==false) fout<<"---"<<" & ";
+                      unsigned long nCCasesOfRest=0;
+                      if(m_ccSwitch==true)
+                        {
+                          if(m_vICcCompMP[i]==0)
+                            {
+                              fout<<"---"<<" & "<<"---"<<" & ";
+                            }
+                          else
+                            {
+                              unsigned long nCCasesOfRestTemp1=0;
+                              unsigned long nCCasesOfRestTemp2=0;
+                              for(unsigned int j=nMPToBePrtd;j<m_vVMpidP[i].size();j++) nCCasesOfRestTemp1=nCCasesOfRestTemp1+m_vVNMP[i][j];
+                              for(unsigned int j=nMPToBePrtd;j<m_vVMpidP[i].size();j++) nCCasesOfRestTemp2=nCCasesOfRestTemp2+m_vVNMCcP[i][j];
+                              fout<<nCCasesOfRestTemp1<<" & "<<nCCasesOfRestTemp2<<" & ";
+                            }
+                          for(unsigned int j=nMPToBePrtd;j<m_vVMpidP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNMP[i][j]+m_vVNMCcP[i][j];
+                        }
+                      else
+                        {
+                          for(unsigned int j=nMPToBePrtd;j<m_vVMpidP[i].size();j++) nCCasesOfRest=nCCasesOfRest+m_vVNMP[i][j];
                         }
                       nCCases=nCCases+nCCasesOfRest;
                       fout<<nCCasesOfRest<<" & "<<nCCases<<" \\EOL"<<endl<<endl;

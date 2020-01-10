@@ -476,20 +476,20 @@ void topoana::checkInput()
         }
     }
 
-  if(m_vPid_compP.size()==0)
+  if(m_vPid_compDcyBrP.size()==0)
     {
       cout<<"No particles are specified for the analysis of their decay branches."<<endl<<endl;
     }
   else
     {
       cout<<"Analyze the decay branches of the following particles:"<<endl<<endl;
-      for(unsigned int i=0;i<m_vPid_compP.size();i++)
+      for(unsigned int i=0;i<m_vPid_compDcyBrP.size();i++)
         {
           cout<<" ";
-          writePnmFromPid(cout,"TxtPnm",m_vPid_compP[i]);
-          // if(m_pidTxtPnmMap[m_vPid_compP[i]].size()<=6) cout<<"\t\t\t";
-          // else if(m_pidTxtPnmMap[m_vPid_compP[i]].size()<=14) cout<<"\t\t";
-          // else if(m_pidTxtPnmMap[m_vPid_compP[i]].size()<=22) cout<<"\t";
+          writePnmFromPid(cout,"TxtPnm",m_vPid_compDcyBrP[i]);
+          // if(m_pidTxtPnmMap[m_vPid_compDcyBrP[i]].size()<=6) cout<<"\t\t\t";
+          // else if(m_pidTxtPnmMap[m_vPid_compDcyBrP[i]].size()<=14) cout<<"\t\t";
+          // else if(m_pidTxtPnmMap[m_vPid_compDcyBrP[i]].size()<=22) cout<<"\t";
           cout<<endl;
           if(m_vNDcyBrsToBePrtdMax[i]!=ULONG_MAX)
             {
@@ -499,9 +499,9 @@ void topoana::checkInput()
             {
               cout<<"  Maximum number of decay branches to be printed: ULONG_MAX (default)"<<endl;
             }
-          if(m_vNm_compP[i]!="")
+          if(m_vNm_compDcyBrP[i]!="")
             {
-              cout<<"  Alias for the particle is set to be \""<<m_vNm_compP[i]<<"\" for the branch names of the topology tags"<<endl<<endl;
+              cout<<"  Alias for the particle is set to be \""<<m_vNm_compDcyBrP[i]<<"\" for the branch names of the topology tags"<<endl<<endl;
             }
           else
             {
@@ -510,8 +510,8 @@ void topoana::checkInput()
         }
       cout<<endl;
 
-      m_vPid_ccCompP.clear();
-      m_vICcCompP.clear();
+      m_vPid_ccCompDcyBrP.clear();
+      m_vICcCompDcyBrP.clear();
       m_vVDcyBrP.clear(); m_vVDcyBrCcP.clear();
       vector< list<int> > vDcyBrP, vDcyBrCcP;
       vDcyBrP.clear(); vDcyBrCcP.clear();
@@ -521,13 +521,13 @@ void topoana::checkInput()
       m_vVNDcyBrP.clear(); m_vVNDcyBrCcP.clear();
       vector<int> vNDcyBrP, vNDcyBrCcP;
       vNDcyBrP.clear(); vNDcyBrCcP.clear();
-      for(unsigned int i=0;i<m_vPid_compP.size();i++)
+      for(unsigned int i=0;i<m_vPid_compDcyBrP.size();i++)
         {
           string ordNumSufi="th";
           string ordNumSufj="th";
           for(unsigned int j=0;j<i;j++)
             {
-              if(m_vPid_compP[i]==m_vPid_compP[j])
+              if(m_vPid_compDcyBrP[i]==m_vPid_compDcyBrP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
@@ -535,7 +535,7 @@ void topoana::checkInput()
                   cerr<<"Infor: Please check the input card and remove one of them."<<endl;
                   exit(-1);
                 }
-              else if(m_ccSwitch==true&&m_vICcCompP[j]!=0&&m_vPid_compP[i]==m_vPid_ccCompP[j])
+              else if(m_ccSwitch==true&&m_vICcCompDcyBrP[j]!=0&&m_vPid_compDcyBrP[i]==m_vPid_ccCompDcyBrP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
@@ -550,12 +550,180 @@ void topoana::checkInput()
           m_vVNDcyBrP.push_back(vNDcyBrP);
           if(m_ccSwitch==true)
             {
-              m_vPid_ccCompP.push_back(getCcPid(m_vPid_compP[i]));
-              if(m_vPid_ccCompP[i]==m_vPid_compP[i]) m_vICcCompP.push_back(0);
-              else m_vICcCompP.push_back(1);
+              m_vPid_ccCompDcyBrP.push_back(getCcPid(m_vPid_compDcyBrP[i]));
+              if(m_vPid_ccCompDcyBrP[i]==m_vPid_compDcyBrP[i]) m_vICcCompDcyBrP.push_back(0);
+              else m_vICcCompDcyBrP.push_back(1);
               m_vVDcyBrCcP.push_back(vDcyBrCcP);
               m_vVIDcyBrCcP.push_back(vIDcyBrCcP);
               m_vVNDcyBrCcP.push_back(vNDcyBrCcP);              
+            }     
+        }
+    }
+
+  if(m_vPid_compProdBrP.size()==0)
+    {
+      cout<<"No particles are specified for the analysis of their production branches."<<endl<<endl;
+    }
+  else
+    {
+      cout<<"Analyze the production branches of the following particles:"<<endl<<endl;
+      for(unsigned int i=0;i<m_vPid_compProdBrP.size();i++)
+        {
+          cout<<" ";
+          writePnmFromPid(cout,"TxtPnm",m_vPid_compProdBrP[i]);
+          // if(m_pidTxtPnmMap[m_vPid_compProdBrP[i]].size()<=6) cout<<"\t\t\t";
+          // else if(m_pidTxtPnmMap[m_vPid_compProdBrP[i]].size()<=14) cout<<"\t\t";
+          // else if(m_pidTxtPnmMap[m_vPid_compProdBrP[i]].size()<=22) cout<<"\t";
+          cout<<endl;
+          if(m_vNProdBrsToBePrtdMax[i]!=ULONG_MAX)
+            {
+              cout<<"  Maximum number of production branches to be printed: "<<m_vNProdBrsToBePrtdMax[i]<<endl;
+            }
+          else
+            {
+              cout<<"  Maximum number of production branches to be printed: ULONG_MAX (default)"<<endl;
+            }
+          if(m_vNm_compProdBrP[i]!="")
+            {
+              cout<<"  Alias for the particle is set to be \""<<m_vNm_compProdBrP[i]<<"\" for the branch names of the topology tags"<<endl<<endl;
+            }
+          else
+            {
+              cout<<"  No alias for the particle is set for the branch names of the topology tags (default)"<<endl<<endl;
+            }
+        }
+      cout<<endl;
+
+      m_vPid_ccCompProdBrP.clear();
+      m_vICcCompProdBrP.clear();
+      m_vVProdBrP.clear(); m_vVProdBrCcP.clear();
+      vector< list<int> > vProdBrP, vProdBrCcP;
+      vProdBrP.clear(); vProdBrCcP.clear();
+      m_vVIProdBrP.clear(); m_vVIProdBrCcP.clear();
+      vector<int> vIProdBrP, vIProdBrCcP;
+      vIProdBrP.clear(); vIProdBrCcP.clear();
+      m_vVNProdBrP.clear(); m_vVNProdBrCcP.clear();
+      vector<int> vNProdBrP, vNProdBrCcP;
+      vNProdBrP.clear(); vNProdBrCcP.clear();
+      for(unsigned int i=0;i<m_vPid_compProdBrP.size();i++)
+        {
+          string ordNumSufi="th";
+          string ordNumSufj="th";
+          for(unsigned int j=0;j<i;j++)
+            {
+              if(m_vPid_compProdBrP[i]==m_vPid_compProdBrP[j])
+                {
+                  if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
+                  if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle!"<<endl;
+                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  exit(-1);
+                }
+              else if(m_ccSwitch==true&&m_vICcCompProdBrP[j]!=0&&m_vPid_compProdBrP[i]==m_vPid_ccCompProdBrP[j])
+                {
+                  if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
+                  if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle!"<<endl;
+                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  exit(-1);
+                }
+            }
+
+          m_vVProdBrP.push_back(vProdBrP);
+          m_vVIProdBrP.push_back(vIProdBrP);
+          m_vVNProdBrP.push_back(vNProdBrP);
+          if(m_ccSwitch==true)
+            {
+              m_vPid_ccCompProdBrP.push_back(getCcPid(m_vPid_compProdBrP[i]));
+              if(m_vPid_ccCompProdBrP[i]==m_vPid_compProdBrP[i]) m_vICcCompProdBrP.push_back(0);
+              else m_vICcCompProdBrP.push_back(1);
+              m_vVProdBrCcP.push_back(vProdBrCcP);
+              m_vVIProdBrCcP.push_back(vIProdBrCcP);
+              m_vVNProdBrCcP.push_back(vNProdBrCcP);              
+            }     
+        }
+    }
+
+  if(m_vPid_compMP.size()==0)
+    {
+      cout<<"No particles are specified for the analysis of their mothers."<<endl<<endl;
+    }
+  else
+    {
+      cout<<"Analyze the mothers of the following particles:"<<endl<<endl;
+      for(unsigned int i=0;i<m_vPid_compMP.size();i++)
+        {
+          cout<<" ";
+          writePnmFromPid(cout,"TxtPnm",m_vPid_compMP[i]);
+          // if(m_pidTxtPnmMap[m_vPid_compMP[i]].size()<=6) cout<<"\t\t\t";
+          // else if(m_pidTxtPnmMap[m_vPid_compMP[i]].size()<=14) cout<<"\t\t";
+          // else if(m_pidTxtPnmMap[m_vPid_compMP[i]].size()<=22) cout<<"\t";
+          cout<<endl;
+          if(m_vNMsToBePrtdMax[i]!=ULONG_MAX)
+            {
+              cout<<"  Maximum number of mothers to be printed: "<<m_vNMsToBePrtdMax[i]<<endl;
+            }
+          else
+            {
+              cout<<"  Maximum number of mothers to be printed: ULONG_MAX (default)"<<endl;
+            }
+          if(m_vNm_compMP[i]!="")
+            {
+              cout<<"  Alias for the particle is set to be \""<<m_vNm_compMP[i]<<"\" for the branch names of the topology tags"<<endl<<endl;
+            }
+          else
+            {
+              cout<<"  No alias for the particle is set for the branch names of the topology tags (default)"<<endl<<endl;
+            }
+        }
+      cout<<endl;
+
+      m_vPid_ccCompMP.clear();
+      m_vICcCompMP.clear();
+      m_vVMpidP.clear(); m_vVMpidCcP.clear();
+      vector<int> vMpidP, vMpidCcP;
+      vMpidP.clear(); vMpidCcP.clear();
+      m_vVIMP.clear(); m_vVIMCcP.clear();
+      vector<int> vIMP, vIMCcP;
+      vIMP.clear(); vIMCcP.clear();
+      m_vVNMP.clear(); m_vVNMCcP.clear();
+      vector<int> vNMP, vNMCcP;
+      vNMP.clear(); vNMCcP.clear();
+      for(unsigned int i=0;i<m_vPid_compMP.size();i++)
+        {
+          string ordNumSufi="th";
+          string ordNumSufj="th";
+          for(unsigned int j=0;j<i;j++)
+            {
+              if(m_vPid_compMP[i]==m_vPid_compMP[j])
+                {
+                  if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
+                  if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle!"<<endl;
+                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  exit(-1);
+                }
+              else if(m_ccSwitch==true&&m_vICcCompMP[j]!=0&&m_vPid_compMP[i]==m_vPid_ccCompMP[j])
+                {
+                  if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
+                  if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle!"<<endl;
+                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  exit(-1);
+                }
+            }
+
+          m_vVMpidP.push_back(vMpidP);
+          m_vVIMP.push_back(vIMP);
+          m_vVNMP.push_back(vNMP);
+          if(m_ccSwitch==true)
+            {
+              m_vPid_ccCompMP.push_back(getCcPid(m_vPid_compMP[i]));
+              if(m_vPid_ccCompMP[i]==m_vPid_compMP[i]) m_vICcCompMP.push_back(0);
+              else m_vICcCompMP.push_back(1);
+              m_vVMpidCcP.push_back(vMpidCcP);
+              m_vVIMCcP.push_back(vIMCcP);
+              m_vVNMCcP.push_back(vNMCcP);              
             }     
         }
     }
@@ -1978,7 +2146,7 @@ void topoana::checkInput()
     }
 
   bool haveTopoAnaTasks=false;
-  if((m_vPid_sigP.size()!=0)||(m_vVPid_sigDcyBr.size()!=0)||(m_vVPid_sigIncDcyBr.size()!=0)||(m_vVPid_sigCascDcyBrs.size()!=0)||(m_vVPid_sigIncCascDcyBrs.size()!=0)||(m_vVPid_sigIRADcyBr.size()!=0)||(m_vVPid_sigIncOrIRACascDcyBrs.size()!=0)||(m_vVPid_sigDcyTr.size()!=0)||(m_vVPid_sigDcyIFSts2.size()!=0)||(m_vPid_compP.size()!=0)||(m_vVPid_compIncDcyBr.size()!=0)||(m_vVPid_compIRADcyBr.size()!=0)||(m_compAnaOfDcyTrs==true)||(m_compAnaOfDcyIFSts==true)) haveTopoAnaTasks=true;
+  if((m_compAnaOfDcyTrs==true)||(m_compAnaOfDcyIFSts==true)||(m_vPid_compDcyBrP.size()!=0)||(m_vPid_compProdBrP.size()!=0)||(m_vPid_compMP.size()!=0)||(m_vVPid_compIncDcyBr.size()!=0)||(m_vVPid_compIRADcyBr.size()!=0)||(m_vVPid_sigDcyTr.size()!=0)||(m_vVPid_sigDcyIFSts2.size()!=0)||(m_vPid_sigP.size()!=0)||(m_vVPid_sigDcyBr.size()!=0)||(m_vVPid_sigIncDcyBr.size()!=0)||(m_vVPid_sigCascDcyBrs.size()!=0)||(m_vVPid_sigIncCascDcyBrs.size()!=0)||(m_vVPid_sigIRADcyBr.size()!=0)||(m_vVPid_sigIncOrIRACascDcyBrs.size()!=0)) haveTopoAnaTasks=true;
   if(haveTopoAnaTasks==false)
     { 
       cerr<<"Error: No topology analysis is set up to be performed!"<<endl;
