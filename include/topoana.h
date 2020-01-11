@@ -231,7 +231,7 @@ class topoana
   public:
     topoana()
     {
-      m_pkgPath="/home/belle2/zhouxy/studyarea/c++/tools/topoana/versions/v2.0/";
+      m_pkgPath="/home/belle2/zhouxy/workarea/repositories/topoana/";
       m_verNum="v2.0";
       m_cardFlNm0=m_pkgPath+"share/underlying_topoana.card";
 
