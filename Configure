@@ -6,4 +6,12 @@ pkgPath=`pwd`
 sed -i 's:m_pkgPath=.*:m_pkgPath=\"'$pkgPath'\/\";:g' include/topoana.h 
 sed -i 's:RequirePackage.*ifxetex:RequirePackage{'$pkgPath'/share/ifxetex:g' share/geometry.sty
 
+# The following statements suggest adding the absolute path of the executable to the envionment variable PATH.
+
+echo -e "\e[32;1mHere is a suggestion: in order to execute \"topoana.exe\" without any path, you should add its absolute path to the envionment variable \"PATH\". Upon the shell you are using, you can set this up by following one of the two guidelines below:\e[0m"
+echo -e "\e[32;1m1) In case of bash, please copy the following statement and paste it into ~/.bash_profile,\e[0m"
+echo -e "\e[32;1m   export PATH=${pkgPath}/bin:\$PATH\e[0m"
+echo -e "\e[32;1m2) In case of (t)csh, please copy the following statement and paste it into ~/.(t)cshrc,\e[0m"
+echo -e "\e[32;1m   setenv PATH ${pkgPath}/bin:\$PATH\e[0m"
+
 exit 0

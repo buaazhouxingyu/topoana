@@ -84,13 +84,11 @@ ${dirEXE}/%.${extEXE} : ${dirSCRIPT}/%.${extSCRIPT} ${OBJECTS} ${dirDEP}/%.${ext
 
 # * for the objects
 ${dirOBJECT}/%.${extOBJECT} : ${dirSOURCE}/%.${extSOURCE} ${dirDEP}/%.${extDEP}
-# * The following sleep statement is used specially for the lxslc6.ihep.ac.cn 
-# * machines to have all of the object files in place.
-	@sleep 10s
 	@echo "Compiling source file \"$(notdir $<)\""
 	@mkdir -p $(@D) > /dev/null
 	@${CC} ${CFLAGS} ${DEPFLAGS} -c $< -o $@
 	${POSTCOMPILE}
+.SECONDARY:
 
 # * for the dependencies
 ${dirDEP}/%.${extDEP}:
