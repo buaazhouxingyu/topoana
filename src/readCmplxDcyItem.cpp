@@ -17,7 +17,7 @@ void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vec
           vPid.clear();
           vector<int> vMidx;
           vMidx.clear();
-          readCmplxDcyOld(line,prompt,vPid,vVPid,vMidx,vVMidx,vNm,useAsterisk);
+          readCmplxDcyOld(line,vPid,vVPid,vMidx,vVMidx,vNm,useAsterisk);
           while(1)
             {
               readExtraLinesOrCloseCurly(fin,line,prompt);
@@ -29,7 +29,7 @@ void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vec
                   vMidx.clear();
                   break;
                 }
-              else readCmplxDcyOld(line,prompt,vPid,vVPid,vMidx,vVMidx,vNm,useAsterisk);
+              else readCmplxDcyOld(line,vPid,vVPid,vMidx,vVMidx,vNm,useAsterisk);
             }
         }
       else

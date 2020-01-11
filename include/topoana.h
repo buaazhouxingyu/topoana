@@ -371,7 +371,7 @@ class topoana
     void           readSmpDcyNew(string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax);
     void           readSmpDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm=0, vector<unsigned long> * vNMax=0);
     void	   getVPidandVMidx(vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx);
-    void           readCmplxDcyOld(string & line, string prompt, vector<int> & vPid, vector< vector<int> > & vVPid, vector<int> & vMidx, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk=false);
+    void           readCmplxDcyOld(string & line, vector<int> & vPid, vector< vector<int> > & vVPid, vector<int> & vMidx, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk=false);
     void           readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool useAsterisk=false);
     void           readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk=false);
     void           readCard(string cardFlNm);

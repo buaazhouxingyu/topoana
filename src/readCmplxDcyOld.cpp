@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::readCmplxDcyOld(string & line, string prompt, vector<int> & vPid, vector< vector<int> > & vVPid, vector<int> & vMidx, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk)
+void topoana::readCmplxDcyOld(string & line, vector<int> & vPid, vector< vector<int> > & vVPid, vector<int> & vMidx, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk)
 {
   istringstream iss;
   iss.clear();
