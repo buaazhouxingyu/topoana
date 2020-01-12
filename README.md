@@ -11,11 +11,14 @@ Here, we just briefly introduce how to install and use the program.
 1. How to install the program
 
    (1) Configure the program with the following command: ./Configure
-       Notably, you are recommended to manually set up the environment variable ''PATH'' according to the suggestion output by the command.
-       Executing the command and setting the ''PATH'' once is sufficient, unless the package is moved.
+
+   Notably, you are recommended to manually set up the environment variable ''PATH'' according to the suggestion output by the command.
+
+   Executing the command and setting the ''PATH'' once is sufficient, unless the package is moved.
 
    (2) Compile the program with the following command: make
-       Executing the command once is sufficient unless the C++ header, source, or script files are updated or revised, or the package is moved.
+
+   Executing the command once is sufficient unless the C++ header, source, or script files are updated or revised, or the package is moved.
 
 2. How to use the program
 
