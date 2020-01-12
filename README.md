@@ -1,8 +1,8 @@
 ### TopoAna: A generic tool for the topology analysis of inclusive Monte-Carlo samples in high energy physics experiments
 
 <font color="red">**Abstract:**</font> Inclusive Monte-Carlo samples are indispensable for signal selection and background suppression in many high energy physics experiments. A clear knowledge of the topology of the samples, including the categories of physics processes and the number of processes in each category, is a great help to investigating signals and backgrounds. To help analysts get the topology information from the raw data of the samples, we develop a topology analysis program, TopoAna, with C++, ROOT, and LaTeX. The program implements the functionalities of component analysis and signal identification by recognizing, categorizing, counting, and tagging events. Independent of specific software frameworks, the program is applicable to many experiments. At present, it has come into use in three e+e- colliding experiments: the BESIII, Belle, and Belle II experiments. The use of the program in other experiments is also prospective.
-
-(<font color="red">**Please contact me (zhouxy@buaa.edu.cn) if you want to employ the program for other experiments. Now, you can try the program with examples under the directory ``examples``**</font>)
+(<font color="red">**Please contact me (zhouxy@buaa.edu.cn) if you want to employ the program for other experiments.
+Now, you can try the program with examples under the directory ``examples``**</font>)
 
 An essential description of the program is in the document: ``share/paper_draft_v1.1.pdf``
 
