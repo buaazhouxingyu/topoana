@@ -1,5 +1,40 @@
 #!/bin/bash
 
+if [ -z $1 ]; then
+
+  echo -e "\e[31mERROR:\e[0m The argument is missing!"
+  echo -e "\e[32mINFOR:\e[0m It should be BESIII, Belle_II, or Example."
+  echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the BESIII experiment, please execute: ./Configure BESIII"
+  echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the Belle II experiment, please execute: ./Configure Belle_II"
+  echo -e "\e[32mINFOR:\e[0m If you want to try the program with examples under the directory examples, please execute: ./Configure Example"
+  exit 1
+
+elif [ $1 = BESIII ]; then
+
+  cp share/pid_3pchrg_txtpnm_texpnm_iccp.dat_BESIII pid_3pchrg_txtpnm_texpnm_iccp.dat
+  cp underlying_topoana.card_BESIII underlying_topoana.card
+
+elif [ $1 = Belle_II ]; then
+
+  cp share/pid_3pchrg_txtpnm_texpnm_iccp.dat_Belle_II pid_3pchrg_txtpnm_texpnm_iccp.dat
+  cp underlying_topoana.card_Belle_II underlying_topoana.card
+
+elif [ $1 = Example ]; then
+
+  cp share/pid_3pchrg_txtpnm_texpnm_iccp.dat_Example pid_3pchrg_txtpnm_texpnm_iccp.dat
+  cp underlying_topoana.card_Example underlying_topoana.card
+
+else
+
+  echo -e "\e[31mERROR:\e[0m The argument is invaild!"
+  echo -e "\e[32mINFOR:\e[0m It should be BESIII, Belle_II, or Example."
+  echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the BESIII experiment, please execute: ./Configure BESIII"
+  echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the Belle II experiment, please execute: ./Configure Belle_II"
+  echo -e "\e[32mINFOR:\e[0m If you want to try the program with examples under the directory examples, please execute: ./Configure Example"
+  exit 2
+
+fi
+
 # This script sets the package path automatically.
 
 pkgPath=`pwd`
