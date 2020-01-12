@@ -20,7 +20,7 @@ Here, we just briefly introduce how to install and use the program.
 
        + If you want to try the program with examples under the directory ``examples``, please execute: ``./Configure Example``.
 
-     - Notably, you are recommended to manually set up the environment variable ``PATH`` according to the guidelines output by the command.
+     - <font color="red">**Notably, you are recommended to manually set up the environment variable ``PATH`` according to the guidelines output by the command.**</font>
 
      - Executing the command and setting the ``PATH`` once is sufficient, unless the experiment is altered and the package is moved.
 
