@@ -36,71 +36,6 @@
 
 }
 
-% Maximum number of entries to be processed
-{
-
-}
-
-# Only single-line cuts are supported in the item just like in the method Draw() and GetEntries() of the class TTree.
-% Cut to select entries
-{
-
-}
-
-# In the following item, T (F) means that true (false) as long as one instance is true (false).
-% Method to apply cut to array variables (Two options: T and F. Default: F)
-{
-
-}
-
-# The value inputted here should be a positive integer.
-% Maximum hierarchy of heading decay branches to be processed in each event
-{
-  
-}
-
-% Ignore the decay of the following particles
-{
-
-}
-
-% Ignore the decay of the daughters of the following particles
-{
-  
-}
-
-% Retain the decay of pi0 to gamma gamma (Two options: Y and N. Default: N)
-{
-
-}
-
-% Ignore the following final decay branches
-{
-
-}
-
-% PDG code of ISR photons (Default: 222222222)
-{
-
-}
-
-% PDG code of FSR photons (Default: -22)
-{
-
-}
-
-# Here, gISR photons are defined as photons who have no mothers in the arrays of the PDG codes and mother indeces of particles, and "g" in "gISR" is short for "generalized".
-% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)
-{
-
-}
-
-# Here, gFSR photons are defined as photons who have at least one e/mu/pi/K/p sister, and "g" in "gFSR" is short for "generalized".
-% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)
-{
-
-}
-
 % Component analysis --- decay trees
 {
   Y 	100     Y  
@@ -233,12 +168,77 @@
   J/psi --> pi+ pi- pi0 	&	Jpsi23Pi
 }
 
-% Process charge conjugate objects together (Two options: Y and N. Default: N)
+% Maximum number of entries to be processed
+{
+
+}
+
+# Only single-line cuts are supported in the item just like in the method Draw() and GetEntries() of the class TTree.
+% Cut to select entries
+{
+
+}
+
+# In the following item, T (F) means that true (false) as long as one instance is true (false).
+% Method to apply cut to array variables (Two options: T and F. Default: F)
+{
+
+}
+
+# The value inputted here should be a positive integer.
+% Maximum hierarchy of heading decay branches to be processed in each event
+{
+  
+}
+
+% Ignore the decay of the following particles
+{
+
+}
+
+% Ignore the decay of the daughters of the following particles
+{
+  
+}
+
+% Retain the decay of pi0 to gamma gamma (Two options: Y and N. Default: N)
+{
+
+}
+
+% Ignore the following final decay branches
+{
+
+}
+
+% PDG code of ISR photons (Default: 222222222)
+{
+
+}
+
+% PDG code of FSR photons (Default: -22)
+{
+
+}
+
+# Here, gISR photons are defined as photons who have no mothers in the arrays of the PDG codes and mother indeces of particles, and "g" in "gISR" is short for "generalized".
+% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)
+{
+
+}
+
+# Here, gFSR photons are defined as photons who have at least one e/mu/pi/K/p sister, and "g" in "gFSR" is short for "generalized".
+% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)
 {
 
 }
 
 % Avoid over counting for candidate based analysis (Two options: Y and N. Default: N)
+{
+
+}
+
+% Process charge conjugate objects together (Two options: Y and N. Default: N)
 {
 
 }
@@ -259,8 +259,13 @@
 
 }
 
+% Initial particles (Default: e- e+)
+{
+   
+}
+
 # The option "Y" set up in the item comes into effect only in the cases that there are only three particles in the decay branches.
-% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)
+% Push front the initial particles uniformly in all the events (Two options: Y and N. Default: N)
 {
 
 }

@@ -14,7 +14,7 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
     }
   else
     {
-      // The condition "(*liit)==m_pidOfISt2" is used for the special IRADcyBr started with the initial e+ and e-.
+      // The condition "(*liit)==m_pidOfISt2" is used for the special IRADcyBr started with the initial particles.
       if((*liit)==m_pidOfISt2) vIdx.push_back(-1);
       else
         { 
@@ -64,7 +64,7 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
               int k=j;
               while(1)
                 {                     
-                  // The condition "vIdx[i]==-1&&vMidx[k]!=k" is used for the special IRADcyBr started with the initial e+ and e-.
+                  // The condition "vIdx[i]==-1&&vMidx[k]!=k" is used for the special IRADcyBr started with the initial particles.
                   if(((vIdx[i]==-1&&vMidx[k]!=k)||(vIdx[i]!=-1))&&vPid[vMidx[k]]==(*liit))
                     {
                       descendantOfOneSpecifiedP=true;
@@ -85,7 +85,7 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
           if((specifiedP==true||fsp==true)&&(descendantOfOneSpecifiedP==false))
             {
               bool fromTheP;
-              // The condition "vIdx[i]==-1" is used for the special IRADcyBr started with the initial e+ and e-.
+              // The condition "vIdx[i]==-1" is used for the special IRADcyBr started with the initial particles.
               if(vIdx[i]==-1) fromTheP=true;
               else 
                 {
@@ -119,7 +119,7 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
        {
          sortByPidAndPchrg(IRADcyBrTmp);
          liit=IRADcyBr.begin();
-         // The condition "(*liit)==m_pidOfISt2" is used for the special IRADcyBr started with the initial e+ and e-.
+         // The condition "(*liit)==m_pidOfISt2" is used for the special IRADcyBr started with the initial particles.
          if((*liit)!=m_pidOfISt2)
            {
              IRADcyBrTmp.push_front((*liit));
@@ -138,14 +138,14 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
                  subDcyBrIRADcyBr.clear();
                  for(unsigned int j=vIdx[i]+1;j<vPid.size();j++)
                    {
-                     // The condition "vIdx[i]==-1&&((unsigned int) vMidx[j]==j)" is used for the special IRADcyBr started with the initial e+ and e-.
+                     // The condition "vIdx[i]==-1&&((unsigned int) vMidx[j]==j)" is used for the special IRADcyBr started with the initial particles.
                      if((vIdx[i]==-1&&((unsigned int) vMidx[j]==j))||(vIdx[i]!=-1&&vMidx[j]==vIdx[i]))
                        {
                          subDcyBrIRADcyBr.push_back(vPid[j]);
                          vIdxOld.push_back(j);
                        }
                    }
-                 // The condition "vIdx[i]!=-1" is used for the special IRADcyBr started with the initial e+ and e-.
+                 // The condition "vIdx[i]!=-1" is used for the special IRADcyBr started with the initial particles.
                  if(vIdx[i]!=-1)
                    {
                      subDcyBrIRADcyBr.push_front(vPid[vIdx[i]]);

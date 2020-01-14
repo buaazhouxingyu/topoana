@@ -433,9 +433,29 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Sort the signals in the topology maps related to signal identifications (Two options: Y and N. Default: N)", m_sortSigsInTopoMapsRltdToSigIds);
         }
-      else if(line=="% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)")
+      else if(line=="% Initial particles (Default: e- e+)")
         {
-          readYNItem(fin, line, "% Involve the initial e+ and e- uniformly in all the events (Two options: Y and N. Default: N)", m_initEpEmSwitch);
+          readOpenCurly(fin,line,"% Initial particles (Default: e- e+)");
+          read1stLineOrCloseCurly(fin,line,false,"% Initial particles (Default: e- e+)");
+          if(line!="}")
+            {
+              istringstream iss;
+              iss.clear();
+              iss.str(line);
+              iss>>line;
+              m_pidOfISt1=getPidFromTxtPnm(line);
+              if(!iss.eof())
+                {
+                  iss>>line;
+                  m_pidOfISt2=getPidFromTxtPnm(line);
+                }
+              else m_pidOfISt2=getCcPid(m_pidOfISt1);
+              readCloseCurly(fin,line,"% Initial particles (Default: e- e+)");
+            }
+        }
+      else if(line=="% Push front the initial particles uniformly in all the events (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Push front the initial particles uniformly in all the events (Two options: Y and N. Default: N)", m_initPsSwitch);
         }
       else if(line=="% Main name of output files (Default: Main name of the card file)")
         {

@@ -9,7 +9,7 @@ void topoana::getStrFromVli(vector< list<int> > & dcyTr, string & strDcyTr)
   list<int> dcyBr;
   for(unsigned int i=0;i<dcyTr.size();i++)
     {
-      if(i==0&&m_initEpEmSwitch==true&&dcyTr[0].size()==3) continue;
+      if(i==0&&m_initPsSwitch==true&&dcyTr[0].size()==3) continue;
       dcyBr.clear();
       dcyBr=dcyTr[i];
       list<int>::iterator liit=dcyBr.begin();

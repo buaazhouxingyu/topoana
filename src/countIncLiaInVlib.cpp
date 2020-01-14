@@ -14,7 +14,7 @@ unsigned int topoana::countIncLiaInVlib(list<int> & lia, vector< list<int> > & V
   list<int>::iterator liita;
   unsigned int iend;
   liita=lia.begin();
-  // The following if statement is designed for the inclusive decays started directly from the initial e+ and e-.
+  // The following if statement is designed for the inclusive decays started directly from the initial particles.
   if((*liita)==m_pidOfISt2) iend=1;
   else iend=Vlib.size();
 

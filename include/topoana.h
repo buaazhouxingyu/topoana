@@ -103,7 +103,7 @@ class topoana
     bool m_ccSwitch;
     string m_anaTasksForSigIds;
     bool m_sortSigsInTopoMapsRltdToSigIds;
-    bool m_initEpEmSwitch;
+    bool m_initPsSwitch;
 
     string m_mainNmOfOptFls;
     bool m_cmpltHVLines;
@@ -322,7 +322,7 @@ class topoana
       m_ccSwitch=false;
       m_anaTasksForSigIds="TC";
       m_sortSigsInTopoMapsRltdToSigIds=false;
-      m_initEpEmSwitch=false;
+      m_initPsSwitch=false;
 
       m_cmpltHVLines=false;
       m_centDcyObjs=false;

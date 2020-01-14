@@ -37,7 +37,7 @@ void topoana::getDcyTr(vector<int> vPid, vector<int> vMidx, vector< list<int> > 
         }
       else break; // The statement is specially added here to save computing because the function sortPs has been run over vPid and vMidx.
     }
-  if(dcyBr.size()>1||m_initEpEmSwitch==true||vPid[0]==m_pidOfISt)
+  if(dcyBr.size()>1||m_initPsSwitch==true||vPid[0]==m_pidOfISt)
     {
       dcyBr.push_front(m_pidOfISt1);
       dcyBr.push_front(m_pidOfISt2);

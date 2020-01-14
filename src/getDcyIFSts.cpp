@@ -26,7 +26,7 @@ void  topoana::getDcyIFSts(vector<int> & vPid,vector<int> & vMidx,list<int> & dc
     { 
       if(((unsigned int) vMidx[i])==i) dcyBr.push_back(vPid[i]);
     }
-  if(dcyBr.size()>1||m_initEpEmSwitch==true)
+  if(dcyBr.size()>1||m_initPsSwitch==true)
     {
       dcyIFSts.push_front(m_pidOfISt1);
       dcyIFSts.push_front(m_pidOfISt2);
