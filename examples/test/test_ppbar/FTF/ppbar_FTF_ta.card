@@ -1,0 +1,19 @@
+% Names of input root files
+{
+  ppbar_FTF.root
+}
+
+% TTree name
+{
+  ppbar_FTF
+}
+
+% Component analysis --- decay trees
+{
+  Y
+}
+
+% Initial particles (Default: e- e+)
+{
+  anti-p- p+
+}
