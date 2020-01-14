@@ -41,7 +41,11 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
             }
           else if(vPid[i]==m_pidOfGam)
             {
-              if(m_ignoreISR!="Yg") vPidOld.push_back(m_pidOfGISRGam);
+              if(m_ignoreISR!="Yg")
+                {
+                  if((m_pidOfISt1==m_pidOfE)&&(m_pidOfISt2==-1*m_pidOfE)) vPidOld.push_back(m_pidOfGISRGam);
+                  else vPidOld.push_back(vPid[i]);
+                }
               else continue;
             }
           else vPidOld.push_back(vPid[i]);

@@ -2611,9 +2611,9 @@ void topoana::checkInput()
 
   if((m_pidOfISt1!=m_pidOfE)||(m_pidOfISt2!=-1*m_pidOfE))
     {
-      cout<<"The initial particles are set to be ";
+      cout<<"The initial particles are set to be";
       writePnmFromPid(cout,"TxtPnm",m_pidOfISt1);
-      cout<<"and ";
+      cout<<" and";
       writePnmFromPid(cout,"TxtPnm",m_pidOfISt2);
       cout<<"."<<endl<<endl;
     }
