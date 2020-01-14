@@ -15,7 +15,7 @@ unsigned int topoana::countIncLiaInVlib(list<int> & lia, vector< list<int> > & V
   unsigned int iend;
   liita=lia.begin();
   // The following if statement is designed for the inclusive decays started directly from the initial e+ and e-.
-  if((*liita)==-11) iend=1;
+  if((*liita)==m_pidOfISt2) iend=1;
   else iend=Vlib.size();
 
   for(unsigned int i=0;i<iend;i++) if(isLiaMatchedWithLib(lia,Vlib[i])) nCount++;

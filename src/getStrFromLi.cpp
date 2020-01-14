@@ -8,7 +8,7 @@ void topoana::getStrFromLi(list<int> & dcyIFSts, string & strDcyIFSts)
   oss.str("");
   list<int>::iterator liit=dcyIFSts.begin();
   oss<<(*liit)<<" ";
-  if((*liit)==-11)
+  if((*liit)==m_pidOfISt2)
     {
       liit++;
       oss<<(*liit)<<" ";

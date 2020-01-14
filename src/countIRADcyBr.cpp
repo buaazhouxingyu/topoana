@@ -14,8 +14,8 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
     }
   else
     {
-      // The condition "(*liit)==-11" is used for the special IRADcyBr started with the initial e+ and e-.
-      if((*liit)==-11) vIdx.push_back(-1);
+      // The condition "(*liit)==m_pidOfISt2" is used for the special IRADcyBr started with the initial e+ and e-.
+      if((*liit)==m_pidOfISt2) vIdx.push_back(-1);
       else
         { 
           for(unsigned int i=0;i<vPid.size();i++)
@@ -108,7 +108,7 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
                         }
                     }
                 }
-              // The following condition "abs(vPid[j])==22" is exerted specially for the comparison without final state photons.
+              // The following condition "abs(vPid[j])==m_pidOfGam" is exerted specially for the comparison without final state photons.
               if(fromTheP==true)
                 {
                   IRADcyBrTmp.push_back(vPid[j]);
@@ -119,15 +119,15 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
        {
          sortByPidAndPchrg(IRADcyBrTmp);
          liit=IRADcyBr.begin();
-         // The condition "(*liit)==-11" is used for the special IRADcyBr started with the initial e+ and e-.
-         if((*liit)!=-11)
+         // The condition "(*liit)==m_pidOfISt2" is used for the special IRADcyBr started with the initial e+ and e-.
+         if((*liit)!=m_pidOfISt2)
            {
              IRADcyBrTmp.push_front((*liit));
            }
          else
            {
-             IRADcyBrTmp.push_front(11);
-             IRADcyBrTmp.push_front(-11);
+             IRADcyBrTmp.push_front(m_pidOfISt1);
+             IRADcyBrTmp.push_front(m_pidOfISt2);
            }
          if(IRADcyBrTmp==IRADcyBr)
            {
@@ -152,8 +152,8 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
                    }
                  else
                    {
-                     subDcyBrIRADcyBr.push_front(11);
-                     subDcyBrIRADcyBr.push_front(-11);
+                     subDcyBrIRADcyBr.push_front(m_pidOfISt1);
+                     subDcyBrIRADcyBr.push_front(m_pidOfISt2);
                    }
                  dcyBrIRADcyBr.push_back(subDcyBrIRADcyBr);
                  bool specifiedP;

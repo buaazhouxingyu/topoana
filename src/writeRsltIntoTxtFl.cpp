@@ -54,8 +54,8 @@ void topoana::writeRsltIntoTxtFl()
               fout<<" ";
               list<int>::iterator liit=dcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
-              // The condition "j==0&&((*liit)==-11)" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
-              if((j==0&&((*liit)==-11))||(*liit)==1||(*liit)==2||(*liit)==3||(*liit)==4||(*liit)==5||(*liit)==6)
+              // The condition "j==0&&((*liit)==m_pidOfISt2)" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
+              if((j==0&&((*liit)==m_pidOfISt2))||(*liit)==1||(*liit)==2||(*liit)==3||(*liit)==4||(*liit)==5||(*liit)==6)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -85,7 +85,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<"(";
           list<int>::iterator liit=dcyIFSts.begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -117,13 +117,13 @@ void topoana::writeRsltIntoTxtFl()
           fout<<" ";
           if(m_initEpEmSwitch==true)
             {
-              writePnmFromPid(fout,"TxtPnm",-11);
-              writePnmFromPid(fout,"TxtPnm",11);
+              writePnmFromPid(fout,"TxtPnm",m_pidOfISt2);
+              writePnmFromPid(fout,"TxtPnm",m_pidOfISt1);
               fout<<" --> others ("<<m_vDcyTr.size()-nDcyTrsToBePrtd<<" in total)"<<endl;
 
               fout<<"(";
-              writePnmFromPid(fout,"TxtPnm",-11);
-              writePnmFromPid(fout,"TxtPnm",11);
+              writePnmFromPid(fout,"TxtPnm",m_pidOfISt2);
+              writePnmFromPid(fout,"TxtPnm",m_pidOfISt1);
             }
           else
             {
@@ -138,7 +138,7 @@ void topoana::writeRsltIntoTxtFl()
                       if((*liit)!=pid) isASameInitPInAllOtherDcyTrs=false;
                     }
                 }
-              if(isASameInitPInAllOtherDcyTrs==true&&(pid!=-11))
+              if(isASameInitPInAllOtherDcyTrs==true&&(pid!=m_pidOfISt2))
                 {
                   writePnmFromPid(fout,"TxtPnm",pid);
                   fout<<" --> others ("<<m_vDcyTr.size()-nDcyTrsToBePrtd<<" in total)"<<endl;
@@ -148,13 +148,13 @@ void topoana::writeRsltIntoTxtFl()
                 }
               else
                 {
-                  writePnmFromPid(fout,"TxtPnm",-11);
-                  writePnmFromPid(fout,"TxtPnm",11);
+                  writePnmFromPid(fout,"TxtPnm",m_pidOfISt2);
+                  writePnmFromPid(fout,"TxtPnm",m_pidOfISt1);
                   fout<<" --> others ("<<m_vDcyTr.size()-nDcyTrsToBePrtd<<" in total)"<<endl;
 
                   fout<<"(";
-                  writePnmFromPid(fout,"TxtPnm",-11);
-                  writePnmFromPid(fout,"TxtPnm",11);
+                  writePnmFromPid(fout,"TxtPnm",m_pidOfISt2);
+                  writePnmFromPid(fout,"TxtPnm",m_pidOfISt1);
                 }
             }
           fout<<" ---> corresponding to others )"<<endl;
@@ -193,7 +193,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<" ";
           list<int>::iterator liit=dcyIFSts.begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -221,7 +221,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<" ";
           list<int>::iterator liit=dcyIFSts.begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -506,7 +506,7 @@ void topoana::writeRsltIntoTxtFl()
               fout<<" ";
               list<int>::iterator liit=prodBrP.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
-              if((*liit)==-11)
+              if((*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -616,7 +616,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<"Exclusive components of";
           list<int>::iterator liit=m_vCompIncDcyBr[i].begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -650,7 +650,7 @@ void topoana::writeRsltIntoTxtFl()
               fout<<" ";
               list<int>::iterator liit=dcyBrIncDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
-              if((*liit)==-11)
+              if((*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -688,7 +688,7 @@ void topoana::writeRsltIntoTxtFl()
               fout<<" ";
               list<int>::iterator liit=m_vCompIncDcyBr[i].begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
-              if((*liit)==-11)
+              if((*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -710,7 +710,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<"Exclusive components of";
           list<int>::iterator liit=m_vCompIRADcyBr[i].begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -748,7 +748,7 @@ void topoana::writeRsltIntoTxtFl()
                   subdcyBrIRADcyBr=dcyBrIRADcyBr[k];
                   list<int>::iterator liit=subdcyBrIRADcyBr.begin();
                   writePnmFromPid(fout,"TxtPnm",(*liit));
-                  if((k==0)&&((*liit)==-11))
+                  if((k==0)&&((*liit)==m_pidOfISt2))
                     {
                       liit++;
                       writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -788,7 +788,7 @@ void topoana::writeRsltIntoTxtFl()
               fout<<" ";
               list<int>::iterator liit=m_vCompIRADcyBr[i].begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
-              if((*liit)==-11)
+              if((*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -861,8 +861,8 @@ void topoana::writeRsltIntoTxtFl()
               fout<<" ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
-              // The condition "j==0&&((*liit)==-11)" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
-              if((j==0&&((*liit)==-11))||(*liit)==1||(*liit)==2||(*liit)==3||(*liit)==4||(*liit)==5||(*liit)==6)
+              // The condition "j==0&&((*liit)==m_pidOfISt2)" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
+              if((j==0&&((*liit)==m_pidOfISt2))||(*liit)==1||(*liit)==2||(*liit)==3||(*liit)==4||(*liit)==5||(*liit)==6)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -884,7 +884,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<"(";
           list<int>::iterator liit=sigDcyIFSts_tr.begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -935,7 +935,7 @@ void topoana::writeRsltIntoTxtFl()
               fout<<" ";
               list<int>::iterator liit=sigDcyIFSts_tr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
-              if((*liit)==-11)
+              if((*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -987,7 +987,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<" ";
           list<int>::iterator liit=sigDcyIFSts.begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -1054,7 +1054,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<" ";
           list<int>::iterator liit=sigDcyBr.begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -1094,7 +1094,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<" ";
           list<int>::iterator liit=sigIncDcyBr.begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -1142,7 +1142,7 @@ void topoana::writeRsltIntoTxtFl()
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
               // if(j==0&&vSigCascDcyBrIdxOfHead[0]==-1)
-              if(j==0&&(*liit)==-11)
+              if(j==0&&(*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -1191,7 +1191,7 @@ void topoana::writeRsltIntoTxtFl()
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
               // if(j==0&&vSigIncCascDcyBrIdxOfHead[0]==-1)
-              if(j==0&&(*liit)==-11)
+              if(j==0&&(*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -1234,7 +1234,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<" ";
           list<int>::iterator liit=sigIRADcyBr.begin();
           writePnmFromPid(fout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
@@ -1281,7 +1281,7 @@ void topoana::writeRsltIntoTxtFl()
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
               // if(j==0&&vSigIncOrIRACascDcyBrIdxOfHead[0]==-1)
-              if(j==0&&(*liit)==-11)
+              if(j==0&&(*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));

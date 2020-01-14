@@ -246,17 +246,17 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
     }
   else if(iarrow==2)
     {
-      if(!((dcyBr[0]==11&&dcyBr[1]==-11)||(dcyBr[0]==-11&&dcyBr[1]==11)))
+      if(!((dcyBr[0]==m_pidOfISt1&&dcyBr[1]==m_pidOfISt2)||(dcyBr[0]==m_pidOfISt2&&dcyBr[1]==m_pidOfISt1)))
         {
           cerr<<"Error: The two initial-state particles in the decay branch part of the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" are not the electron and positron pair!"<<endl;
           cerr<<"Infor: If two initial-state particles exist in the line, they should be the electron and positron pair."<<endl;
           cerr<<"Infor: Please check it."<<endl;
           exit(-1);
         }
-      else if(dcyBr[0]==11&&dcyBr[1]==-11)
+      else if(dcyBr[0]==m_pidOfISt1&&dcyBr[1]==m_pidOfISt2)
         {
-          // dcyBr[0]=-11;
-          // dcyBr[1]=11;
+          // dcyBr[0]=m_pidOfISt2;
+          // dcyBr[1]=m_pidOfISt1;
           dcyBr.erase(dcyBr.begin());
           dcyBr[0]=m_pidOfISt;
         }

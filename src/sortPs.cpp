@@ -39,7 +39,7 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
               if(m_ignoreISR=="N") vPidOld.push_back(m_pidOfSISRGam);
               else continue;
             }
-          else if(vPid[i]==22)
+          else if(vPid[i]==m_pidOfGam)
             {
               if(m_ignoreISR!="Yg") vPidOld.push_back(m_pidOfGISRGam);
               else continue;
@@ -116,7 +116,7 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
                   //if((((unsigned int) vMidx[k])!=k)&&vMidx[k]==vIdxOld[nCSmPids+j]) Sometimes, users may set Midx[i] at -1 rather than i when the pid of the mother of the partilce i does not appear in the array Pid. Note that the arrays Pid and Midx are the branches stored in the tree of the input root files. In order to make the program can handle such cases as well, this statement is revised to be the following one.
                   if(((((unsigned int) vMidx[k])!=k)&&(vMidx[k]!=-1))&&(vMidx[k]==vIdxOld[nCSmPids+j]))
 	            {
-                      if(abs(vPid[k])!=22)
+                      if(abs(vPid[k])!=m_pidOfGam)
                         {
                           vPidYngSbst.push_back(vPid[k]);
                         }
@@ -139,8 +139,8 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
                                 {
                                   if(vMidx[k+l]==vMidx[k])
                                     {
-                                      if(vPid[k+l]!=22) nSister++;
-                                      if(abs(vPid[k+l])==11||abs(vPid[k+l])==13||abs(vPid[k+l])==211||abs(vPid[k+l])==321||abs(vPid[k+l])==2212) hasAemupiKpSister=true;
+                                      if(vPid[k+l]!=m_pidOfGam) nSister++;
+                                      if(abs(vPid[k+l])==m_pidOfE||abs(vPid[k+l])==m_pidOfMu||abs(vPid[k+l])==m_pidOfPi||abs(vPid[k+l])==m_pidOfK||abs(vPid[k+l])==m_pidOfP) hasAemupiKpSister=true;
                                       if(nSister>=2&&hasAemupiKpSister==true)
                                         {
                                           isGFSR=true;
@@ -152,8 +152,8 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
                                 {
                                   if(vMidx[k-l]==vMidx[k])
                                     {
-                                      if(vPid[k-l]!=22) nSister++;
-                                      if(abs(vPid[k-l])==11||abs(vPid[k-l])==13||abs(vPid[k-l])==211||abs(vPid[k-l])==321||abs(vPid[k-l])==2212) hasAemupiKpSister=true;
+                                      if(vPid[k-l]!=m_pidOfGam) nSister++;
+                                      if(abs(vPid[k-l])==m_pidOfE||abs(vPid[k-l])==m_pidOfMu||abs(vPid[k-l])==m_pidOfPi||abs(vPid[k-l])==m_pidOfK||abs(vPid[k-l])==m_pidOfP) hasAemupiKpSister=true;
                                       if(nSister>=2&&hasAemupiKpSister==true)
                                         {
                                           isGFSR=true;
@@ -178,7 +178,7 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
 	        }
               if(vPidYngSbst.size()>0)
                 {
-                  if((m_retainPi02GamGam==false)&&(vPid[vMidxYngSbst[0]]==111)&&(vPidYngSbst.size()==2)&&(vPidYngSbst[0]==22)&&(vPidYngSbst[1]==22)) continue; // This statement is added to remove the decay of pi0 to gamma gamma. Here, note that vMidxYngSbst[0] is equal to vIdxOld[nCSmPids+j], which has the same mother with vIdxOld[nCSmPids]. 
+                  if((m_retainPi02GamGam==false)&&(vPid[vMidxYngSbst[0]]==m_pidOfPi0)&&(vPidYngSbst.size()==2)&&(vPidYngSbst[0]==m_pidOfGam)&&(vPidYngSbst[1]==m_pidOfGam)) continue; // This statement is added to remove the decay of pi0 to gamma gamma. Here, note that vMidxYngSbst[0] is equal to vIdxOld[nCSmPids+j], which has the same mother with vIdxOld[nCSmPids]. 
                   sortByPidAndPchrg(vPidYngSbst,vMidxYngSbst,vIdxYngSbst,vNSmPidsYngSbst);
                   if(isIgnoreFDcyBr(vPid[vMidxYngSbst[0]],vPidYngSbst,m_vIgnoreFDcyBr)==true) continue;
                   // The following four statements should be put in the scope of the if statement, otherwise empty vectors might be pushed back to these vectors of vector. 

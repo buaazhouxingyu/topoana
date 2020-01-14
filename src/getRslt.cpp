@@ -1142,8 +1142,8 @@ void topoana::getRslt()
                             {
                               // The else statement is added here to handle the particles that could be generated directly from e+ and e- and with no sisters. (||(vIdxOfHead[l]==vMidx[j]&&((unsigned int) vMidx[j])==j))
                               prodBrP.clear();
-                              prodBrP.push_back(-11);
-                              prodBrP.push_back(11);
+                              prodBrP.push_back(m_pidOfISt2);
+                              prodBrP.push_back(m_pidOfISt1);
                               prodBrP.push_back(vPid[j]);
                             }
                           int _iProdBrP=-1; // If the variable is still equal to -1 after the following loop, then the production branch of the particle is a new production branch of the particle.
@@ -1230,8 +1230,8 @@ void topoana::getRslt()
                             {
                               // The else statement is added here to handle the particles that could be generated directly from e+ and e- and with no sisters. (||(vIdxOfHead[l]==vMidx[j]&&((unsigned int) vMidx[j])==j))
                               prodBrP.clear();
-                              prodBrP.push_back(-11);
-                              prodBrP.push_back(11);
+                              prodBrP.push_back(m_pidOfISt2);
+                              prodBrP.push_back(m_pidOfISt1);
                               prodBrP.push_back(vPid[j]);
                             }
                           int _iProdBrP=-1; // If the variable is still equal to -1 after the following loop, then the production branch of the particle is a new production branch of the particle.
@@ -1444,20 +1444,20 @@ void topoana::getRslt()
                                 {
                                   dcyBrCcIncDcyBr.clear();
                                   list<int>::iterator liit=dcyBrIncDcyBr.begin();
-                                  if((*liit)==-11) liit++;
+                                  if((*liit)==m_pidOfISt2) liit++;
                                   for(liit++;liit!=dcyBrIncDcyBr.end();liit++) dcyBrCcIncDcyBr.push_back(getCcPid((*liit)));
                                   sortByPidAndPchrg(dcyBrCcIncDcyBr); 
                                   liit=dcyBrIncDcyBr.begin();
                                   if(m_vICcCompIncDcyBr[k]!=0)
                                     {
-                                      if((*liit)!=-11)
+                                      if((*liit)!=m_pidOfISt2)
                                         {
                                           dcyBrCcIncDcyBr.push_front(getCcPid((*liit))); // Here, (*liit) is not equal to getCcPid((*liit)).
                                         }
                                       else
                                         {
-                                          dcyBrCcIncDcyBr.push_front(11);
-                                          dcyBrCcIncDcyBr.push_front(-11);
+                                          dcyBrCcIncDcyBr.push_front(m_pidOfISt1);
+                                          dcyBrCcIncDcyBr.push_front(m_pidOfISt2);
                                         }
                                       m_vVDcyBrCcIncDcyBr[k].push_back(dcyBrCcIncDcyBr);
                                       m_vVIDcyBrCcIncDcyBr[k].push_back(_iDcyBrIncDcyBr);
@@ -1465,14 +1465,14 @@ void topoana::getRslt()
                                     }    
                                   else
                                     {
-                                      if((*liit)!=-11)
+                                      if((*liit)!=m_pidOfISt2)
                                         {
                                           dcyBrCcIncDcyBr.push_front((*liit)); // Here, (*liit) is equal to getCcPid((*liit)).
                                         }
                                       else
                                         {
-                                          dcyBrCcIncDcyBr.push_front(11);
-                                          dcyBrCcIncDcyBr.push_front(-11);
+                                          dcyBrCcIncDcyBr.push_front(m_pidOfISt1);
+                                          dcyBrCcIncDcyBr.push_front(m_pidOfISt2);
                                         }
                                       if(dcyBrCcIncDcyBr==dcyBrIncDcyBr) _iCcDcyBrIncDcyBr=0;
                                       else _iCcDcyBrIncDcyBr=1;
@@ -1521,18 +1521,18 @@ void topoana::getRslt()
 
                               dcyBrIncDcyBr.clear();
                               list<int>::iterator liit=dcyBrCcIncDcyBr.begin();
-                              if((*liit)==-11) liit++;
+                              if((*liit)==m_pidOfISt2) liit++;
                               for(liit++;liit!=dcyBrCcIncDcyBr.end();liit++) dcyBrIncDcyBr.push_back(getCcPid((*liit)));
                               sortByPidAndPchrg(dcyBrIncDcyBr);
                               liit=dcyBrCcIncDcyBr.begin();
-                              if((*liit)!=-11)
+                              if((*liit)!=m_pidOfISt2)
                                 {
                                   dcyBrIncDcyBr.push_front(getCcPid((*liit))); // Here, (*liit) is not equal to getCcPid((*liit)).
                                 }
                               else
                                 {
-                                  dcyBrIncDcyBr.push_front(11);
-                                  dcyBrIncDcyBr.push_front(-11);
+                                  dcyBrIncDcyBr.push_front(m_pidOfISt1);
+                                  dcyBrIncDcyBr.push_front(m_pidOfISt2);
                                 }
                               m_vVDcyBrIncDcyBr[k].push_back(dcyBrIncDcyBr);
                               m_vVIDcyBrIncDcyBr[k].push_back(_iDcyBrIncDcyBr);
@@ -1606,14 +1606,14 @@ void topoana::getRslt()
                                     {
                                       subDcyBrCcIRADcyBr.clear();
                                       liit=dcyBrIRADcyBr[l].begin();
-                                      if(l==0&&(*liit)==-11) liit++;
+                                      if(l==0&&(*liit)==m_pidOfISt2) liit++;
                                       for(liit++;liit!=dcyBrIRADcyBr[l].end();liit++) subDcyBrCcIRADcyBr.push_back(getCcPid((*liit)));
                                       sortByPidAndPchrg(subDcyBrCcIRADcyBr);
                                       liit=dcyBrIRADcyBr[l].begin();
-                                      if(l==0&&(*liit)==-11)
+                                      if(l==0&&(*liit)==m_pidOfISt2)
                                         {
-                                          subDcyBrCcIRADcyBr.push_front(11);
-                                          subDcyBrCcIRADcyBr.push_front(-11);
+                                          subDcyBrCcIRADcyBr.push_front(m_pidOfISt1);
+                                          subDcyBrCcIRADcyBr.push_front(m_pidOfISt2);
                                         }
                                       else
                                         {
@@ -1686,14 +1686,14 @@ void topoana::getRslt()
                                 {
                                   subDcyBrIRADcyBr.clear();
                                   liit=dcyBrCcIRADcyBr[l].begin();
-                                  if(l==0&&(*liit)==-11) liit++;
+                                  if(l==0&&(*liit)==m_pidOfISt2) liit++;
                                   for(liit++;liit!=dcyBrCcIRADcyBr[l].end();liit++) subDcyBrIRADcyBr.push_back(getCcPid((*liit)));
                                   sortByPidAndPchrg(subDcyBrIRADcyBr);
                                   liit=dcyBrCcIRADcyBr[l].begin();
-                                  if(l==0&&(*liit)==-11)
+                                  if(l==0&&(*liit)==m_pidOfISt2)
                                     {
-                                      subDcyBrIRADcyBr.push_front(11);
-                                      subDcyBrIRADcyBr.push_front(-11);
+                                      subDcyBrIRADcyBr.push_front(m_pidOfISt1);
+                                      subDcyBrIRADcyBr.push_front(m_pidOfISt2);
                                     }
                                   else
                                     {

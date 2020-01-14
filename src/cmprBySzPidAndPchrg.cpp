@@ -12,7 +12,7 @@ bool topoana::cmprBySzPidAndPchrg(vector<int> & via, vector<int> & vib)
         {
           if(abs(via[k])>abs(vib[k]))
             {
-              if(abs(vib[k])!=22)
+              if(abs(vib[k])!=m_pidOfGam)
                 {                    
                   exchOrd=true;
                   break;
@@ -56,7 +56,7 @@ bool topoana::cmprBySzPidAndPchrg(vector<int> & via, vector<int> & vib)
             }
           else // Please don't forget this part of the if statement.
             { 
-              if(abs(via[k])==22)
+              if(abs(via[k])==m_pidOfGam)
                 {
                   exchOrd=true;
                   break;

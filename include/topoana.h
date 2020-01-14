@@ -226,6 +226,15 @@ class topoana
     int m_pidOfGISRGam;
     int m_pidOfGFSRGam;
     int m_pidOfISt;
+    int m_pidOfISt1;
+    int m_pidOfISt2;
+    int m_pidOfGam;
+    int m_pidOfPi0;
+    int m_pidOfE;
+    int m_pidOfMu;
+    int m_pidOfPi;
+    int m_pidOfK;
+    int m_pidOfP;
     int m_pidOfAnything;
     int m_pidOfIRAFlag;
   public:
@@ -330,6 +339,15 @@ class topoana
       m_pidOfGISRGam=22222222;
       m_pidOfGFSRGam=-22222222;
       m_pidOfISt=99999999;
+      m_pidOfISt1=11;
+      m_pidOfISt2=-11;
+      m_pidOfGam=22;
+      m_pidOfPi0=111;
+      m_pidOfE=11;
+      m_pidOfMu=13;
+      m_pidOfPi=211;
+      m_pidOfK=321;
+      m_pidOfP=2212;
       m_pidOfAnything=-99999999;
       m_pidOfIRAFlag=100000000;
     }

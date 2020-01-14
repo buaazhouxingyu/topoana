@@ -39,8 +39,8 @@ void topoana::getDcyTr(vector<int> vPid, vector<int> vMidx, vector< list<int> > 
     }
   if(dcyBr.size()>1||m_initEpEmSwitch==true||vPid[0]==m_pidOfISt)
     {
-      dcyBr.push_front(11);
-      dcyBr.push_front(-11);
+      dcyBr.push_front(m_pidOfISt1);
+      dcyBr.push_front(m_pidOfISt2);
       dcyTr.push_back(dcyBr);
       if(vIdxOfHead!=0) (*vIdxOfHead).push_back(-1);
       if(vMidxOfHead!=0) (*vMidxOfHead).push_back(-1);

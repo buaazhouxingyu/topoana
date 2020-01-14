@@ -29,7 +29,7 @@ bool topoana::isLiaMatchedWithLib(list<int> & lia, list<int> & lib)
   else
     {
       // The following if statement is designed for the inclusive decays started directly from the initial e+ and e-.
-      if((*liita)==-11)
+      if((*liita)==m_pidOfISt2)
         {
           liita++;
           liitb++;

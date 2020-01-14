@@ -156,14 +156,14 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
     }
   else if(iarrow==2)
     {
-      if(!((vPid[0]==11&&vPid[1]==-11)||(vPid[0]==-11&&vPid[1]==11)))
+      if(!((vPid[0]==m_pidOfISt1&&vPid[1]==m_pidOfISt2)||(vPid[0]==m_pidOfISt2&&vPid[1]==m_pidOfISt1)))
         {
           cerr<<"Error: The two initial-state particles in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" are not the electron and positron pair!"<<endl;
           cerr<<"Infor: If two initial-state particles exist in the line, they should be the electron and positron pair."<<endl;
           cerr<<"Infor: Please check it."<<endl;
           exit(-1);
         }
-      else if(vPid[0]==11&&vPid[1]==-11)
+      else if(vPid[0]==m_pidOfISt1&&vPid[1]==m_pidOfISt2)
         {
           vPid.erase(vPid.begin());
           vPid[0]=m_pidOfISt;

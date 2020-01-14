@@ -28,8 +28,8 @@ void  topoana::getDcyIFSts(vector<int> & vPid,vector<int> & vMidx,list<int> & dc
     }
   if(dcyBr.size()>1||m_initEpEmSwitch==true)
     {
-      dcyIFSts.push_front(11);
-      dcyIFSts.push_front(-11);
+      dcyIFSts.push_front(m_pidOfISt1);
+      dcyIFSts.push_front(m_pidOfISt2);
     }
   else
     {

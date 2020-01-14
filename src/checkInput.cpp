@@ -1146,8 +1146,8 @@ void topoana::checkInput()
             }
           else
             {
-              compIncDcyBr.push_front(11);
-              compIncDcyBr.push_front(-11);
+              compIncDcyBr.push_front(m_pidOfISt1);
+              compIncDcyBr.push_front(m_pidOfISt2);
             }
 
           string ordNumSufi="th";
@@ -1180,18 +1180,18 @@ void topoana::checkInput()
             {
               compCcIncDcyBr.clear();
               list<int>::iterator liit=compIncDcyBr.begin();
-              if((*liit)==-11) liit++;
+              if((*liit)==m_pidOfISt2) liit++;
               for(liit++;liit!=compIncDcyBr.end();liit++) compCcIncDcyBr.push_back(getCcPid((*liit)));
               sortByPidAndPchrg(compCcIncDcyBr);
               liit=compIncDcyBr.begin();
-              if((*liit)!=-11)
+              if((*liit)!=m_pidOfISt2)
                 {
                   compCcIncDcyBr.push_front(getCcPid((*liit)));
                 }
               else
                 {
-                  compCcIncDcyBr.push_front(11);
-                  compCcIncDcyBr.push_front(-11);
+                  compCcIncDcyBr.push_front(m_pidOfISt1);
+                  compCcIncDcyBr.push_front(m_pidOfISt2);
                 }
               m_vCompCcIncDcyBr.push_back(compCcIncDcyBr);
               if(compCcIncDcyBr==compIncDcyBr) m_vICcCompIncDcyBr.push_back(0);
@@ -1295,8 +1295,8 @@ void topoana::checkInput()
             }
           else
             {
-              compIRADcyBr.push_front(11);
-              compIRADcyBr.push_front(-11);
+              compIRADcyBr.push_front(m_pidOfISt1);
+              compIRADcyBr.push_front(m_pidOfISt2);
             }
 
           string ordNumSufi="th";
@@ -1329,18 +1329,18 @@ void topoana::checkInput()
             {
               compCcIRADcyBr.clear();
               list<int>::iterator liit=compIRADcyBr.begin();
-              if((*liit)==-11) liit++;
+              if((*liit)==m_pidOfISt2) liit++;
               for(liit++;liit!=compIRADcyBr.end();liit++) compCcIRADcyBr.push_back(getCcPid((*liit)));
               sortByPidAndPchrg(compCcIRADcyBr);
               liit=compIRADcyBr.begin();
-              if((*liit)!=-11)
+              if((*liit)!=m_pidOfISt2)
                 {
                   compCcIRADcyBr.push_front(getCcPid((*liit)));
                 }
               else
                 {
-                  compCcIRADcyBr.push_front(11);
-                  compCcIRADcyBr.push_front(-11);
+                  compCcIRADcyBr.push_front(m_pidOfISt1);
+                  compCcIRADcyBr.push_front(m_pidOfISt2);
                 }
               m_vCompCcIRADcyBr.push_back(compCcIRADcyBr);
               if(compCcIRADcyBr==compIRADcyBr) m_vICcCompIRADcyBr.push_back(0);
@@ -1359,7 +1359,7 @@ void topoana::checkInput()
           cout<<" ";
           list<int>::iterator liit=compIRADcyBr.begin();
           writePnmFromPid(cout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(cout,"TxtPnm",(*liit));
@@ -1606,8 +1606,8 @@ void topoana::checkInput()
             }
           else
             {
-              sigDcyIFSts.push_front(11);
-              sigDcyIFSts.push_front(-11);
+              sigDcyIFSts.push_front(m_pidOfISt1);
+              sigDcyIFSts.push_front(m_pidOfISt2);
             }
           string ordNumSufi="th";
           string ordNumSufj="th";
@@ -1638,14 +1638,14 @@ void topoana::checkInput()
             {
               ccSigDcyIFSts.clear();
               list<int>::iterator liit=sigDcyIFSts.begin();
-              if((*liit)==-11) liit++;
+              if((*liit)==m_pidOfISt2) liit++;
               for(liit++;liit!=sigDcyIFSts.end();liit++) ccSigDcyIFSts.push_back(getCcPid((*liit)));
               sortByPidAndPchrg(ccSigDcyIFSts);
               liit=sigDcyIFSts.begin();
-              if((*liit)==-11)
+              if((*liit)==m_pidOfISt2)
                 {
-                  ccSigDcyIFSts.push_front(11);
-                  ccSigDcyIFSts.push_front(-11);
+                  ccSigDcyIFSts.push_front(m_pidOfISt1);
+                  ccSigDcyIFSts.push_front(m_pidOfISt2);
                 }
               else
                 {
@@ -1666,7 +1666,7 @@ void topoana::checkInput()
           cout<<" ";
           list<int>::iterator liit=sigDcyIFSts.begin();
           writePnmFromPid(cout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(cout,"TxtPnm",(*liit));
@@ -1808,8 +1808,8 @@ void topoana::checkInput()
             }
           else
             {
-              sigDcyBr.push_front(11);
-              sigDcyBr.push_front(-11);
+              sigDcyBr.push_front(m_pidOfISt1);
+              sigDcyBr.push_front(m_pidOfISt2);
             }
 
           string ordNumSufi="th";
@@ -1841,18 +1841,18 @@ void topoana::checkInput()
             {
               ccSigDcyBr.clear();
               list<int>::iterator liit=sigDcyBr.begin();
-              if((*liit)==-11) liit++;
+              if((*liit)==m_pidOfISt2) liit++;
               for(liit++;liit!=sigDcyBr.end();liit++) ccSigDcyBr.push_back(getCcPid((*liit)));
               sortByPidAndPchrg(ccSigDcyBr);
               liit=sigDcyBr.begin();
-              if((*liit)!=-11)
+              if((*liit)!=m_pidOfISt2)
                 {
                   ccSigDcyBr.push_front(getCcPid((*liit)));
                 }
               else
                 {
-                  ccSigDcyBr.push_front(11);
-                  ccSigDcyBr.push_front(-11); 
+                  ccSigDcyBr.push_front(m_pidOfISt1);
+                  ccSigDcyBr.push_front(m_pidOfISt2); 
                 }
               m_vCcSigDcyBr.push_back(ccSigDcyBr);
               if(ccSigDcyBr==sigDcyBr) m_vICcSigDcyBr.push_back(0);
@@ -1930,8 +1930,8 @@ void topoana::checkInput()
             }
           else
             {
-              sigIncDcyBr.push_front(11);
-              sigIncDcyBr.push_front(-11);
+              sigIncDcyBr.push_front(m_pidOfISt1);
+              sigIncDcyBr.push_front(m_pidOfISt2);
             }
 
           string ordNumSufi="th";
@@ -1963,18 +1963,18 @@ void topoana::checkInput()
             {
               ccSigIncDcyBr.clear();
               list<int>::iterator liit=sigIncDcyBr.begin();
-              if((*liit)==-11) liit++;
+              if((*liit)==m_pidOfISt2) liit++;
               for(liit++;liit!=sigIncDcyBr.end();liit++) ccSigIncDcyBr.push_back(getCcPid((*liit)));
               sortByPidAndPchrg(ccSigIncDcyBr);
               liit=sigIncDcyBr.begin();
-              if((*liit)!=-11)
+              if((*liit)!=m_pidOfISt2)
                 {
                   ccSigIncDcyBr.push_front(getCcPid((*liit)));
                 }
               else
                 {
-                  ccSigIncDcyBr.push_front(11);
-                  ccSigIncDcyBr.push_front(-11); 
+                  ccSigIncDcyBr.push_front(m_pidOfISt1);
+                  ccSigIncDcyBr.push_front(m_pidOfISt2); 
                 }
               m_vCcSigIncDcyBr.push_back(ccSigIncDcyBr);
               if(ccSigIncDcyBr==sigIncDcyBr) m_vICcSigIncDcyBr.push_back(0);
@@ -2120,7 +2120,7 @@ void topoana::checkInput()
               cout<<" ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(cout,"TxtPnm",(*liit));
-              if(j==0&&(*liit)==-11)
+              if(j==0&&(*liit)==m_pidOfISt2)
               {
                 liit++;
                 writePnmFromPid(cout,"TxtPnm",(*liit));
@@ -2257,7 +2257,7 @@ void topoana::checkInput()
               cout<<" ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(cout,"TxtPnm",(*liit));
-              if(j==0&&(*liit)==-11)
+              if(j==0&&(*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(cout,"TxtPnm",(*liit));
@@ -2329,8 +2329,8 @@ void topoana::checkInput()
             }
           else
             {
-              sigIRADcyBr.push_front(11);
-              sigIRADcyBr.push_front(-11);
+              sigIRADcyBr.push_front(m_pidOfISt1);
+              sigIRADcyBr.push_front(m_pidOfISt2);
             }
 
           string ordNumSufi="th";
@@ -2362,18 +2362,18 @@ void topoana::checkInput()
             {
               ccSigIRADcyBr.clear();
               list<int>::iterator liit=sigIRADcyBr.begin();
-              if((*liit)==-11) liit++;
+              if((*liit)==m_pidOfISt2) liit++;
               for(liit++;liit!=sigIRADcyBr.end();liit++) ccSigIRADcyBr.push_back(getCcPid((*liit)));
               sortByPidAndPchrg(ccSigIRADcyBr);
               liit=sigIRADcyBr.begin();
-              if((*liit)!=-11)
+              if((*liit)!=m_pidOfISt2)
                 {
                   ccSigIRADcyBr.push_front(getCcPid((*liit)));
                 }
               else
                 {
-                  ccSigIRADcyBr.push_front(11);
-                  ccSigIRADcyBr.push_front(-11);
+                  ccSigIRADcyBr.push_front(m_pidOfISt1);
+                  ccSigIRADcyBr.push_front(m_pidOfISt2);
                 }
 
               m_vCcSigIRADcyBr.push_back(ccSigIRADcyBr);
@@ -2391,7 +2391,7 @@ void topoana::checkInput()
           cout<<" ";
           list<int>::iterator liit=sigIRADcyBr.begin();
           writePnmFromPid(cout,"TxtPnm",(*liit));
-          if((*liit)==-11)
+          if((*liit)==m_pidOfISt2)
             {
               liit++;
               writePnmFromPid(cout,"TxtPnm",(*liit));
@@ -2532,7 +2532,7 @@ void topoana::checkInput()
               cout<<" ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(cout,"TxtPnm",(*liit));
-              if(j==0&&(*liit)==-11)
+              if(j==0&&(*liit)==m_pidOfISt2)
                 {
                   liit++;
                   writePnmFromPid(cout,"TxtPnm",(*liit));

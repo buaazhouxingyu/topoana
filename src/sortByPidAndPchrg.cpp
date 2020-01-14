@@ -38,7 +38,7 @@ void topoana::sortByPidAndPchrg(vector<int> &via,vector<int> &vib,vector<int> &v
       {
         if(abs(via[i])>abs(via[j]))
           {
-            if(abs(via[j])!=22)
+            if(abs(via[j])!=m_pidOfGam)
               {
                 iaTmp=via[i];
                 via[i]=via[j];
@@ -91,7 +91,7 @@ void topoana::sortByPidAndPchrg(vector<int> &via,vector<int> &vib,vector<int> &v
           }
         else
           {
-            if(abs(via[i])==22)
+            if(abs(via[i])==m_pidOfGam)
               {
                 iaTmp=via[i];
                 via[i]=via[j];
@@ -150,7 +150,7 @@ void topoana::sortByPidAndPchrg(list<int> &lia)
       {
         if(abs((*liait1))>abs((*liait2)))
           {
-            if(abs((*liait2))!=22)
+            if(abs((*liait2))!=m_pidOfGam)
               {
                 iaTmp=(*liait1);
                 (*liait1)=(*liait2);
@@ -185,7 +185,7 @@ void topoana::sortByPidAndPchrg(list<int> &lia)
           }
         else
           {
-            if(abs((*liait1))==22)
+            if(abs((*liait1))==m_pidOfGam)
               {
                 iaTmp=(*liait1);
                 (*liait1)=(*liait2);
