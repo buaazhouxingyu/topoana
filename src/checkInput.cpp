@@ -2611,7 +2611,7 @@ void topoana::checkInput()
 
   if((m_pidOfISt1!=m_pidOfE)||(m_pidOfISt2!=-1*m_pidOfE))
     {
-      cout<<"The initial particles are set to be";
+      cout<<"The initial state particles are set to be";
       writePnmFromPid(cout,"TxtPnm",m_pidOfISt1);
       cout<<" and";
       writePnmFromPid(cout,"TxtPnm",m_pidOfISt2);
@@ -2619,16 +2619,16 @@ void topoana::checkInput()
     }
   else
     {
-      if(m_vbsLevStdOut==true) cout<<"The initial particles are e- and e+ (default)."<<endl<<endl;
+      if(m_vbsLevStdOut==true) cout<<"The initial state particles are e- and e+ (default)."<<endl<<endl;
     }
 
-  if(m_initPsSwitch==true)
+  if(m_iStPsSwitch==true)
     {
-      cout<<"The initial particles are required to be pushed front uniformly in all the events."<<endl<<endl;
+      cout<<"The initial state particles are required to be pushed front uniformly in all the events."<<endl<<endl;
     }
   else
     {
-      if(m_vbsLevStdOut==true) cout<<"The initial particles are not required to be pushed front uniformly in all the events (default)."<<endl<<endl;
+      if(m_vbsLevStdOut==true) cout<<"The initial state particles are not required to be pushed front uniformly in all the events (default)."<<endl<<endl;
     }
 
   if((m_cardFlNm.size()>5&&m_mainNmOfOptFls!=m_cardFlNm.substr(0,(m_cardFlNm.size()-5)))&&(m_mainNmOfOptFls!=m_cardFlNm))

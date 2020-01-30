@@ -115,7 +115,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<nCEtrOfRest<<"\tnCEtr:  "<<nCEtr<<endl;    
 
           fout<<" ";
-          if(m_initPsSwitch==true)
+          if(m_iStPsSwitch==true)
             {
               writePnmFromPid(fout,"TxtPnm",m_pidOfISt2);
               writePnmFromPid(fout,"TxtPnm",m_pidOfISt1);

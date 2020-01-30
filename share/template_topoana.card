@@ -259,13 +259,13 @@
 
 }
 
-% Initial particles (Default: e- e+)
+% Initial state particles (Default: e- e+)
 {
    
 }
 
 # The option "Y" set up in the item comes into effect only in the cases that there are only three particles in the decay branches.
-% Push front the initial particles uniformly in all the events (Two options: Y and N. Default: N)
+% Push front the initial state particles uniformly in all the events (Two options: Y and N. Default: N)
 {
 
 }

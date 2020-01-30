@@ -320,7 +320,7 @@ void topoana::writeRsltIntoTexFl()
                   if(m_centDcyObjs==false&&nDcyTrsToBePrtd>1) fout<<"l";
                   else fout<<"c";
                   fout<<"]{ $ "<<endl;
-                  if(m_initPsSwitch==true)
+                  if(m_iStPsSwitch==true)
                     {
                       writePnmFromPid(fout,"TexPnm",m_pidOfISt2);
                       writePnmFromPid(fout,"TexPnm",m_pidOfISt1);

@@ -433,10 +433,10 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Sort the signals in the topology maps related to signal identifications (Two options: Y and N. Default: N)", m_sortSigsInTopoMapsRltdToSigIds);
         }
-      else if(line=="% Initial particles (Default: e- e+)")
+      else if(line=="% Initial state particles (Default: e- e+)")
         {
-          readOpenCurly(fin,line,"% Initial particles (Default: e- e+)");
-          read1stLineOrCloseCurly(fin,line,false,"% Initial particles (Default: e- e+)");
+          readOpenCurly(fin,line,"% Initial state particles (Default: e- e+)");
+          read1stLineOrCloseCurly(fin,line,false,"% Initial state particles (Default: e- e+)");
           if(line!="}")
             {
               istringstream iss;
@@ -450,12 +450,12 @@ void topoana::readCard(string cardFlNm)
                   m_pidOfISt2=getPidFromTxtPnm(line);
                 }
               else m_pidOfISt2=getCcPid(m_pidOfISt1);
-              readCloseCurly(fin,line,"% Initial particles (Default: e- e+)");
+              readCloseCurly(fin,line,"% Initial state particles (Default: e- e+)");
             }
         }
-      else if(line=="% Push front the initial particles uniformly in all the events (Two options: Y and N. Default: N)")
+      else if(line=="% Push front the initial state particles uniformly in all the events (Two options: Y and N. Default: N)")
         {
-          readYNItem(fin, line, "% Push front the initial particles uniformly in all the events (Two options: Y and N. Default: N)", m_initPsSwitch);
+          readYNItem(fin, line, "% Push front the initial state particles uniformly in all the events (Two options: Y and N. Default: N)", m_iStPsSwitch);
         }
       else if(line=="% Main name of output files (Default: Main name of the card file)")
         {
