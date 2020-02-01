@@ -1,0 +1,16 @@
+% Names of input root files
+{
+  ../input/mixed1.root
+  ../input/mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Component analysis --- intermediate-resonance-allowed decay branches
+{
+  D*+ --> K- pi+ pi+ pi0	&	Dsp2K3Pi	&	5
+  J/psi --> pi+ pi- pi0		&	Jpsi23Pi	&	5
+}

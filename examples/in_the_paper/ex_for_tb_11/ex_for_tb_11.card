@@ -1,0 +1,16 @@
+% Names of input root files
+{
+  ../input/mixed1.root
+  ../input/mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Signal identification --- decay initial-final states
+{
+  Upsilon(4S) --> mu+ nu_mu 3 pi0 3 pi+ 4 pi- K+ K-		&	1stDcyIFStsInTb3
+  Upsilon(4S) --> 5 pi0 5 pi+ 5 pi- K+ K-			&	2ndDcyIFStsInTb3
+}

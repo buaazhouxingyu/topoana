@@ -1,0 +1,20 @@
+% Names of input root files
+{
+  ../input/mixed1.root
+  ../input/mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Component analysis --- decay trees
+{
+  Y 	5     Y
+}
+
+% Maximum hierarchy of heading decay branches to be processed in each event
+{
+  1
+}
