@@ -63,11 +63,11 @@ void topoana::readCard(string cardFlNm)
           m_ttrNm=line;
           readCloseCurly(fin,line,"% TTree name");
         }
-      else if(line=="% Storage type of input raw topology truth data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)")
+      else if(line=="% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)")
         {
-          readOpenCurly(fin,line,"% Storage type of input raw topology truth data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
+          readOpenCurly(fin,line,"% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
           m_strgTpOfRawIptTopoDat="AOI";
-          read1stLineOrCloseCurly(fin,line,false,"% Storage type of input raw topology truth data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
+          read1stLineOrCloseCurly(fin,line,false,"% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
           if(line!="}")
             {
               if(line=="AOI"||line=="VOI"||line=="MSI"||line=="MSD")
@@ -76,12 +76,12 @@ void topoana::readCard(string cardFlNm)
                 }
               else
                 {
-                  cerr<<"Error: The input \""<<line<<"\" for the item \"Storage type of input raw topology truth data\" is invalid!"<<endl;
+                  cerr<<"Error: The input \""<<line<<"\" for the item \"Storage type of input raw topology truth information\" is invalid!"<<endl;
                   cerr<<"Infor: It should be \"AI\", \"VI\", \"MSI\" or \"MSD\"."<<endl;
                   cerr<<"Infor: Please check it."<<endl;
                   exit(-1);
                 }
-              readCloseCurly(fin,line,"% Storage type of input raw topology truth data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
+              readCloseCurly(fin,line,"% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
             }
         }
       else if(line=="% TBranch name of the number of particles (Default: nMCGen)")

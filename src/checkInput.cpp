@@ -115,25 +115,25 @@ void topoana::checkInput()
 
   if(m_strgTpOfRawIptTopoDat=="AOI")
     {
-      if(m_vbsLevStdOut==true) cout<<"Storage type of input raw topology truth data: Array of integers (default)."<<endl<<endl;
+      if(m_vbsLevStdOut==true) cout<<"Storage type of input raw topology truth information: Array of integers (default)."<<endl<<endl;
     }
   else if(m_strgTpOfRawIptTopoDat=="VOI")
     {
-      cout<<"Storage type of input raw topology truth data: Vector of integers."<<endl<<endl;
+      cout<<"Storage type of input raw topology truth information: Vector of integers."<<endl<<endl;
     }
   else if(m_strgTpOfRawIptTopoDat=="MSI")
     {
-      cout<<"Storage type of input raw topology truth data: multiple scalar integers."<<endl<<endl;
+      cout<<"Storage type of input raw topology truth information: multiple scalar integers."<<endl<<endl;
     }
   else if(m_strgTpOfRawIptTopoDat=="MSD")
     {
-      cout<<"Storage type of input raw topology truth data: multiple scalar double-precision numbers."<<endl<<endl;
+      cout<<"Storage type of input raw topology truth information: multiple scalar double-precision numbers."<<endl<<endl;
     }
 
   if(m_tbrNmOfNps!="nMCGen")
     {
       if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSD") cout<<"TBranch name of the number of particles: "<<m_tbrNmOfNps<<endl<<endl;
-      else cout<<"The item with the prompt \"% TBranch name of the number of particles (Default: nMCGen)\" is not used since the storage type of the input raw topology truth data is \"vector of integers\"."<<endl<<endl; 
+      else cout<<"The item with the prompt \"% TBranch name of the number of particles (Default: nMCGen)\" is not used since the storage type of the input raw topology truth information is \"vector of integers\"."<<endl<<endl; 
     }
   else
     {
@@ -141,7 +141,7 @@ void topoana::checkInput()
         {
           if(m_vbsLevStdOut==true) cout<<"TBranch name of the number of particles: "<<m_tbrNmOfNps<<" (default)"<<endl<<endl;
         }
-      else cout<<"The item with the prompt \"% TBranch name of the number of particles (Default: nMCGen)\" is not used since the storage type of the input raw topology truth data is \"vector of integers\"."<<endl<<endl;
+      else cout<<"The item with the prompt \"% TBranch name of the number of particles (Default: nMCGen)\" is not used since the storage type of the input raw topology truth information is \"vector of integers\"."<<endl<<endl;
     }
 
   if(m_tbrNmOfPid!="MCGenPDG")

@@ -16,7 +16,7 @@
 # The following thirty-two items are optional. They can be removed or left empty.
 
 # Here, AOI, VOI, MSI, and MSD are short for array of integers, vector of integers, multiple scalar integers, and multiple scalar doubles.
-% Storage type of input raw topology truth data (Four options: AOI, VOI, MSI, and MSD. Default: AOI)
+% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)
 {
 
 }
