@@ -8,7 +8,7 @@ An essential description of the program is in the document: ``share/paper_draft_
 A detailed description of the program is in the document: ``share/user_guide_v4.0.pdf``
 (<font color="red">**Please note that all the examples in the user guide can be found in the sub-directory ``examples/in_the_user_guide``**</font>)
 
-It is a good practice to learn how to use the program via the examples with the paper draft and user guide as references.
+(<font color="red">**It is a good practice to learn how to use the program via the examples with the paper draft and user guide as references.**</font>)
 
 Here, we just briefly introduce how to install and use the program.
 
