@@ -54,10 +54,10 @@ void draw_and_fit_nEtr_nSec()
   multigraph->Add(graph1);
   multigraph->Add(graph2);
   multigraph->Draw("AP");
-  multigraph->GetXaxis()->SetTitle("number of entries processed");
+  multigraph->GetXaxis()->SetTitle("number of processed entries");
   multigraph->GetXaxis()->SetTitleSize(0.05);
   multigraph->GetXaxis()->SetLabelSize(0.04);
-  multigraph->GetYaxis()->SetTitle("number of seconds elapsed");
+  multigraph->GetYaxis()->SetTitle("number of elapsed seconds");
   multigraph->GetYaxis()->SetTitleSize(0.05);
   multigraph->GetYaxis()->SetLabelSize(0.04);
   multigraph->GetYaxis()->SetTitleOffset(0.8);
