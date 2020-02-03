@@ -5,8 +5,9 @@
 if [ -z $1 ]; then
 
   echo -e "\e[31mERROR:\e[0m The argument is missing!"
-  echo -e "\e[32mINFOR:\e[0m It should be BESIII, Belle_II, or Example."
+  echo -e "\e[32mINFOR:\e[0m It should be BESIII, Belle, Belle_II, or Example."
   echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the BESIII experiment, please execute: ./Setup BESIII"
+  echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the Belle experiment, please execute: ./Setup Belle"
   echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the Belle II experiment, please execute: ./Setup Belle_II"
   echo -e "\e[32mINFOR:\e[0m If you want to try the program with examples under the directory examples, please execute: ./Setup Example"
   exit 1
@@ -15,6 +16,11 @@ elif [ $1 = BESIII ]; then
 
   cp share/pid_3pchrg_txtpnm_texpnm_iccp.dat_BESIII share/pid_3pchrg_txtpnm_texpnm_iccp.dat
   cp share/underlying_topoana.card_BESIII share/underlying_topoana.card
+
+elif [ $1 = Belle ]; then
+
+  cp share/pid_3pchrg_txtpnm_texpnm_iccp.dat_Belle share/pid_3pchrg_txtpnm_texpnm_iccp.dat
+  cp share/underlying_topoana.card_Belle share/underlying_topoana.card
 
 elif [ $1 = Belle_II ]; then
 
@@ -29,8 +35,9 @@ elif [ $1 = Example ]; then
 else
 
   echo -e "\e[31mERROR:\e[0m The argument is invaild!"
-  echo -e "\e[32mINFOR:\e[0m It should be BESIII, Belle_II, or Example."
+  echo -e "\e[32mINFOR:\e[0m It should be BESIII, Belle, Belle_II, or Example."
   echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the BESIII experiment, please execute: ./Setup BESIII"
+  echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the Belle experiment, please execute: ./Setup Belle"
   echo -e "\e[32mINFOR:\e[0m If you want to employ the program for the Belle II experiment, please execute: ./Setup Belle_II"
   echo -e "\e[32mINFOR:\e[0m If you want to try the program with examples under the directory examples, please execute: ./Setup Example"
   exit 2
