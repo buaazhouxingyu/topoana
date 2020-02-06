@@ -43,7 +43,7 @@ Here, we just briefly introduce how to install and use the program.
 
    1.1. Prepare the input data
 
-     + The input data of the program, namely the raw topology data of the inclusive MC samples, can be obtained with the interface to the program in the software system of your experiment. For the BESIII, Belle, and Belle II experiments, such interfaces have already been developed. 
+     + The input data of the program, namely the raw topology truth information of the inclusive MC samples, can be obtained with the interface to the program in the software system of your experiment. For the BESIII, Belle, and Belle II experiments, such interfaces have already been developed. 
 
    1.2. Fill in the card file
 
