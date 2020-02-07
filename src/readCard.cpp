@@ -194,7 +194,7 @@ void topoana::readCard(string cardFlNm)
         {
           readNumItem(fin, line, "% PDG code of FSR photons (Default: -22)", m_pidOfSFSRGamUser);
         }
-      else if(line=="Ignore ISR photons (Three options: Ys, Yg and N. Default: N)")
+      else if(line=="% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)")
         {
           readOpenCurly(fin,line,"% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)");  
           read1stLineOrCloseCurly(fin,line,false,"% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)");
@@ -214,7 +214,7 @@ void topoana::readCard(string cardFlNm)
               readCloseCurly(fin,line,"% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)");
             }
         }
-      else if(line=="Ignore FSR photons (Three options: Ys, Yg and N. Default: N)")
+      else if(line=="% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)")
         {
           readOpenCurly(fin,line,"% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)");
           read1stLineOrCloseCurly(fin,line,false,"% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)");
@@ -498,7 +498,7 @@ void topoana::readCard(string cardFlNm)
       else
         {
           cerr<<"Error: The input line "<<line<<"\" is invalid!"<<endl;
-          string TempCardFlNm=m_pkgPath+"share/topoana.card";
+          string TempCardFlNm=m_pkgPath+"share/template_topoana.card";
           cerr<<"Infor: If you have ever used the item prompted with the input line successfully but it doesn't work now, this is probably because I updated the prompt of the item in order to make it clearer and more concise. In this case, I apologize for the inconvenience and appreciate your understanding and support."<<endl;
           cerr<<"Infor: There is also a probability that the input line is wrongly typed due to some reasons. Please note that the input line must be identical with the prompt of one item defined in the program."<<endl;
           cerr<<"Infor: In both of the two cases, to find the updated/right version of the item you desire, please check and see the template card file in the following path: "<<TempCardFlNm<<". Please contact me (zhouxy@buaa.edu.cn), if you could not find it."<<endl;
