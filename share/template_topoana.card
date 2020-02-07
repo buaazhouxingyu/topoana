@@ -254,7 +254,7 @@
 }
 
 #by number of cases or entries from large to small
-% Sort the sigals in the topology maps related to signal identifications (Two options: Y and N. Default: N)
+% Sort the signals in the topology maps related to signal identifications (Two options: Y and N. Default: N)
 {
 
 }
