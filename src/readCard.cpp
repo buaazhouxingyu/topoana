@@ -118,14 +118,14 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Avoid over counting for candidate based analysis (Two options: Y and N. Default: N)", m_avoidOverCounting);
         }
-      else if(line=="TBranch name of the indices of candidates in an event (Default: __candidate__)")
+      else if(line=="% TBranch name of the indices of candidates in an event (Default: __candidate__)")
         {
-          readOpenCurly(fin,line,"TBranch name of the indices of candidates in an event (Default: __candidate__)");
-          read1stLineOrCloseCurly(fin,line,false,"No branch name of the number of particles is found in the item with the prompt \"TBranch name of the indices of candidates in an event (Default: __candidate__)");
+          readOpenCurly(fin,line,"% TBranch name of the indices of candidates in an event (Default: __candidate__)");
+          read1stLineOrCloseCurly(fin,line,false,"No branch name of the number of particles is found in the item with the prompt \"% TBranch name of the indices of candidates in an event (Default: __candidate__)");
           if(line!="}")
             { 
               m_tbrNmOfIcandi=line;
-              readCloseCurly(fin,line,"TBranch name of the indices of candidates in an event (Default: __candidate__)");   
+              readCloseCurly(fin,line,"% TBranch name of the indices of candidates in an event (Default: __candidate__)");   
             }
         }
       else if(line=="% Maximum number of entries to be processed")
