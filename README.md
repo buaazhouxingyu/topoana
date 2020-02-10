@@ -2,10 +2,10 @@
 
 <font color="red">**Abstract:**</font> Inclusive Monte-Carlo samples are indispensable for signal selection and background suppression in many high energy physics experiments. A clear knowledge of the topology of the samples, including the categories of physics processes and the number of processes in each category, is a great help to investigating signals and backgrounds. To help analysts obtain the topology knowledge from the truth information of the samples, we develop a topology analysis program, TopoAna, with C++, ROOT, and LaTeX. The program implements the functionalities of component analysis and signal identification by recognizing, categorizing, counting, and tagging events. Independent of specific software frameworks, the program is applicable to many experiments. At present, it has come into use in three e+e- colliding experiments: the BESIII, Belle, and Belle II experiments. The use of the program in other experiments is also prospective. (<font color="red">**Please contact me (zhouxy@buaa.edu.cn) if you want to employ the program for other experiments. Now, you can try the program with examples under the directory ``examples``**</font>)
 
-An essential description of the program is in the document: ``share/paper_draft_v2.2.pdf``
+An essential description of the program is in the document: ``share/paper_draft_v2.4.pdf``
 (<font color="red">**Please note that all the examples in the paper draft can be found in the sub-directory ``examples/in_the_paper``**</font>)
 
-A detailed description of the program is in the document: ``share/user_guide_v4.0.pdf``
+A detailed description of the program is in the document: ``share/user_guide_v4.3.pdf``
 (<font color="red">**Please note that all the examples in the user guide can be found in the sub-directory ``examples/in_the_user_guide``**</font>)
 
 <font color="red">**It is a good practice to learn how to use the program via the examples with the paper draft and user guide as references.**</font>
@@ -48,6 +48,10 @@ Here, we just briefly introduce how to install and use the program.
    1.2. Fill in the card file
 
      + You can refer to the template topoana card file: ``share/template_topoana.card``.
+
+     + <font color="red">**For the concision of your own card file, it is recommended just to copy the setting items you need from the template card file and paste them to your own card file, just as we did for the examples in the paper draft and user guide.**</font>
+
+     + <font color="red">**Since there are plenty of setting items in the template card file, it is not recommended to create your own card file simply by copying and revising the whole template card file.**</font>
 
    1.3. Execute the command line: ``topoana.exe cardFileName``
 
