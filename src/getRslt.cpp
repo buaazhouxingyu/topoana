@@ -51,6 +51,12 @@ void topoana::getRslt()
   else
     {
       const unsigned int NpsMaxTmp=chn->GetMaximum(m_tbrNmOfNps.c_str());
+      if(m_nMinTbrOfPidMidx<NpsMaxTmp)
+        {
+          cerr<<"Error: The (mininum) number of the TBranch objects for the PDG codes or mother indices of the MC generated particles is less than the maximum number of the MC generated particles."<<endl;
+          cerr<<"Infor: To guarantee a successful topology analysis job, there should be enough TBranch objects to store all the MC generated particles."<<endl;
+          exit(-1);
+        }
       char strI[10]; string specifierPid,specifierMidx;
       for(unsigned int i=0;i<NpsMaxTmp;i++)
         {

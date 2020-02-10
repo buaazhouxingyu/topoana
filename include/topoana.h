@@ -32,6 +32,7 @@ class topoana
     string m_tbrNmOfNps;
     string m_tbrNmOfPid;
     string m_tbrNmOfMidx;
+    unsigned int m_nMinTbrOfPidMidx;
     bool m_avoidOverCounting;
     string m_tbrNmOfIcandi;
     string m_strgTpOfRawIptTopoDat;
@@ -248,6 +249,7 @@ class topoana
       m_tbrNmOfNps="nMCGen";
       m_tbrNmOfPid="MCGenPDG";
       m_tbrNmOfMidx="MCGenMothIndex";
+      m_nMinTbrOfPidMidx=9999;
       m_avoidOverCounting=false;
       m_tbrNmOfIcandi="__candidate__";
       m_strgTpOfRawIptTopoDat="AOI";

@@ -234,7 +234,7 @@ void topoana::checkInput()
               else
                 {
                   ostringstream oss;
-                  int i=0;
+                  unsigned int i=0;
                   string strI,m_tbrNmOfPid_i,m_tbrNmOfMidx_i;
                   TBranch * br1, * br2;
                   while(1)
@@ -257,6 +257,7 @@ void topoana::checkInput()
                   else
                     {
                       cout<<"The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" contains "<<i<<" branches named \""<<m_tbrNmOfPid<<"_i\" and contains "<<i<<" branches named \""<<m_tbrNmOfMidx<<"_i\"!"<<endl<<endl;
+                      if(i<m_nMinTbrOfPidMidx) m_nMinTbrOfPidMidx=i;
                     }
                 }
               if(m_avoidOverCounting==true)
