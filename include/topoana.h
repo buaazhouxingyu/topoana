@@ -424,6 +424,7 @@ class topoana
     void           getStrFromLi(list<int> & dcyIFSts, string & strDcyIFSts);
     void           getRslt();
     void           writeRsltIntoTxtFl();
+    void           getVIMDcyBr(vector< list<int> > & vDcyBr, vector<int> & vIMDcyBr);
     void           writeRsltIntoTexFl();
     void           getPdfFlFromTexFl();
     void           writeInfOnRslt();

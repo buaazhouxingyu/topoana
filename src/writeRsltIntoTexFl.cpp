@@ -103,6 +103,7 @@ void topoana::writeRsltIntoTexFl()
       vector< list<int> > dcyTr;
       list<int> dcyBr;
       list<int> dcyIFSts;
+      // vector<int> vIMDcyBr;
       nCEtr=0;
       bool isSigDcyTr;
       unsigned int iSigDcyTr=0;
@@ -156,6 +157,7 @@ void topoana::writeRsltIntoTexFl()
             }
           dcyTr.clear();
           dcyTr=m_vDcyTr[i];
+          // getVIMDcyBr(dcyTr,vIMDcyBr);
           nVldDcyBr=0;
           fout<<"% \\rn = "<<i+1<<endl;
           isSigDcyTr=false;
@@ -199,6 +201,7 @@ void topoana::writeRsltIntoTexFl()
                 }
               fout<<"\\rightarrow ";
               for(liit++;liit!=dcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
+              // fout<<"\\quad {\\footnotesize ["<<j<<","<<vIMDcyBr[j]<<"]}"<<" ";
               // The following bool variable is used to judge whether the current branch is the last one outputed or not.
               bool lastOneOrAllPi0sToGamPairsBehind=true;
               list<int> dcyBrTmp;
