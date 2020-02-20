@@ -128,6 +128,10 @@ void topoana::readCard(string cardFlNm)
               readCloseCurly(fin,line,"% TBranch name of the indices of candidates in an event (Default: __candidate__)");   
             }
         }
+      else if(line=="% Fix the flaw in input raw topology truth information of BESIII experiment (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Fix the flaw in input raw topology truth information of BESIII experiment (Two options: Y and N. Default: N)", m_fixFlawBESIII);
+        }
       else if(line=="% Maximum number of entries to be processed")
         {
           readNumItem(fin, line, "% Maximum number of entries to be processed", m_nEtrMax);

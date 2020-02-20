@@ -168,6 +168,11 @@
   J/psi --> pi+ pi- pi0 	&	Jpsi23Pi
 }
 
+% Fix the flaw in input raw topology truth information of BESIII experiment (Two options: Y and N. Default: N)
+{
+
+}
+
 % Maximum number of entries to be processed
 {
 

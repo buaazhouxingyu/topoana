@@ -36,6 +36,7 @@ class topoana
     bool m_avoidOverCounting;
     string m_tbrNmOfIcandi;
     string m_strgTpOfRawIptTopoDat;
+    bool m_fixFlawBESIII;
     unsigned long m_nEtrMax;
     string m_cut;
     bool m_cutMethod;
@@ -253,6 +254,7 @@ class topoana
       m_avoidOverCounting=false;
       m_tbrNmOfIcandi="__candidate__";
       m_strgTpOfRawIptTopoDat="AOI";
+      m_fixFlawBESIII=false;
       m_nEtrMax=ULONG_MAX; // ULONG_MAX=9223372036854775807 is the maximum unsigned long int number. 
       m_cutMethod=false;
       m_hHdDcyBrsMax=ULONG_MAX;
