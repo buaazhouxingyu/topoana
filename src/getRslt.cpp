@@ -393,7 +393,7 @@ void topoana::getRslt()
              
           if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx);
 
-          if(m_strgTpOfRawIptTopoDat=="AOI"&&m_fixFlawBESIII==true) for(int j=0;j<Nps;j++) if(Midx[j]>0) Midx[j]=Midx[j]-1;
+          if(m_strgTpOfRawIptTopoDat=="AOI"&&m_fixMidxBESIII==true) for(int j=0;j<Nps;j++) if(Midx[j]>0) Midx[j]=Midx[j]-1;
 
           vPid.clear();
           vMidx.clear();

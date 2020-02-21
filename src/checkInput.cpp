@@ -276,13 +276,13 @@ void topoana::checkInput()
   if(!allIptsAreOK) exit(-1);
   delete chn;
 
-  if(m_fixFlawBESIII==true)
+  if(m_fixMidxBESIII==true)
     {
-      cout<<"The flaw in input raw topology truth information of BESIII experiment will be fixed."<<endl<<endl;
+      cout<<"The mother indices of particles in BESIII experiment will be fixed."<<endl<<endl;
     }
   else
     {
-      if(m_vbsLevStdOut==true) cout<<"No fix is set for the flaw in input raw topology truth information of BESIII experiment (default)."<<endl<<endl;
+      if(m_vbsLevStdOut==true) cout<<"No fix is set for the mother indices of particles in BESIII experiment (default)."<<endl<<endl;
     }
 
 
