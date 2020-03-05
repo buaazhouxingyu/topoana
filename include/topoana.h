@@ -359,6 +359,9 @@ class topoana
     string         getCardFlNm0() {return m_cardFlNm0;};
     void           setCardFlNmAndDftMainNmOfOptFls(string cardFlNm);
     string         getCardFlNm() {return m_cardFlNm;};
+    void           clearNmsOfIptRootFls();
+    void           pushBackNmOfIptRootFl(string nmOfIptRootFl);
+    void           resetMainNmOfOptFls(string mainNmOfOptFls);
     string &       trim(string & line);
     void           makeMapsOnPdata();
     void	   makeNNmMap();
