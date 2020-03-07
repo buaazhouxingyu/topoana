@@ -47,6 +47,20 @@ int main(int argc,char *argv[])
                exit(-1);
             }
         }
+      else if(strcmp(argv[i],"-n")==0)
+        {
+          if(i+1<argc&&argv[i+1][0]!='-')
+            {
+              unsigned long ulvar=strtoul(argv[i+1],NULL,10);
+              ta.resetNEtrMax(ulvar);
+            }
+          else
+            {
+               cerr<<"Error: The argument \"-n\" is specified without the maximum number of entries to be processed following it!"<<endl;
+               cerr<<"Infor: Please specify the maximum number of entries to be processed or remove the argument \"-n\" according to your needs."<<endl;
+               exit(-1);
+            }
+        }
     }
   ta.checkInput();
   ta.getRslt();

@@ -362,6 +362,7 @@ class topoana
     void           clearNmsOfIptRootFls();
     void           pushBackNmOfIptRootFl(string nmOfIptRootFl);
     void           resetMainNmOfOptFls(string mainNmOfOptFls);
+    void           resetNEtrMax(unsigned long nEtrMax);
     string &       trim(string & line);
     void           makeMapsOnPdata();
     void	   makeNNmMap();
