@@ -9,7 +9,7 @@ int main(int argc,char *argv[])
   if(argc>1&&argv[1][0]!='-') ta.setCardFlNmAndDftMainNmOfOptFls(argv[1]);
   else ta.setCardFlNmAndDftMainNmOfOptFls("topoana.card");
   ta.readCard(ta.getCardFlNm());
-  // The following loop offers a mechanism to reset the names of input root files and the main name of output files with the arguments provided in the command line.
+  // The following loop offers a mechanism to reset the names of input root files, the main name of output files, and the maximum number of entries to be processed, with the arguments provided in the command line.
   for(int i=1;i<argc;i++)
     {
       if(strcmp(argv[i],"-i")==0)
