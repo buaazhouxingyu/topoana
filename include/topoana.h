@@ -243,7 +243,7 @@ class topoana
     topoana()
     {
       m_pkgPath="/home/belle2/zhouxy/workarea/repositories/topoana/";
-      m_verNum="v2.4.0";
+      m_verNum="v2.5.0";
       m_cardFlNm0=m_pkgPath+"share/underlying_topoana.card";
 
       m_nmsOfIptRootFls.clear();
@@ -359,10 +359,10 @@ class topoana
     string         getCardFlNm0() {return m_cardFlNm0;};
     void           setCardFlNmAndDftMainNmOfOptFls(string cardFlNm);
     string         getCardFlNm() {return m_cardFlNm;};
-    void           clearNmsOfIptRootFls();
-    void           pushBackNmOfIptRootFl(string nmOfIptRootFl);
-    void           resetMainNmOfOptFls(string mainNmOfOptFls);
-    void           resetNEtrMax(unsigned long nEtrMax);
+    void           clearNmsOfIptRootFls() {m_nmsOfIptRootFls.clear();};
+    void           pushBackNmOfIptRootFl(string nmOfIptRootFl) {m_nmsOfIptRootFls.push_back(nmOfIptRootFl);};
+    void	   resetMainNmOfOptFls(string mainNmOfOptFls) {m_mainNmOfOptFls=mainNmOfOptFls;};
+    void           resetNEtrMax(unsigned long nEtrMax) {m_nEtrMax=nEtrMax;};
     string &       trim(string & line);
     void           makeMapsOnPdata();
     void	   makeNNmMap();
