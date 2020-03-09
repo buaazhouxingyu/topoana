@@ -1,0 +1,34 @@
+% Names of input root files
+{
+  input.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% TBranch name of the number of particles (Default: nMCGen)
+{
+  Nmcps
+}
+
+% TBranch name of the PDG codes of particles (Default: MCGenPDG)
+{
+  Pid
+}
+
+% TBranch name of the mother indices of particles (Default: MCGenMothIndex)
+{
+  Midx
+}
+
+% Component analysis --- decay trees
+{
+  Y
+}
+
+% Main name of output files (Default: Main name of the card file)
+{
+  output 
+}
