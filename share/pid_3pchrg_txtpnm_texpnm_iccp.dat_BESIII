@@ -67,6 +67,12 @@
              -57       0	anti-dummy01_2          \bar{dummy01}_{2}               -1
               58       3	dummy11_2               dummy11_{2}                      1
              -58      -3	anti-dummy11_2          \bar{dummy11}_{2}               -1
+              61       0	chi_c0p                 \chi_{c0p}                       0
+              62       0	chi_c1p                 \chi_{c1p}                       0
+              63       0	chi_c2p                 \chi_{c2p}                       0
+              64       0	X(3940)                 X(3940)                          0
+              65       0	Y(3940)                 Y(3940)                          0
+              67       0	eta_c2                  \eta_{c2}                        0
               81       0	specflav                specflav                         0
               82       0	rndmflav                rndmflav                         1
              -82       0	anti-rndmflav           \bar{rndmflav}                  -1
