@@ -34,20 +34,20 @@ function getPdfFromTex()
   local tocfile=${texfile/tex/toc}
 
   if [ -e $pdffile ]; then
-    rm $pdffile
+    rm -f $pdffile
   fi
 
   if [ -e $outfile ]; then
     mv $outfile ${outfile/out/OUT}
   fi
 
-  local pdflatex ${texfile}
-  local pdflatex ${texfile}
-  local pdflatex ${texfile}
+  pdflatex ${texfile}
+  pdflatex ${texfile}
+  pdflatex ${texfile}
 
   for file in $auxfile $logfile $lotfile $navfile $outfile $snmfile $tocfile; do
     if [ -e $file ]; then
-      rm $file
+      rm -f $file
     fi
   done
 
