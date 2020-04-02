@@ -34,6 +34,19 @@ int main(int argc,char *argv[])
               exit(-1);
             }
         }
+      else if(strcmp(argv[i],"-t")==0)
+        {
+          if(i+1<argc&&argv[i+1][0]!='-')
+            {
+              ta.resetTtrNm(argv[i+1]);
+            }
+          else
+            {
+               cerr<<"Error: The argument \"-t\" is specified without the TTree name following it!"<<endl;
+               cerr<<"Infor: Please specify the TTree name or remove the argument \"-t\" according to your needs."<<endl;
+               exit(-1);
+            }
+        }
       else if(strcmp(argv[i],"-o")==0)
         {
           if(i+1<argc&&argv[i+1][0]!='-')

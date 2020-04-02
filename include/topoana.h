@@ -361,6 +361,7 @@ class topoana
     string         getCardFlNm() {return m_cardFlNm;};
     void           clearNmsOfIptRootFls() {m_nmsOfIptRootFls.clear();};
     void           pushBackNmOfIptRootFl(string nmOfIptRootFl) {m_nmsOfIptRootFls.push_back(nmOfIptRootFl);};
+    void           resetTtrNm(string ttrNm) {m_ttrNm=ttrNm;};
     void	   resetMainNmOfOptFls(string mainNmOfOptFls) {m_mainNmOfOptFls=mainNmOfOptFls;};
     void           resetNEtrMax(unsigned long nEtrMax) {m_nEtrMax=nEtrMax;};
     string &       trim(string & line);
