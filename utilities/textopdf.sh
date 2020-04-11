@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function getPdfFromTex()
+function textopdf()
 {
   if [ -z $1 ]; then
     echo -e "\e[31mERROR:\e[0m The argument is missing!"
     echo -e "\e[32mINFOR:\e[0m It should be a .tex source file!"
-    echo -e "\e[32mINFOR:\e[0m The command line should be of the following format: getPdfFromTex *.tex "
+    echo -e "\e[32mINFOR:\e[0m The command line should be of the following format: textopdf *.tex "
     return 1
   fi
 
@@ -56,4 +56,4 @@ function getPdfFromTex()
   fi
 }
 
-export getPdfFromTex
+export textopdf
