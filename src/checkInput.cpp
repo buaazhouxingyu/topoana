@@ -1221,6 +1221,11 @@ void topoana::checkInput()
           cout<<" ";
           list<int>::iterator liit=compIncDcyBr.begin();
           writePnmFromPid(cout,"TxtPnm",(*liit));
+          if((*liit)==m_pidOfISt2)
+            {
+              liit++;
+              writePnmFromPid(cout,"TxtPnm",(*liit));
+            }
           cout<<" -->";
           for(liit++;liit!=compIncDcyBr.end();liit++) writePnmFromPid(cout,"TxtPnm",(*liit));
           cout<<" + anything"<<endl;
@@ -1547,7 +1552,7 @@ void topoana::checkInput()
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(cout,"TxtPnm",(*liit));
               // The condition "j==0" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
-              if(j==0||(*liit)==1||(*liit)==2||(*liit)==3||(*liit)==4||(*liit)==5||(*liit)==6)
+              if((j==0&&(*liit)==m_pidOfISt2)||(*liit)==1||(*liit)==2||(*liit)==3||(*liit)==4||(*liit)==5||(*liit)==6)
                 {
                   liit++;
                   writePnmFromPid(cout,"TxtPnm",(*liit));
@@ -1880,6 +1885,11 @@ void topoana::checkInput()
           cout<<" ";
           list<int>::iterator liit=sigDcyBr.begin();
           writePnmFromPid(cout,"TxtPnm",(*liit));
+          if((*liit)==m_pidOfISt2)
+            {
+              liit++;
+              writePnmFromPid(cout,"TxtPnm",(*liit));
+            }
           cout<<" -->";
           for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(cout,"TxtPnm",(*liit));
           cout<<endl;
@@ -2002,6 +2012,11 @@ void topoana::checkInput()
           cout<<" ";
           list<int>::iterator liit=sigIncDcyBr.begin();
           writePnmFromPid(cout,"TxtPnm",(*liit));
+          if((*liit)==m_pidOfISt2)
+            {
+              liit++;
+              writePnmFromPid(cout,"TxtPnm",(*liit));
+            }
           cout<<" -->";
           for(liit++;liit!=sigIncDcyBr.end();liit++) writePnmFromPid(cout,"TxtPnm",(*liit));
           cout<<" + anything";
