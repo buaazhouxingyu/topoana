@@ -159,6 +159,7 @@ void topoana::getRslt()
       chn->SetNotify(trfml); // This statement is indispensible if more than one root file is added to the object of the TChain class.
     }
   unsigned long nEtrThroughTheCut=0;
+  unsigned long sumOfNps=0;
 
   vector<int> vPid, vCcPid;
   vector<int> vMidx, vCcMidx;
@@ -393,7 +394,10 @@ void topoana::getRslt()
              
           if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx);
 
+          sumOfNps=sumOfNps+Nps;
+
           if(m_strgTpOfRawIptTopoDat=="AOI"&&m_fixMidxBESIII==true) for(int j=0;j<Nps;j++) if(Midx[j]>0) Midx[j]=Midx[j]-1;
+          if(m_strgTpOfRawIptTopoDat=="AOI"&&Midx[0]<-1) Midx[0]=-1;
 
           vPid.clear();
           vMidx.clear();
@@ -1971,6 +1975,15 @@ void topoana::getRslt()
           if(m_avoidOverCounting==true) isTheEvtPrcsd=true;
         }
       if(!m_cut.empty()) cout<<"Note that only "<<nEtrThroughTheCut<<" entries passed the cut."<<endl<<endl;
+      cout<<"There are "<<sumOfNps<<" MC generated particles in total in all the ";
+      if(!m_cut.empty()) cout<<"slected ";
+      cout<<"entries of the input root files."<<endl<<endl;
+      cout<<"There are ";
+      if(m_cut.empty()) cout<<setprecision(2)<<1.*sumOfNps/nEtr;
+      else cout<<setprecision(2)<<1.*sumOfNps/nEtrThroughTheCut;
+      cout<<" MC generated particles on average in each ";
+      if(!m_cut.empty()) cout<<"selected ";
+      cout<<"entry of the input root files."<<endl<<endl;
     }
 
   if(m_compAnaOfDcyTrs==true)
