@@ -1975,13 +1975,19 @@ void topoana::getRslt()
           if(m_avoidOverCounting==true) isTheEvtPrcsd=true;
         }
       if(!m_cut.empty()) cout<<"Note that only "<<nEtrThroughTheCut<<" entries passed the cut."<<endl<<endl;
+
       cout<<"There are "<<sumOfNps<<" MC generated particles in total in all the ";
+      if(nEtrToBePrcsd!=nEtr) cout<<"processed ";
+      if((nEtrToBePrcsd!=nEtr)&&(!m_cut.empty())) cout<<"and ";
       if(!m_cut.empty()) cout<<"slected ";
       cout<<"entries of the input root files."<<endl<<endl;
+
       cout<<"There are ";
-      if(m_cut.empty()) cout<<setprecision(2)<<1.*sumOfNps/nEtr;
+      if(m_cut.empty()) cout<<setprecision(2)<<1.*sumOfNps/nEtrToBePrcsd;
       else cout<<setprecision(2)<<1.*sumOfNps/nEtrThroughTheCut;
       cout<<" MC generated particles on average in each ";
+      if(nEtrToBePrcsd!=nEtr) cout<<"processed ";
+      if((nEtrToBePrcsd!=nEtr)&&(!m_cut.empty())) cout<<"and ";
       if(!m_cut.empty()) cout<<"selected ";
       cout<<"entry of the input root files."<<endl<<endl;
     }
