@@ -1,0 +1,11 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  0	nEtr:  1	nCEtr:  1
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> tau+ nu_tau pi-
+  anti-B0 --> pi0 J/psi
+  tau+ --> e+ nu_e anti-nu_tau
+  J/psi --> mu+ mu-
+( Upsilon(4S) ---> e+ nu_e mu+ mu- nu_tau anti-nu_tau pi0 pi- )
+

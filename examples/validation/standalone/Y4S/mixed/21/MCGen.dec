@@ -1,0 +1,41 @@
+Decay Upsilon(4S)
+1.0 B0 anti-B0 VSS;
+Enddecay
+
+Decay B0
+1.0 Xsd tau+ tau- PHOTOS BTOXSLL 4.8 0.2 0.0 0.41;
+Enddecay
+
+Decay Xsd
+1.0 rho0 K_S0 VVS_PWAVE 1.0 0.0 0.0 0.0 0.0 0.0;
+Enddecay
+
+Decay rho0
+1.0 pi+ pi- VSS;
+Enddecay
+
+Decay K_S0
+1.0 pi+ pi- PHSP;
+Enddecay
+
+Decay tau+
+1.0 e+ nu_e anti-nu_tau PHOTOS TAULNUNU;
+Enddecay
+
+Decay tau-
+1.0 mu- anti-nu_mu nu_tau PHOTOS TAULNUNU;
+Enddecay
+
+Decay anti-B0
+1.0 J/psi eta SVS_CP beta dm 1 1 0 1 0;
+Enddecay
+
+Decay J/psi
+1.0 e+ e- PHOTOS VLL;
+Enddecay
+
+Decay eta
+1.0 gamma gamma PHSP;
+Enddecay
+
+End

@@ -1,0 +1,29 @@
+Decay Upsilon(4S)
+1.0 B0 anti-B0 VSS;
+Enddecay
+
+Decay B0
+1.0 pi- tau+ nu_tau PHOTOS ISGW2;
+Enddecay
+
+Decay tau+
+1.0 pi+ anti-nu_tau PHOTOS TAUSCALARNU;
+Enddecay
+
+Decay anti-B0
+1.0 J/psi eta SVS_CP beta dm 1 1 0 1 0;
+Enddecay
+
+Decay J/psi
+1.0 mu+ mu- PHOTOS VLL;
+Enddecay
+
+Decay eta
+1.0 pi+ pi- pi0 PHSP;
+Enddecay
+
+Decay pi0
+1.0 gamma gamma PHSP;
+Enddecay
+
+End

@@ -1,0 +1,25 @@
+Decay Upsilon(4S)
+1.0 B0 anti-B0 VSS;
+Enddecay
+
+Decay B0
+1.0 nu_tau anti-nu_tau PHSP; 
+Enddecay
+
+Decay anti-B0
+1.0 omega K_S0 SSD_CP dm 0.0 1.0 minusTwoBeta 1.0 0.0 -1.0 0.0;
+Enddecay
+
+Decay omega
+1.0 pi- pi+ pi0 OMEGA_DALITZ;
+Enddecay
+
+Decay K_S0
+1.0 pi+ pi- PHSP;
+Enddecay
+
+Decay pi0
+1.0 gamma gamma PHSP;
+Enddecay
+
+End
