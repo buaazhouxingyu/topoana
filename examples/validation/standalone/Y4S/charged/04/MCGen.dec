@@ -1,0 +1,31 @@
+Decay Upsilon(4S)
+1.0 B+ B- VSS;
+Enddecay
+
+Alias X_1p(3872) X_1(3872)
+
+Decay B+
+1.0 K+ X_1p(3872) PHSP;
+Enddecay
+
+Decay X_1p(3872)
+1.0 anti-D*0 D0 PHSP;
+Enddecay
+
+Decay anti-D*0
+1.0 D0 pi0 VSS;
+Enddecay
+
+Decay D0
+1.0 K- pi+ pi+ pi- PHSP;
+Enddecay
+
+Decay pi0
+1.0 gamma gamma PHSP;
+Enddecay
+
+Decay B-
+1.0 K- nu_e anti-nu_e PHOTOS PHSP;
+Enddecay
+
+End
