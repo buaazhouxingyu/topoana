@@ -1,0 +1,27 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  40	nEtr:  2925	nCEtr:  2925
+  e+ e- --> pi+ pi- gammaI
+( e+ e- ---> pi+ pi- gammaI )
+
+rowNo:  2	iDcyTr:  47	nEtr:  2868	nCEtr:  5793
+  e+ e- --> pi+ pi- gammaI gammaI
+( e+ e- ---> pi+ pi- gammaI gammaI )
+
+rowNo:  3	iDcyTr:  93	nEtr:  1291	nCEtr:  7084
+  e+ e- --> pi+ pi- gammaI gammaI gammaI
+( e+ e- ---> pi+ pi- gammaI gammaI gammaI )
+
+rowNo:  4	iDcyTr:  204	nEtr:  771	nCEtr:  7855
+  e+ e- --> pi0 pi0 gammaI
+( e+ e- ---> pi0 pi0 gammaI )
+
+rowNo:  5	iDcyTr:  54	nEtr:  766	nCEtr:  8621
+  e+ e- --> pi0 pi0 gammaI gammaI
+( e+ e- ---> pi0 pi0 gammaI gammaI )
+
+rowNo:  rest	iDcyTr:  ---	nEtr:  91379	nCEtr:  100000
+  e+ e- --> others (65406 in total)
+( e+ e- ---> corresponding to others )
+

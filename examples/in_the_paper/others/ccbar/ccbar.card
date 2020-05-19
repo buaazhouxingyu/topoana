@@ -1,0 +1,15 @@
+% Names of input root files
+{
+  ../../input/ccbar1.root
+  ../../input/ccbar2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Component analysis --- decay trees
+{
+  Y 	5     Y
+}

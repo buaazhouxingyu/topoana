@@ -1,0 +1,46 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  5098	nEtr:  4	nCEtr:  4
+  e+ e- --> pi0 D*+ D*- gammaI gammaI
+  D*+ --> pi+ D0
+  D*- --> pi- anti-D0
+  D0 --> pi0 pi+ K-
+  anti-D0 --> pi0 pi- K+
+( e+ e- ---> pi0 pi0 pi0 pi+ pi+ pi- pi- K+ K- gammaI gammaI )
+
+rowNo:  2	iDcyTr:  1353	nEtr:  3	nCEtr:  7
+  e+ e- --> pi0 pi+ D*- D*0 gammaI
+  D*- --> pi- anti-D0
+  D*0 --> pi0 D0
+  anti-D0 --> pi0 pi- K+
+  D0 --> pi0 pi+ K-
+( e+ e- ---> pi0 pi0 pi0 pi0 pi+ pi+ pi- pi- K+ K- gammaI )
+
+rowNo:  3	iDcyTr:  5143	nEtr:  3	nCEtr:  10
+  e+ e- --> pi- D*+ anti-D*0 gammaI
+  D*+ --> pi+ D0
+  anti-D*0 --> anti-D0 gamma
+  D0 --> pi0 pi+ K-
+  anti-D0 --> pi0 pi- K+
+( e+ e- ---> pi0 pi0 pi+ pi+ pi- pi- K+ K- gammaI gamma )
+
+rowNo:  4	iDcyTr:  5626	nEtr:  3	nCEtr:  13
+  e+ e- --> D*0 anti-D*0 gammaI
+  D*0 --> pi0 D0
+  anti-D*0 --> pi0 anti-D0
+  D0 --> pi0 pi+ K-
+  anti-D0 --> pi0 pi- K+
+( e+ e- ---> pi0 pi0 pi0 pi0 pi+ pi- K+ K- gammaI )
+
+rowNo:  5	iDcyTr:  6413	nEtr:  3	nCEtr:  16
+  e+ e- --> pi0 pi+ D*- D0
+  D*- --> pi- anti-D0
+  D0 --> pi0 pi+ K-
+  anti-D0 --> pi0 pi- K+
+( e+ e- ---> pi0 pi0 pi0 pi+ pi+ pi- pi- K+ K- )
+
+rowNo:  rest	iDcyTr:  ---	nEtr:  99984	nCEtr:  100000
+  e+ e- --> others (99854 in total)
+( e+ e- ---> corresponding to others )
+

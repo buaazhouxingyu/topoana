@@ -1,0 +1,243 @@
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo for version 1 of class TObject read from the file ../../input/uubar1.root
+   has a different checksum than the previously loaded StreamerInfo.
+   Reading objects of type TObject from the file ../../input/uubar1.root 
+   (and potentially other files) might not work correctly.
+   Most likely the version number of the class was not properly
+   updated [See ClassDef(TObject,1)].
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 1 of class 'TObject' differs from 
+the in-memory layout version 1:
+   unsigned int fUniqueID; //
+vs
+   UInt_t fUniqueID; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 1 of class 'TObject' differs from 
+the in-memory layout version 1:
+   unsigned int fBits; //
+vs
+   UInt_t fBits; //
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo of class TCollection read from file ../../input/uubar1.root
+   has the same version (=3) as the active class but a different checksum.
+   You should update the version to ClassDef(TCollection,4).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 3 of class 'TCollection' differs from 
+the in-memory layout version 3:
+   int fSize; //
+vs
+   Int_t fSize; //
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo of class TAttMarker read from file ../../input/uubar1.root
+   has the same version (=2) as the active class but a different checksum.
+   You should update the version to ClassDef(TAttMarker,3).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 2 of class 'TAttMarker' differs from 
+the in-memory layout version 2:
+   short fMarkerColor; //
+vs
+   Color_t fMarkerColor; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 2 of class 'TAttMarker' differs from 
+the in-memory layout version 2:
+   short fMarkerStyle; //
+vs
+   Style_t fMarkerStyle; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 2 of class 'TAttMarker' differs from 
+the in-memory layout version 2:
+   float fMarkerSize; //
+vs
+   Size_t fMarkerSize; //
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo of class TObjArray read from file ../../input/uubar1.root
+   has the same version (=3) as the active class but a different checksum.
+   You should update the version to ClassDef(TObjArray,4).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 3 of class 'TObjArray' differs from 
+the in-memory layout version 3:
+   int fLowerBound; //
+vs
+   Int_t fLowerBound; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 3 of class 'TObjArray' differs from 
+the in-memory layout version 3:
+   int fLast; //
+vs
+   Int_t fLast; //
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo of class TTree read from file ../../input/uubar1.root
+   has the same version (=19) as the active class but a different checksum.
+   You should update the version to ClassDef(TTree,20).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 19 of class 'TTree' differs from 
+the in-memory layout version 19:
+   double fWeight; //
+vs
+   Double_t fWeight; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 19 of class 'TTree' differs from 
+the in-memory layout version 19:
+   int fTimerInterval; //
+vs
+   Int_t fTimerInterval; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 19 of class 'TTree' differs from 
+the in-memory layout version 19:
+   int fScanField; //
+vs
+   Int_t fScanField; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 19 of class 'TTree' differs from 
+the in-memory layout version 19:
+   int fUpdate; //
+vs
+   Int_t fUpdate; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 19 of class 'TTree' differs from 
+the in-memory layout version 19:
+   int fDefaultEntryOffsetLen; //
+vs
+   Int_t fDefaultEntryOffsetLen; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 19 of class 'TTree' differs from 
+the in-memory layout version 19:
+   int fNClusterRange; //
+vs
+   Int_t fNClusterRange; //
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo of class TBranch read from file ../../input/uubar1.root
+   has the same version (=12) as the active class but a different checksum.
+   You should update the version to ClassDef(TBranch,13).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 12 of class 'TBranch' differs from 
+the in-memory layout version 12:
+   int fCompress; //
+vs
+   Int_t fCompress; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 12 of class 'TBranch' differs from 
+the in-memory layout version 12:
+   int fBasketSize; //
+vs
+   Int_t fBasketSize; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 12 of class 'TBranch' differs from 
+the in-memory layout version 12:
+   int fEntryOffsetLen; //
+vs
+   Int_t fEntryOffsetLen; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 12 of class 'TBranch' differs from 
+the in-memory layout version 12:
+   int fWriteBasket; //
+vs
+   Int_t fWriteBasket; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 12 of class 'TBranch' differs from 
+the in-memory layout version 12:
+   int fOffset; //
+vs
+   Int_t fOffset; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 12 of class 'TBranch' differs from 
+the in-memory layout version 12:
+   int fMaxBaskets; //
+vs
+   Int_t fMaxBaskets; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 12 of class 'TBranch' differs from 
+the in-memory layout version 12:
+   int fSplitLevel; //
+vs
+   Int_t fSplitLevel; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 12 of class 'TBranch' differs from 
+the in-memory layout version 12:
+   int* fBasketBytes; //fMaxBaskets
+vs
+   Int_t* fBasketBytes; //fMaxBaskets
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo of class TLeaf read from file ../../input/uubar1.root
+   has the same version (=2) as the active class but a different checksum.
+   You should update the version to ClassDef(TLeaf,3).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 2 of class 'TLeaf' differs from 
+the in-memory layout version 2:
+   int fLen; //
+vs
+   Int_t fLen; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 2 of class 'TLeaf' differs from 
+the in-memory layout version 2:
+   int fLenType; //
+vs
+   Int_t fLenType; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 2 of class 'TLeaf' differs from 
+the in-memory layout version 2:
+   int fOffset; //
+vs
+   Int_t fOffset; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 2 of class 'TLeaf' differs from 
+the in-memory layout version 2:
+   bool fIsRange; //
+vs
+   Bool_t fIsRange; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 2 of class 'TLeaf' differs from 
+the in-memory layout version 2:
+   bool fIsUnsigned; //
+vs
+   Bool_t fIsUnsigned; //
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo of class TRefTable read from file ../../input/uubar1.root
+   has the same version (=3) as the active class but a different checksum.
+   You should update the version to ClassDef(TRefTable,4).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 3 of class 'TRefTable' differs from 
+the in-memory layout version 3:
+   int fSize; //
+vs
+   Int_t fSize; //
+Warning in <TStreamerInfo::BuildCheck>: 
+   The StreamerInfo of class TLeafI read from file ../../input/uubar1.root
+   has the same version (=1) as the active class but a different checksum.
+   You should update the version to ClassDef(TLeafI,2).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 1 of class 'TLeafI' differs from 
+the in-memory layout version 1:
+   int fMinimum; //
+vs
+   Int_t fMinimum; //
+Warning in <TStreamerInfo::CompareContent>: The following data member of
+the on-file layout version 1 of class 'TLeafI' differs from 
+the in-memory layout version 1:
+   int fMaximum; //
+vs
+   Int_t fMaximum; //
