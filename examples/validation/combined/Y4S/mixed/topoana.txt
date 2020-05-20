@@ -1,0 +1,193 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  9	nEtr:  4919	nCEtr:  4919
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> eta J/psi
+  anti-B0 --> tau- anti-nu_tau pi+
+  eta --> gamma gamma
+  J/psi --> mu+ mu-
+  tau- --> e- anti-nu_e nu_tau
+( Upsilon(4S) ---> e- anti-nu_e mu+ mu- nu_tau anti-nu_tau pi+ gamma gamma )
+
+rowNo:  2	iDcyTr:  20	nEtr:  4857	nCEtr:  9776
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> tau+ nu_tau pi-
+  anti-B0 --> eta J/psi
+  tau+ --> mu+ nu_mu anti-nu_tau
+  eta --> gamma gamma
+  J/psi --> mu+ mu-
+( Upsilon(4S) ---> mu+ mu+ mu- nu_mu nu_tau anti-nu_tau pi- gamma gamma )
+
+rowNo:  3	iDcyTr:  17	nEtr:  4846	nCEtr:  14622
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> K*0 gamma
+  anti-B0 --> nu_tau anti-nu_tau
+  K*0 --> pi0 K_S0
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> nu_tau anti-nu_tau pi0 pi+ pi- gamma )
+
+rowNo:  4	iDcyTr:  11	nEtr:  4837	nCEtr:  19459
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> eta J/psi
+  anti-B0 --> eta anti-Xsd
+  eta --> gamma gamma
+  J/psi --> e+ e-
+  eta --> gamma gamma
+  anti-Xsd --> rho0 K_S0
+  rho0 --> pi+ pi-
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> e+ e- pi+ pi+ pi- pi- gamma gamma gamma gamma )
+
+rowNo:  5	iDcyTr:  7	nEtr:  4829	nCEtr:  24288
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> Xsd gamma
+  anti-B0 --> gamma gamma
+  Xsd --> rho0 K_S0
+  rho0 --> pi+ pi-
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> pi+ pi+ pi- pi- gamma gamma gamma )
+
+rowNo:  6	iDcyTr:  19	nEtr:  4815	nCEtr:  29103
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> nu_e anti-nu_e K*0
+  anti-B0 --> mu+ mu-
+  K*0 --> pi- K+
+( Upsilon(4S) ---> nu_e anti-nu_e mu+ mu- pi- K+ )
+
+rowNo:  7	iDcyTr:  0	nEtr:  4789	nCEtr:  33892
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> tau+ tau- Xsd
+  anti-B0 --> eta J/psi
+  tau+ --> e+ nu_e anti-nu_tau
+  tau- --> mu- anti-nu_mu nu_tau
+  Xsd --> rho0 K_S0
+  eta --> gamma gamma
+  J/psi --> e+ e-
+  rho0 --> pi+ pi-
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> e+ e+ e- nu_e mu- anti-nu_mu nu_tau anti-nu_tau pi+ pi+ pi- pi- gamma gamma )
+
+rowNo:  8	iDcyTr:  5	nEtr:  4786	nCEtr:  38678
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> eta J/psi
+  anti-B0 --> tau+ tau- anti-Xsd
+  eta --> pi0 pi+ pi-
+  J/psi --> e+ e-
+  tau+ --> mu+ nu_mu anti-nu_tau
+  tau- --> e- anti-nu_e nu_tau
+  anti-Xsd --> rho0 K_S0
+  rho0 --> pi+ pi-
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> e+ e- e- anti-nu_e mu+ nu_mu nu_tau anti-nu_tau pi0 pi+ pi+ pi+ pi- pi- pi- )
+
+rowNo:  9	iDcyTr:  8	nEtr:  4785	nCEtr:  43463
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> nu_tau anti-nu_tau gamma
+  anti-B0 --> anti-K*0 gamma
+  anti-K*0 --> pi0 K_S0
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> nu_tau anti-nu_tau pi0 pi+ pi- gamma gamma )
+
+rowNo:  10	iDcyTr:  15	nEtr:  4773	nCEtr:  48236
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> nu_tau anti-nu_tau
+  anti-B0 --> omega K_S0
+  omega --> pi0 pi+ pi-
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> nu_tau anti-nu_tau pi0 pi+ pi+ pi- pi- )
+
+rowNo:  11	iDcyTr:  2	nEtr:  4773	nCEtr:  53009
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> pi0 J/psi
+  anti-B0 --> nu_e anti-nu_e anti-K0
+  J/psi --> mu+ mu-
+  anti-K0 --> K_S0
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> nu_e anti-nu_e mu+ mu- pi0 pi+ pi- )
+
+rowNo:  12	iDcyTr:  13	nEtr:  4752	nCEtr:  57761
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> gamma gamma
+  anti-B0 --> eta J/psi
+  eta --> pi0 pi+ pi-
+  J/psi --> e+ e-
+( Upsilon(4S) ---> e+ e- pi0 pi+ pi- gamma gamma )
+
+rowNo:  13	iDcyTr:  4	nEtr:  4743	nCEtr:  62504
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> e+ e-
+  anti-B0 --> nu_e anti-nu_e anti-K*0
+  anti-K*0 --> pi+ K-
+( Upsilon(4S) ---> e+ e- nu_e anti-nu_e pi+ K- )
+
+rowNo:  14	iDcyTr:  12	nEtr:  4725	nCEtr:  67229
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> pi0 J/psi
+  anti-B0 --> tau- anti-nu_tau pi+
+  J/psi --> e+ e-
+  tau- --> nu_tau pi-
+( Upsilon(4S) ---> e+ e- nu_tau anti-nu_tau pi0 pi+ pi- )
+
+rowNo:  15	iDcyTr:  16	nEtr:  4724	nCEtr:  71953
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> tau+ nu_tau pi-
+  anti-B0 --> eta J/psi
+  tau+ --> anti-nu_tau pi+
+  eta --> pi0 pi+ pi-
+  J/psi --> mu+ mu-
+( Upsilon(4S) ---> mu+ mu- nu_tau anti-nu_tau pi0 pi+ pi+ pi- pi- )
+
+rowNo:  16	iDcyTr:  1	nEtr:  4716	nCEtr:  76669
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> mu+ mu-
+  anti-B0 --> nu_tau anti-nu_tau gamma
+( Upsilon(4S) ---> mu+ mu- nu_tau anti-nu_tau gamma )
+
+rowNo:  17	iDcyTr:  14	nEtr:  4715	nCEtr:  81384
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> eta J/psi
+  anti-B0 --> tau- anti-nu_tau pi+
+  eta --> pi0 pi+ pi-
+  J/psi --> mu+ mu-
+  tau- --> mu- anti-nu_mu nu_tau
+( Upsilon(4S) ---> mu+ mu- mu- anti-nu_mu nu_tau anti-nu_tau pi0 pi+ pi+ pi- )
+
+rowNo:  18	iDcyTr:  10	nEtr:  4685	nCEtr:  86069
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> tau+ nu_tau pi-
+  anti-B0 --> pi0 J/psi
+  tau+ --> e+ nu_e anti-nu_tau
+  J/psi --> mu+ mu-
+( Upsilon(4S) ---> e+ nu_e mu+ mu- nu_tau anti-nu_tau pi0 pi- )
+
+rowNo:  19	iDcyTr:  3	nEtr:  4685	nCEtr:  90754
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> eta Xsd
+  anti-B0 --> pi0 J/psi
+  eta --> gamma gamma
+  Xsd --> rho0 K_S0
+  J/psi --> e+ e-
+  rho0 --> pi+ pi-
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> e+ e- pi0 pi+ pi+ pi- pi- gamma gamma )
+
+rowNo:  20	iDcyTr:  18	nEtr:  4680	nCEtr:  95434
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> omega K_S0
+  anti-B0 --> anti-Xsd gamma
+  omega --> pi0 pi+ pi-
+  K_S0 --> pi+ pi-
+  anti-Xsd --> rho0 K_S0
+  rho0 --> pi+ pi-
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> pi0 pi+ pi+ pi+ pi+ pi- pi- pi- pi- gamma )
+
+rowNo:  21	iDcyTr:  6	nEtr:  4566	nCEtr:  100000
+  Upsilon(4S) --> B0 anti-B0
+  B0 --> nu_e anti-nu_e K0
+  anti-B0 --> e+ e-
+  K0 --> K_S0
+  K_S0 --> pi+ pi-
+( Upsilon(4S) ---> e+ e- nu_e anti-nu_e pi+ pi- )
+
