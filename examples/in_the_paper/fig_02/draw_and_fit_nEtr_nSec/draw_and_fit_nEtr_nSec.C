@@ -30,13 +30,15 @@ void draw_and_fit_nEtr_nSec()
 
   TGraph * graph[n1];
   TF1 * f1[n1];
+  Int_t markerStyle[n1]={20, 21, 23, 22, 5, 31, 33, 34};
   Int_t color[n1]={36, 46, 9, 8, 7, 6, 4, 2};
   string f1Name[n1]={"f10", "f11", "f12", "f13", "f14", "f15", "f16", "f17"};
   for(Int_t i=0;i<n1;i++)
     {
       graph[i]=new TGraph(n2, nEtr[i], nSec[i]);
-      graph[i]->SetMarkerStyle(20);
-      graph[i]->SetMarkerSize(1);
+      graph[i]->SetMarkerStyle(markerStyle[i]);
+      if(i!=6) graph[i]->SetMarkerSize(1);
+      else graph[i]->SetMarkerSize(4./3.);
       graph[i]->SetMarkerColor(color[i]);
 
       f1[i]=new TF1(f1Name[i].c_str(), "[0]*x+[1]", -1, 200000);
