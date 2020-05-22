@@ -107,7 +107,7 @@ class topoana
     bool m_sortSigsInTopoMapsRltdToSigIds;
     bool m_iStPsSwitch;
 
-    string m_mainNmOfOptFls;
+    string m_comNmOfOptFls;
     bool m_cmpltHVLines;
     bool m_centDcyObjs;
     bool m_oneOptRootFlByOneIptRootFl;
@@ -357,12 +357,12 @@ class topoana
     }
     ~topoana(){}
     string         getCardFlNm0() {return m_cardFlNm0;};
-    void           setCardFlNmAndDftMainNmOfOptFls(string cardFlNm);
+    void           setCardFlNmAndDftComNmOfOptFls(string cardFlNm);
     string         getCardFlNm() {return m_cardFlNm;};
     void           clearNmsOfIptRootFls() {m_nmsOfIptRootFls.clear();};
     void           pushBackNmOfIptRootFl(string nmOfIptRootFl) {m_nmsOfIptRootFls.push_back(nmOfIptRootFl);};
     void           resetTtrNm(string ttrNm) {m_ttrNm=ttrNm;};
-    void	   resetMainNmOfOptFls(string mainNmOfOptFls) {m_mainNmOfOptFls=mainNmOfOptFls;};
+    void	   resetComNmOfOptFls(string comNmOfOptFls) {m_comNmOfOptFls=comNmOfOptFls;};
     void           resetNEtrMax(unsigned long nEtrMax) {m_nEtrMax=nEtrMax;};
     string &       trim(string & line);
     void           makeMapsOnPdata();

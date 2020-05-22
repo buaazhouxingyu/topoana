@@ -276,7 +276,7 @@
 }
 
 # Four files with the same name but in different (root/txt/tex/pdf) formats will be outputed. The filename extensions are appended automatically by the program as suffixes. Thus, to avoid repetition, any filename extension is not recommended to be used in the name as a suffix.
-% Main name of output files (Default: Main name of the card file)
+% Common name of output files (Default: Name of the card file)
 {
 
 }

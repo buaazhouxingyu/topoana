@@ -6,10 +6,10 @@ int main(int argc,char *argv[])
   ta.makeMapsOnPdata();
   ta.makeNNmMap();
   ta.readCard(ta.getCardFlNm0());
-  if(argc>1&&argv[1][0]!='-') ta.setCardFlNmAndDftMainNmOfOptFls(argv[1]);
-  else ta.setCardFlNmAndDftMainNmOfOptFls("topoana.card");
+  if(argc>1&&argv[1][0]!='-') ta.setCardFlNmAndDftComNmOfOptFls(argv[1]);
+  else ta.setCardFlNmAndDftComNmOfOptFls("topoana.card");
   ta.readCard(ta.getCardFlNm());
-  // The following loop offers a mechanism to reset the names of input root files, the main name of output files, and the maximum number of entries to be processed, with the arguments provided in the command line.
+  // The following loop offers a mechanism to reset the names of input root files, the common name of output files, and the maximum number of entries to be processed, with the arguments provided in the command line.
   for(int i=1;i<argc;i++)
     {
       if(strcmp(argv[i],"-i")==0)
@@ -51,12 +51,12 @@ int main(int argc,char *argv[])
         {
           if(i+1<argc&&argv[i+1][0]!='-')
             { 
-              ta.resetMainNmOfOptFls(argv[i+1]);
+              ta.resetComNmOfOptFls(argv[i+1]);
             }
           else
             {
-               cerr<<"Error: The argument \"-o\" is specified without the main name of output files following it!"<<endl;
-               cerr<<"Infor: Please specify the main name of output files or remove the argument \"-o\" according to your needs."<<endl;
+               cerr<<"Error: The argument \"-o\" is specified without the common name of output files following it!"<<endl;
+               cerr<<"Infor: Please specify the common name of output files or remove the argument \"-o\" according to your needs."<<endl;
                exit(-1);
             }
         }

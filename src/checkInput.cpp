@@ -2657,13 +2657,13 @@ void topoana::checkInput()
       if(m_vbsLevStdOut==true) cout<<"The initial state particles are not required to be pushed front uniformly in all the events (default)."<<endl<<endl;
     }
 
-  if((m_cardFlNm.size()>5&&m_mainNmOfOptFls!=m_cardFlNm.substr(0,(m_cardFlNm.size()-5)))&&(m_mainNmOfOptFls!=m_cardFlNm))
+  if((m_cardFlNm.size()>5&&m_comNmOfOptFls!=m_cardFlNm.substr(0,(m_cardFlNm.size()-5)))&&(m_comNmOfOptFls!=m_cardFlNm))
     {
-      cout<<"Main name of output files: "<<m_mainNmOfOptFls<<endl<<endl;
+      cout<<"Common name of output files: "<<m_comNmOfOptFls<<endl<<endl;
     }
   else
     {
-      if(m_vbsLevStdOut==true) cout<<"Main name of output files: "<<m_mainNmOfOptFls<<" (default)"<<endl<<endl;
+      if(m_vbsLevStdOut==true) cout<<"Common name of output files: "<<m_comNmOfOptFls<<" (default)"<<endl<<endl;
     }
 
   if(m_cmpltHVLines==true)

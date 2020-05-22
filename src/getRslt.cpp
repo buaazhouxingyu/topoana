@@ -190,14 +190,14 @@ void topoana::getRslt()
                 {
                   if(iOptRootFls==0)
                     {
-                      NmOfOptRootFl=m_mainNmOfOptFls+".root";
+                      NmOfOptRootFl=m_comNmOfOptFls+".root";
                     }
                   else
                     {
                       ostringstream oss;
                       oss<<iOptRootFls;
                       string strIOptRootFls=oss.str();
-                      NmOfOptRootFl=m_mainNmOfOptFls+"_"+strIOptRootFls+".root";
+                      NmOfOptRootFl=m_comNmOfOptFls+"_"+strIOptRootFls+".root";
                     }
                 }
               fl=new TFile(NmOfOptRootFl.c_str(),"recreate");

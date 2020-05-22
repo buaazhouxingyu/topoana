@@ -7,7 +7,7 @@ void topoana::writeRsltIntoTxtFl()
 {
   if(m_anaTasksForSigIds=="T"&&m_vPid_compDcyBrP.size()==0&&m_vPid_compCascDcyBrP.size()==0&&m_vPid_compDcyFStP.size()==0&&m_vPid_compProdBrP.size()==0&&m_vPid_compMP.size()==0&&m_vCompIncDcyBr.size()==0&&m_vCompIRADcyBr.size()==0&&m_compAnaOfDcyTrs==false&&m_compAnaOfDcyIFSts==false) return;
 
-  string NmOfOptTxtFl=m_mainNmOfOptFls+".txt";
+  string NmOfOptTxtFl=m_comNmOfOptFls+".txt";
   ofstream fout(NmOfOptTxtFl.c_str(),ios::out);
   if(!fout)
     {

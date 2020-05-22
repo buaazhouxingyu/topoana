@@ -461,14 +461,14 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Push front the initial state particles uniformly in all the events (Two options: Y and N. Default: N)", m_iStPsSwitch);
         }
-      else if(line=="% Main name of output files (Default: Main name of the card file)")
+      else if(line=="% Common name of output files (Default: Name of the card file)")
         {
-          readOpenCurly(fin,line,"% Main name of output files (Default: Main name of the card file)");
-          read1stLineOrCloseCurly(fin,line,false,"No main file name is found in the item with the prompt \"% Main name of output files (Default: Main name of the card file)");
+          readOpenCurly(fin,line,"% Common name of output files (Default: Name of the card file)");
+          read1stLineOrCloseCurly(fin,line,false,"No common file name is found in the item with the prompt \"% Common name of output files (Default: Name of the card file)");
           if(line!="}")
             {
-              m_mainNmOfOptFls=line;
-              readCloseCurly(fin,line,"% Main name of output files (Default: Main name of the card file)");
+              m_comNmOfOptFls=line;
+              readCloseCurly(fin,line,"% Common name of output files (Default: Name of the card file)");
             }
         }
       else if(line=="% Complete horizontal and vertical lines in output pdf files (Two options: Y and N. Default: N)")
