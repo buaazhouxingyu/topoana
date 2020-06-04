@@ -57,23 +57,24 @@ void draw_and_fit_nEtr_nSec()
   gPad->SetBottomMargin(0.125);
   gPad->SetTopMargin(0.1);
   multigraph->GetXaxis()->SetTitle("Number of processed entries");
-  multigraph->GetXaxis()->SetTitleSize(0.05);
+  multigraph->GetXaxis()->SetTitleSize(0.06);
   multigraph->GetXaxis()->SetLabelSize(0.04);
+  multigraph->GetXaxis()->SetTitleOffset(0.95);
   multigraph->GetYaxis()->SetRangeUser(0, 26);
   multigraph->GetYaxis()->SetTitle("Number of elapsed seconds");
-  multigraph->GetYaxis()->SetTitleSize(0.05);
+  multigraph->GetYaxis()->SetTitleSize(0.06);
   multigraph->GetYaxis()->SetLabelSize(0.04);
-  multigraph->GetYaxis()->SetTitleOffset(0.8);
+  multigraph->GetYaxis()->SetTitleOffset(0.75);
   multigraph->GetYaxis()->SetNdivisions(503);
 
-  TLegend *legend=new TLegend(0.2025,0.5325,0.4825,0.8425);
+  TLegend *legend=new TLegend(0.1525,0.4825,0.4825,0.8425);
   TLegendEntry *legendEntry[8];
   char legendEntryTitle[8][30]={"J/#psi","#tau^{#plus}#tau^{#minus}","d#bar{d}","u#bar{u}","s#bar{s}","c#bar{c}","B^{#plus}B^{#minus}","B^{0}#bar{B}^{0}"};
   for(Int_t i=0;i<8;i++)
     {
       legendEntry[i]=legend->AddEntry(graph[i],legendEntryTitle[i],"P");
       legendEntry[i]->SetTextColor(color[i]);
-      legendEntry[i]->SetTextSize(0.05);
+      legendEntry[i]->SetTextSize(0.065);
     }    
   legend->SetFillColor(kWhite);
   legend->SetBorderSize(0);
