@@ -1,0 +1,9 @@
+Decay J/psi
+  1.0 pi+ pi- K+ K- eta PHSP;
+Enddecay
+
+Decay eta 
+  1.0 gamma gamma PHSP;
+Enddecay
+
+End

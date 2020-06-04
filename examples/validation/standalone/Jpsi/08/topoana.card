@@ -1,0 +1,19 @@
+% Names of input root files
+{
+  MCGenTopo.root  
+}
+
+% TTree name
+{
+  MCGenTopo
+}
+
+% Component analysis --- decay trees
+{
+  Y
+}
+
+% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)
+{
+  Yg
+}

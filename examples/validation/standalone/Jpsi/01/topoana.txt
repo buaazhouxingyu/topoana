@@ -1,0 +1,8 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  0	nEtr:  1	nCEtr:  1
+  J/psi --> pi0 rho0
+  rho0 --> pi+ pi-
+( J/psi ---> pi0 pi+ pi- )
+

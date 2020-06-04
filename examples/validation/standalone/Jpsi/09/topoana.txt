@@ -1,0 +1,8 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  0	nEtr:  1	nCEtr:  1
+  J/psi --> pi+ pi- eta K+ K-
+  eta --> gamma gamma
+( J/psi ---> pi+ pi- K+ K- gamma gamma )
+

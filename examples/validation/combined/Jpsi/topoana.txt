@@ -1,0 +1,61 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  5	nEtr:  10124	nCEtr:  10124
+  J/psi --> K- K*+
+  K*+ --> pi+ K0
+  K0 --> K_S0
+  K_S0 --> pi+ pi-
+( J/psi ---> pi+ pi+ pi- K- )
+
+rowNo:  2	iDcyTr:  3	nEtr:  10095	nCEtr:  20219
+  J/psi --> phi a(0)(1450)0
+  phi --> K+ K-
+  a(0)(1450)0 --> pi0 eta
+  eta --> gamma gamma
+( J/psi ---> pi0 K+ K- gamma gamma )
+
+rowNo:  3	iDcyTr:  1	nEtr:  10083	nCEtr:  30302
+  J/psi --> pi- rho+
+  rho+ --> pi0 pi+
+( J/psi ---> pi0 pi+ pi- )
+
+rowNo:  4	iDcyTr:  2	nEtr:  10054	nCEtr:  40356
+  J/psi --> pi+ rho-
+  rho- --> pi0 pi-
+( J/psi ---> pi0 pi+ pi- )
+
+rowNo:  5	iDcyTr:  6	nEtr:  10050	nCEtr:  50406
+  J/psi --> omega p+ anti-p-
+  omega --> pi0 pi+ pi-
+( J/psi ---> pi0 pi+ pi- p+ anti-p- )
+
+rowNo:  6	iDcyTr:  8	nEtr:  10047	nCEtr:  60453
+  J/psi --> pi+ pi- eta K+ K-
+  eta --> gamma gamma
+( J/psi ---> pi+ pi- K+ K- gamma gamma )
+
+rowNo:  7	iDcyTr:  7	nEtr:  9984	nCEtr:  70437
+  J/psi --> phi f_0(980)
+  phi --> K+ K-
+  f_0(980) --> pi0 eta
+  eta --> gamma gamma
+( J/psi ---> pi0 K+ K- gamma gamma )
+
+rowNo:  8	iDcyTr:  0	nEtr:  9934	nCEtr:  80371
+  J/psi --> pi- anti-n0 p+
+( J/psi ---> pi- anti-n0 p+ )
+
+rowNo:  9	iDcyTr:  9	nEtr:  9882	nCEtr:  90253
+  J/psi --> pi0 rho0
+  rho0 --> pi+ pi-
+( J/psi ---> pi0 pi+ pi- )
+
+rowNo:  10	iDcyTr:  4	nEtr:  9747	nCEtr:  100000
+  J/psi --> anti-Sigma*+ Sigma*-
+  anti-Sigma*+ --> pi0 anti-Sigma+
+  Sigma*- --> pi0 Sigma-
+  anti-Sigma+ --> pi+ anti-n0
+  Sigma- --> pi- n0
+( J/psi ---> pi0 pi0 pi+ pi- n0 anti-n0 )
+
