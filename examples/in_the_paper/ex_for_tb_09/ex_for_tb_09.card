@@ -9,8 +9,8 @@
   evt
 }
 
-% Signal identification --- inclusive decay branches
+% Signal identification --- particles
 {
-  anti-B0 --> D*+	&	B2Dsp
-  B0 --> K_S0		&	B2Ks
+  D*+		Dsp
+  J/psi		Jpsi
 }

@@ -9,8 +9,12 @@
   evt
 }
 
-% Signal identification --- particles
+% Component analysis --- decay trees
 {
-  D*+		Dsp
-  J/psi		Jpsi
+  Y 	5     Y
+}
+
+% Maximum hierarchy of heading decay branches to be processed in each event
+{
+  1
 }

@@ -9,8 +9,12 @@
   evt
 }
 
-% Signal identification --- decay branches
+% Component analysis --- decay trees
 {
-  anti-B0 --> D*+ mu- anti-nu_mu	&	B2munuDsp
-  B0 --> K_S0  J/psi			&	B2KsJpsi
+  Y 	5     Y
+}
+
+% Maximum hierarchy of heading decay branches to be processed in each event
+{
+  2 
 }

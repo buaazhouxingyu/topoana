@@ -9,8 +9,13 @@
   evt
 }
 
-% Signal identification --- intermediate-resonance-allowed decay branches
+% Component analysis --- decay branches of particles
 {
-  D*+ --> K- pi+ pi+ pi0 	&	Dsp2K3Pi 
-  J/psi --> pi+ pi- pi0 	&	Jpsi23Pi
+  D*+        Dsp       5
+  J/psi      Jpsi      5
+}
+
+% Process charge conjugate objects together (Two options: Y and N. Default: N)
+{
+  Y
 }
