@@ -37,7 +37,8 @@ void topoana::readNumItem(ifstream & fin, string & line, string prompt, int & iv
   read1stLineOrCloseCurly(fin,line,false,prompt);
   if(line!="}")
     {
-      if(line.find_first_not_of("0123456789")==string::npos) ivar=atoi(line.c_str());
+      // Don't forget the character '-' for a signed integer!
+      if(line.find_first_not_of("-0123456789")==string::npos&&line.find_first_not_of("0123456789",1)==string::npos) ivar=atoi(line.c_str());
       else
         {
           cerr<<"Error: The input \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
