@@ -1539,16 +1539,18 @@ void topoana::checkInput()
         }
 
       cout<<"i.e.:"<<endl<<endl;
+      vector<int> vIMSigDcyBr;
       list<int> sigDcyBr;
       for(unsigned int i=0;i<m_vSigDcyTr.size();i++)
         { 
           sigDcyTr.clear();
           sigDcyTr=m_vSigDcyTr[i];
+          getVIMDcyBr(sigDcyTr,vIMSigDcyBr);
           for(unsigned int j=0;j<sigDcyTr.size();j++)
             {
               sigDcyBr.clear();
               sigDcyBr=sigDcyTr[j];
-              cout<<" ";
+              cout<<"  "<<j<<"  & ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(cout,"TxtPnm",(*liit));
               // The condition "j==0" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
@@ -1559,7 +1561,7 @@ void topoana::checkInput()
                 }
               cout<<" -->";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(cout,"TxtPnm",(*liit));
-              cout<<endl;
+              cout<<"  &  "<<vIMSigDcyBr[j]<<endl;
             }
           if(m_vNm_sigDcyTr[i]!="")
             {

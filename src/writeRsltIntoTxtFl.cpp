@@ -24,12 +24,14 @@ void topoana::writeRsltIntoTxtFl()
       vector< list<int> > dcyTr;
       list<int> dcyBr;
       list<int> dcyIFSts;
+      vector<int> vIMDcyBr;
       unsigned long nCEtr=0;
       unsigned long nDcyTrsToBePrtd=m_vDcyTr.size()<m_nDcyTrsToBePrtdMax?m_vDcyTr.size():m_nDcyTrsToBePrtdMax; 
       for(unsigned long i=0;i<nDcyTrsToBePrtd;i++)
         { 
           dcyTr.clear();
           dcyTr=m_vDcyTr[i];
+          getVIMDcyBr(dcyTr,vIMDcyBr);
           fout<<"rowNo:  "<<i+1<<"\tiDcyTr:  "<<m_vIDcyTr[i];
           if(m_compAnaOfDcyIFSts==true) fout<<"\tiDcyIFSts:  "<<m_iDcyTrIDcyIFStsMap[m_vIDcyTr[i]];
           fout<<"\tnEtr:  "<<m_vNDcyTr[i];
@@ -51,7 +53,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               dcyBr.clear();
               dcyBr=dcyTr[j];
-              fout<<" ";
+              fout<<"  "<<j<<"  & ";
               list<int>::iterator liit=dcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
               // The condition "j==0&&((*liit)==m_pidOfISt2)" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
@@ -62,7 +64,7 @@ void topoana::writeRsltIntoTxtFl()
                 }
               fout<<" -->";
               for(liit++;liit!=dcyBr.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
-              fout<<endl;
+              fout<<"  &  "<<vIMDcyBr[j]<<endl;
             }
 
           dcyIFSts.clear();
@@ -808,11 +810,13 @@ void topoana::writeRsltIntoTxtFl()
       vector< list<int> > sigDcyTr;
       list<int> sigDcyBr;
       list<int> sigDcyIFSts_tr;
+      vector<int> vIMSigDcyBr;
       unsigned long nCEtr=0;
       for(unsigned int i=0;i<m_vSigDcyTr.size();i++)
         { 
           sigDcyTr.clear();
           sigDcyTr=m_vSigDcyTr[i];
+          getVIMDcyBr(sigDcyTr,vIMSigDcyBr);
           fout<<"rowNo:  "<<i+1<<"\tiSigDcyTr:  "<<m_vISigDcyTr[i];
           if(m_sigDcyIFSts_tr==true)
             {
@@ -858,7 +862,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               sigDcyBr.clear();
               sigDcyBr=sigDcyTr[j];
-              fout<<" ";
+              fout<<"  "<<j<<"  & ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
               // The condition "j==0&&((*liit)==m_pidOfISt2)" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
@@ -869,7 +873,7 @@ void topoana::writeRsltIntoTxtFl()
                 }
               fout<<" -->";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
-              fout<<endl;
+              fout<<"  &  "<<vIMSigDcyBr[j]<<endl;
             }
 
           for(unsigned int j=0;j<m_vSigDcyIFSts_tr.size();j++)
