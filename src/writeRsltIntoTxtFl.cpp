@@ -325,6 +325,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<":"<<endl<<endl;
 
           vector< list<int> > cascDcyBrP;
+          vector<int> vIMDcyBr;
           // vector<int> vCascDcyBrIdxOfHead;
           list<int> dcyBrP;
           unsigned long nCCase=0;
@@ -333,6 +334,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               cascDcyBrP.clear();
               cascDcyBrP=m_vVCascDcyBrP[i][j];
+              getVIMDcyBr(cascDcyBrP,vIMDcyBr);
               fout<<"rowNo:  "<<j+1<<"\tiCascDcyBrP:  "<<m_vVICascDcyBrP[i][j]<<"\tnCase:  "<<m_vVNCascDcyBrP[i][j];
               if(m_ccSwitch==true)
                 {
@@ -351,12 +353,12 @@ void topoana::writeRsltIntoTxtFl()
                 {
                   dcyBrP.clear();
                   dcyBrP=cascDcyBrP[k];
-                  fout<<" ";
+                  fout<<"  "<<k<<"  & ";
                   list<int>::iterator liit=dcyBrP.begin();
                   writePnmFromPid(fout,"TxtPnm",(*liit));
                   fout<<" -->";
                   for(liit++;liit!=dcyBrP.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
-                  fout<<endl;
+                  fout<<"  &  "<<vIMDcyBr[k]<<endl;
                 }
               fout<<endl;
             }
@@ -1117,12 +1119,14 @@ void topoana::writeRsltIntoTxtFl()
       fout<<"Signal cascade decay branches:"<<endl<<endl;
       vector< list<int> > sigCascDcyBr;
       vector<int> vSigCascDcyBrIdxOfHead;
+      vector<int> vIMSigDcyBr;
       list<int> sigDcyBr;
       unsigned long nCCase=0;
       for(unsigned int i=0;i<m_vSigCascDcyBr.size();i++)
         { 
           sigCascDcyBr.clear();
           sigCascDcyBr=m_vSigCascDcyBr[i];
+          getVIMDcyBr(sigCascDcyBr,vIMSigDcyBr);
           vSigCascDcyBrIdxOfHead=m_vVSigCascDcyBrIdxOfHead[i];
           fout<<"rowNo:  "<<i+1<<"\tiSigCascDcyBr:  "<<m_vISigCascDcyBr[i]<<"\tnCase:  "<<m_vNSigCascDcyBr[i];
           if(m_ccSwitch==true)
@@ -1142,7 +1146,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               sigDcyBr.clear();
               sigDcyBr=sigCascDcyBr[j];
-              fout<<" ";
+              fout<<"  "<<j<<"  & ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
               // if(j==0&&vSigCascDcyBrIdxOfHead[0]==-1)
@@ -1153,7 +1157,7 @@ void topoana::writeRsltIntoTxtFl()
                 }
               fout<<" -->";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
-              fout<<endl;
+              fout<<"  &  "<<vIMSigDcyBr[j]<<endl;
             }
           fout<<endl;
         }
@@ -1166,12 +1170,14 @@ void topoana::writeRsltIntoTxtFl()
       fout<<"Signal inclusive cascade decay branches:"<<endl<<endl;
       vector< list<int> > sigIncCascDcyBr;
       vector<int> vSigIncCascDcyBrIdxOfHead;
+      vector<int> vIMSigDcyBr;
       list<int> sigDcyBr;
       unsigned long nCCase=0;
       for(unsigned int i=0;i<m_vSigIncCascDcyBr.size();i++)
         { 
           sigIncCascDcyBr.clear();
           sigIncCascDcyBr=m_vSigIncCascDcyBr[i];
+          getVIMDcyBr(sigIncCascDcyBr,vIMSigDcyBr);
           vSigIncCascDcyBrIdxOfHead=m_vVSigIncCascDcyBrIdxOfHead[i];
           fout<<"rowNo:  "<<i+1<<"\tiSigIncCascDcyBr:  "<<m_vISigIncCascDcyBr[i]<<"\tnCase:  "<<m_vNSigIncCascDcyBr[i];
           if(m_ccSwitch==true)
@@ -1191,7 +1197,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               sigDcyBr.clear();
               sigDcyBr=sigIncCascDcyBr[j];
-              fout<<" ";
+              fout<<"  "<<j<<"  & ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
               // if(j==0&&vSigIncCascDcyBrIdxOfHead[0]==-1)
@@ -1203,7 +1209,7 @@ void topoana::writeRsltIntoTxtFl()
               fout<<" -->";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
               if(m_vVIIncSigIncCascDcyBr[i][j]==1) writePnmFromPid(fout,"TxtPnm",m_pidOfAnything);
-              fout<<endl;
+              fout<<"  &  "<<vIMSigDcyBr[j]<<endl;
             }
           fout<<endl;
         }

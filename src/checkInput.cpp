@@ -2135,17 +2135,19 @@ void topoana::checkInput()
         }
 
       cout<<"i.e.:"<<endl<<endl;
+      vector<int> vIMSigDcyBr;
       list<int> sigDcyBr;
       for(unsigned int i=0;i<m_vSigCascDcyBr.size();i++)
         { 
           sigCascDcyBr.clear();
           sigCascDcyBr=m_vSigCascDcyBr[i];
+          getVIMDcyBr(sigCascDcyBr,vIMSigDcyBr);
           vSigCascDcyBrIdxOfHead=m_vVSigCascDcyBrIdxOfHead[i];
           for(unsigned int j=0;j<sigCascDcyBr.size();j++)
             {
               sigDcyBr.clear();
               sigDcyBr=sigCascDcyBr[j];
-              cout<<" ";
+              cout<<"  "<<j<<"  & ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(cout,"TxtPnm",(*liit));
               if(j==0&&(*liit)==m_pidOfISt2)
@@ -2155,7 +2157,7 @@ void topoana::checkInput()
               }
               cout<<" -->";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(cout,"TxtPnm",(*liit));
-              cout<<endl;
+              cout<<"  &  "<<vIMSigDcyBr[j]<<endl;
             }
           if(m_vNm_sigCascDcyBr[i]!="")
             {
@@ -2272,17 +2274,19 @@ void topoana::checkInput()
         }
 
       cout<<"i.e.:"<<endl<<endl;
+      vector<int> vIMSigDcyBr;
       list<int> sigDcyBr;
       for(unsigned int i=0;i<m_vSigIncCascDcyBr.size();i++)
         { 
           sigIncCascDcyBr.clear();
           sigIncCascDcyBr=m_vSigIncCascDcyBr[i];
+          getVIMDcyBr(sigIncCascDcyBr,vIMSigDcyBr);
           vSigIncCascDcyBrIdxOfHead=m_vVSigIncCascDcyBrIdxOfHead[i];
           for(unsigned int j=0;j<sigIncCascDcyBr.size();j++)
             {
               sigDcyBr.clear();
               sigDcyBr=sigIncCascDcyBr[j];
-              cout<<" ";
+              cout<<"  "<<j<<"  & ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(cout,"TxtPnm",(*liit));
               if(j==0&&(*liit)==m_pidOfISt2)
@@ -2297,7 +2301,7 @@ void topoana::checkInput()
                   cout<<" +";
                   writePnmFromPid(cout,"TxtPnm",m_pidOfAnything);
                 }
-              cout<<endl;
+              cout<<"  &  "<<vIMSigDcyBr[j]<<endl;
             }
           if(m_vNm_sigIncCascDcyBr[i]!="")
             {
