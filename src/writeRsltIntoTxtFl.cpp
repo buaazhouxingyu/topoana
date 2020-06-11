@@ -1262,12 +1262,14 @@ void topoana::writeRsltIntoTxtFl()
       fout<<"Signal inclusive or intermediate-resonance-allowed cascade decay branches:"<<endl<<endl;
       vector< list<int> > sigIncOrIRACascDcyBr;
       vector<int> vSigIncOrIRACascDcyBrIdxOfHead;
+      vector<int> vIMSigDcyBr;
       list<int> sigDcyBr;
       unsigned long nCCase=0;
       for(unsigned int i=0;i<m_vSigIncOrIRACascDcyBr.size();i++)
         { 
           sigIncOrIRACascDcyBr.clear();
           sigIncOrIRACascDcyBr=m_vSigIncOrIRACascDcyBr[i];
+          getVIMDcyBr(sigIncOrIRACascDcyBr,vIMSigDcyBr);
           vSigIncOrIRACascDcyBrIdxOfHead=m_vVSigIncOrIRACascDcyBrIdxOfHead[i];
           fout<<"rowNo:  "<<i+1<<"\tiSigIncOrIRACascDcyBr:  "<<m_vISigIncOrIRACascDcyBr[i]<<"\tnCase:  "<<m_vNSigIncOrIRACascDcyBr[i];
           if(m_ccSwitch==true)
@@ -1287,7 +1289,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               sigDcyBr.clear();
               sigDcyBr=sigIncOrIRACascDcyBr[j];
-              fout<<" ";
+              fout<<"  "<<j<<"  & ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(fout,"TxtPnm",(*liit));
               // if(j==0&&vSigIncOrIRACascDcyBrIdxOfHead[0]==-1)
@@ -1303,7 +1305,7 @@ void topoana::writeRsltIntoTxtFl()
                 {
                   writePnmFromPid(fout,"TxtPnm",m_pidOfAnything);
                 }
-              fout<<endl;
+              fout<<"  &  "<<vIMSigDcyBr[j]<<endl;
             }
           fout<<endl;
         }

@@ -2551,17 +2551,19 @@ void topoana::checkInput()
         }
 
       cout<<"i.e.:"<<endl<<endl;
+      vector<int> vIMSigDcyBr;
       list<int> sigDcyBr;
       for(unsigned int i=0;i<m_vSigIncOrIRACascDcyBr.size();i++)
         { 
           sigIncOrIRACascDcyBr.clear();
           sigIncOrIRACascDcyBr=m_vSigIncOrIRACascDcyBr[i];
           vSigIncOrIRACascDcyBrIdxOfHead=m_vVSigIncOrIRACascDcyBrIdxOfHead[i];
+          getVIMDcyBr(sigIncOrIRACascDcyBr,vIMSigDcyBr);
           for(unsigned int j=0;j<sigIncOrIRACascDcyBr.size();j++)
             {
               sigDcyBr.clear();
               sigDcyBr=sigIncOrIRACascDcyBr[j];
-              cout<<" ";
+              cout<<"  "<<j<<"  & ";
               list<int>::iterator liit=sigDcyBr.begin();
               writePnmFromPid(cout,"TxtPnm",(*liit));
               if(j==0&&(*liit)==m_pidOfISt2)
@@ -2584,7 +2586,7 @@ void topoana::checkInput()
                   cerr<<"Infor: If you really need the function, Please contact me (zhouxy@buaa.edu.cn) and then I will try to implement the function for you."<<endl;
                   exit(-1);
                 }
-              cout<<endl;
+              cout<<"  &  "<<vIMSigDcyBr[j]<<endl;
             }
           if(m_vNm_sigIncOrIRACascDcyBr[i]!="")
             {
