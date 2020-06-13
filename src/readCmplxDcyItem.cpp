@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk)
+void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk)
 {
   readOpenCurly(fin,line,prompt);
   read1stLineOrCloseCurly(fin,line,false,prompt);
@@ -42,7 +42,7 @@ void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vec
           vPid.clear();
           vector<int> vMidx;
           vMidx.clear();
-          readCmplxDcyNew(line,prompt,vDcyBr,vIMDcyBr,vPid,vMidx,vNm,useAsterisk);
+          readCmplxDcyNew(line,prompt,vDcyBr,vIMDcyBr,vPid,vMidx,vNm,bvar1,bvar2,useAsterisk);
           while(1)
             {
               readExtraLinesOrCloseCurly(fin,line,prompt);
@@ -64,7 +64,7 @@ void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vec
                       vPid.clear();
                       vMidx.clear();
                     }
-                  readCmplxDcyNew(line,prompt,vDcyBr,vIMDcyBr,vPid,vMidx,vNm,useAsterisk);
+                  readCmplxDcyNew(line,prompt,vDcyBr,vIMDcyBr,vPid,vMidx,vNm,bvar1,bvar2,useAsterisk);
                 }
             }
         }

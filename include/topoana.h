@@ -51,6 +51,7 @@ class topoana
     bool m_compAnaOfDcyTrs;
     unsigned long m_nDcyTrsToBePrtdMax;
     bool m_dcyIFStsUnderDcyTr;
+    bool m_optIdxAndMidxOfDcyBrInDcyTr;
     bool m_compAnaOfDcyIFSts;
     unsigned long m_nDcyIFStsToBePrtdMax;
     vector<int> m_vPid_compDcyBrP;
@@ -60,6 +61,7 @@ class topoana
     vector<string> m_vNm_compCascDcyBrP;
     vector<unsigned long> m_vNCascDcyBrToBePrtdMax;
     vector<unsigned long> m_vHCascDcyBrMax;
+    vector<bool> m_vOptIdxAndMidxOfDcyBrInCascDcyBrP;
     vector<int> m_vPid_compDcyFStP;
     vector<string> m_vNm_compDcyFStP;
     vector<unsigned long> m_vNDcyFStToBePrtdMax;
@@ -81,6 +83,7 @@ class topoana
     vector< vector<int> > m_vVMidx_sigDcyTr;
     vector<string> m_vNm_sigDcyTr;
     bool m_sigDcyIFStsUnderSigDcyTr;
+    bool m_optIdxAndMidxOfSigDcyBrInSigDcyTr;
     bool m_sigDcyIFSts_tr;
     vector< vector<int> > m_vVPid_sigDcyIFSts;
     vector<string> m_vNm_sigDcyIFSts;
@@ -93,14 +96,17 @@ class topoana
     vector< vector<int> > m_vVPid_sigCascDcyBr;
     vector< vector<int> > m_vVMidx_sigCascDcyBr;
     vector<string> m_vNm_sigCascDcyBr;
+    bool m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr;
     vector< vector<int> > m_vVPid_sigIncCascDcyBr;
     vector< vector<int> > m_vVMidx_sigIncCascDcyBr;
     vector<string> m_vNm_sigIncCascDcyBr;
+    bool m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr;
     vector< vector<int> > m_vVPid_sigIRADcyBr;
     vector<string> m_vNm_sigIRADcyBr;
     vector< vector<int> > m_vVPid_sigIncOrIRACascDcyBr;
     vector< vector<int> > m_vVMidx_sigIncOrIRACascDcyBr;
     vector<string> m_vNm_sigIncOrIRACascDcyBr;
+    bool m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr;
 
     bool m_ccSwitch;
     string m_anaTasksForSigIds;
@@ -242,7 +248,7 @@ class topoana
   public:
     topoana()
     {
-      m_pkgPath="/home/belle2/zhouxy/workarea/repositories/topoana/";
+      m_pkgPath="/workfs/bes/zhouxy/topoana-02-05-07/";
       m_verNum="v2.5.5";
       m_cardFlNm0=m_pkgPath+"share/underlying_topoana.card";
 
@@ -271,6 +277,7 @@ class topoana
       m_compAnaOfDcyTrs=false;
       m_nDcyTrsToBePrtdMax=ULONG_MAX;
       m_dcyIFStsUnderDcyTr=false;
+      m_optIdxAndMidxOfDcyBrInDcyTr=false;
       m_compAnaOfDcyIFSts=false;
       m_nDcyIFStsToBePrtdMax=ULONG_MAX;
 
@@ -281,6 +288,7 @@ class topoana
       m_vNm_compCascDcyBrP.clear();
       m_vNCascDcyBrToBePrtdMax.clear();
       m_vHCascDcyBrMax.clear();
+      m_vOptIdxAndMidxOfDcyBrInCascDcyBrP.clear();
       m_vPid_compDcyFStP.clear();
       m_vNm_compDcyFStP.clear();
       m_vNDcyFStToBePrtdMax.clear();
@@ -302,6 +310,7 @@ class topoana
       m_vVMidx_sigDcyTr.clear();
       m_vNm_sigDcyTr.clear();
       m_sigDcyIFStsUnderSigDcyTr=false;
+      m_optIdxAndMidxOfSigDcyBrInSigDcyTr=false;
       m_sigDcyIFSts_tr=false;
       m_vVPid_sigDcyIFSts.clear();
       m_vNm_sigDcyIFSts.clear();
@@ -314,14 +323,17 @@ class topoana
       m_vVPid_sigCascDcyBr.clear();
       m_vVMidx_sigCascDcyBr.clear();
       m_vNm_sigCascDcyBr.clear();
+      m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr=false;
       m_vVPid_sigIncCascDcyBr.clear();
       m_vVMidx_sigIncCascDcyBr.clear();
       m_vNm_sigIncCascDcyBr.clear();
+      m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr=false;
       m_vVPid_sigIRADcyBr.clear();
       m_vNm_sigIRADcyBr.clear();
       m_vVPid_sigIncOrIRACascDcyBr.clear();
       m_vVMidx_sigIncOrIRACascDcyBr.clear();
       m_vNm_sigIncOrIRACascDcyBr.clear();
+      m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr=false;
 
       m_ccSwitch=false;
       m_anaTasksForSigIds="TC";
@@ -392,15 +404,15 @@ class topoana
     void 	   readVPItem(ifstream & fin, string & line, string prompt, vector<int> & vPid);
     void 	   readYNItem(ifstream & fin, string & line, string prompt, bool & bvar);
     int 	   countSubstr(const std::string & str, const std::string & substr);
-    void           readP(string & line, string prompt, vector<int> & vPid, vector<string> & vNm, vector<unsigned long> * vNMax, vector<unsigned long> * vHMax);
-    void           readPItem(ifstream & fin, string & line, string prompt, vector<int> & vPid, vector<string> & vNm, vector<unsigned long> * vNMax=0, vector<unsigned long> * vHMax=0);
+    void           readP(string & line, string prompt, vector<int> & vPid, vector<string> & vNm, vector<unsigned long> * vNMax, vector<unsigned long> * vHMax, vector<bool> * vOpt);
+    void           readPItem(ifstream & fin, string & line, string prompt, vector<int> & vPid, vector<string> & vNm, vector<unsigned long> * vNMax=0, vector<unsigned long> * vHMax=0, vector<bool> * vOpt=0);
     void           readSmpDcyOld(string & line, string prompt, vector<int> & vPid, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax);
     void           readSmpDcyNew(string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax);
     void           readSmpDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm=0, vector<unsigned long> * vNMax=0);
     void	   getVPidandVMidx(vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx);
     void           readCmplxDcyOld(string & line, vector<int> & vPid, vector< vector<int> > & vVPid, vector<int> & vMidx, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk=false);
-    void           readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool useAsterisk=false);
-    void           readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk=false);
+    void           readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk=false);
+    void           readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk=false);
     void           readCard(string cardFlNm);
     void	   checkInput();
     void 	   createBrs(unsigned int size, string NM1, string NM2, string NM3, string NM4, string NM5, vector<string> vNm, int * aICc, TTree * tr, unsigned int nMax, int * nq, int * iq, int * iCcq, int * nCcq, int * iqCc, int * nAllq);

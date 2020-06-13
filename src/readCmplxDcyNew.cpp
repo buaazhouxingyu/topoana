@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool useAsterisk)
+void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk)
 {
   int nArrow=countSubstr(line,"-->");
   if(nArrow!=1)
@@ -15,10 +15,10 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
     }
 
   int nAnd=countSubstr(line,"&");
-  if(nAnd<2||nAnd>4)
+  if(nAnd<2||nAnd>5)
     {
       cerr<<"Error: "<<nAnd<<" \"and\" (&) symbols are found in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\"!"<<endl;
-      cerr<<"Infor: Two, three, or four \"and\" (&) symbols are allowed in one line."<<endl;
+      cerr<<"Infor: Two, three, four, or five \"and\" (&) symbols are allowed in one line."<<endl;
       cerr<<"Infor: Please check it."<<endl;
       exit(-1);
     }
@@ -127,8 +127,8 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
                                                 {
                                                   txtPnm="";
                                                   iss>>txtPnm;
-                                                  if(txtPnm=="Y") m_sigDcyIFStsUnderSigDcyTr=true;
-                                                  else if(txtPnm=="N") m_sigDcyIFStsUnderSigDcyTr=false;
+                                                  if(txtPnm=="Y") bvar1=true;
+                                                  else if(txtPnm=="N") bvar1=false;
                                                   else if(txtPnm=="")
                                                     {
                                                       cerr<<"Error: There is no input parameter after the fourth \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\"! There should be an input parameter after the fourth \"and\" (&) symbol!"<<endl;
@@ -138,6 +138,40 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
                                                     }
                                                   else
                                                     {                                                       cerr<<"Error: The input parameter \""<<txtPnm<<"\", after the fourth \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\", is invalid!"<<endl;                                               
+                                                      cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
+                                                      cerr<<"Infor: Please check it."<<endl;
+                                                      exit(-1);
+                                                    }
+                                                }
+                                            }
+                                          else
+                                            {
+                                              cerr<<"Error: The input parameter \""<<txtPnm<<"\", after the index of the alias of the current decay branch in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\", is not an \"and\" (&) symbol!"<<endl;
+                                              cerr<<"Infor: It should be an \"and\" (&) symbol prompting the input of the alias of the decay branch in the line."<<endl;
+                                              cerr<<"Infor: Please check it."<<endl;
+                                              exit(-1);                                              
+                                            }
+                                        }
+                                      if(!iss.eof())
+                                        {
+                                          iss>>txtPnm;
+                                          if(txtPnm=="&")
+                                            {
+                                              if(!iss.eof())
+                                                {
+                                                  txtPnm="";
+                                                  iss>>txtPnm;
+                                                  if(txtPnm=="Y") bvar2=true;
+                                                  else if(txtPnm=="N") bvar2=false;
+                                                  else if(txtPnm=="")
+                                                    {
+                                                      cerr<<"Error: There is no input parameter after the fifth \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\"! There should be an input parameter after the fifth \"and\" (&) symbol!"<<endl;
+                                                      cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
+                                                      cerr<<"Infor: Please check it."<<endl;
+                                                      exit(-1);                                             
+                                                    }
+                                                  else
+                                                    {                                                       cerr<<"Error: The input parameter \""<<txtPnm<<"\", after the fifth \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\", is invalid!"<<endl;                                               
                                                       cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
                                                       cerr<<"Infor: Please check it."<<endl;
                                                       exit(-1);

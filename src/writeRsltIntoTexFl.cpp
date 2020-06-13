@@ -103,7 +103,7 @@ void topoana::writeRsltIntoTexFl()
       vector< list<int> > dcyTr;
       list<int> dcyBr;
       list<int> dcyIFSts;
-      // vector<int> vIMDcyBr;
+      vector<int> vIMDcyBr;
       nCEtr=0;
       bool isSigDcyTr;
       unsigned int iSigDcyTr=0;
@@ -157,7 +157,7 @@ void topoana::writeRsltIntoTexFl()
             }
           dcyTr.clear();
           dcyTr=m_vDcyTr[i];
-          // getVIMDcyBr(dcyTr,vIMDcyBr);
+          if(m_optIdxAndMidxOfDcyBrInDcyTr==true) getVIMDcyBr(dcyTr,vIMDcyBr);
           nVldDcyBr=0;
           fout<<"% \\rn = "<<i+1<<endl;
           isSigDcyTr=false;
@@ -201,7 +201,7 @@ void topoana::writeRsltIntoTexFl()
                 }
               fout<<"\\rightarrow ";
               for(liit++;liit!=dcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
-              // fout<<"\\quad {\\footnotesize ["<<j<<","<<vIMDcyBr[j]<<"]}"<<" ";
+              if(m_optIdxAndMidxOfDcyBrInDcyTr==true) fout<<"\\, {\\footnotesize ["<<j<<","<<vIMDcyBr[j]<<"]}"<<" ";
               // The following bool variable is used to judge whether the current branch is the last one outputed or not.
               bool lastOneOrAllPi0sToGamPairsBehind=true;
               list<int> dcyBrTmp;
@@ -630,6 +630,7 @@ void topoana::writeRsltIntoTexFl()
           vector< list<int> > cascDcyBrP;
           // vector<int> vCascDcyBrIdxOfHead;
           list<int> dcyBrP;
+          vector<int> vIMDcyBr;
           unsigned long nCCase=0;
           unsigned long nCascDcyBrPToBePrtd=m_vVCascDcyBrP[i].size()<m_vNCascDcyBrToBePrtdMax[i]?m_vVCascDcyBrP[i].size():m_vNCascDcyBrToBePrtdMax[i];
           nLineMean=0;
@@ -677,6 +678,7 @@ void topoana::writeRsltIntoTexFl()
                 }
               cascDcyBrP.clear();
               cascDcyBrP=m_vVCascDcyBrP[i][j];
+              if(m_vOptIdxAndMidxOfDcyBrInCascDcyBrP[i]==true) getVIMDcyBr(cascDcyBrP,vIMDcyBr);
               nVldDcyBr=0;
               fout<<"% \\rn = "<<j+1<<endl;
               fout<<"\\rn & \\makecell[";
@@ -692,6 +694,7 @@ void topoana::writeRsltIntoTexFl()
                   writePnmFromPid(fout,"TexPnm",(*liit));
                   fout<<"\\rightarrow ";
                   for(liit++;liit!=dcyBrP.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
+                  if(m_vOptIdxAndMidxOfDcyBrInCascDcyBrP[i]==true) fout<<"\\, {\\footnotesize ["<<k<<","<<vIMDcyBr[k]<<"]}"<<" ";
                   if(k<(cascDcyBrP.size()-1))
                     {
                       fout<<","<<endl;
@@ -1349,6 +1352,7 @@ void topoana::writeRsltIntoTexFl()
       vector< list<int> > sigDcyTr;
       list<int> sigDcyBr;
       list<int> sigDcyIFSts_tr;
+      vector<int> vIMSigDcyBr;
       nCEtr=0;
       nLineMean=0;
       for(unsigned long i=0;i<m_vSigDcyTr.size();i++) nLineMean=nLineMean+m_vSigDcyTr[i].size();
@@ -1417,6 +1421,7 @@ void topoana::writeRsltIntoTexFl()
             }
           sigDcyTr.clear();
           sigDcyTr=m_vSigDcyTr[i];
+          if(m_optIdxAndMidxOfSigDcyBrInSigDcyTr==true) getVIMDcyBr(sigDcyTr,vIMSigDcyBr);
           nVldDcyBr=0;
           fout<<"% \\rn = "<<i+1<<endl;
           fout<<"\\rn & \\makecell[";
@@ -1445,6 +1450,7 @@ void topoana::writeRsltIntoTexFl()
                 }
               fout<<"\\rightarrow ";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
+              if(m_optIdxAndMidxOfSigDcyBrInSigDcyTr==true) fout<<"\\, {\\footnotesize ["<<j<<","<<vIMSigDcyBr[j]<<"]}"<<" ";
               // The following bool variable is used to judge whether the current branch is the last one outputed or not.
               bool lastOneOrAllPi0sToGamPairsBehind=true;
               list<int> sigDcyBrTmp;
@@ -1921,6 +1927,7 @@ void topoana::writeRsltIntoTexFl()
       vector< list<int> > sigCascDcyBr;
       vector<int> vSigCascDcyBrIdxOfHead;
       list<int> sigDcyBr;
+      vector<int> vIMSigDcyBr;
       unsigned long nCCase=0;
       nLineMean=0;
       for(unsigned long i=0;i<m_vSigCascDcyBr.size();i++) nLineMean=nLineMean+m_vSigCascDcyBr[i].size();
@@ -1956,6 +1963,7 @@ void topoana::writeRsltIntoTexFl()
           sigCascDcyBr.clear();
           sigCascDcyBr=m_vSigCascDcyBr[i];
           vSigCascDcyBrIdxOfHead=m_vVSigCascDcyBrIdxOfHead[i];
+          if(m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr==true) getVIMDcyBr(sigCascDcyBr,vIMSigDcyBr);
           nVldDcyBr=0;
           fout<<"% \\rn = "<<i+1<<endl;
           fout<<"\\rn & \\makecell[";
@@ -1977,6 +1985,7 @@ void topoana::writeRsltIntoTexFl()
                 }
               fout<<"\\rightarrow ";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
+              if(m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr==true) fout<<"\\, {\\footnotesize ["<<j<<","<<vIMSigDcyBr[j]<<"]}"<<" ";
               if(j<(sigCascDcyBr.size()-1))
                 {
                   fout<<","<<endl;
@@ -2023,6 +2032,7 @@ void topoana::writeRsltIntoTexFl()
       vector< list<int> > sigIncCascDcyBr;
       vector<int> vSigIncCascDcyBrIdxOfHead;
       list<int> sigDcyBr;
+      vector<int> vIMSigDcyBr;
       unsigned long nCCase=0;
       nLineMean=0;
       for(unsigned long i=0;i<m_vSigIncCascDcyBr.size();i++) nLineMean=nLineMean+m_vSigIncCascDcyBr[i].size();
@@ -2058,6 +2068,7 @@ void topoana::writeRsltIntoTexFl()
           sigIncCascDcyBr.clear();
           sigIncCascDcyBr=m_vSigIncCascDcyBr[i];
           vSigIncCascDcyBrIdxOfHead=m_vVSigIncCascDcyBrIdxOfHead[i];
+          if(m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr==true) getVIMDcyBr(sigIncCascDcyBr,vIMSigDcyBr);
           nVldDcyBr=0;
           fout<<"% \\rn = "<<i+1<<endl;
           fout<<"\\rn & \\makecell[";
@@ -2080,6 +2091,7 @@ void topoana::writeRsltIntoTexFl()
               fout<<"\\rightarrow ";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
               if(m_vVIIncSigIncCascDcyBr[i][j]==1) writePnmFromPid(fout,"TexPnm",m_pidOfAnything);
+              if(m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr==true) fout<<"\\, {\\footnotesize ["<<j<<","<<vIMSigDcyBr[j]<<"]}"<<" ";
               if(j<(sigIncCascDcyBr.size()-1))
                 {
                   fout<<","<<endl;
@@ -2193,6 +2205,7 @@ void topoana::writeRsltIntoTexFl()
       vector< list<int> > sigIncOrIRACascDcyBr;
       vector<int> vSigIncOrIRACascDcyBrIdxOfHead;
       list<int> sigDcyBr;
+      vector<int> vIMSigDcyBr;
       unsigned long nCCase=0;
       nLineMean=0;
       for(unsigned long i=0;i<m_vSigIncOrIRACascDcyBr.size();i++) nLineMean=nLineMean+m_vSigIncOrIRACascDcyBr[i].size();
@@ -2228,6 +2241,7 @@ void topoana::writeRsltIntoTexFl()
           sigIncOrIRACascDcyBr.clear();
           sigIncOrIRACascDcyBr=m_vSigIncOrIRACascDcyBr[i];
           vSigIncOrIRACascDcyBrIdxOfHead=m_vVSigIncOrIRACascDcyBrIdxOfHead[i];
+          if(m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr==true) getVIMDcyBr(sigIncOrIRACascDcyBr,vIMSigDcyBr);
           nVldDcyBr=0;
           fout<<"% \\rn = "<<i+1<<endl;
           fout<<"\\rn & \\makecell[";
@@ -2251,6 +2265,7 @@ void topoana::writeRsltIntoTexFl()
               fout<<"\\rightarrow ";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
               if(m_vVIIncSigIncOrIRACascDcyBr[i][j]==1) writePnmFromPid(fout,"TexPnm",m_pidOfAnything);
+              if(m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr==true) fout<<"\\, {\\footnotesize ["<<j<<","<<vIMSigDcyBr[j]<<"]}"<<" ";
               // The following bool variable is used to judge whether the current branch is the last one outputed or not.
               if(j<(sigIncOrIRACascDcyBr.size()-1))
                 {

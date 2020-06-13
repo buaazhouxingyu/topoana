@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::readP(string & line, string prompt, vector<int> & vPid, vector<string> & vNm, vector<unsigned long> * vNMax, vector<unsigned long> * vHMax)
+void topoana::readP(string & line, string prompt, vector<int> & vPid, vector<string> & vNm, vector<unsigned long> * vNMax, vector<unsigned long> * vHMax, vector<bool> * vOpt)
 {
   istringstream iss;
   string txtPnm;
@@ -11,6 +11,7 @@ void topoana::readP(string & line, string prompt, vector<int> & vPid, vector<str
   string nm;
   unsigned long nMax;
   unsigned long hMax;
+  bool opt;
 
   iss.clear();
   iss.str(line);
@@ -57,5 +58,29 @@ void topoana::readP(string & line, string prompt, vector<int> & vPid, vector<str
             }
         }
       (*vHMax).push_back(hMax);
+    }
+  if(vOpt!=0)
+    {
+      opt=false;
+      if(!iss.eof())
+        {
+          iss>>txtPnm;
+          if(txtPnm=="Y")
+            {
+              opt=true;
+            }
+          else if(txtPnm=="N")
+            {
+              opt=false;
+            }          
+          else
+            {
+              cerr<<"Error: The fifth input parameter \""<<txtPnm<<"\" in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
+              cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
+              cerr<<"Infor: Please check it."<<endl;
+              exit(-1);
+            }
+        }
+      (*vOpt).push_back(opt);
     }
 }

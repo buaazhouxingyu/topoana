@@ -297,6 +297,25 @@ void topoana::readCard(string cardFlNm)
                       exit(-1);
                     }                  
                 }
+              if(!iss.eof())
+                {
+                  iss>>line;
+                  if(line=="Y")
+                    {
+                      m_optIdxAndMidxOfDcyBrInDcyTr=true;
+                    }
+                  else if(line=="N")
+                    {
+                      m_optIdxAndMidxOfDcyBrInDcyTr=false;
+                    }
+                  else
+                    {
+                      cerr<<"Error: The fourth input parameter \""<<line<<"\" for the item \"Component analysis --- decay trees\" is invalid!"<<endl;
+                      cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
+                      cerr<<"Infor: Please check it."<<endl;
+                      exit(-1);
+                    }
+                }
               readCloseCurly(fin,line,"% Component analysis --- decay trees");
             }
         }
@@ -347,7 +366,7 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% Component analysis --- cascade decay branches of particles")
         {
-          readPItem(fin,line, "% Component analysis --- cascade decay branches of particles", m_vPid_compCascDcyBrP, m_vNm_compCascDcyBrP, &m_vNCascDcyBrToBePrtdMax, &m_vHCascDcyBrMax);
+          readPItem(fin,line, "% Component analysis --- cascade decay branches of particles", m_vPid_compCascDcyBrP, m_vNm_compCascDcyBrP, &m_vNCascDcyBrToBePrtdMax, &m_vHCascDcyBrMax, &m_vOptIdxAndMidxOfDcyBrInCascDcyBrP);
         }
       else if(line=="% Component analysis --- decay final states of particles")
         {
@@ -371,7 +390,7 @@ void topoana::readCard(string cardFlNm)
 	}
       else if(line=="% Signal identification --- decay trees")
         {
-          readCmplxDcyItem(fin, line, "% Signal identification --- decay trees", m_vVPid_sigDcyTr, m_vVMidx_sigDcyTr, m_vNm_sigDcyTr);
+          readCmplxDcyItem(fin, line, "% Signal identification --- decay trees", m_vVPid_sigDcyTr, m_vVMidx_sigDcyTr, m_vNm_sigDcyTr, m_sigDcyIFStsUnderSigDcyTr, m_optIdxAndMidxOfSigDcyBrInSigDcyTr);
 	}
       else if(line=="% Signal identification --- decay initial-final states related to decay trees (Two options: Y and N. Default: N)")
         {
@@ -395,11 +414,13 @@ void topoana::readCard(string cardFlNm)
 	}
       else if(line=="% Signal identification --- cascade decay branches")
         {
-          readCmplxDcyItem(fin, line, "% Signal identification --- cascade decay branches", m_vVPid_sigCascDcyBr, m_vVMidx_sigCascDcyBr, m_vNm_sigCascDcyBr);
+          bool bvartemp;
+          readCmplxDcyItem(fin, line, "% Signal identification --- cascade decay branches", m_vVPid_sigCascDcyBr, m_vVMidx_sigCascDcyBr, m_vNm_sigCascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr, bvartemp);
 	}
       else if(line=="% Signal identification --- inclusive cascade decay branches")
         {
-          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive cascade decay branches", m_vVPid_sigIncCascDcyBr, m_vVMidx_sigIncCascDcyBr, m_vNm_sigIncCascDcyBr, true);
+          bool bvartemp;
+          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive cascade decay branches", m_vVPid_sigIncCascDcyBr, m_vVMidx_sigIncCascDcyBr, m_vNm_sigIncCascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr, bvartemp, true);
 	}
       else if(line=="% Signal identification --- intermediate-resonance-allowed decay branches")
         {
@@ -407,7 +428,8 @@ void topoana::readCard(string cardFlNm)
 	}
       else if(line=="% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches")
         {
-          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vVPid_sigIncOrIRACascDcyBr, m_vVMidx_sigIncOrIRACascDcyBr, m_vNm_sigIncOrIRACascDcyBr, true);
+          bool bvartemp;
+          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vVPid_sigIncOrIRACascDcyBr, m_vVMidx_sigIncOrIRACascDcyBr, m_vNm_sigIncOrIRACascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr, bvartemp, true);
 	}
       else if(line=="% Process charge conjugate objects together (Two options: Y and N. Default: N)")
         {
