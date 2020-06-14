@@ -48,6 +48,14 @@ void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vec
               readExtraLinesOrCloseCurly(fin,line,prompt);
               if(line=="}")
                 {
+                  // Don't leave out the following if statement! It is added here for the cases where the last decay tree or cascade decay branch only consists of one regular decay branch.
+                  if(vPid.size()>0)
+                    {
+                      vVPid.push_back(vPid);
+                      vVMidx.push_back(vMidx);
+                      vPid.clear();
+                      vMidx.clear();
+                    }
                   getVPidandVMidx(vDcyBr,vIMDcyBr,vPid,vMidx);
                   vVPid.push_back(vPid);
                   vVMidx.push_back(vMidx); 
