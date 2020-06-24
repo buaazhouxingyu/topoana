@@ -72,7 +72,7 @@ void topoana::checkInput()
                   if(pos!=string::npos)
                     {
                       nmOfOptRootFl.replace(pos,5,"_ta.root");
-                      if(eaccess(nmOfOptRootFl.c_str(),0)==0)
+                      if(access(nmOfOptRootFl.c_str(),0)==0)
                         {
                           cerr<<"Error: The output root file \""<<nmOfOptRootFl<<"\" already exists!"<<endl;
                           cerr<<"Infor: The program does not overwrite it by default."<<endl;
