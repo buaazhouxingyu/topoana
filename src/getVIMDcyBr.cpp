@@ -17,11 +17,12 @@ void topoana::getVIMDcyBr(vector< list<int> > & vDcyBr, vector<int> & vIMDcyBr)
   vIMDcyBr.push_back(0);
 
   unsigned int iMDcyBr=0;
-  list<int>::iterator liit=vDcyBr[0].begin();
+  list<int>::iterator liit;
   for(unsigned int i=2;i<vDcyBr.size();i++)
     {
-      for(unsigned int j=iMDcyBr;j<vDcyBr.size();j++,liit=vDcyBr[j].begin()) 
+      for(unsigned int j=iMDcyBr;j<vDcyBr.size();j++)
         {
+          liit=vDcyBr[j].begin();
           for(liit++;liit!=vDcyBr[j].end();liit++)
             {
               if((*liit)==(*(vDcyBr[i].begin())))
