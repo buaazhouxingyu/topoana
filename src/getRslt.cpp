@@ -850,19 +850,27 @@ void topoana::getRslt()
                               m_vUomCascDcyBrP[j][strCascDcyBrP]=_iCascDcyBrP;
                               if(m_ccSwitch==true)
                                 {
-                                  cascDcyBrCcP.clear();
-                                  list<int> dcyBrCcP;
+                                  vector< vector<int> > cascDcyBrPv;
+                                  cascDcyBrPv.clear();
+                                  vector<int> dcyBrPv;
                                   list<int>::iterator liit;
                                   for(unsigned int l=0;l<cascDcyBrP.size();l++)
                                     {
-                                      dcyBrCcP.clear();
-                                      liit=cascDcyBrP[l].begin();
-                                      for(liit++;liit!=cascDcyBrP[l].end();liit++) dcyBrCcP.push_back(getCcPid((*liit)));
-                                      sortByPidAndPchrg(dcyBrCcP);
-                                      liit=cascDcyBrP[l].begin();
-                                      dcyBrCcP.push_front(getCcPid((*liit)));
-                                      cascDcyBrCcP.push_back(dcyBrCcP);
+                                      dcyBrPv.clear();
+                                      for(liit=cascDcyBrP[l].begin();liit!=cascDcyBrP[l].end();liit++) dcyBrPv.push_back((*liit));
+                                      cascDcyBrPv.push_back(dcyBrPv);
                                     }
+                                  vector<int> vIMDcyBr_cascDcyBrP;
+                                  getVIMDcyBr(cascDcyBrP, vIMDcyBr_cascDcyBrP);
+                                  vector<int> vPid_cascDcyBrP, vMidx_cascDcyBrP;
+                                  getVPidandVMidx(cascDcyBrPv, vIMDcyBr_cascDcyBrP, vPid_cascDcyBrP, vMidx_cascDcyBrP);
+                                  vector<int> vPid_cascDcyBrCcP, vMidx_cascDcyBrCcP;
+                                  for(unsigned int l=0;l<vPid_cascDcyBrP.size();l++) vPid_cascDcyBrCcP.push_back(getCcPid(vPid_cascDcyBrP[l]));
+                                  vMidx_cascDcyBrCcP=vMidx_cascDcyBrP;
+                                  sortPs(vPid_cascDcyBrCcP, vMidx_cascDcyBrCcP);
+                                  cascDcyBrCcP.clear();
+                                  getDcyTr(vPid_cascDcyBrCcP, vMidx_cascDcyBrCcP, cascDcyBrCcP);
+
                                   getStrFromVli(cascDcyBrCcP,strCascDcyBrCcP);
                                   if(m_vICcCompCascDcyBrP[j]!=0)
                                     {
@@ -929,19 +937,27 @@ void topoana::getRslt()
                               m_vVNCascDcyBrCcP[j].push_back(1);
                               m_vUomCascDcyBrCcP[j][strCascDcyBrCcP]=_iCascDcyBrP;
 
-                              cascDcyBrP.clear();
-                              list<int> dcyBrP;
+                              vector< vector<int> > cascDcyBrCcPv;
+                              cascDcyBrCcPv.clear();
+                              vector<int> dcyBrCcPv;
                               list<int>::iterator liit;
                               for(unsigned int l=0;l<cascDcyBrCcP.size();l++)
                                 {
-                                  dcyBrP.clear();
-                                  liit=cascDcyBrCcP[l].begin();
-                                  for(liit++;liit!=cascDcyBrCcP[l].end();liit++) dcyBrP.push_back(getCcPid((*liit)));
-                                  sortByPidAndPchrg(dcyBrP);
-                                  liit=cascDcyBrCcP[l].begin();
-                                  dcyBrP.push_front(getCcPid((*liit))); // Here, (*liit) is not equal to getCcPid((*liit)).
-                                  cascDcyBrP.push_back(dcyBrP);
+                                  dcyBrCcPv.clear();
+                                  for(liit=cascDcyBrCcP[l].begin();liit!=cascDcyBrCcP[l].end();liit++) dcyBrCcPv.push_back((*liit));
+                                  cascDcyBrCcPv.push_back(dcyBrCcPv);
                                 }
+                              vector<int> vIMDcyBr_cascDcyBrCcP;
+                              getVIMDcyBr(cascDcyBrCcP, vIMDcyBr_cascDcyBrCcP);
+                              vector<int> vPid_cascDcyBrCcP, vMidx_cascDcyBrCcP;
+                              getVPidandVMidx(cascDcyBrCcPv, vIMDcyBr_cascDcyBrCcP, vPid_cascDcyBrCcP, vMidx_cascDcyBrCcP);
+                              vector<int> vPid_cascDcyBrP, vMidx_cascDcyBrP;
+                              for(unsigned int l=0;l<vPid_cascDcyBrCcP.size();l++) vPid_cascDcyBrP.push_back(getCcPid(vPid_cascDcyBrCcP[l]));
+                              vMidx_cascDcyBrP=vMidx_cascDcyBrCcP;
+                              sortPs(vPid_cascDcyBrP, vMidx_cascDcyBrP);
+                              cascDcyBrP.clear();
+                              getDcyTr(vPid_cascDcyBrP, vMidx_cascDcyBrP, cascDcyBrP);
+
                               getStrFromVli(cascDcyBrP,strCascDcyBrP);
                               m_vVCascDcyBrP[j].push_back(cascDcyBrP);
                               m_vVICascDcyBrP[j].push_back(_iCascDcyBrP);
