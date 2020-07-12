@@ -850,6 +850,7 @@ void topoana::getRslt()
                               m_vUomCascDcyBrP[j][strCascDcyBrP]=_iCascDcyBrP;
                               if(m_ccSwitch==true)
                                 {
+                                  // The following code block gets cascDcyBrCcP from cascDcyBrP.
                                   vector< vector<int> > cascDcyBrPv;
                                   cascDcyBrPv.clear();
                                   vector<int> dcyBrPv;
@@ -937,6 +938,7 @@ void topoana::getRslt()
                               m_vVNCascDcyBrCcP[j].push_back(1);
                               m_vUomCascDcyBrCcP[j][strCascDcyBrCcP]=_iCascDcyBrP;
 
+                              // The following code block gets cascDcyBrP from cascDcyBrCcP.
                               vector< vector<int> > cascDcyBrCcPv;
                               cascDcyBrCcPv.clear();
                               vector<int> dcyBrCcPv;
