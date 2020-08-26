@@ -113,6 +113,20 @@ void topoana::checkInput()
       cout<<"TTree name: "<<m_ttrNm<<endl<<endl;
     }
 
+  if(m_othTtrNms.size()==0)
+    {
+      if(m_vbsLevStdOut==true) cerr<<"No other TTree names are provided for the purpose of duplication."<<endl;
+    }
+  else
+    {
+      cout<<"Names of other TTrees to be copied to the output root files:"<<endl<<endl;
+      for(unsigned int i=0;i<m_othTtrNms.size();i++)
+        {
+          cout<<"  "<<m_othTtrNms[i]<<endl;
+        }
+      cout<<endl;
+    }
+
   if(m_strgTpOfRawIptTopoDat=="AOI")
     {
       if(m_vbsLevStdOut==true) cout<<"Storage type of input raw topology truth information: Array of integers (default)."<<endl<<endl;
@@ -268,6 +282,15 @@ void topoana::checkInput()
                       cerr<<"Error: The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" does not contain a branch named \""<<m_tbrNmOfIcandi<<"\"!"<<endl<<endl;
                       allIptsAreOK=false;
                     }
+                }
+            }
+          for(unsigned int i=0;i<m_othTtrNms.size();i++)
+            {
+              tr=(TTree *) fl->Get(m_othTtrNms[i].c_str());
+              if(!tr)
+                {
+                  cerr<<"Error: The input root file \""<<chnElmt->GetTitle()<<"\" does not contain a tree named \""<<m_othTtrNms[i]<<"\"!"<<endl<<endl;
+                  allIptsAreOK=false;
                 }
             }
           delete fl;

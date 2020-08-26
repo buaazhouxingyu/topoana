@@ -528,6 +528,22 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Remove input tbranches from output root files (Two options: Y and N. Default: N)", m_rmIptTBrs);
         }
+      else if(line=="% Other TTree names")
+        {
+          readOpenCurly(fin,line,"% Other TTree names");
+          while(1)
+            {
+              readExtraLinesOrCloseCurly(fin,line,"% Other TTree names");
+              if(line=="}")
+                {
+                  break;
+                }
+              else
+                {
+                  m_othTtrNms.push_back(line);
+                }
+            }
+        }
       else if(line=="% Verbose level of standard output (Two options: Y and N. Default: N)")
         {
           readYNItem(fin, line, "% Verbose level of standard output (Two options: Y and N. Default: N)", m_vbsLevStdOut);

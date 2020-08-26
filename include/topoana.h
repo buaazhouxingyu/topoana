@@ -120,6 +120,7 @@ class topoana
     unsigned long m_nEtrMaxInASngOptRootFl;
     bool m_useArrayTBrsOpt;
     bool m_rmIptTBrs;
+    vector<string> m_othTtrNms;
     bool m_vbsLevStdOut;
 
     vector<int> m_vIdCcPid;
@@ -346,6 +347,7 @@ class topoana
       m_nEtrMaxInASngOptRootFl=ULONG_MAX;
       m_useArrayTBrsOpt=false;
       m_rmIptTBrs=false;
+      m_othTtrNms.clear();
       m_vbsLevStdOut=false;
 
       m_pidOfSISRGam=222222222;

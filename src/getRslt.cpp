@@ -71,11 +71,21 @@ void topoana::getRslt()
     }
   if(m_avoidOverCounting==true) chn->SetBranchAddress(m_tbrNmOfIcandi.c_str(), &Icandi);
 
+  const unsigned int nOthChns=m_othTtrNms.size();
+  TChain * othChns[nOthChns];
+  for(unsigned int i=0;i<nOthChns;i++)
+    {
+      othChns[i]=new TChain(m_othTtrNms[i].c_str());
+      for(unsigned int j=0;j<m_nmsOfIptRootFls.size();j++) othChns[i]->Add(m_nmsOfIptRootFls[j].c_str());
+    }
+
   bool openANewOptRootFl=true;
   unsigned int iOptRootFls=0;
   string NmOfOptRootFl;
   TFile * fl;
   TTree * tr;
+  const unsigned int nOthTrs=m_othTtrNms.size();
+  TTree * othTrs[nOthTrs];
   bool closeTheOptRootFl1;
   bool closeTheOptRootFl2;
   bool closeTheOptRootFl3;
@@ -296,6 +306,8 @@ void topoana::getRslt()
                 {
                   createBrs(m_vSigIncOrIRACascDcyBr.size(), "SigIncOrIRACascDcyBr", m_vNm_sigIncOrIRACascDcyBr, iCcSigIncOrIRACascDcyBr, tr, nSigIncOrIRACascDcyBr, nCcSigIncOrIRACascDcyBr, nAllSigIncOrIRACascDcyBr);
                 }
+
+              for(unsigned int j=0;j<nOthTrs;j++) othTrs[j]=othChns[j]->CloneTree();
             }
 
           chn->GetEntry(i);
@@ -336,6 +348,7 @@ void topoana::getRslt()
                     {
                       fl->Write();
                       delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
+                      for(unsigned int j=0;j<nOthTrs;j++) delete othTrs[j]; 
                       fl->Close();
                       delete fl;
                       if(m_rmIptTBrs==true) rmIptBrs(NmOfOptRootFl);
@@ -380,6 +393,7 @@ void topoana::getRslt()
                     {
                       fl->Write();
                       delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
+                      for(unsigned int j=0;j<nOthTrs;j++) delete othTrs[j];
                       fl->Close();
                       delete fl;
                       if(m_rmIptTBrs==true) rmIptBrs(NmOfOptRootFl);
