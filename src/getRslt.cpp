@@ -71,7 +71,7 @@ void topoana::getRslt()
     }
   if(m_avoidOverCounting==true) chn->SetBranchAddress(m_tbrNmOfIcandi.c_str(), &Icandi);
 
-  const unsigned int nOthChns=m_othTtrNms.size();
+  const unsigned int nOthChns=m_othTtrNms.size()>0?m_othTtrNms.size():1;
   TChain * othChns[nOthChns];
   for(unsigned int i=0;i<nOthChns;i++)
     {
@@ -84,7 +84,7 @@ void topoana::getRslt()
   string NmOfOptRootFl;
   TFile * fl;
   TTree * tr;
-  const unsigned int nOthTrs=m_othTtrNms.size();
+  const unsigned int nOthTrs=m_othTtrNms.size()>0?m_othTtrNms.size():1;
   TTree * othTrs[nOthTrs];
   bool closeTheOptRootFl1;
   bool closeTheOptRootFl2;
