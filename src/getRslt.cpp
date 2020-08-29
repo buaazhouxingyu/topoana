@@ -73,7 +73,7 @@ void topoana::getRslt()
 
   const unsigned int nOthChns=m_othTtrNms.size()>0?m_othTtrNms.size():1;
   TChain * othChns[nOthChns];
-  for(unsigned int i=0;i<nOthChns;i++)
+  for(unsigned int i=0;i<m_othTtrNms.size();i++)
     {
       othChns[i]=new TChain(m_othTtrNms[i].c_str());
       for(unsigned int j=0;j<m_nmsOfIptRootFls.size();j++) othChns[i]->Add(m_nmsOfIptRootFls[j].c_str());
@@ -307,7 +307,7 @@ void topoana::getRslt()
                   createBrs(m_vSigIncOrIRACascDcyBr.size(), "SigIncOrIRACascDcyBr", m_vNm_sigIncOrIRACascDcyBr, iCcSigIncOrIRACascDcyBr, tr, nSigIncOrIRACascDcyBr, nCcSigIncOrIRACascDcyBr, nAllSigIncOrIRACascDcyBr);
                 }
 
-              for(unsigned int j=0;j<nOthTrs;j++) othTrs[j]=othChns[j]->CloneTree();
+              for(unsigned int j=0;j<m_othTtrNms.size();j++) othTrs[j]=othChns[j]->CloneTree();
             }
 
           chn->GetEntry(i);
