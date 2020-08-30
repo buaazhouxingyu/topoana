@@ -8,9 +8,9 @@ A detailed description of the program is in the document: ``share/user_guide_v4.
 An essential description of the program is in the document: ``share/paper_draft_v3.1.pdf``
 (**Please note that all the examples in the paper draft can be found in the sub-directory ``examples/in_the_paper``**)
 
-**It is a good practice to learn how to use the program via the examples with the user guide and paper draft as references.**
-
 **Note:** The paper on the tool has been published by ``Computer Physics Communications``. You can find this paper and the preprint corresponding to it in the links [Comput. Phys. Commun. 258 (2021) 107540](https://doi.org/10.1016/j.cpc.2020.107540) and [arXiv:2001.04016](https://arxiv.org/abs/2001.04016), respectively. If the tool really helps your researches, we would appreciate it very much if you could cite the paper in your publications.
+
+**It is a good practice to learn how to use the program via the examples with the user guide and paper draft as references.**
 
 Here, we just briefly introduce how to install and use the program.
 
@@ -51,7 +51,7 @@ Here, we just briefly introduce how to install and use the program.
 
      + You can refer to the template topoana card file: ``share/template_topoana.card``.
 
-     + **For the concision of your own card file, it is recommended just to copy the setting items you need from the template card file and paste them to your own card file, just as we did for the examples in the paper draft and user guide.**
+     + **For the concision of your own card file, it is recommended just to copy the setting items you need from the template card file and paste them to your own card file, just as we did for the examples in the user guide and paper draft.**
 
      + **Since there are plenty of setting items in the template card file, it is not recommended to create your own card file simply by copying and revising the whole template card file.**
 
