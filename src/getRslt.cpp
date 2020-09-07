@@ -348,7 +348,7 @@ void topoana::getRslt()
                     {
                       fl->Write();
                       delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
-                      for(unsigned int j=0;j<nOthTrs;j++) delete othTrs[j]; 
+                      for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j]; 
                       fl->Close();
                       delete fl;
                       if(m_rmIptTBrs==true) rmIptBrs(NmOfOptRootFl);
@@ -393,7 +393,7 @@ void topoana::getRslt()
                     {
                       fl->Write();
                       delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
-                      for(unsigned int j=0;j<nOthTrs;j++) delete othTrs[j];
+                      for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
                       fl->Close();
                       delete fl;
                       if(m_rmIptTBrs==true) rmIptBrs(NmOfOptRootFl);
@@ -1996,6 +1996,7 @@ void topoana::getRslt()
             {
               fl->Write();
               delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
+              for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
               fl->Close();
               delete fl;
               if(m_rmIptTBrs==true) rmIptBrs(NmOfOptRootFl);
