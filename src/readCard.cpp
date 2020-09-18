@@ -192,11 +192,11 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% PDG code of ISR photons (Default: 222222222)")
         {
-          readNumItem(fin, line, "% PDG code of ISR photons (Default: 222222222)", m_pidOfSISRGamUser);
+          readNumItem(fin, line, "% PDG code of ISR photons (Default: 222222222)", m_pidOfSISRGamUser, 222222222);
         }
       else if(line=="% PDG code of FSR photons (Default: -22)")
         {
-          readNumItem(fin, line, "% PDG code of FSR photons (Default: -22)", m_pidOfSFSRGamUser);
+          readNumItem(fin, line, "% PDG code of FSR photons (Default: -22)", m_pidOfSFSRGamUser, -22);
         }
       else if(line=="% Ignore ISR photons (Three options: Ys, Yg and N. Default: N)")
         {

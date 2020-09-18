@@ -402,7 +402,7 @@ class topoana
     void           readExtraLinesOrCloseCurly(ifstream & fin, string & line, string prompt);
     void           readCloseCurly(ifstream & fin, string & line, string prompt);
     void           readNumItem(ifstream & fin, string & line, string prompt, unsigned long & ulvar);
-    void           readNumItem(ifstream & fin, string & line, string prompt, int & ivar);
+    void           readNumItem(ifstream & fin, string & line, string prompt, int & ivar, int ivarDft=INT_MAX);
     void 	   readVPItem(ifstream & fin, string & line, string prompt, vector<int> & vPid);
     void 	   readYNItem(ifstream & fin, string & line, string prompt, bool & bvar);
     int 	   countSubstr(const std::string & str, const std::string & substr);

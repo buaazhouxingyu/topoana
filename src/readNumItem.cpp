@@ -30,10 +30,10 @@ void topoana::readNumItem(ifstream & fin, string & line, string prompt, unsigned
 // (4) strtoul(line.c_str(),NULL,10) --> atoi
 // (5) should be an unsigned long integer --> should be an integer
 
-void topoana::readNumItem(ifstream & fin, string & line, string prompt, int & ivar)
+void topoana::readNumItem(ifstream & fin, string & line, string prompt, int & ivar, int ivarDft)
 {
   readOpenCurly(fin,line,prompt);
-  ivar=INT_MAX;
+  ivar=ivarDft;
   read1stLineOrCloseCurly(fin,line,false,prompt);
   if(line!="}")
     {
