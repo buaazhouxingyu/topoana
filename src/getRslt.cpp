@@ -2029,22 +2029,26 @@ void topoana::getRslt()
     {
       if(m_ccSwitch==true)
         {
-          sortBySumOf1stAnd2ndFromLrgToSml(m_vNDcyTr,m_vNCcDcyTr,m_vDcyTr,m_vCcDcyTr,m_vIDcyTr,m_vICcDcyTr);
+          // sortBySumOf1stAnd2ndFromLrgToSml(m_vNDcyTr,m_vNCcDcyTr,m_vDcyTr,m_vCcDcyTr,m_vIDcyTr,m_vICcDcyTr);
+          sortBySumOf1stAnd2ndFromLrgToSml_new(m_nDcyTrsToBePrtdMax,m_vNDcyTr,m_vNCcDcyTr,m_vDcyTr,m_vCcDcyTr,m_vIDcyTr,m_vICcDcyTr);
         }
       else
         {
-          sortBy1stFromLrgToSml(m_vNDcyTr,m_vDcyTr,m_vIDcyTr);
+          // sortBy1stFromLrgToSml(m_vNDcyTr,m_vDcyTr,m_vIDcyTr);
+          sortBy1stFromLrgToSml_new(m_nDcyTrsToBePrtdMax,m_vNDcyTr,m_vDcyTr,m_vIDcyTr);
         }
     }
   if(m_compAnaOfDcyIFSts==true)
     {
       if(m_ccSwitch==true)
         {
-          sortBySumOf1stAnd2ndFromLrgToSml(m_vNDcyIFSts,m_vNCcDcyIFSts,m_vDcyIFSts,m_vCcDcyIFSts,m_vIDcyIFSts,m_vICcDcyIFSts);
+          // sortBySumOf1stAnd2ndFromLrgToSml(m_vNDcyIFSts,m_vNCcDcyIFSts,m_vDcyIFSts,m_vCcDcyIFSts,m_vIDcyIFSts,m_vICcDcyIFSts);
+          sortBySumOf1stAnd2ndFromLrgToSml_new(m_nDcyIFStsToBePrtdMax,m_vNDcyIFSts,m_vNCcDcyIFSts,m_vDcyIFSts,m_vCcDcyIFSts,m_vIDcyIFSts,m_vICcDcyIFSts);
         }
       else
         {
-          sortBy1stFromLrgToSml(m_vNDcyIFSts,m_vDcyIFSts,m_vIDcyIFSts);
+          // sortBy1stFromLrgToSml(m_vNDcyIFSts,m_vDcyIFSts,m_vIDcyIFSts);
+          sortBy1stFromLrgToSml_new(m_nDcyIFStsToBePrtdMax,m_vNDcyIFSts,m_vDcyIFSts,m_vIDcyIFSts);
         }
     }
 
@@ -2054,11 +2058,13 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNDcyBrP[i],m_vVNDcyBrCcP[i],m_vVDcyBrP[i],m_vVDcyBrCcP[i],m_vVIDcyBrP[i],m_vVIDcyBrCcP[i]);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vVNDcyBrP[i],m_vVNDcyBrCcP[i],m_vVDcyBrP[i],m_vVDcyBrCcP[i],m_vVIDcyBrP[i],m_vVIDcyBrCcP[i]);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNDcyBrToBePrtdMax[i],m_vVNDcyBrP[i],m_vVNDcyBrCcP[i],m_vVDcyBrP[i],m_vVDcyBrCcP[i],m_vVIDcyBrP[i],m_vVIDcyBrCcP[i]);
             }
           else
             {
-              sortBy1stFromLrgToSml(m_vVNDcyBrP[i],m_vVDcyBrP[i],m_vVIDcyBrP[i]);
+              // sortBy1stFromLrgToSml(m_vVNDcyBrP[i],m_vVDcyBrP[i],m_vVIDcyBrP[i]);
+              sortBy1stFromLrgToSml_new(m_vNDcyBrToBePrtdMax[i],m_vVNDcyBrP[i],m_vVDcyBrP[i],m_vVIDcyBrP[i]);
             }
         }      
     }
@@ -2069,11 +2075,13 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNCascDcyBrP[i],m_vVNCascDcyBrCcP[i],m_vVCascDcyBrP[i],m_vVCascDcyBrCcP[i],m_vVICascDcyBrP[i],m_vVICascDcyBrCcP[i]);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vVNCascDcyBrP[i],m_vVNCascDcyBrCcP[i],m_vVCascDcyBrP[i],m_vVCascDcyBrCcP[i],m_vVICascDcyBrP[i],m_vVICascDcyBrCcP[i]);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNCascDcyBrToBePrtdMax[i],m_vVNCascDcyBrP[i],m_vVNCascDcyBrCcP[i],m_vVCascDcyBrP[i],m_vVCascDcyBrCcP[i],m_vVICascDcyBrP[i],m_vVICascDcyBrCcP[i]);
             }
           else
             {
-              sortBy1stFromLrgToSml(m_vVNCascDcyBrP[i],m_vVCascDcyBrP[i],m_vVICascDcyBrP[i]);
+              // sortBy1stFromLrgToSml(m_vVNCascDcyBrP[i],m_vVCascDcyBrP[i],m_vVICascDcyBrP[i]);
+              sortBy1stFromLrgToSml_new(m_vNCascDcyBrToBePrtdMax[i],m_vVNCascDcyBrP[i],m_vVCascDcyBrP[i],m_vVICascDcyBrP[i]);
             }
         }
     }
@@ -2084,11 +2092,13 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNDcyFStP[i],m_vVNDcyFStCcP[i],m_vVDcyFStP[i],m_vVDcyFStCcP[i],m_vVIDcyFStP[i],m_vVIDcyFStCcP[i]);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vVNDcyFStP[i],m_vVNDcyFStCcP[i],m_vVDcyFStP[i],m_vVDcyFStCcP[i],m_vVIDcyFStP[i],m_vVIDcyFStCcP[i]);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNDcyFStToBePrtdMax[i],m_vVNDcyFStP[i],m_vVNDcyFStCcP[i],m_vVDcyFStP[i],m_vVDcyFStCcP[i],m_vVIDcyFStP[i],m_vVIDcyFStCcP[i]);
             }
           else
             {
-              sortBy1stFromLrgToSml(m_vVNDcyFStP[i],m_vVDcyFStP[i],m_vVIDcyFStP[i]);
+              // sortBy1stFromLrgToSml(m_vVNDcyFStP[i],m_vVDcyFStP[i],m_vVIDcyFStP[i]);
+              sortBy1stFromLrgToSml_new(m_vNDcyFStToBePrtdMax[i],m_vVNDcyFStP[i],m_vVDcyFStP[i],m_vVIDcyFStP[i]);
             }
         }
     }
@@ -2099,11 +2109,13 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNProdBrP[i],m_vVNProdBrCcP[i],m_vVProdBrP[i],m_vVProdBrCcP[i],m_vVIProdBrP[i],m_vVIProdBrCcP[i]);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vVNProdBrP[i],m_vVNProdBrCcP[i],m_vVProdBrP[i],m_vVProdBrCcP[i],m_vVIProdBrP[i],m_vVIProdBrCcP[i]);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNProdBrToBePrtdMax[i],m_vVNProdBrP[i],m_vVNProdBrCcP[i],m_vVProdBrP[i],m_vVProdBrCcP[i],m_vVIProdBrP[i],m_vVIProdBrCcP[i]);
             }
           else
             {
-              sortBy1stFromLrgToSml(m_vVNProdBrP[i],m_vVProdBrP[i],m_vVIProdBrP[i]);
+              // sortBy1stFromLrgToSml(m_vVNProdBrP[i],m_vVProdBrP[i],m_vVIProdBrP[i]);
+              sortBy1stFromLrgToSml_new(m_vNProdBrToBePrtdMax[i],m_vVNProdBrP[i],m_vVProdBrP[i],m_vVIProdBrP[i]);
             }
         }      
     }
@@ -2114,11 +2126,13 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNMP[i],m_vVNMCcP[i],m_vVMpidP[i],m_vVMpidCcP[i],m_vVIMP[i],m_vVIMCcP[i]);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vVNMP[i],m_vVNMCcP[i],m_vVMpidP[i],m_vVMpidCcP[i],m_vVIMP[i],m_vVIMCcP[i]);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNMToBePrtdMax[i],m_vVNMP[i],m_vVNMCcP[i],m_vVMpidP[i],m_vVMpidCcP[i],m_vVIMP[i],m_vVIMCcP[i]);
             }
           else
             {
-              sortBy1stFromLrgToSml(m_vVNMP[i],m_vVMpidP[i],m_vVIMP[i]);
+              // sortBy1stFromLrgToSml(m_vVNMP[i],m_vVMpidP[i],m_vVIMP[i]);
+              sortBy1stFromLrgToSml_new(m_vNMToBePrtdMax[i],m_vVNMP[i],m_vVMpidP[i],m_vVIMP[i]);
             }
         }      
     }
@@ -2129,11 +2143,13 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNDcyBrIncDcyBr[i],m_vVNDcyBrCcIncDcyBr[i],m_vVDcyBrIncDcyBr[i],m_vVDcyBrCcIncDcyBr[i],m_vVIDcyBrIncDcyBr[i],m_vVIDcyBrCcIncDcyBr[i]);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vVNDcyBrIncDcyBr[i],m_vVNDcyBrCcIncDcyBr[i],m_vVDcyBrIncDcyBr[i],m_vVDcyBrCcIncDcyBr[i],m_vVIDcyBrIncDcyBr[i],m_vVIDcyBrCcIncDcyBr[i]);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNExcCompsToBePrtdMax[i],m_vVNDcyBrIncDcyBr[i],m_vVNDcyBrCcIncDcyBr[i],m_vVDcyBrIncDcyBr[i],m_vVDcyBrCcIncDcyBr[i],m_vVIDcyBrIncDcyBr[i],m_vVIDcyBrCcIncDcyBr[i]);
             }
           else
             {
-              sortBy1stFromLrgToSml(m_vVNDcyBrIncDcyBr[i],m_vVDcyBrIncDcyBr[i],m_vVIDcyBrIncDcyBr[i]);
+              // sortBy1stFromLrgToSml(m_vVNDcyBrIncDcyBr[i],m_vVDcyBrIncDcyBr[i],m_vVIDcyBrIncDcyBr[i]);
+              sortBy1stFromLrgToSml_new(m_vNExcCompsToBePrtdMax[i],m_vVNDcyBrIncDcyBr[i],m_vVDcyBrIncDcyBr[i],m_vVIDcyBrIncDcyBr[i]);
             }
         }
     }
@@ -2144,11 +2160,13 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vVNDcyBrIRADcyBr[i],m_vVNDcyBrCcIRADcyBr[i],m_vVDcyBrIRADcyBr[i],m_vVDcyBrCcIRADcyBr[i],m_vVIDcyBrIRADcyBr[i],m_vVIDcyBrCcIRADcyBr[i]);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vVNDcyBrIRADcyBr[i],m_vVNDcyBrCcIRADcyBr[i],m_vVDcyBrIRADcyBr[i],m_vVDcyBrCcIRADcyBr[i],m_vVIDcyBrIRADcyBr[i],m_vVIDcyBrCcIRADcyBr[i]);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNIntStrusToBePrtdMax[i],m_vVNDcyBrIRADcyBr[i],m_vVNDcyBrCcIRADcyBr[i],m_vVDcyBrIRADcyBr[i],m_vVDcyBrCcIRADcyBr[i],m_vVIDcyBrIRADcyBr[i],m_vVIDcyBrCcIRADcyBr[i]);
             }
           else
             {
-              sortBy1stFromLrgToSml(m_vVNDcyBrIRADcyBr[i],m_vVDcyBrIRADcyBr[i],m_vVIDcyBrIRADcyBr[i]);
+              // sortBy1stFromLrgToSml(m_vVNDcyBrIRADcyBr[i],m_vVDcyBrIRADcyBr[i],m_vVIDcyBrIRADcyBr[i]);
+              sortBy1stFromLrgToSml_new(m_vNIntStrusToBePrtdMax[i],m_vVNDcyBrIRADcyBr[i],m_vVDcyBrIRADcyBr[i],m_vVIDcyBrIRADcyBr[i]);
             }
         }
     }
@@ -2213,13 +2231,17 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vNSigDcyTr,m_vNCcSigDcyTr,m_vSigDcyTr,m_vCcSigDcyTr,m_vISigDcyTr,m_vICcSigDcyTr);
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vNSigDcyIFSts_tr,m_vNCcSigDcyIFSts_tr,m_vSigDcyIFSts_tr,m_vCcSigDcyIFSts_tr,m_vISigDcyIFSts_tr,m_vICcSigDcyIFSts_tr);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vNSigDcyTr,m_vNCcSigDcyTr,m_vSigDcyTr,m_vCcSigDcyTr,m_vISigDcyTr,m_vICcSigDcyTr);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNSigDcyTr.size(),m_vNSigDcyTr,m_vNCcSigDcyTr,m_vSigDcyTr,m_vCcSigDcyTr,m_vISigDcyTr,m_vICcSigDcyTr);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vNSigDcyIFSts_tr,m_vNCcSigDcyIFSts_tr,m_vSigDcyIFSts_tr,m_vCcSigDcyIFSts_tr,m_vISigDcyIFSts_tr,m_vICcSigDcyIFSts_tr);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNSigDcyIFSts_tr.size(),m_vNSigDcyIFSts_tr,m_vNCcSigDcyIFSts_tr,m_vSigDcyIFSts_tr,m_vCcSigDcyIFSts_tr,m_vISigDcyIFSts_tr,m_vICcSigDcyIFSts_tr);
             }
           else
             {
-              sortBy1stFromLrgToSml(m_vNSigDcyTr,m_vSigDcyTr,m_vISigDcyTr);
-              sortBy1stFromLrgToSml(m_vNSigDcyIFSts_tr,m_vSigDcyIFSts_tr,m_vISigDcyIFSts_tr);
+              // sortBy1stFromLrgToSml(m_vNSigDcyTr,m_vSigDcyTr,m_vISigDcyTr);
+              sortBy1stFromLrgToSml_new(m_vNSigDcyTr.size(),m_vNSigDcyTr,m_vSigDcyTr,m_vISigDcyTr);
+              // sortBy1stFromLrgToSml(m_vNSigDcyIFSts_tr,m_vSigDcyIFSts_tr,m_vISigDcyIFSts_tr);
+              sortBy1stFromLrgToSml_new(m_vNSigDcyIFSts_tr.size(),m_vNSigDcyIFSts_tr,m_vSigDcyIFSts_tr,m_vISigDcyIFSts_tr);
             }
         }
     }
@@ -2259,11 +2281,13 @@ void topoana::getRslt()
         {
           if(m_ccSwitch==true)
             {
-              sortBySumOf1stAnd2ndFromLrgToSml(m_vNSigDcyIFSts,m_vNCcSigDcyIFSts,m_vSigDcyIFSts,m_vCcSigDcyIFSts,m_vISigDcyIFSts,m_vICcSigDcyIFSts);
+              // sortBySumOf1stAnd2ndFromLrgToSml(m_vNSigDcyIFSts,m_vNCcSigDcyIFSts,m_vSigDcyIFSts,m_vCcSigDcyIFSts,m_vISigDcyIFSts,m_vICcSigDcyIFSts);
+              sortBySumOf1stAnd2ndFromLrgToSml_new(m_vNSigDcyIFSts.size(),m_vNSigDcyIFSts,m_vNCcSigDcyIFSts,m_vSigDcyIFSts,m_vCcSigDcyIFSts,m_vISigDcyIFSts,m_vICcSigDcyIFSts);
             }
           else
             {      
-              sortBy1stFromLrgToSml(m_vNSigDcyIFSts,m_vSigDcyIFSts,m_vISigDcyIFSts);
+              // sortBy1stFromLrgToSml(m_vNSigDcyIFSts,m_vSigDcyIFSts,m_vISigDcyIFSts);
+              sortBy1stFromLrgToSml_new(m_vNSigDcyIFSts.size(),m_vNSigDcyIFSts,m_vSigDcyIFSts,m_vISigDcyIFSts);
             }
         }
     }

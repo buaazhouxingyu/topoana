@@ -438,7 +438,11 @@ class topoana
     template < typename T >
     void           sortBySumOf1stAnd2ndFromLrgToSml(vector<int> & via1, vector<int> & via2, vector<T> & vib1, vector<T> & vib2, vector<int> & vic1, vector<int> & vic2, vector< vector<int> > * vVid1=0, vector< vector<int> > * vVid2=0, vector< vector<int> > * vVie1=0, vector< vector<int> > * vVie2=0);
     template < typename T >
+    void           sortBySumOf1stAnd2ndFromLrgToSml_new(unsigned long nMax, vector<int> & via1, vector<int> & via2, vector<T> & vib1, vector<T> & vib2, vector<int> & vic1, vector<int> & vic2, vector< vector<int> > * vVid1=0, vector< vector<int> > * vVid2=0, vector< vector<int> > * vVie1=0, vector< vector<int> > * vVie2=0);
+    template < typename T >
     void           sortBy1stFromLrgToSml(vector<int> & via, vector< T > & vib, vector<int> & vic, vector< vector<int> > * vVid=0, vector< vector<int> > * vVie=0);
+    template < typename T >
+    void           sortBy1stFromLrgToSml_new(unsigned long nMax, vector<int> & via, vector< T > & vib, vector<int> & vic, vector< vector<int> > * vVid=0, vector< vector<int> > * vVie=0);
     template < typename T >
     void           countAndSort(TChain * chn, const unsigned int size, string NM, vector<string> vNm, vector<int> vN, vector<int> vNCc, vector<T> v, vector<T> vCc, vector<int> vI, vector<int> vICc, vector< vector<int> > * vVIdxOfHead=0, vector< vector<int> > * vVCcIdxOfHead=0, vector< vector<int> > * vVMidxOfHead=0, vector< vector<int> > * vVCcMidxOfHead=0);
     void	   getStrFromVli(vector< list<int> > & dcyTr, string & strDcyTr);
@@ -486,6 +490,7 @@ void topoana::sortBy1stFromLrgToSml(vector<int> & via, vector<T> & vib, vector<i
       else cerr<<"Infor: The sizes of the three vectors are zero!"<<endl<<endl;
       return;
     }
+
   int iaTmp; T ibTmp; int icTmp; vector<int> vidTmp,vieTmp;
   for(unsigned int i=0;i<(via.size()-1);i++)
     for(unsigned int j=i+1;j<via.size();j++)
@@ -513,6 +518,115 @@ void topoana::sortBy1stFromLrgToSml(vector<int> & via, vector<T> & vib, vector<i
 }
 
 template < typename T >
+void topoana::sortBy1stFromLrgToSml_new(unsigned long nMax, vector<int> & via, vector<T> & vib, vector<int> & vic, vector< vector<int> > * vVid, vector< vector<int> > * vVie)
+{
+  if(via.size()!=vib.size()||vib.size()!=vic.size()||((vVid!=0&&vVie!=0)&&(vic.size()!=(*vVid).size()||(*vVid).size()!=(*vVie).size())))
+    {
+      if(vVid!=0&&vVie!=0) cerr<<"Error: The five vectors have different sizes!"<<endl;
+      else cerr<<"Error: The three vectors have different sizes!"<<endl;
+      cerr<<"Infor: The size of the first vector is "<<via.size()<<"."<<endl;
+      cerr<<"Infor: The size of the second vector is "<<vib.size()<<"."<<endl;
+      cerr<<"Infor: The size of the third vector is "<<vic.size()<<"."<<endl;
+      if(vVid!=0&&vVie!=0)
+        {
+          cerr<<"Infor: The size of the fourth vector is "<<(*vVid).size()<<"."<<endl;
+          cerr<<"Infor: The size of the fifth vector is "<<(*vVie).size()<<"."<<endl;
+        }
+      cerr<<"Infor: Please check them."<<endl;
+      exit(-1);
+    }
+
+  if(via.size()==0)
+    {
+      if(vVid!=0&&vVie!=0) cerr<<"Infor: The sizes of the five vectors are zero!"<<endl<<endl;
+      else cerr<<"Infor: The sizes of the three vectors are zero!"<<endl<<endl;
+      return;
+    }
+
+  vector<unsigned int> vIdxTmp; vector<int> viaTmp; vector<T> vibTmp; vector<int> vicTmp; vector< vector<int> > vVidTmp; vector< vector<int> > vVieTmp;
+
+  for(unsigned int i=0;i<(via.size()<nMax?via.size():nMax);i++)
+    {
+      vIdxTmp.push_back(i);
+      viaTmp.push_back(via[i]);
+      vibTmp.push_back(vib[i]);
+    }
+
+  unsigned int idxTmp; int iaTmp; T ibTmp;
+  for(unsigned int i=0;i<(vIdxTmp.size()-1);i++)
+    for(unsigned int j=i+1;j<vIdxTmp.size();j++)
+      if(viaTmp[i]<viaTmp[j])
+        {
+          idxTmp=vIdxTmp[i];
+          vIdxTmp[i]=vIdxTmp[j];
+          vIdxTmp[j]=idxTmp;
+          iaTmp=viaTmp[i];
+          viaTmp[i]=viaTmp[j];
+          viaTmp[j]=iaTmp;
+          ibTmp=vibTmp[i];
+          vibTmp[i]=vibTmp[j];
+          vibTmp[j]=ibTmp;
+        }
+
+  if(via.size()>nMax)
+    {
+      bool isTop;
+      for(unsigned int i=nMax;i<via.size();i++)
+        {
+          isTop=false;
+          for(unsigned int j=0;j<nMax;j++)
+            {
+              if(via[i]>viaTmp[j])
+                {
+                  viaTmp.push_back(viaTmp[nMax-1]);
+                  vibTmp.push_back(vibTmp[nMax-1]);
+                  // Considering k is an unsigned integer, please do not omit "&&k!=UINT_MAX" in the condition. Otherwise, the program is very likely to break due to array index overflow.
+                  for(unsigned int k=nMax-2;k>=j&&k!=UINT_MAX;k--)
+                    {
+                      vIdxTmp[k+1]=vIdxTmp[k];
+                      viaTmp[k+1]=viaTmp[k];
+                      vibTmp[k+1]=vibTmp[k];
+                    }
+                  vIdxTmp[j]=i;
+                  viaTmp[j]=via[i];
+                  vibTmp[j]=vib[i];
+                  isTop=true;
+                  break;
+                }
+            }
+          if(isTop==false)
+            {
+              viaTmp.push_back(via[i]);
+              vibTmp.push_back(vib[i]);
+            }
+        }
+    }
+
+  for(unsigned int i=0;i<vIdxTmp.size();i++)
+    {
+      //vibTmp.push_back(vib[vIdxTmp[i]]);
+      vicTmp.push_back(vic[vIdxTmp[i]]);
+      if(vVid!=0&&vVie!=0)
+        {
+          vVidTmp.push_back((*vVid)[vIdxTmp[i]]);
+          vVieTmp.push_back((*vVie)[vIdxTmp[i]]);
+        }
+    }
+
+  via=viaTmp;
+  vib=vibTmp;
+  vic=vicTmp;
+  if(vVid!=0&&vVie!=0)
+    {
+      for(unsigned int i=0;i<vIdxTmp.size();i++)
+        {
+          (*vVid)[i]=vVidTmp[i];
+          (*vVie)[i]=vVieTmp[i];
+        }
+    }
+}
+
+template < typename T >
 void topoana::sortBySumOf1stAnd2ndFromLrgToSml(vector<int> & via1, vector<int> & via2, vector<T> & vib1, vector<T> & vib2, vector<int> & vic1, vector<int> & vic2, vector< vector<int> > * vVid1, vector< vector<int> > * vVid2, vector< vector<int> > * vVie1, vector< vector<int> > * vVie2)
 {
   if(via1.size()!=via2.size()||via2.size()!=vib1.size()||vib1.size()!=vib2.size()||vib2.size()!=vic1.size()||vic1.size()!=vic2.size()||((vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0)&&(vic2.size()!=(*vVid1).size()||(*vVid1).size()!=(*vVid2).size()||(*vVid2).size()!=(*vVie1).size()||(*vVie1).size()!=(*vVie2).size())))
@@ -535,12 +649,14 @@ void topoana::sortBySumOf1stAnd2ndFromLrgToSml(vector<int> & via1, vector<int> &
       cerr<<"Infor: Please check them."<<endl;
       exit(-1);
     }
+
   if(via1.size()==0)
     {
       if(vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0) cerr<<"Infor: The sizes of the ten vectors are zero!"<<endl<<endl;
       else cerr<<"Infor: The sizes of the six vectors are zero!"<<endl<<endl;
       return;
     }
+
   int iaTmp1,iaTmp2; T ibTmp1,ibTmp2; int icTmp1,icTmp2; vector<int> vidTmp1,vidTmp2,vieTmp1,vieTmp2;
   for(unsigned int i=0;i<(via1.size()-1);i++)
     for(unsigned int j=i+1;j<via1.size();j++)
@@ -580,6 +696,137 @@ void topoana::sortBySumOf1stAnd2ndFromLrgToSml(vector<int> & via1, vector<int> &
               (*vVie2)[j]=vieTmp2;
             }
         }
+}
+
+template < typename T >
+void topoana::sortBySumOf1stAnd2ndFromLrgToSml_new(unsigned long nMax, vector<int> & via1, vector<int> & via2, vector<T> & vib1, vector<T> & vib2, vector<int> & vic1, vector<int> & vic2, vector< vector<int> > * vVid1, vector< vector<int> > * vVid2, vector< vector<int> > * vVie1, vector< vector<int> > * vVie2)
+{
+  if(via1.size()!=via2.size()||via2.size()!=vib1.size()||vib1.size()!=vib2.size()||vib2.size()!=vic1.size()||vic1.size()!=vic2.size()||((vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0)&&(vic2.size()!=(*vVid1).size()||(*vVid1).size()!=(*vVid2).size()||(*vVid2).size()!=(*vVie1).size()||(*vVie1).size()!=(*vVie2).size())))
+    {
+      if(vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0) cerr<<"Error: The ten vectors have different sizes!"<<endl;
+      else cerr<<"Error: The six vectors have different sizes!"<<endl;
+      cerr<<"Infor: The size of the first vector is "<<via1.size()<<"."<<endl;
+      cerr<<"Infor: The size of the second vector is "<<via2.size()<<"."<<endl;
+      cerr<<"Infor: The size of the third vector is "<<vib1.size()<<"."<<endl;
+      cerr<<"Infor: The size of the fourth vector is "<<vib2.size()<<"."<<endl;
+      cerr<<"Infor: The size of the fifth vector is "<<vic1.size()<<"."<<endl;
+      cerr<<"Infor: The size of the sixth vector is "<<vic2.size()<<"."<<endl;
+      if(vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0)
+        {
+          cerr<<"Infor: The size of the seventh vector is "<<(*vVid1).size()<<"."<<endl;
+          cerr<<"Infor: The size of the eighth vector is "<<(*vVid2).size()<<"."<<endl;
+          cerr<<"Infor: The size of the ninth vector is "<<(*vVie1).size()<<"."<<endl;
+          cerr<<"Infor: The size of the tenth vector is "<<(*vVie2).size()<<"."<<endl;
+        }
+      cerr<<"Infor: Please check them."<<endl;
+      exit(-1);
+    }
+
+  if(via1.size()==0)
+    {
+      if(vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0) cerr<<"Infor: The sizes of the ten vectors are zero!"<<endl<<endl;
+      else cerr<<"Infor: The sizes of the six vectors are zero!"<<endl<<endl;
+      return;
+    }
+
+  vector<unsigned int> vIdxTmp; vector<int> via1Tmp, via2Tmp; vector<T> vib1Tmp, vib2Tmp; vector<int> vic1Tmp, vic2Tmp; vector< vector<int> > vVid1Tmp, vVid2Tmp; vector< vector<int> > vVie1Tmp, vVie2Tmp;
+
+  for(unsigned int i=0;i<(via1.size()<nMax?via1.size():nMax);i++)
+    {
+      vIdxTmp.push_back(i);
+      via1Tmp.push_back(via1[i]);
+      via2Tmp.push_back(via2[i]);
+      vib1Tmp.push_back(vib1[i]);
+    }
+
+  unsigned int idxTmp; int ia1Tmp, ia2Tmp; T ib1Tmp;
+  for(unsigned int i=0;i<(vIdxTmp.size()-1);i++)
+    for(unsigned int j=i+1;j<vIdxTmp.size();j++)
+      if(via1Tmp[i]+via2Tmp[i]<via1Tmp[j]+via2Tmp[j])
+        {
+          idxTmp=vIdxTmp[i];
+          vIdxTmp[i]=vIdxTmp[j];
+          vIdxTmp[j]=idxTmp;
+          ia1Tmp=via1Tmp[i];
+          via1Tmp[i]=via1Tmp[j];
+          via1Tmp[j]=ia1Tmp;
+          ia2Tmp=via2Tmp[i];
+          via2Tmp[i]=via2Tmp[j];
+          via2Tmp[j]=ia2Tmp;
+          ib1Tmp=vib1Tmp[i];
+          vib1Tmp[i]=vib1Tmp[j];
+          vib1Tmp[j]=ib1Tmp;
+        }
+
+  if(via1.size()>nMax)
+    {
+      bool isTop;
+      for(unsigned int i=nMax;i<via1.size();i++)
+        {
+          isTop=false;
+          for(unsigned int j=0;j<nMax;j++)
+            {
+              if(via1[i]+via2[i]>via1Tmp[j]+via2Tmp[j])
+                {
+                  via1Tmp.push_back(via1Tmp[nMax-1]);
+                  via2Tmp.push_back(via2Tmp[nMax-1]);
+                  vib1Tmp.push_back(vib1Tmp[nMax-1]);
+                  // Considering k is an unsigned integer, please do not omit "&&k!=UINT_MAX" in the condition. Otherwise, the program is very likely to break due to array index overflow.
+                  for(unsigned int k=nMax-2;k>=j&&k!=UINT_MAX;k--)
+                    {
+                      vIdxTmp[k+1]=vIdxTmp[k];
+                      via1Tmp[k+1]=via1Tmp[k];
+                      via2Tmp[k+1]=via2Tmp[k];
+                      vib1Tmp[k+1]=vib1Tmp[k];
+                    }
+                  vIdxTmp[j]=i;
+                  via1Tmp[j]=via1[i];
+                  via2Tmp[j]=via2[i];
+                  vib1Tmp[j]=vib1[i];
+                  isTop=true;
+                  break;
+                }
+            }
+          if(isTop==false)
+            {
+              via1Tmp.push_back(via1[i]);
+              via2Tmp.push_back(via2[i]);
+              vib1Tmp.push_back(vib1[i]);
+            }
+        }
+    }
+
+  for(unsigned int i=0;i<vIdxTmp.size();i++)
+    {
+      //vib1Tmp.push_back(vib1[vIdxTmp[i]]);
+      vib2Tmp.push_back(vib2[vIdxTmp[i]]);
+      vic1Tmp.push_back(vic1[vIdxTmp[i]]);
+      vic2Tmp.push_back(vic2[vIdxTmp[i]]);
+      if(vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0)
+        {
+          vVid1Tmp.push_back((*vVid1)[vIdxTmp[i]]);
+          vVid2Tmp.push_back((*vVid2)[vIdxTmp[i]]);
+          vVie1Tmp.push_back((*vVie1)[vIdxTmp[i]]);
+          vVie2Tmp.push_back((*vVie2)[vIdxTmp[i]]);
+        }
+    }
+
+  via1=via1Tmp;
+  via2=via2Tmp;
+  vib1=vib1Tmp;
+  vib2=vib2Tmp;
+  vic1=vic1Tmp;
+  vic2=vic2Tmp;
+  if(vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0)
+    {
+      for(unsigned int i=0;i<vIdxTmp.size();i++)
+        {
+          (*vVid1)[i]=vVid1Tmp[i];
+          (*vVid2)[i]=vVid2Tmp[i];
+          (*vVie1)[i]=vVie1Tmp[i];
+          (*vVie2)[i]=vVie2Tmp[i];
+        }
+    }
 }
 
 template < typename T >
@@ -626,13 +873,17 @@ void topoana::countAndSort(TChain * chn, const unsigned int size, string NM, vec
     {
       if(m_ccSwitch==true)
         {
-          if(vVIdxOfHead==0&&vVCcIdxOfHead==0&&vVMidxOfHead==0&&vVCcMidxOfHead==0) sortBySumOf1stAnd2ndFromLrgToSml(vN, vNCc, v, vCc, vI, vICc);
-          else sortBySumOf1stAnd2ndFromLrgToSml(vN, vNCc, v, vCc, vI, vICc, vVIdxOfHead, vVCcIdxOfHead, vVMidxOfHead, vVCcMidxOfHead);
+          // if(vVIdxOfHead==0&&vVCcIdxOfHead==0&&vVMidxOfHead==0&&vVCcMidxOfHead==0) sortBySumOf1stAnd2ndFromLrgToSml(vN, vNCc, v, vCc, vI, vICc);
+          // else sortBySumOf1stAnd2ndFromLrgToSml(vN, vNCc, v, vCc, vI, vICc, vVIdxOfHead, vVCcIdxOfHead, vVMidxOfHead, vVCcMidxOfHead);
+          if(vVIdxOfHead==0&&vVCcIdxOfHead==0&&vVMidxOfHead==0&&vVCcMidxOfHead==0) sortBySumOf1stAnd2ndFromLrgToSml_new(size, vN, vNCc, v, vCc, vI, vICc);
+          else sortBySumOf1stAnd2ndFromLrgToSml_new(size, vN, vNCc, v, vCc, vI, vICc, vVIdxOfHead, vVCcIdxOfHead, vVMidxOfHead, vVCcMidxOfHead);
         }
       else
         {
-          if(vVIdxOfHead==0&&vVCcIdxOfHead==0&&vVMidxOfHead==0&&vVCcMidxOfHead==0) sortBy1stFromLrgToSml(vN, v, vI);
-          else sortBy1stFromLrgToSml(vN, v, vI, vVIdxOfHead, vVMidxOfHead);
+          // if(vVIdxOfHead==0&&vVCcIdxOfHead==0&&vVMidxOfHead==0&&vVCcMidxOfHead==0) sortBy1stFromLrgToSml(vN, v, vI);
+          // else sortBy1stFromLrgToSml(vN, v, vI, vVIdxOfHead, vVMidxOfHead);
+          if(vVIdxOfHead==0&&vVCcIdxOfHead==0&&vVMidxOfHead==0&&vVCcMidxOfHead==0) sortBy1stFromLrgToSml_new(size, vN, v, vI);
+          else sortBy1stFromLrgToSml_new(size, vN, v, vI, vVIdxOfHead, vVMidxOfHead);
         }
     }
 }
