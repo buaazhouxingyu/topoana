@@ -19,11 +19,12 @@
   5	&       anti-D0 --> pi0 pi- K+			&        3
   6	&       D0 --> pi0 pi+ K-			&        4
 
-  0	&       Upsilon(4S) --> B0 anti-B0		&       -1	&	2ndDcyTrInTb2
-  1	&       B0 --> pi0 pi+ pi+ rho- D-		&        0
-  2	&       anti-B0 --> mu- anti-nu_mu D*+		&        0
-  3	&       rho- --> pi0 pi-			&        1
-  4	&       D- --> pi- pi- K+			&        1
-  5	&       D*+ --> pi+ D0				&        2	
-  6	&       D0 --> K_L0 pi+ pi-			&        5
+  0	&	Upsilon(4S) --> B0 anti-B0		&	-1	&	2ndDcyTrInTb2
+  1	&	B0 --> mu+ nu_mu D*-			&	 0
+  2	&	anti-B0 --> rho- D*+			&	 0
+  3	&	D*- --> pi- anti-D0			&	 1
+  4	&	rho- --> pi0 pi-			&	 2
+  5	&	D*+ --> pi0 D+				&	 2
+  6	&	anti-D0 --> pi0 pi- K+			&	 3
+  7	&	D+ --> pi+ pi+ K-			&	 5
 }
