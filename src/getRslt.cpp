@@ -234,7 +234,7 @@ void topoana::getRslt()
                   exit(-1);
                 }
 
-              tr=chn->CloneTree(0);
+              if(m_supprOptRootFls==false) tr=chn->CloneTree(0);
 
               if(m_compAnaOfDcyTrs==true)
                 {
@@ -323,7 +323,7 @@ void topoana::getRslt()
                   createBrs(m_vSigIncOrIRACascDcyBr.size(), "SigIncOrIRACascDcyBr", m_vNm_sigIncOrIRACascDcyBr, iCcSigIncOrIRACascDcyBr, tr, nSigIncOrIRACascDcyBr, nCcSigIncOrIRACascDcyBr, nAllSigIncOrIRACascDcyBr);
                 }
 
-              for(unsigned int j=0;j<m_othTtrNms.size();j++) othTrs[j]=othChns[j]->CloneTree();
+              if(m_supprOptRootFls==false) for(unsigned int j=0;j<m_othTtrNms.size();j++) othTrs[j]=othChns[j]->CloneTree();
             }
 
           chn->GetEntry(i);
@@ -362,13 +362,18 @@ void topoana::getRslt()
                   closeTheOptRootFl3=((i+1)==nEtrToBePrcsd);
                   if(closeTheOptRootFl2||closeTheOptRootFl3)
                     {
-                      fl->Write();
+                      if(m_supprOptRootFls==false) fl->Write();
                       delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
                       for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j]; 
                       fl->Close();
                       delete fl;
-                      if(m_rmIptTBrs==true) rmIptBrs(NmOfOptRootFl);
-                      if(m_useArrayTBrsOpt==false) flatArrayBrs(NmOfOptRootFl);
+                      if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
+                      if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(NmOfOptRootFl);
+                      if(m_supprOptRootFls==true)
+                        {
+                          string rmcmd="rm "+NmOfOptRootFl;
+                          system(rmcmd.c_str());
+                        }
                       openANewOptRootFl=true;
                       iOptRootFls++;
                     }
@@ -385,7 +390,7 @@ void topoana::getRslt()
             {
               if(isTheEvtPrcsd==true)
                 {
-                  tr->Fill();
+                  if(m_supprOptRootFls==false) tr->Fill();
 
                   if((i+1>=nEtrForTiming)&&(((i+1)%nEtrForTiming==0)||((i+1)==nEtrToBePrcsd)))
                     {
@@ -407,13 +412,18 @@ void topoana::getRslt()
                   closeTheOptRootFl3=((i+1)==nEtrToBePrcsd);
                   if(closeTheOptRootFl1||closeTheOptRootFl2||closeTheOptRootFl3)
                     {
-                      fl->Write();
+                      if(m_supprOptRootFls==false) fl->Write();
                       delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
                       for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
                       fl->Close();
                       delete fl;
-                      if(m_rmIptTBrs==true) rmIptBrs(NmOfOptRootFl);
-                      if(m_useArrayTBrsOpt==false) flatArrayBrs(NmOfOptRootFl);
+                      if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
+                      if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(NmOfOptRootFl);
+                      if(m_supprOptRootFls==true)
+                        {
+                          string rmcmd="rm "+NmOfOptRootFl;
+                          system(rmcmd.c_str());
+                        }
                       openANewOptRootFl=true;
                       iOptRootFls++;
                     }
@@ -1988,7 +1998,7 @@ void topoana::getRslt()
                 }
             }
 
-          tr->Fill();
+          if(m_supprOptRootFls==false) tr->Fill();
 
           if((i+1>=nEtrForTiming)&&(((i+1)%nEtrForTiming==0)||((i+1)==nEtrToBePrcsd)))
             {
@@ -2010,13 +2020,18 @@ void topoana::getRslt()
           closeTheOptRootFl3=((i+1)==nEtrToBePrcsd);
           if(closeTheOptRootFl1||closeTheOptRootFl2||closeTheOptRootFl3)
             {
-              fl->Write();
+              if(m_supprOptRootFls==false) fl->Write();
               delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
               for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
               fl->Close();
               delete fl;
-              if(m_rmIptTBrs==true) rmIptBrs(NmOfOptRootFl);
-              if(m_useArrayTBrsOpt==false) flatArrayBrs(NmOfOptRootFl);
+              if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
+              if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(NmOfOptRootFl);
+              if(m_supprOptRootFls==true)
+                {
+                  string rmcmd="rm "+NmOfOptRootFl;
+                  system(rmcmd.c_str());
+                }
               openANewOptRootFl=true;
               iOptRootFls++;
             }

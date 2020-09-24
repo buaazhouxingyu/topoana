@@ -544,13 +544,17 @@ void topoana::readCard(string cardFlNm)
                 }
             }
         }
+      else if(line=="% Suppress output root files (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Suppress output root files (Two options: Y and N. Default: N)", m_supprOptRootFls);
+        }
       else if(line=="% Verbose level of standard output (Two options: Y and N. Default: N)")
         {
           readYNItem(fin, line, "% Verbose level of standard output (Two options: Y and N. Default: N)", m_vbsLevStdOut);
         }
       else
         {
-          cerr<<"Error: The input line "<<line<<"\" is invalid!"<<endl;
+          cerr<<"Error: The input line \""<<line<<"\" is invalid!"<<endl;
           string TempCardFlNm=m_pkgPath+"share/template_topoana.card";
           cerr<<"Infor: If you have ever used the item prompted with the input line successfully but it doesn't work now, this is probably because I updated the prompt of the item in order to make it clearer and more concise. In this case, I apologize for the inconvenience and appreciate your understanding and support."<<endl;
           cerr<<"Infor: There is also a probability that the input line is wrongly typed due to some reasons. Please note that the input line must be identical with the prompt of one item defined in the program."<<endl;

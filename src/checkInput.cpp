@@ -2850,6 +2850,15 @@ void topoana::checkInput()
       if(m_vbsLevStdOut==true) cout<<"Input tbranches will not be removed from output root files (default)."<<endl<<endl;
     }
 
+  if(m_supprOptRootFls==true)
+    {
+      cout<<"Output root files will be suppressed."<<endl<<endl;
+    }
+  else
+    {
+      if(m_vbsLevStdOut==true) cout<<"Output root files will not be suppressed (default)."<<endl<<endl;
+    }
+
   if(m_vbsLevStdOut==true)
     {
       cout<<"The level of standard output is set to \"verbose\"."<<endl<<endl;
