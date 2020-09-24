@@ -185,7 +185,18 @@ void topoana::getRslt()
   unsigned long nEtrToBePrcsd=nEtr<m_nEtrMax?nEtr:m_nEtrMax;
   if(m_anaTasksForSigIds!="C")
     {
-      unsigned long nEtrForTiming=5000;
+      unsigned long nEtrForTiming=nEtrToBePrcsd/50;
+      unsigned long mod;
+      for(unsigned int i=0;i<20;i++)
+        {
+          mod=floor(nEtrForTiming/pow(10,i));
+          if(mod>=1&&mod<=9)
+            {
+              nEtrForTiming=(mod+1)*pow(10,i);
+              break;
+            }
+        }
+      nEtrForTiming=nEtrForTiming>5000?nEtrForTiming:5000;
       clock_t starttime=clock();
       for(unsigned int i=0;i<nEtrToBePrcsd;i++)
         {
