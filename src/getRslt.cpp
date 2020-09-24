@@ -205,7 +205,12 @@ void topoana::getRslt()
               openANewOptRootFl=false;
               if(m_oneOptRootFlByOneIptRootFl==true)
                 {
-                  NmOfOptRootFl=m_nmsOfIptRootFls[iOptRootFls].replace(m_nmsOfIptRootFls[iOptRootFls].rfind(".root"),5,"_ta.root");
+                  NmOfOptRootFl=m_nmsOfIptRootFls[iOptRootFls].substr(m_nmsOfIptRootFls[iOptRootFls].rfind("/")+1);
+                  ostringstream oss;
+                  oss<<iOptRootFls+1;
+                  string strIOptRootFls=oss.str();
+                  string newSuffix="_ta_"+strIOptRootFls+".root";
+                  NmOfOptRootFl=NmOfOptRootFl.replace(NmOfOptRootFl.rfind(".root"),5,newSuffix.c_str());
                 }
               else
                 {
