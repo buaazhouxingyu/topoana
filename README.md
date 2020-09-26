@@ -1,11 +1,11 @@
-#### TopoAna: A generic tool for the topology analysis of inclusive Monte-Carlo samples in high energy physics experiments
+#### TopoAna: A generic tool for the event type analysis of inclusive Monte-Carlo samples in high energy physics experiments
 
 **Abstract:** Inclusive Monte-Carlo samples are indispensable for signal selection and background suppression in many high energy physics experiments. A clear knowledge of the physics processes involved in the samples, including the types of processes and the number of processes in each type, is a great help to investigating signals and backgrounds. To help analysts obtain the physics process information from the truth information of the samples, we develop a physics process analysis program, TopoAna, with C++, ROOT, and LaTeX. The program implements the functionalities of component analysis and signal identification with many kinds of fine, customizable classification and matching algorithms. It tags physics processes in individual events accurately in the output root files, and exports the physics process information at the sample level clearly to the output plain text, tex source, and pdf files. Independent of specific software frameworks, the program is applicable to many experiments. At present, it has come into use in three e+e- colliding experiments: the BESIII, Belle, and Belle II experiments. The use of the program in other similar experiments is also prospective. (**Please contact me (zhouxy@buaa.edu.cn) if you want to employ the program for other experiments. Now, you can try the program with examples under the directory ``examples``**)
 
-A detailed description of the program is in the document: ``share/user_guide_v4.6.0.pdf``
+A detailed description of the program is in the document: ``share/user_guide_v*.pdf``
 (**Please note that all the examples in the user guide can be found in the sub-directory ``examples/in_the_user_guide``**)
 
-An essential description of the program is in the document: ``share/paper_draft_v3.1.pdf``
+An essential description of the program is in the document: ``share/paper_draft_v*.pdf``
 (**Please note that all the examples in the paper draft can be found in the sub-directory ``examples/in_the_paper``**)
 
 **Note:** The paper on the tool has been published by ``Computer Physics Communications``. You can find this paper and the preprint corresponding to it in the links [Comput. Phys. Commun. 258 (2021) 107540](https://doi.org/10.1016/j.cpc.2020.107540) and [arXiv:2001.04016](https://arxiv.org/abs/2001.04016), respectively. If the tool really helps your researches, we would appreciate it very much if you could cite the paper in your publications.
