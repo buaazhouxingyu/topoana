@@ -724,6 +724,7 @@ void topoana::writeRsltIntoTxtFl()
           fout<<endl<<endl;
 
           vector< list<int> > dcyBrIRADcyBr;
+          vector<int> vIMDcyBr;
           list<int> subdcyBrIRADcyBr;
           unsigned long nCCase=0;
           unsigned long nDcyBrIRADcyBrToBePrtd=m_vVDcyBrIRADcyBr[i].size()<m_vNIntStrusToBePrtdMax[i]?m_vVDcyBrIRADcyBr[i].size():m_vNIntStrusToBePrtdMax[i];
@@ -731,6 +732,7 @@ void topoana::writeRsltIntoTxtFl()
             {
               dcyBrIRADcyBr.clear();
               dcyBrIRADcyBr=m_vVDcyBrIRADcyBr[i][j];
+              getVIMDcyBr(dcyBrIRADcyBr,vIMDcyBr);
               fout<<"rowNo:  "<<j+1<<"\tiDcyBrIRADcyBr:  "<<m_vVIDcyBrIRADcyBr[i][j]<<"\tnCase:  "<<m_vVNDcyBrIRADcyBr[i][j];
               if(m_ccSwitch==true)
                 {
@@ -747,7 +749,7 @@ void topoana::writeRsltIntoTxtFl()
               fout<<"\tnCCase:  "<<nCCase<<endl;
               for(unsigned int k=0;k<dcyBrIRADcyBr.size();k++)
                 {
-                  fout<<" ";
+                  fout<<"  "<<k<<"  & ";
                   subdcyBrIRADcyBr.clear();
                   subdcyBrIRADcyBr=dcyBrIRADcyBr[k];
                   list<int>::iterator liit=subdcyBrIRADcyBr.begin();
@@ -759,7 +761,7 @@ void topoana::writeRsltIntoTxtFl()
                     }
                   fout<<" -->";
                   for(liit++;liit!=subdcyBrIRADcyBr.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
-                  fout<<endl;
+                  fout<<"  &  "<<vIMDcyBr[k]<<endl;
                 }
               fout<<endl;
             }
