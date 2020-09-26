@@ -74,10 +74,20 @@ void topoana::getRslt()
 
   const unsigned int nOthChns=m_othTtrNms.size()>0?m_othTtrNms.size():1;
   TChain * othChns[nOthChns];
+  vector< vector<unsigned long> > vVOthNEtr;
+  vVOthNEtr.clear();
+  vector<unsigned long> vOthNEtr;
   for(unsigned int i=0;i<m_othTtrNms.size();i++)
     {
       othChns[i]=new TChain(m_othTtrNms[i].c_str());
-      for(unsigned int j=0;j<m_nmsOfIptRootFls.size();j++) othChns[i]->Add(m_nmsOfIptRootFls[j].c_str());
+      vOthNEtr.clear();
+      vOthNEtr.push_back(0);
+      for(unsigned int j=0;j<m_nmsOfIptRootFls.size();j++)
+        {
+          othChns[i]->Add(m_nmsOfIptRootFls[j].c_str());
+          vOthNEtr.push_back(othChns[i]->GetEntries());
+        }
+      vVOthNEtr.push_back(vOthNEtr);
     }
 
   bool openANewOptRootFl=true;
@@ -87,6 +97,8 @@ void topoana::getRslt()
   TTree * tr;
   const unsigned int nOthTrs=m_othTtrNms.size()>0?m_othTtrNms.size():1;
   TTree * othTrs[nOthTrs];
+  // The following clone tag is used for the cases of multiple output root files which are not produced with an explicit one-by-one relationship to the input root files. It is initialized with 0, assigned to 1 after the other TTree objects are cloned, and assigned to 2 after the cloned TTree objects in memory are deleted.
+  int cloneTag=0;
   bool closeTheOptRootFl1;
   bool closeTheOptRootFl2;
   bool closeTheOptRootFl3;
@@ -324,7 +336,21 @@ void topoana::getRslt()
                   createBrs(m_vSigIncOrIRACascDcyBr.size(), "SigIncOrIRACascDcyBr", m_vNm_sigIncOrIRACascDcyBr, iCcSigIncOrIRACascDcyBr, tr, nSigIncOrIRACascDcyBr, nCcSigIncOrIRACascDcyBr, nAllSigIncOrIRACascDcyBr);
                 }
 
-              if(m_supprOptRootFls==false) for(unsigned int j=0;j<m_othTtrNms.size();j++) othTrs[j]=othChns[j]->CloneTree();
+              if(m_supprOptRootFls==false)
+                {
+                  if(m_oneOptRootFlByOneIptRootFl==false)
+                    {
+                      if(cloneTag==0)
+                        {
+                          for(unsigned int j=0;j<m_othTtrNms.size();j++) othTrs[j]=othChns[j]->CloneTree();
+                          cloneTag=1;
+                        }
+                    }
+                  else
+                    {
+                      for(unsigned int j=0;j<m_othTtrNms.size();j++) othTrs[j]=othChns[j]->CopyTree("","",vVOthNEtr[j][iOptRootFls+1]-vVOthNEtr[j][iOptRootFls],vVOthNEtr[j][iOptRootFls]);
+                    }
+                }
             }
 
           chn->GetEntry(i);
@@ -365,7 +391,11 @@ void topoana::getRslt()
                     {
                       if(m_supprOptRootFls==false) fl->Write();
                       delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
-                      for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j]; 
+                      if(cloneTag==0||cloneTag==1)
+                        {
+                          for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
+                          if(cloneTag==1) cloneTag=2;
+                        }
                       fl->Close();
                       delete fl;
                       if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
@@ -415,7 +445,11 @@ void topoana::getRslt()
                     {
                       if(m_supprOptRootFls==false) fl->Write();
                       delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
-                      for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
+                      if(cloneTag==0||cloneTag==1)
+                        {
+                          for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
+                          if(cloneTag==1) cloneTag=2;
+                        }
                       fl->Close();
                       delete fl;
                       if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
@@ -2023,7 +2057,11 @@ void topoana::getRslt()
             {
               if(m_supprOptRootFls==false) fl->Write();
               delete tr; // Pay attention to that replacing the "delete tr" by "tr->Delete()" will result in a problem of "*** Break *** segmentation violation".
-              for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
+              if(cloneTag==0||cloneTag==1)
+                {
+                  for(unsigned int j=0;j<m_othTtrNms.size();j++) delete othTrs[j];
+                  if(cloneTag==1) cloneTag=2;
+                }
               fl->Close();
               delete fl;
               if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
