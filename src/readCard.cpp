@@ -41,6 +41,7 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% Names of input root files")
         {
           readOpenCurly(fin,line,"% Names of input root files");
+          m_nmsOfIptRootFls.clear();
           read1stLineOrCloseCurly(fin,line,true,"No root file names are found in the item with the prompt \"% Names of input root files");
           m_nmsOfIptRootFls.push_back(line);
           while(1)
@@ -530,6 +531,7 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% Other TTree names")
         {
+          m_othTtrNms.clear();
           readOpenCurly(fin,line,"% Other TTree names");
           while(1)
             {
