@@ -178,7 +178,7 @@
 
 }
 
-# Only single-line cuts are supported in the item just like in the method Draw() and GetEntries() of the class TTree.
+# In the old versions prior to 02-07-03, only single-line cuts are supported in the item just like the cases in the method Draw() and GetEntries() of the class TTree. Starting from the version 02-07-03, these cuts are also allowed to be divided into two or more lines in order to express them clearer.
 % Cut to select entries
 {
 

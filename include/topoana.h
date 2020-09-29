@@ -38,6 +38,7 @@ class topoana
     string m_strgTpOfRawIptTopoDat;
     bool m_fixMidxBESIII;
     unsigned long m_nEtrMax;
+    vector<string> m_vCut;
     string m_cut;
     bool m_cutMethod;
     unsigned long m_hHdDcyBrsMax;
@@ -250,8 +251,8 @@ class topoana
   public:
     topoana()
     {
-      m_pkgPath="/workfs/bes/zhouxy/topoana-02-06-03/";
-      m_verNum="v2.7.2";
+      m_pkgPath="/workfs/bes/zhouxy/topoana-02-07-03/";
+      m_verNum="v2.7.3";
       m_cardFlNm0=m_pkgPath+"share/underlying_topoana.card";
 
       m_nmsOfIptRootFls.clear();
@@ -264,6 +265,7 @@ class topoana
       m_strgTpOfRawIptTopoDat="AOI";
       m_fixMidxBESIII=false;
       m_nEtrMax=ULONG_MAX; // ULONG_MAX=9223372036854775807 is the maximum unsigned long int number. 
+      m_vCut.clear();
       m_cutMethod=false;
       m_hHdDcyBrsMax=ULONG_MAX;
       m_vIdPid.clear();

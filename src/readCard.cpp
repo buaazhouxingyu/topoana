@@ -140,12 +140,21 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% Cut to select entries")
         {
           readOpenCurly(fin,line,"% Cut to select entries");
-          read1stLineOrCloseCurly(fin,line,false,"% Cut to select entries");
-          if(line!="}")
+          m_vCut.clear();
+          while(1)
             {
-              m_cut=line;
-              readCloseCurly(fin,line,"% Cut to select entries");
+              readExtraLinesOrCloseCurly(fin,line,"% Cut to select entries");
+              if(line=="}")
+                {
+                  break;
+                }
+              else
+                {
+                  m_vCut.push_back(line);
+                }
             }
+          m_cut.clear();
+          for(unsigned int i=0;i<m_vCut.size();i++) m_cut=m_cut+m_vCut[i];
         }
       else if(line=="% Method to apply cut to array variables (Two options: T and F. Default: F)")
         {
@@ -531,8 +540,8 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% Other TTree names")
         {
-          m_othTtrNms.clear();
           readOpenCurly(fin,line,"% Other TTree names");
+          m_othTtrNms.clear();
           while(1)
             {
               readExtraLinesOrCloseCurly(fin,line,"% Other TTree names");

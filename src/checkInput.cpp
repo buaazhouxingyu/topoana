@@ -324,6 +324,7 @@ void topoana::checkInput()
     }
   else
     {
+      if(m_vCut.size()>1) for(unsigned int i=0;i<m_vCut.size();i++) cout<<"Cut segment in Line "<<i<<": "<<m_vCut[i]<<endl;
       cout<<"Cut to select entries: "<<m_cut<<endl<<endl;
       if(m_cutMethod==true)
         {
