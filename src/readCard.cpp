@@ -559,6 +559,10 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Suppress output root files (Two options: Y and N. Default: N)", m_supprOptRootFls);
         }
+      else if(line=="% Flat array tbranches locally in each output root file (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Flat array tbranches locally in each output root file (Two options: Y and N. Default: N)", m_flatArrayBrsLocally);
+        }
       else if(line=="% Verbose level of standard output (Two options: Y and N. Default: N)")
         {
           readYNItem(fin, line, "% Verbose level of standard output (Two options: Y and N. Default: N)", m_vbsLevStdOut);

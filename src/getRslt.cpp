@@ -92,6 +92,8 @@ void topoana::getRslt()
 
   bool openANewOptRootFl=true;
   unsigned int iOptRootFls=0;
+  vector<string> nmsOfOptRootFls;
+  nmsOfOptRootFls.clear();
   string NmOfOptRootFl;
   TFile * fl;
   TTree * tr;
@@ -399,7 +401,7 @@ void topoana::getRslt()
                       fl->Close();
                       delete fl;
                       if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
-                      if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(NmOfOptRootFl);
+                      if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) nmsOfOptRootFls.push_back(NmOfOptRootFl);
                       if(m_supprOptRootFls==true)
                         {
                           string rmcmd="rm "+NmOfOptRootFl;
@@ -453,7 +455,7 @@ void topoana::getRslt()
                       fl->Close();
                       delete fl;
                       if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
-                      if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(NmOfOptRootFl);
+                      if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) nmsOfOptRootFls.push_back(NmOfOptRootFl);
                       if(m_supprOptRootFls==true)
                         {
                           string rmcmd="rm "+NmOfOptRootFl;
@@ -2065,7 +2067,7 @@ void topoana::getRslt()
               fl->Close();
               delete fl;
               if(m_rmIptTBrs==true&&m_supprOptRootFls==false) rmIptBrs(NmOfOptRootFl);
-              if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(NmOfOptRootFl);
+              if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) nmsOfOptRootFls.push_back(NmOfOptRootFl);
               if(m_supprOptRootFls==true)
                 {
                   string rmcmd="rm "+NmOfOptRootFl;
@@ -2077,6 +2079,7 @@ void topoana::getRslt()
 
           if(m_avoidOverCounting==true) isTheEvtPrcsd=true;
         }
+      if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(nmsOfOptRootFls);
       if(!m_cut.empty()) cout<<"Note that only "<<nEtrThroughTheCut<<" entries passed the cut."<<endl<<endl;
 
       cout<<"There are "<<sumOfNps<<" MC generated particles in total in all the ";

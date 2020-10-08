@@ -5,6 +5,11 @@
 void topoana::activateBrs(unsigned int size, string NM1, string NM2, string NM3, string NM4, string NM5, vector<string> vNm, vector<int> vICc, TTree * tr, unsigned int * nMax, unsigned int & nMax_Max, unsigned int * nCcMax, unsigned int & nCcMax_Max)
 {
   char nm[50],nm2[50],specifier1[100],specifier2[100],specifier3[100],specifier4[100];
+  if(m_flatArrayBrsLocally==true)
+    {
+      nMax_Max=0;
+      nCcMax_Max=0;
+    }
   for(unsigned int i=0;i<size;i++)
     {
       sprintf(nm, "%s_%s", NM1.c_str(), vNm[i].c_str());
@@ -19,8 +24,8 @@ void topoana::activateBrs(unsigned int size, string NM1, string NM2, string NM3,
               tr->SetBranchStatus(specifier1, 1);
               tr->SetBranchStatus(specifier2, 1);
               tr->SetBranchStatus(specifier3, 1);
-              nMax[i]=tr->GetMaximum(specifier1);
-              if(nMax[i]>nMax_Max) nMax_Max=nMax[i];                
+              if(m_flatArrayBrsLocally==true) nMax[i]=tr->GetMaximum(specifier1);
+              if(m_flatArrayBrsLocally==true) if(nMax[i]>nMax_Max) nMax_Max=nMax[i];
             }
           else
             {
@@ -32,10 +37,10 @@ void topoana::activateBrs(unsigned int size, string NM1, string NM2, string NM3,
               tr->SetBranchStatus(specifier2, 1);
               tr->SetBranchStatus(specifier3, 1);
               tr->SetBranchStatus(specifier4, 1);
-              nMax[i]=tr->GetMaximum(specifier1);
-              if(nMax[i]>nMax_Max) nMax_Max=nMax[i];                
-              nCcMax[i]=tr->GetMaximum(specifier3);
-              if(nCcMax[i]>nCcMax_Max) nCcMax_Max=nCcMax[i];
+              if(m_flatArrayBrsLocally==true) nMax[i]=tr->GetMaximum(specifier1);
+              if(m_flatArrayBrsLocally==true) if(nMax[i]>nMax_Max) nMax_Max=nMax[i];
+              if(m_flatArrayBrsLocally==true) nCcMax[i]=tr->GetMaximum(specifier3);
+              if(m_flatArrayBrsLocally==true) if(nCcMax[i]>nCcMax_Max) nCcMax_Max=nCcMax[i];
             }
         }   
       else 
@@ -44,8 +49,8 @@ void topoana::activateBrs(unsigned int size, string NM1, string NM2, string NM3,
           sprintf(specifier2, "%s%s", NM3.c_str(), nm2);
           tr->SetBranchStatus(specifier1, 1);
           tr->SetBranchStatus(specifier2, 1);
-          nMax[i]=tr->GetMaximum(specifier1);
-          if(nMax[i]>nMax_Max) nMax_Max=nMax[i];
+          if(m_flatArrayBrsLocally==true) nMax[i]=tr->GetMaximum(specifier1);
+          if(m_flatArrayBrsLocally==true) if(nMax[i]>nMax_Max) nMax_Max=nMax[i];
         }
     }
 }

@@ -5,7 +5,7 @@
 #include "TTree.h"
 #include "TBranch.h"
 
-void topoana::flatArrayBrs(string nmOfOptRootFl)
+void topoana::flatArrayBrs(string nmOfOptRootFl, unsigned int * nPIMax_DcyBr, unsigned int * nCcPIMax_DcyBr, unsigned int nPIMax_Max_DcyBr, unsigned int nCcPIMax_Max_DcyBr, unsigned int * nPIMax_CascDcyBr, unsigned int * nCcPIMax_CascDcyBr, unsigned int nPIMax_Max_CascDcyBr, unsigned int nCcPIMax_Max_CascDcyBr, unsigned int * nPIMax_DcyFSt, unsigned int * nCcPIMax_DcyFSt, unsigned int nPIMax_Max_DcyFSt, unsigned int nCcPIMax_Max_DcyFSt, unsigned int * nPIMax_ProdBr, unsigned int * nCcPIMax_ProdBr, unsigned int nPIMax_Max_ProdBr, unsigned int nCcPIMax_Max_ProdBr, unsigned int * nPIMax_Moth, unsigned int * nCcPIMax_Moth, unsigned int nPIMax_Max_Moth, unsigned int nCcPIMax_Max_Moth, unsigned int * nIncDcyBrIMax, unsigned int * nCcIncDcyBrIMax, unsigned int nIncDcyBrIMaxMax, unsigned int nCcIncDcyBrIMaxMax, unsigned int * nIRADcyBrIMax, unsigned int * nCcIRADcyBrIMax, unsigned int nIRADcyBrIMaxMax, unsigned int nCcIRADcyBrIMaxMax)
 {
   unsigned int vAtdbPid_size=m_vPid_compDcyBrP.size();
   unsigned int vAtcdbPid_size=m_vPid_compCascDcyBrP.size();
@@ -63,20 +63,6 @@ void topoana::flatArrayBrs(string nmOfOptRootFl)
 
   TTree *tr_new=tr_old->CloneTree(0);
 
-  unsigned int nPIMax_DcyBr[vAtdbPid_size],nCcPIMax_DcyBr[vAtdbPid_size];
-  unsigned int nPIMax_Max_DcyBr=0,nCcPIMax_Max_DcyBr=0;
-  unsigned int nPIMax_CascDcyBr[vAtcdbPid_size],nCcPIMax_CascDcyBr[vAtcdbPid_size];
-  unsigned int nPIMax_Max_CascDcyBr=0,nCcPIMax_Max_CascDcyBr=0;
-  unsigned int nPIMax_DcyFSt[vAtdfstPid_size],nCcPIMax_DcyFSt[vAtdfstPid_size];
-  unsigned int nPIMax_Max_DcyFSt=0,nCcPIMax_Max_DcyFSt=0;
-  unsigned int nPIMax_ProdBr[vAtpbPid_size],nCcPIMax_ProdBr[vAtpbPid_size];
-  unsigned int nPIMax_Max_ProdBr=0,nCcPIMax_Max_ProdBr=0;
-  unsigned int nPIMax_Moth[vAtmPid_size],nCcPIMax_Moth[vAtmPid_size];
-  unsigned int nPIMax_Max_Moth=0,nCcPIMax_Max_Moth=0;
-  unsigned int nIncDcyBrIMax[vAtecIncDcyBr_size],nCcIncDcyBrIMax[vAtecIncDcyBr_size];
-  unsigned int nIncDcyBrIMaxMax=0,nCcIncDcyBrIMaxMax=0;
-  unsigned int nIRADcyBrIMax[vAtisIRADcyBr_size],nCcIRADcyBrIMax[vAtisIRADcyBr_size];
-  unsigned int nIRADcyBrIMaxMax=0,nCcIRADcyBrIMaxMax=0;
   if(vAtdbPid_size>0)
     {
       activateBrs(vAtdbPid_size, "PDcyBr", "P", "iDcyBr", "iCcDcyBr", "iDcyBrCc", m_vNm_compDcyBrP, m_vICcCompDcyBrP, tr_old, nPIMax_DcyBr, nPIMax_Max_DcyBr, nCcPIMax_DcyBr, nCcPIMax_Max_DcyBr);
@@ -179,4 +165,68 @@ void topoana::flatArrayBrs(string nmOfOptRootFl)
     }
   tr_new->Write("",TObject::kOverwrite); 
   delete fl;
+}
+
+void topoana::flatArrayBrs(vector<string> nmsOfOptRootFls)
+{
+  unsigned int vAtdbPid_size=m_vPid_compDcyBrP.size();
+  unsigned int vAtcdbPid_size=m_vPid_compCascDcyBrP.size();
+  unsigned int vAtdfstPid_size=m_vPid_compDcyFStP.size();
+  unsigned int vAtpbPid_size=m_vPid_compProdBrP.size();
+  unsigned int vAtmPid_size=m_vPid_compMP.size();
+  unsigned int vAtecIncDcyBr_size=m_vCompIncDcyBr.size();
+  unsigned int vAtisIRADcyBr_size=m_vCompIRADcyBr.size();
+
+  unsigned int nPIMax_DcyBr[vAtdbPid_size],nCcPIMax_DcyBr[vAtdbPid_size];
+  unsigned int nPIMax_Max_DcyBr=0,nCcPIMax_Max_DcyBr=0;
+  unsigned int nPIMax_CascDcyBr[vAtcdbPid_size],nCcPIMax_CascDcyBr[vAtcdbPid_size];
+  unsigned int nPIMax_Max_CascDcyBr=0,nCcPIMax_Max_CascDcyBr=0;
+  unsigned int nPIMax_DcyFSt[vAtdfstPid_size],nCcPIMax_DcyFSt[vAtdfstPid_size];
+  unsigned int nPIMax_Max_DcyFSt=0,nCcPIMax_Max_DcyFSt=0;
+  unsigned int nPIMax_ProdBr[vAtpbPid_size],nCcPIMax_ProdBr[vAtpbPid_size];
+  unsigned int nPIMax_Max_ProdBr=0,nCcPIMax_Max_ProdBr=0;
+  unsigned int nPIMax_Moth[vAtmPid_size],nCcPIMax_Moth[vAtmPid_size];
+  unsigned int nPIMax_Max_Moth=0,nCcPIMax_Max_Moth=0;
+  unsigned int nIncDcyBrIMax[vAtecIncDcyBr_size],nCcIncDcyBrIMax[vAtecIncDcyBr_size];
+  unsigned int nIncDcyBrIMaxMax=0,nCcIncDcyBrIMaxMax=0;
+  unsigned int nIRADcyBrIMax[vAtisIRADcyBr_size],nCcIRADcyBrIMax[vAtisIRADcyBr_size];
+  unsigned int nIRADcyBrIMaxMax=0,nCcIRADcyBrIMaxMax=0;
+
+  if(m_flatArrayBrsLocally==false)
+    {
+      TChain * chn=new TChain(m_ttrNm.c_str());
+      for(unsigned int i=0;i<nmsOfOptRootFls.size();i++) chn->Add(nmsOfOptRootFls[i].c_str());
+
+      if(vAtdbPid_size>0)
+        {
+          getMaxAndMax_Max(vAtdbPid_size, "PDcyBr", m_vNm_compDcyBrP, m_vICcCompDcyBrP, chn, nPIMax_DcyBr, nPIMax_Max_DcyBr, nCcPIMax_DcyBr, nCcPIMax_Max_DcyBr);
+        }
+      if(vAtcdbPid_size>0)
+        {
+          getMaxAndMax_Max(vAtcdbPid_size, "PCascDcyBr", m_vNm_compCascDcyBrP, m_vICcCompCascDcyBrP, chn, nPIMax_CascDcyBr, nPIMax_Max_CascDcyBr, nCcPIMax_CascDcyBr, nCcPIMax_Max_CascDcyBr);
+        }
+      if(vAtdfstPid_size>0)
+        {
+          getMaxAndMax_Max(vAtdfstPid_size, "PDcyFSt", m_vNm_compDcyFStP, m_vICcCompDcyFStP, chn, nPIMax_DcyFSt, nPIMax_Max_DcyFSt, nCcPIMax_DcyFSt, nCcPIMax_Max_DcyFSt);
+        }
+      if(vAtpbPid_size>0)
+        {
+          getMaxAndMax_Max(vAtpbPid_size, "PProdBr", m_vNm_compProdBrP, m_vICcCompProdBrP, chn, nPIMax_ProdBr, nPIMax_Max_ProdBr, nCcPIMax_ProdBr, nCcPIMax_Max_ProdBr);
+        }
+      if(vAtmPid_size>0)
+        {
+          getMaxAndMax_Max(vAtmPid_size, "PMoth", m_vNm_compMP, m_vICcCompMP, chn, nPIMax_Moth, nPIMax_Max_Moth, nCcPIMax_Moth, nCcPIMax_Max_Moth);
+        }
+      if(vAtecIncDcyBr_size>0)
+        {
+          getMaxAndMax_Max(vAtecIncDcyBr_size, "IncDcyBr", m_vNm_compIncDcyBr, m_vICcCompIncDcyBr, chn, nIncDcyBrIMax, nIncDcyBrIMaxMax, nCcIncDcyBrIMax, nCcIncDcyBrIMaxMax);
+        }
+      if(vAtisIRADcyBr_size>0)
+        {
+          getMaxAndMax_Max(vAtisIRADcyBr_size, "IRADcyBr", m_vNm_compIRADcyBr, m_vICcCompIRADcyBr, chn, nIRADcyBrIMax, nIRADcyBrIMaxMax, nCcIRADcyBrIMax, nCcIRADcyBrIMaxMax);
+        }
+
+    }
+
+  for(unsigned int i=0;i<nmsOfOptRootFls.size();i++) flatArrayBrs(nmsOfOptRootFls[i], nPIMax_DcyBr, nCcPIMax_DcyBr, nPIMax_Max_DcyBr, nCcPIMax_Max_DcyBr, nPIMax_CascDcyBr, nCcPIMax_CascDcyBr, nPIMax_Max_CascDcyBr, nCcPIMax_Max_CascDcyBr, nPIMax_DcyFSt, nCcPIMax_DcyFSt, nPIMax_Max_DcyFSt, nCcPIMax_Max_DcyFSt, nPIMax_ProdBr, nCcPIMax_ProdBr, nPIMax_Max_ProdBr, nCcPIMax_Max_ProdBr, nPIMax_Moth, nCcPIMax_Moth, nPIMax_Max_Moth, nCcPIMax_Max_Moth, nIncDcyBrIMax, nCcIncDcyBrIMax, nIncDcyBrIMaxMax, nCcIncDcyBrIMaxMax, nIRADcyBrIMax, nCcIRADcyBrIMax, nIRADcyBrIMaxMax, nCcIRADcyBrIMaxMax);
 }

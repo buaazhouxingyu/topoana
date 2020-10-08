@@ -123,6 +123,7 @@ class topoana
     bool m_rmIptTBrs;
     vector<string> m_othTtrNms;
     bool m_supprOptRootFls;
+    bool m_flatArrayBrsLocally;
     bool m_vbsLevStdOut;
 
     vector<int> m_vIdCcPid;
@@ -352,6 +353,7 @@ class topoana
       m_rmIptTBrs=false;
       m_othTtrNms.clear();
       m_supprOptRootFls=false;
+      m_flatArrayBrsLocally=false;
       m_vbsLevStdOut=false;
 
       m_pidOfSISRGam=222222222;
@@ -432,12 +434,14 @@ class topoana
     void           getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vMidx, int idx);
     bool	   isPaADescendantOfPb(vector<int> vMidx, int idxA, int idxB);
     unsigned int   countIncOrIRACascDcyBrInDcyTr(vector<int> vIIncIncOrIRACascDcyBr, vector<int> vIIRAIncOrIRACascDcyBr, vector< list<int> > & incOrIRACascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2, vector<int> vPid, vector<int> vMidx);
-    // The following four functions will be used in the flatArrayBrs function.
+    // The following five functions will be used in the flatArrayBrs functions.
     void 	   disableBrs(unsigned int size, string NM1, string NM2, string NM3, string NM4, string NM5, vector<string> vNm, vector<int> vICc, TTree * tr);
     void           activateBrs(unsigned int size, string NM1, string NM2, string NM3, string NM4, string NM5, vector<string> vNm, vector<int> vICc, TTree * tr, unsigned int * nMax, unsigned int & nMax_Max, unsigned int * nCcMax, unsigned int & nCcMax_Max);
     void           createBrs(unsigned int size, string NM1, string NM2, string NM3, string NM4, string NM5, vector<string> vNm, vector<int> vICc, TTree * tr_old, TTree * tr_new, unsigned int * nMax, unsigned int nMax_Max, unsigned int * nCcMax, unsigned int nCcMax_Max, int * nq, int * iq, int * iCcq, int * nCcq, int * iqCc);
     void           assignDftVals(unsigned int size, vector<int> vICc, unsigned int * nMax, unsigned int nMax_Max, unsigned int * nCcMax, unsigned int nCcMax_Max, int * nq, int * iq, int * iCcq, int * nCcq, int * iqCc, bool isForMoth=false);
-    void           flatArrayBrs(string nmOfOptRootFl);
+    void           getMaxAndMax_Max(unsigned int size, string NM, vector<string> vNm, vector<int> vICc, TChain * chn, unsigned int * nMax, unsigned int & nMax_Max, unsigned int * nCcMax, unsigned int & nCcMax_Max);
+    void           flatArrayBrs(string nmOfOptRootFl, unsigned int * nPIMax_DcyBr, unsigned int * nCcPIMax_DcyBr, unsigned int nPIMax_Max_DcyBr, unsigned int nCcPIMax_Max_DcyBr, unsigned int * nPIMax_CascDcyBr, unsigned int * nCcPIMax_CascDcyBr, unsigned int nPIMax_Max_CascDcyBr, unsigned int nCcPIMax_Max_CascDcyBr, unsigned int * nPIMax_DcyFSt, unsigned int * nCcPIMax_DcyFSt, unsigned int nPIMax_Max_DcyFSt, unsigned int nCcPIMax_Max_DcyFSt, unsigned int * nPIMax_ProdBr, unsigned int * nCcPIMax_ProdBr, unsigned int nPIMax_Max_ProdBr, unsigned int nCcPIMax_Max_ProdBr, unsigned int * nPIMax_Moth, unsigned int * nCcPIMax_Moth, unsigned int nPIMax_Max_Moth, unsigned int nCcPIMax_Max_Moth, unsigned int * nIncDcyBrIMax, unsigned int * nCcIncDcyBrIMax, unsigned int nIncDcyBrIMaxMax, unsigned int nCcIncDcyBrIMaxMax, unsigned int * nIRADcyBrIMax, unsigned int * nCcIRADcyBrIMax, unsigned int nIRADcyBrIMaxMax, unsigned int nCcIRADcyBrIMaxMax);
+    void           flatArrayBrs(vector<string> nmOfOptRootFl);
     void           rmIptBrs(string nmOfOptRootFl);
     template < typename T >
     void           sortBySumOf1stAnd2ndFromLrgToSml(vector<int> & via1, vector<int> & via2, vector<T> & vib1, vector<T> & vib2, vector<int> & vic1, vector<int> & vic2, vector< vector<int> > * vVid1=0, vector< vector<int> > * vVid2=0, vector< vector<int> > * vVie1=0, vector< vector<int> > * vVie2=0);

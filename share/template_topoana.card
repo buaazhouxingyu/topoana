@@ -321,6 +321,11 @@
 
 }
 
+% Flat array tbranches locally in each output root file (Two options: Y and N. Default: N)
+{
+
+}
+
 % Verbose level of standard output (Two options: Y and N. Default: N)
 {
 
