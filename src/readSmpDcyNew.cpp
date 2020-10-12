@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax)
+void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax, vector<string> * vOption)
 {
   int nArrow=countSubstr(line,"-->");
   if(nArrow!=1)
@@ -36,11 +36,13 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
   vPid.clear();
   string nm;
   unsigned long nMax;
+  string option;
 
   iss.str(line);
   int iarrow=-1;
   if(vNm!=0) nm="";
   if(vNMax!=0) nMax=ULONG_MAX;
+  if(vOption!=0) option="";
   while(!iss.eof())
     {
       iss>>txtPnm;
@@ -64,14 +66,42 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
                                 {
                                   iss>>txtPnm;
                                   if(txtPnm.find_first_not_of("0123456789")==string::npos) nMax=strtoul(txtPnm.c_str(),NULL,10);
-                                  else
+                                  else if(txtPnm!="-")
                                     {
                                       cerr<<"Error: The input parameter \""<<txtPnm<<"\" after the second \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
-                                      cerr<<"Infor: It should be an unsigned long integer at which you want to set."<<endl;
+                                      cerr<<"Infor: It should be an unsigned long integer at which you want to set, or just a placeholder as a default value \"ULONG_MAX\" and for the input of the fourth parameter."<<endl;
                                       cerr<<"Infor: Please check it."<<endl;
                                       exit(-1);
                                     }
-                                  
+                                  if(vOption!=0)
+                                    {
+                                      if(!iss.eof())
+                                        {
+                                          iss>>txtPnm;
+                                          if(txtPnm=="&")
+                                            {
+                                              if(!iss.eof())
+                                                {
+                                                  iss>>txtPnm;
+                                                  if(txtPnm=="Is"||txtPnm=="Ig"||txtPnm=="Fs"||txtPnm=="Fg") option=txtPnm;
+                                                  else
+                                                    {
+                                                      cerr<<"Error: The input parameter \""<<txtPnm<<"\" after the third \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
+                                                      cerr<<"Infor: It should be \"Is\", \"Ig\", \"Fs\", or \"Fg\", which stand for \"strict ISR photons\", \"generalized ISR photons\", \"strict FSR photons\", or \"generalized FSR photons\", respectively."<<endl;
+                                                      cerr<<"Infor: Please check it."<<endl;
+                                                      exit(-1);
+                                                    }
+                                                }
+                                            }
+                                          else
+                                            {
+                                              cerr<<"Error: The input \""<<txtPnm<<"\" after the third parameter in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
+                                              cerr<<"Infor: It should be an \"and\" (&) symbol prompting the input of the fourth parameter."<<endl;
+                                              cerr<<"Infor: Please check it."<<endl;
+                                              exit(-1);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                           else
@@ -158,8 +188,16 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
     {
       if(!((vPid[0]==m_pidOfISt1&&vPid[1]==m_pidOfISt2)||(vPid[0]==m_pidOfISt2&&vPid[1]==m_pidOfISt1)))
         {
-          cerr<<"Error: The two initial-state particles in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" are not the electron and positron pair!"<<endl;
-          cerr<<"Infor: If two initial-state particles exist in the line, they should be the electron and positron pair."<<endl;
+          cerr<<"Error: The two initial-state particles in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" are not";
+          writePnmFromPid(cerr,"TxtPnm",m_pidOfISt2);
+          cerr<<" and";
+          writePnmFromPid(cerr,"TxtPnm",m_pidOfISt1);
+          cerr<<"!"<<endl;
+          cerr<<"Infor: If two initial-state particles exist in the line, they should be";
+          writePnmFromPid(cerr,"TxtPnm",m_pidOfISt2);
+          cerr<<" and";
+          writePnmFromPid(cerr,"TxtPnm",m_pidOfISt1);
+          cerr<<"!"<<endl;
           cerr<<"Infor: Please check it."<<endl;
           exit(-1);
         }
@@ -187,4 +225,5 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
   vVPid.push_back(vPid);
   if(vNm!=0) (*vNm).push_back(nm);
   if(vNMax!=0) (*vNMax).push_back(nMax);
+  if(vOption!=0) (*vOption).push_back(option);
 }

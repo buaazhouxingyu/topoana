@@ -392,7 +392,7 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% Component analysis --- inclusive decay branches")
         {
-          readSmpDcyItem(fin, line, "% Component analysis --- inclusive decay branches", m_vVPid_compIncDcyBr, &m_vNm_compIncDcyBr, &m_vNExcCompsToBePrtdMax);
+          readSmpDcyItem(fin, line, "% Component analysis --- inclusive decay branches", m_vVPid_compIncDcyBr, &m_vNm_compIncDcyBr, &m_vNExcCompsToBePrtdMax, &m_vOption_compIncDcyBr);
 	}
       else if(line=="% Component analysis --- intermediate-resonance-allowed decay branches")
         {

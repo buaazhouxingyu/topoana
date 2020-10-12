@@ -627,7 +627,17 @@ void topoana::writeRsltIntoTxtFl()
             }
           fout<<" -->";
           for(liit++;liit!=m_vCompIncDcyBr[i].end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
-          fout<<" + anything:"<<endl<<endl;
+          fout<<" +";
+          if(m_vOption_compIncDcyBr[i]=="") fout<<" anything";
+          else
+            {
+              fout<<" n";
+              if(m_vOption_compIncDcyBr[i]=="Is") writePnmFromPid(fout,"TxtPnm",m_pidOfSISRGam);
+              else if(m_vOption_compIncDcyBr[i]=="Ig") writePnmFromPid(fout,"TxtPnm",m_pidOfGISRGam);
+              else if(m_vOption_compIncDcyBr[i]=="Fs") writePnmFromPid(fout,"TxtPnm",m_pidOfSFSRGam);
+              else if(m_vOption_compIncDcyBr[i]=="Fg") writePnmFromPid(fout,"TxtPnm",m_pidOfGFSRGam);
+            }
+          fout<<":"<<endl<<endl;
 
           list<int> dcyBrIncDcyBr;
           unsigned long nCCase=0;

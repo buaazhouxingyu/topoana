@@ -76,6 +76,7 @@ class topoana
     vector< vector<int> > m_vVPid_compIncDcyBr;
     vector<string> m_vNm_compIncDcyBr;
     vector<unsigned long> m_vNExcCompsToBePrtdMax;
+    vector<string> m_vOption_compIncDcyBr;
     vector< vector<int> > m_vVPid_compIRADcyBr;
     vector<string> m_vNm_compIRADcyBr;
     vector<unsigned long> m_vNIntStrusToBePrtdMax;
@@ -307,6 +308,7 @@ class topoana
       m_vVPid_compIncDcyBr.clear();
       m_vNm_compIncDcyBr.clear();
       m_vNExcCompsToBePrtdMax.clear();
+      m_vOption_compIncDcyBr.clear();
       m_vVPid_compIRADcyBr.clear();
       m_vNm_compIRADcyBr.clear();
       m_vNIntStrusToBePrtdMax.clear();
@@ -415,8 +417,8 @@ class topoana
     void           readP(string & line, string prompt, vector<int> & vPid, vector<string> & vNm, vector<unsigned long> * vNMax, vector<unsigned long> * vHMax, vector<bool> * vOpt);
     void           readPItem(ifstream & fin, string & line, string prompt, vector<int> & vPid, vector<string> & vNm, vector<unsigned long> * vNMax=0, vector<unsigned long> * vHMax=0, vector<bool> * vOpt=0);
     void           readSmpDcyOld(string & line, string prompt, vector<int> & vPid, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax);
-    void           readSmpDcyNew(string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax);
-    void           readSmpDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm=0, vector<unsigned long> * vNMax=0);
+    void           readSmpDcyNew(string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax, vector<string> * vOption);
+    void           readSmpDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm=0, vector<unsigned long> * vNMax=0, vector<string> * vOption=0);
     void	   getVPidandVMidx(vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx);
     void           readCmplxDcyOld(string & line, vector<int> & vPid, vector< vector<int> > & vVPid, vector<int> & vMidx, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk=false);
     void           readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk=false);
@@ -428,7 +430,7 @@ class topoana
     void	   getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector< list<int> > & dcyTr, vector<int> & vIdxOfHead, vector<int> & vMidxOfHead, int pid, unsigned long hCascDcyBrMax=ULONG_MAX);
     void           getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vPid, vector<int> & vMidx, int pid, unsigned long nDcyFSt=ULONG_MAX);
     unsigned int   countIncLiaInVlib(list<int> & lia, vector< list<int> > & Vlib);
-    bool	   isLiaMatchedWithLib(list<int> & lia, list<int> & lib);
+    bool	   isLiaMatchedWithLib(list<int> & lia, list<int> & lib, string option="");
     unsigned int   countCascDcyBrInDcyTr(vector< list<int> > & cascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);
     unsigned int   countIncCascDcyBrInDcyTr(vector<int> vIIncIncCascDcyBr, vector< list<int> > & incCascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);
     void           getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vMidx, int idx);

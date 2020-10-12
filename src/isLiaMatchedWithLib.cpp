@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-bool topoana::isLiaMatchedWithLib(list<int> & lia, list<int> & lib)
+bool topoana::isLiaMatchedWithLib(list<int> & lia, list<int> & lib, string option)
 {
   if(lia.size()<2)
     {
@@ -41,6 +41,11 @@ bool topoana::isLiaMatchedWithLib(list<int> & lia, list<int> & lib)
           for(liitb++;liitb!=lib.end();liitb++)
             {
               if((*liitb)==(*liita)) break; 
+              else if(option=="Is"&&(*liitb)!=m_pidOfSISRGam) return false;
+              else if(option=="Ig"&&(*liitb)!=m_pidOfGISRGam) return false;
+              else if(option=="Fs"&&(*liitb)!=m_pidOfSFSRGam) return false;
+              else if(option=="Fg"&&(*liitb)!=m_pidOfGFSRGam) return false;
+              // The four else if statements above are added to restrict the remaining particles unspecified in the inclusive decay to strict ISR, generalized ISR, strict FSR, and generalized FSR photons, respectively. The logic involved here is somewhat complicated, please think it carefully.
             }
         }
       if(liitb==lib.end()) return false;

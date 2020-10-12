@@ -1,0 +1,16 @@
+% Names of input root files
+{
+  ../input/mixed1.root
+  ../input/mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Component analysis --- inclusive decay branches
+{
+  J/psi --> e+ e-	&	Jpsi2ee		&	-	&	Fg
+  anti-B0 --> D*+ mu- anti-nu_mu	&	B2munuDsp	&	-	&	Fg
+}

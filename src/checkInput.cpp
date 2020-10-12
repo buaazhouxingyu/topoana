@@ -1170,6 +1170,19 @@ void topoana::checkInput()
             {
               if(m_vbsLevStdOut==true) cout<<"  Maximum number of exclusive components to be printed: ULONG_MAX (default)"<<endl;
             }
+          if(m_vOption_compIncDcyBr[i]!="")
+            {
+              cout<<"  The remaining particles unspecified in the inclusive decay are restricted to ";
+              if(m_vOption_compIncDcyBr[i]=="Is") cout<<"strict ISR";
+              if(m_vOption_compIncDcyBr[i]=="Ig") cout<<"generalized ISR";
+              if(m_vOption_compIncDcyBr[i]=="Fs") cout<<"strict FSR";
+              if(m_vOption_compIncDcyBr[i]=="Fg") cout<<"generalized FSR";
+              cout<<" photons."<<endl;
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No restrictions are placed on the remaining particles unspecified in the inclusive decay (default)."<<endl;
+            }
           cout<<endl;
         }
       cout<<endl;
@@ -1286,6 +1299,19 @@ void topoana::checkInput()
           else
             {
               if(m_vbsLevStdOut==true) cout<<"  Maximum number of exclusive components to be printed: ULONG_MAX (default)"<<endl;
+            }
+          if(m_vOption_compIncDcyBr[i]!="")
+            {
+              cout<<"  The remaining particles unspecified in the inclusive decay are restricted to ";
+              if(m_vOption_compIncDcyBr[i]=="Is") cout<<"strict ISR";
+              if(m_vOption_compIncDcyBr[i]=="Ig") cout<<"generalized ISR";
+              if(m_vOption_compIncDcyBr[i]=="Fs") cout<<"strict FSR";
+              if(m_vOption_compIncDcyBr[i]=="Fg") cout<<"generalized FSR";
+              cout<<" photons."<<endl;
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No restrictions are placed on the remaining particles unspecified in the inclusive decay (default)."<<endl;
             }
           cout<<endl;
         }
