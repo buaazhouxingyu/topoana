@@ -1505,6 +1505,20 @@ void topoana::getRslt()
 
           if(m_vCompIncDcyBr.size()>0)
             {
+              // The following thirteen lines of code are added in order to process the inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
+              vector< vector< list<int> > > vVIncDcyBr;
+              vVIncDcyBr.clear();
+              vector< list<int> > vIRADcyBrWithRGam;
+              for(unsigned int j=0;j<m_vCompIncDcyBr.size();j++)
+                {
+                  if(m_vOption_compIncDcyBr[j].find("-IRA")==string::npos) vVIncDcyBr.push_back(dcyTr);
+                  else
+                    {
+                      vIRADcyBrWithRGam.clear();
+                      countIRADcyBr(vPid,vMidx,m_vCompIncDcyBr[j],false,0,&vIRADcyBrWithRGam,m_vOption_compIncDcyBr[j]);
+                      vVIncDcyBr.push_back(vIRADcyBrWithRGam);
+                    }
+                }
               // Pay attention to that dcyBrCcIncDcyBr equate to ccDcyBrIncDcyBr for self-charge-conjugate inclusive decays.
               list<int> dcyBrIncDcyBr, dcyBrCcIncDcyBr;
               dcyBrIncDcyBr.clear(); dcyBrCcIncDcyBr.clear();
@@ -1517,14 +1531,15 @@ void topoana::getRslt()
                       nAllIncDcyBr[j]=0;
                     }
                 }     
-              for(unsigned int j=0;j<dcyTr.size();j++)
+              // Please pay attention to that the order of the following two loops is changed in order to process the inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
+              for(unsigned int k=0;k<m_vCompIncDcyBr.size();k++)
                 {
-                  for(unsigned int k=0;k<m_vCompIncDcyBr.size();k++)
+                  for(unsigned int j=0;j<vVIncDcyBr[k].size();j++)
                     {
-                      if(isLiaMatchedWithLib(m_vCompIncDcyBr[k],dcyTr[j],m_vOption_compIncDcyBr[k]))
+                      if(isLiaMatchedWithLib(m_vCompIncDcyBr[k],vVIncDcyBr[k][j],m_vOption_compIncDcyBr[k]))
                         {
-                          dcyBrIncDcyBr=dcyTr[j];
-                          int _iDcyBrIncDcyBrl=-1; // The variable is added to record the index of the matched, old exclusive decay branch. It differs from _iDcyBrIncDcyBr in the cases where the option is set at "Is", "Ig", "Fs", or "Fg" in order to restrict the remaining particles unspecified in the inclusive decays to strict ISR, generalized ISR, strict FSR, or generalized FSR photons, respectively. In the special cases with restrictions, _iDcyBrIncDcyBr is set to the number of strict ISR, generalized ISR, strict FSR, or generalized FSR photons found in the matched exclusive decay branches.
+                          dcyBrIncDcyBr=vVIncDcyBr[k][j];
+                          int _iDcyBrIncDcyBrl=-1; // The variable is added to record the index of the matched, old exclusive decay branch. It differs from _iDcyBrIncDcyBr in the cases where the option is set at "Is(-IRA)", "Ig(-IRA)", "Fs(-IRA)", or "Fg(-IRA)" in order to restrict the remaining particles unspecified in the inclusive decays to strict ISR, generalized ISR, strict FSR, or generalized FSR photons, respectively. In the special cases with restrictions, _iDcyBrIncDcyBr is set to the number of strict ISR, generalized ISR, strict FSR, or generalized FSR photons found in the matched exclusive decay branches.
                           int _iDcyBrIncDcyBr=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the inclusive decay branch is a new exclusive decay branch of the inclusive decay branch.
                           int _iCcDcyBrIncDcyBr=-9999;
                           for(unsigned int l=0;l<m_vVDcyBrIncDcyBr[k].size();l++)
@@ -1551,10 +1566,10 @@ void topoana::getRslt()
                               // _iDcyBrIncDcyBr=m_vVDcyBrIncDcyBr[k].size();
                               // In the special cases with restrictions, _iDcyBrIncDcyBr is set to the number of strict ISR, generalized ISR, strict FSR, or generalized FSR photons found in the matched exclusive decay branches.
                               if(m_vOption_compIncDcyBr[k]=="") _iDcyBrIncDcyBr=m_vVDcyBrIncDcyBr[k].size();
-                              else if(m_vOption_compIncDcyBr[k]=="Is") _iDcyBrIncDcyBr=count(dcyBrIncDcyBr.begin(),dcyBrIncDcyBr.end(),m_pidOfSISRGam);
-                              else if(m_vOption_compIncDcyBr[k]=="Ig") _iDcyBrIncDcyBr=count(dcyBrIncDcyBr.begin(),dcyBrIncDcyBr.end(),m_pidOfGISRGam);
-                              else if(m_vOption_compIncDcyBr[k]=="Fs") _iDcyBrIncDcyBr=count(dcyBrIncDcyBr.begin(),dcyBrIncDcyBr.end(),m_pidOfSFSRGam);
-                              else if(m_vOption_compIncDcyBr[k]=="Fg") _iDcyBrIncDcyBr=count(dcyBrIncDcyBr.begin(),dcyBrIncDcyBr.end(),m_pidOfGFSRGam);
+                              else if(m_vOption_compIncDcyBr[k]=="Is"||m_vOption_compIncDcyBr[k]=="Is-IRA") _iDcyBrIncDcyBr=count(dcyBrIncDcyBr.begin(),dcyBrIncDcyBr.end(),m_pidOfSISRGam);
+                              else if(m_vOption_compIncDcyBr[k]=="Ig"||m_vOption_compIncDcyBr[k]=="Ig-IRA") _iDcyBrIncDcyBr=count(dcyBrIncDcyBr.begin(),dcyBrIncDcyBr.end(),m_pidOfGISRGam);
+                              else if(m_vOption_compIncDcyBr[k]=="Fs"||m_vOption_compIncDcyBr[k]=="Fs-IRA") _iDcyBrIncDcyBr=count(dcyBrIncDcyBr.begin(),dcyBrIncDcyBr.end(),m_pidOfSFSRGam);
+                              else if(m_vOption_compIncDcyBr[k]=="Fg"||m_vOption_compIncDcyBr[k]=="Fg-IRA") _iDcyBrIncDcyBr=count(dcyBrIncDcyBr.begin(),dcyBrIncDcyBr.end(),m_pidOfGFSRGam);
                               iDcyBrIncDcyBr[k][(unsigned int) (nIncDcyBr[k])]=_iDcyBrIncDcyBr;
                               m_vVDcyBrIncDcyBr[k].push_back(dcyBrIncDcyBr);
                               m_vVIDcyBrIncDcyBr[k].push_back(_iDcyBrIncDcyBr);
@@ -1621,10 +1636,10 @@ void topoana::getRslt()
                             }
                           nIncDcyBr[k]++;
                         } // Here, "&&m_vICcCompIncDcyBr[k]!=0" in the following condition can be removed.
-                      else if(m_ccSwitch==true&&m_vICcCompIncDcyBr[k]!=0&&isLiaMatchedWithLib(m_vCompCcIncDcyBr[k],dcyTr[j],m_vOption_compIncDcyBr[k]))
+                      else if(m_ccSwitch==true&&m_vICcCompIncDcyBr[k]!=0&&isLiaMatchedWithLib(m_vCompCcIncDcyBr[k],vVIncDcyBr[k][j],m_vOption_compIncDcyBr[k]))
                         {
-                          dcyBrCcIncDcyBr=dcyTr[j];
-                          int _iDcyBrIncDcyBrl=-1; // The variable is added to record the index of the matched, old exclusive decay branch. It differs from _iDcyBrIncDcyBr in the cases where the option is set at "Is", "Ig", "Fs", or "Fg" in order to restrict the remaining particles unspecified in the inclusive decays to strict ISR, generalized ISR, strict FSR, or generalized FSR photons, respectively. In the special cases with restrictions, _iDcyBrIncDcyBr is set to the number of strict ISR, generalized ISR, strict FSR, or generalized FSR photons found in the matched exclusive decay branches.
+                          dcyBrCcIncDcyBr=vVIncDcyBr[k][j];
+                          int _iDcyBrIncDcyBrl=-1; // The variable is added to record the index of the matched, old exclusive decay branch. It differs from _iDcyBrIncDcyBr in the cases where the option is set at "Is(-IRA)", "Ig(-IRA)", "Fs(-IRA)", or "Fg(-IRA)" in order to restrict the remaining particles unspecified in the inclusive decays to strict ISR, generalized ISR, strict FSR, or generalized FSR photons, respectively. In the special cases with restrictions, _iDcyBrIncDcyBr is set to the number of strict ISR, generalized ISR, strict FSR, or generalized FSR photons found in the matched exclusive decay branches.
                           int _iDcyBrIncDcyBr=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the inclusive decay branch is a new exclusive decay branch of the inclusive decay branch.
                           for(unsigned int l=0;l<m_vVDcyBrCcIncDcyBr[k].size();l++)
                             {
@@ -1641,10 +1656,10 @@ void topoana::getRslt()
                               // _iDcyBrIncDcyBr=m_vVDcyBrCcIncDcyBr[k].size();
                               // In the special cases with restrictions, _iDcyBrIncDcyBr is set to the number of strict ISR, generalized ISR, strict FSR, or generalized FSR photons found in the matched exclusive decay branches.
                               if(m_vOption_compIncDcyBr[k]=="") _iDcyBrIncDcyBr=m_vVDcyBrCcIncDcyBr[k].size();
-                              else if(m_vOption_compIncDcyBr[k]=="Is") _iDcyBrIncDcyBr=count(dcyBrCcIncDcyBr.begin(),dcyBrCcIncDcyBr.end(),m_pidOfSISRGam);
-                              else if(m_vOption_compIncDcyBr[k]=="Ig") _iDcyBrIncDcyBr=count(dcyBrCcIncDcyBr.begin(),dcyBrCcIncDcyBr.end(),m_pidOfGISRGam);
-                              else if(m_vOption_compIncDcyBr[k]=="Fs") _iDcyBrIncDcyBr=count(dcyBrCcIncDcyBr.begin(),dcyBrCcIncDcyBr.end(),m_pidOfSFSRGam);
-                              else if(m_vOption_compIncDcyBr[k]=="Fg") _iDcyBrIncDcyBr=count(dcyBrCcIncDcyBr.begin(),dcyBrCcIncDcyBr.end(),m_pidOfGFSRGam);
+                              else if(m_vOption_compIncDcyBr[k]=="Is"||m_vOption_compIncDcyBr[k]=="Is-IRA") _iDcyBrIncDcyBr=count(dcyBrCcIncDcyBr.begin(),dcyBrCcIncDcyBr.end(),m_pidOfSISRGam);
+                              else if(m_vOption_compIncDcyBr[k]=="Ig"||m_vOption_compIncDcyBr[k]=="Ig-IRA") _iDcyBrIncDcyBr=count(dcyBrCcIncDcyBr.begin(),dcyBrCcIncDcyBr.end(),m_pidOfGISRGam);
+                              else if(m_vOption_compIncDcyBr[k]=="Fs"||m_vOption_compIncDcyBr[k]=="Fs-IRA") _iDcyBrIncDcyBr=count(dcyBrCcIncDcyBr.begin(),dcyBrCcIncDcyBr.end(),m_pidOfSFSRGam);
+                              else if(m_vOption_compIncDcyBr[k]=="Fg"||m_vOption_compIncDcyBr[k]=="Fg-IRA") _iDcyBrIncDcyBr=count(dcyBrCcIncDcyBr.begin(),dcyBrCcIncDcyBr.end(),m_pidOfGFSRGam);
                               iDcyBrCcIncDcyBr[k][(unsigned int) (nCcIncDcyBr[k])]=_iDcyBrIncDcyBr;
                               m_vVDcyBrCcIncDcyBr[k].push_back(dcyBrCcIncDcyBr);
                               m_vVIDcyBrCcIncDcyBr[k].push_back(_iDcyBrIncDcyBr);

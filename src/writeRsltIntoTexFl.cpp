@@ -1099,17 +1099,18 @@ void topoana::writeRsltIntoTexFl()
                       liit++;
                       writePnmFromPid(fout,"TexPnm",(*liit));
                     }
-                  fout<<"\\rightarrow ";
+                  if(m_vOption_compIncDcyBr[i].find("-IRA")==string::npos) fout<<"\\rightarrow ";
+                  else fout<<"\\dashrightarrow ";
                   for(liit++;liit!=m_vCompIncDcyBr[i].end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
                   fout<<"+ ";
                   if(m_vOption_compIncDcyBr[i]=="") fout<<"anything ";
                   else
                     {
                       fout<<"n ";
-                      if(m_vOption_compIncDcyBr[i]=="Is") writePnmFromPid(fout,"TexPnm",m_pidOfSISRGam);
-                      else if(m_vOption_compIncDcyBr[i]=="Ig") writePnmFromPid(fout,"TexPnm",m_pidOfGISRGam);
-                      else if(m_vOption_compIncDcyBr[i]=="Fs") writePnmFromPid(fout,"TexPnm",m_pidOfSFSRGam);
-                      else if(m_vOption_compIncDcyBr[i]=="Fg") writePnmFromPid(fout,"TexPnm",m_pidOfGFSRGam);
+                      if(m_vOption_compIncDcyBr[i]=="Is"||m_vOption_compIncDcyBr[i]=="Is-IRA") writePnmFromPid(fout,"TexPnm",m_pidOfSISRGam);
+                      else if(m_vOption_compIncDcyBr[i]=="Ig"||m_vOption_compIncDcyBr[i]=="Ig-IRA") writePnmFromPid(fout,"TexPnm",m_pidOfGISRGam);
+                      else if(m_vOption_compIncDcyBr[i]=="Fs"||m_vOption_compIncDcyBr[i]=="Fs-IRA") writePnmFromPid(fout,"TexPnm",m_pidOfSFSRGam);
+                      else if(m_vOption_compIncDcyBr[i]=="Fg"||m_vOption_compIncDcyBr[i]=="Fg-IRA") writePnmFromPid(fout,"TexPnm",m_pidOfGFSRGam);
                     }
                   fout<<"$.}"<<endl;
                   fout<<"\\tableheader";
@@ -1122,17 +1123,18 @@ void topoana::writeRsltIntoTexFl()
                       liit++;
                       writePnmFromPid(fout,"TexPnm",(*liit));
                     }
-                  fout<<"\\rightarrow ";
+                  if(m_vOption_compIncDcyBr[i].find("-IRA")==string::npos) fout<<"\\rightarrow ";
+                  else fout<<"\\dashrightarrow ";
                   for(liit++;liit!=m_vCompIncDcyBr[i].end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
                   fout<<"+ ";
                   if(m_vOption_compIncDcyBr[i]=="") fout<<"anything ";
                   else
                     {
                       fout<<"n ";
-                      if(m_vOption_compIncDcyBr[i]=="Is") writePnmFromPid(fout,"TexPnm",m_pidOfSISRGam);
-                      else if(m_vOption_compIncDcyBr[i]=="Ig") writePnmFromPid(fout,"TexPnm",m_pidOfGISRGam);
-                      else if(m_vOption_compIncDcyBr[i]=="Fs") writePnmFromPid(fout,"TexPnm",m_pidOfSFSRGam);
-                      else if(m_vOption_compIncDcyBr[i]=="Fg") writePnmFromPid(fout,"TexPnm",m_pidOfGFSRGam);
+                      if(m_vOption_compIncDcyBr[i]=="Is"||m_vOption_compIncDcyBr[i]=="Is-IRA") writePnmFromPid(fout,"TexPnm",m_pidOfSISRGam);
+                      else if(m_vOption_compIncDcyBr[i]=="Ig"||m_vOption_compIncDcyBr[i]=="Ig-IRA") writePnmFromPid(fout,"TexPnm",m_pidOfGISRGam);
+                      else if(m_vOption_compIncDcyBr[i]=="Fs"||m_vOption_compIncDcyBr[i]=="Fs-IRA") writePnmFromPid(fout,"TexPnm",m_pidOfSFSRGam);
+                      else if(m_vOption_compIncDcyBr[i]=="Fg"||m_vOption_compIncDcyBr[i]=="Fg-IRA") writePnmFromPid(fout,"TexPnm",m_pidOfGFSRGam);
                     }
                   fout<<"$} & \\topoTags{iDcyBrIncDcyBr & }nCase & ";
                   if(m_ccSwitch==true) fout<<"nCcCase & nAllCase & ";
@@ -1149,7 +1151,8 @@ void topoana::writeRsltIntoTexFl()
                   liit++;
                   writePnmFromPid(fout,"TexPnm",(*liit));
                 }
-              fout<<"\\rightarrow ";
+              if(m_vOption_compIncDcyBr[i].find("-IRA")==string::npos) fout<<"\\rightarrow ";
+              else fout<<"\\dashrightarrow ";
               for(liit++;liit!=dcyBrIncDcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
               fout<<"$ & \\topoTags{"<<m_vVIDcyBrIncDcyBr[i][j]<<" & }"<<m_vVNDcyBrIncDcyBr[i][j]<<" & ";
               if(m_ccSwitch==true)
@@ -1178,7 +1181,8 @@ void topoana::writeRsltIntoTexFl()
                           liit++;
                           writePnmFromPid(fout,"TexPnm",(*liit));
                         }
-                      fout<<"\\rightarrow ";
+                      if(m_vOption_compIncDcyBr[i].find("-IRA")==string::npos) fout<<"\\rightarrow ";
+                      else fout<<"\\dashrightarrow ";
                       for(liit++;liit!=m_vCompIncDcyBr[i].end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
                       fout<<"+ \\rm{others \\  ("<<m_vVDcyBrIncDcyBr[i].size()-nDcyBrIncDcyBrToBePrtd<<" \\  in \\  total)} $ & \\topoTags{--- & }";
                       unsigned long nCCaseOfRest=0;

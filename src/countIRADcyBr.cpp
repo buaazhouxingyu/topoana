@@ -2,8 +2,9 @@
 #include <cstdlib>
 #include <iostream>
 
-// The fourth argument is appended for the special usage in the "countIncOrIRACascDcyBrInDcyTr" method. 
-unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched, vector< vector< list<int> > > * vDcyBrIRADcyBr)
+// The fourth argument is added for the special usage in the "countIncOrIRACascDcyBrInDcyTr" method, while the fifth and sixth arguments are appendied for the functionality of the component analysis over inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
+
+unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched, vector< vector< list<int> > > * vDcyBrIRADcyBr,vector< list<int> > * vIRADcyBrWithRGam,string option)
 {
   vector<int> vIdx;
   vIdx.clear();
@@ -31,9 +32,12 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
   list<int> subDcyBrIRADcyBr;
   vector<int> vIdxOld;
   vector<int> vIdxYng;
+  if(vIRADcyBrWithRGam!=0) (*vIRADcyBrWithRGam).clear();
+  list<int> IRADcyBrWithRGam;
   for(unsigned int i=0;i<vIdx.size();i++)
     {
       IRADcyBrTmp.clear();
+      if(vIRADcyBrWithRGam!=0) IRADcyBrWithRGam.clear();
       for(unsigned int j=vIdx[i]+1;j<vPid.size();j++)
         {
           bool specifiedP=false;
@@ -111,23 +115,38 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
               // The following condition "abs(vPid[j])==m_pidOfGam" is exerted specially for the comparison without final state photons.
               if(fromTheP==true)
                 {
-                  IRADcyBrTmp.push_back(vPid[j]);
+                  if(vIRADcyBrWithRGam==0) IRADcyBrTmp.push_back(vPid[j]);
+                  else
+                    {
+                      if(option=="Is-IRA"&&vPid[j]!=m_pidOfSISRGam) IRADcyBrTmp.push_back(vPid[j]);
+                      else if(option=="Ig-IRA"&&vPid[j]!=m_pidOfGISRGam) IRADcyBrTmp.push_back(vPid[j]);
+                      else if(option=="Fs-IRA"&&vPid[j]!=m_pidOfSFSRGam) IRADcyBrTmp.push_back(vPid[j]);
+                      else if(option=="Fg-IRA"&&vPid[j]!=m_pidOfGFSRGam) IRADcyBrTmp.push_back(vPid[j]);
+                      IRADcyBrWithRGam.push_back(vPid[j]);
+                    }
                 }
             } 
         }
      if(IRADcyBrTmp.size()>0)
        {
          sortByPidAndPchrg(IRADcyBrTmp);
+         if(vIRADcyBrWithRGam!=0) sortByPidAndPchrg(IRADcyBrWithRGam);
          liit=IRADcyBr.begin();
          // The condition "(*liit)==m_pidOfISt2" is used for the special IRADcyBr started with the initial particles.
          if((*liit)!=m_pidOfISt2)
            {
              IRADcyBrTmp.push_front((*liit));
+             if(vIRADcyBrWithRGam!=0) IRADcyBrWithRGam.push_front((*liit));
            }
          else
            {
              IRADcyBrTmp.push_front(m_pidOfISt1);
              IRADcyBrTmp.push_front(m_pidOfISt2);
+             if(vIRADcyBrWithRGam!=0)
+               {
+                 IRADcyBrWithRGam.push_front(m_pidOfISt1);
+                 IRADcyBrWithRGam.push_front(m_pidOfISt2);
+               }
            }
          if(IRADcyBrTmp==IRADcyBr)
            {
@@ -191,6 +210,7 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
                    } 
                  (*vDcyBrIRADcyBr).push_back(dcyBrIRADcyBr);
                }
+             if(vIRADcyBrWithRGam!=0) (*vIRADcyBrWithRGam).push_back(IRADcyBrWithRGam);
            }
        }
     }

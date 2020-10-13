@@ -83,11 +83,12 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
                                               if(!iss.eof())
                                                 {
                                                   iss>>txtPnm;
-                                                  if(txtPnm=="Is"||txtPnm=="Ig"||txtPnm=="Fs"||txtPnm=="Fg") option=txtPnm;
+                                                  if(txtPnm=="Is"||txtPnm=="Ig"||txtPnm=="Fs"||txtPnm=="Fg"||txtPnm=="Is-IRA"||txtPnm=="Ig-IRA"||txtPnm=="Fs-IRA"||txtPnm=="Fg-IRA") option=txtPnm;
                                                   else
                                                     {
                                                       cerr<<"Error: The input parameter \""<<txtPnm<<"\" after the third \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
                                                       cerr<<"Infor: It should be \"Is\", \"Ig\", \"Fs\", or \"Fg\", which stand for \"strict ISR photons\", \"generalized ISR photons\", \"strict FSR photons\", or \"generalized FSR photons\", respectively."<<endl;
+                                                      cerr<<"Infor: It can also be \"Is-IRA\", \"Ig-IRA\", \"Fs-IRA\", or \"Fg-IRA\", where the suffix \"-IRA\" is added to indicate that the specified decay branch is intermediate-resonance-allowed."<<endl;
                                                       cerr<<"Infor: Please check it."<<endl;
                                                       exit(-1);
                                                     }

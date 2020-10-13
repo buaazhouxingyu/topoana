@@ -404,7 +404,7 @@ class topoana
     void           getDcyTr(vector<int> vPid, vector<int> vMidx, vector< list<int> > & dcyTr, vector<int> * vIdxOfHead=0, vector<int> * vMidxOfHead=0, vector<int> * vIIncIncOrIRACascDcyBr=0, vector<int> * vIIRAIncOrIRACascDcyBr=0);
     void           sortByPidAndPchrg(list<int> &lia);
     void           getDcyIFSts(vector<int> & vPid,vector<int> & vMidx,list<int> & dcyIFSts);
-    unsigned int   countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched=false,vector< vector< list<int> > > * vDcyBrIRADcyBr=0);
+    unsigned int   countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched=false,vector< vector< list<int> > > * vDcyBrIRADcyBr=0,vector< list<int> > * vIRADcyBrWithRGam=0,string option="");
     void           readOpenCurly(ifstream & fin, string & line, string prompt);
     void           read1stLineOrCloseCurly(ifstream & fin, string & line, bool essential, string errinforprompt);
     void           readExtraLinesOrCloseCurly(ifstream & fin, string & line, string prompt);

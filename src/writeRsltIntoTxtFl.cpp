@@ -625,17 +625,18 @@ void topoana::writeRsltIntoTxtFl()
               liit++;
               writePnmFromPid(fout,"TxtPnm",(*liit));
             }
-          fout<<" -->";
+          if(m_vOption_compIncDcyBr[i].find("-IRA")==string::npos) fout<<" -->";
+          else fout<<" --->";
           for(liit++;liit!=m_vCompIncDcyBr[i].end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
           fout<<" +";
           if(m_vOption_compIncDcyBr[i]=="") fout<<" anything";
           else
             {
               fout<<" n";
-              if(m_vOption_compIncDcyBr[i]=="Is") writePnmFromPid(fout,"TxtPnm",m_pidOfSISRGam);
-              else if(m_vOption_compIncDcyBr[i]=="Ig") writePnmFromPid(fout,"TxtPnm",m_pidOfGISRGam);
-              else if(m_vOption_compIncDcyBr[i]=="Fs") writePnmFromPid(fout,"TxtPnm",m_pidOfSFSRGam);
-              else if(m_vOption_compIncDcyBr[i]=="Fg") writePnmFromPid(fout,"TxtPnm",m_pidOfGFSRGam);
+              if(m_vOption_compIncDcyBr[i]=="Is"||m_vOption_compIncDcyBr[i]=="Is-IRA") writePnmFromPid(fout,"TxtPnm",m_pidOfSISRGam);
+              else if(m_vOption_compIncDcyBr[i]=="Ig"||m_vOption_compIncDcyBr[i]=="Ig-IRA") writePnmFromPid(fout,"TxtPnm",m_pidOfGISRGam);
+              else if(m_vOption_compIncDcyBr[i]=="Fs"||m_vOption_compIncDcyBr[i]=="Fs-IRA") writePnmFromPid(fout,"TxtPnm",m_pidOfSFSRGam);
+              else if(m_vOption_compIncDcyBr[i]=="Fg"||m_vOption_compIncDcyBr[i]=="Fg-IRA") writePnmFromPid(fout,"TxtPnm",m_pidOfGFSRGam);
             }
           fout<<":"<<endl<<endl;
 
@@ -669,7 +670,8 @@ void topoana::writeRsltIntoTxtFl()
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
                 }
-              fout<<" -->";
+              if(m_vOption_compIncDcyBr[i].find("-IRA")==string::npos) fout<<" -->";
+              else fout<<" --->";
               for(liit++;liit!=dcyBrIncDcyBr.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
               fout<<endl<<endl;
             }
@@ -707,7 +709,8 @@ void topoana::writeRsltIntoTxtFl()
                   liit++;
                   writePnmFromPid(fout,"TxtPnm",(*liit));
                 }
-              fout<<" -->";
+              if(m_vOption_compIncDcyBr[i].find("-IRA")==string::npos) fout<<" -->";
+              else fout<<" --->";
               for(liit++;liit!=m_vCompIncDcyBr[i].end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
               fout<<" + others ("<<m_vVDcyBrIncDcyBr[i].size()-nDcyBrIncDcyBrToBePrtd<<" in total)";
               fout<<endl<<endl;

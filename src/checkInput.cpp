@@ -1173,11 +1173,12 @@ void topoana::checkInput()
           if(m_vOption_compIncDcyBr[i]!="")
             {
               cout<<"  The remaining particles unspecified in the inclusive decay are restricted to ";
-              if(m_vOption_compIncDcyBr[i]=="Is") cout<<"strict ISR";
-              if(m_vOption_compIncDcyBr[i]=="Ig") cout<<"generalized ISR";
-              if(m_vOption_compIncDcyBr[i]=="Fs") cout<<"strict FSR";
-              if(m_vOption_compIncDcyBr[i]=="Fg") cout<<"generalized FSR";
+              if(m_vOption_compIncDcyBr[i]=="Is"||m_vOption_compIncDcyBr[i]=="Is-IRA") cout<<"strict ISR";
+              else if(m_vOption_compIncDcyBr[i]=="Ig"||m_vOption_compIncDcyBr[i]=="Ig-IRA") cout<<"generalized ISR";
+              else if(m_vOption_compIncDcyBr[i]=="Fs"||m_vOption_compIncDcyBr[i]=="Fs-IRA") cout<<"strict FSR";
+              else if(m_vOption_compIncDcyBr[i]=="Fg"||m_vOption_compIncDcyBr[i]=="Fg-IRA") cout<<"generalized FSR";
               cout<<" photons."<<endl;
+              if(m_vOption_compIncDcyBr[i].find("-IRA")!=string::npos) cout<<"  The specified decay branch is intermediate-resonance-allowed.";
             }
           else
             {
@@ -1303,11 +1304,12 @@ void topoana::checkInput()
           if(m_vOption_compIncDcyBr[i]!="")
             {
               cout<<"  The remaining particles unspecified in the inclusive decay are restricted to ";
-              if(m_vOption_compIncDcyBr[i]=="Is") cout<<"strict ISR";
-              if(m_vOption_compIncDcyBr[i]=="Ig") cout<<"generalized ISR";
-              if(m_vOption_compIncDcyBr[i]=="Fs") cout<<"strict FSR";
-              if(m_vOption_compIncDcyBr[i]=="Fg") cout<<"generalized FSR";
+              if(m_vOption_compIncDcyBr[i]=="Is"||m_vOption_compIncDcyBr[i]=="Is-IRA") cout<<"strict ISR";
+              else if(m_vOption_compIncDcyBr[i]=="Ig"||m_vOption_compIncDcyBr[i]=="Ig-IRA") cout<<"generalized ISR";
+              else if(m_vOption_compIncDcyBr[i]=="Fs"||m_vOption_compIncDcyBr[i]=="Fs-IRA") cout<<"strict FSR";
+              else if(m_vOption_compIncDcyBr[i]=="Fg"||m_vOption_compIncDcyBr[i]=="Fg-IRA") cout<<"generalized FSR";
               cout<<" photons."<<endl;
+              if(m_vOption_compIncDcyBr[i].find("-IRA")!=string::npos) cout<<"  The specified decay branch is intermediate-resonance-allowed.";
             }
           else
             {

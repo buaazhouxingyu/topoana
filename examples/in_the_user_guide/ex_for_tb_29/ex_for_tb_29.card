@@ -1,0 +1,19 @@
+% Names of input root files
+{
+  ../input/ppbar_DPM.root
+}
+
+% TTree name
+{
+  ppbar_DPM
+}
+
+% Component analysis --- decay trees
+{
+  Y	5
+}
+
+% Initial state particles (Default: e- e+)
+{
+  anti-p- p+
+}
