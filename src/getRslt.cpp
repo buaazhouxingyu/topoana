@@ -1505,18 +1505,29 @@ void topoana::getRslt()
 
           if(m_vCompIncDcyBr.size()>0)
             {
-              // The following thirteen lines of code are added in order to process the inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
-              vector< vector< list<int> > > vVIncDcyBr;
+              // The following twenty-four lines of code are added in order to process the inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
+              vector< vector< list<int> > > vVIncDcyBr,vVCcIncDcyBr;
               vVIncDcyBr.clear();
-              vector< list<int> > vIRADcyBrWithRGam;
+              vVCcIncDcyBr.clear();
+              vector< list<int> > vIRADcyBrWithRGam,vCcIRADcyBrWithRGam;
               for(unsigned int j=0;j<m_vCompIncDcyBr.size();j++)
                 {
-                  if(m_vOption_compIncDcyBr[j].find("-IRA")==string::npos) vVIncDcyBr.push_back(dcyTr);
+                  if(m_vOption_compIncDcyBr[j].find("-IRA")==string::npos)
+                    {
+                      vVIncDcyBr.push_back(dcyTr);
+                      if(m_ccSwitch==true) vVCcIncDcyBr.push_back(dcyTr);
+                    }
                   else
                     {
                       vIRADcyBrWithRGam.clear();
                       countIRADcyBr(vPid,vMidx,m_vCompIncDcyBr[j],false,0,&vIRADcyBrWithRGam,m_vOption_compIncDcyBr[j]);
                       vVIncDcyBr.push_back(vIRADcyBrWithRGam);
+                      if(m_ccSwitch==true)
+                        {
+                          vCcIRADcyBrWithRGam.clear();
+                          countIRADcyBr(vPid,vMidx,m_vCompCcIncDcyBr[j],false,0,&vCcIRADcyBrWithRGam,m_vOption_compIncDcyBr[j]);
+                          vVCcIncDcyBr.push_back(vCcIRADcyBrWithRGam);
+                        }
                     }
                 }
               // Pay attention to that dcyBrCcIncDcyBr equate to ccDcyBrIncDcyBr for self-charge-conjugate inclusive decays.
@@ -1636,9 +1647,15 @@ void topoana::getRslt()
                             }
                           nIncDcyBr[k]++;
                         } // Here, "&&m_vICcCompIncDcyBr[k]!=0" in the following condition can be removed.
-                      else if(m_ccSwitch==true&&m_vICcCompIncDcyBr[k]!=0&&isLiaMatchedWithLib(m_vCompCcIncDcyBr[k],vVIncDcyBr[k][j],m_vOption_compIncDcyBr[k]))
+                  // The following three lines of code are added in order to process the charge conjugate inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
+                    }
+                  for(unsigned int j=0;j<vVCcIncDcyBr[k].size();j++)
+                    {
+                      // The else in the following statement is removed in order to process the charge conjugate inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
+                      // else if(m_ccSwitch==true&&m_vICcCompIncDcyBr[k]!=0&&isLiaMatchedWithLib(m_vCompCcIncDcyBr[k],vVCcIncDcyBr[k][j],m_vOption_compIncDcyBr[k]))
+                      if(m_ccSwitch==true&&m_vICcCompIncDcyBr[k]!=0&&isLiaMatchedWithLib(m_vCompCcIncDcyBr[k],vVCcIncDcyBr[k][j],m_vOption_compIncDcyBr[k]))
                         {
-                          dcyBrCcIncDcyBr=vVIncDcyBr[k][j];
+                          dcyBrCcIncDcyBr=vVCcIncDcyBr[k][j];
                           int _iDcyBrIncDcyBrl=-1; // The variable is added to record the index of the matched, old exclusive decay branch. It differs from _iDcyBrIncDcyBr in the cases where the option is set at "Is(-IRA)", "Ig(-IRA)", "Fs(-IRA)", or "Fg(-IRA)" in order to restrict the remaining particles unspecified in the inclusive decays to strict ISR, generalized ISR, strict FSR, or generalized FSR photons, respectively. In the special cases with restrictions, _iDcyBrIncDcyBr is set to the number of strict ISR, generalized ISR, strict FSR, or generalized FSR photons found in the matched exclusive decay branches.
                           int _iDcyBrIncDcyBr=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the inclusive decay branch is a new exclusive decay branch of the inclusive decay branch.
                           for(unsigned int l=0;l<m_vVDcyBrCcIncDcyBr[k].size();l++)
