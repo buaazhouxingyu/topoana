@@ -2,6 +2,20 @@
 
 int main(int argc,char *argv[])
 {
+  if(argc==2&&strcmp(argv[1],"--help")==0)
+    {
+      cout<<"Usage1: topoana.exe [cardFileName] [-i ...] [-t ...] [-o ...] [-n ...]"<<endl;
+      cout<<"        If cardFileName exists, it should be the first argument of the command; if it is absent, its default value topoana.card will be used. The orders of the other options described below are not demanded."<<endl;
+      cout<<"        -i: The names of input root files should be provided after the prompt. One or more names are allowed here. They will replace those set in the card file."<<endl;
+      cout<<"        -t: The TTree name should be provided after the prompt. It will replace the one set in the card file."<<endl;
+      cout<<"        -o: The common name of output files should be provided after the prompt. It will replace the one set in the card file or the default one, that is, the name of the card file."<<endl;
+      cout<<"        -n: The maximum number of entries to be processed should be provided after the prompt. It will replace that set in the card file."<<endl;
+      cout<<endl;
+      cout<<"Usage2: topoana.exe --help"<<endl;
+      cout<<"        Display this help and exit."<<endl;
+      return 0;
+    }
+
   topoana ta;
   ta.makeMapsOnPdata();
   ta.makeNNmMap();

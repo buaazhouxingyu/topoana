@@ -15,6 +15,7 @@ void topoana::readCard(string cardFlNm)
           cerr<<"Infor: The card file name is the default one."<<endl;
           cerr<<"Infor: Do you forget to append the name of your own card file to the end of the executable?"<<endl;
           cerr<<"Infor: If yes, please specify it along with the executable by the command line \"[path/]topoana.exe nameOfYourOwnCardFile\""<<endl;
+          cerr<<"Infor: For the details on the usage of the command, please execute \"[path/]topoana.exe --help\""<<endl;
         }
       else
         {
