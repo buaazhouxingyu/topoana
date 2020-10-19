@@ -5,7 +5,7 @@ int main(int argc,char *argv[])
   if(argc==2&&strcmp(argv[1],"--help")==0)
     {
       cout<<"Usage1: topoana.exe [cardFileName] [-i ...] [-t ...] [-o ...] [-n ...]"<<endl;
-      cout<<"        The default value of \"cardFileName\" is \"topoana.card\". If you want to explicitly specify \"cardFileName\", it should be input as the first argument of the command. The orders of the other options described below are not demanded."<<endl;
+      cout<<"        The default value of \"cardFileName\" is \"topoana.card\". If you want to explicitly specify \"cardFileName\", it should be input as the first argument of the command. The orders of the other optional arguments described below are not demanded."<<endl;
       cout<<"        -i: The names of input root files should be provided after the prompt. One or more names are allowed here. They will replace those set in the card file."<<endl;
       cout<<"        -t: The TTree name should be provided after the prompt. It will replace the one set in the card file."<<endl;
       cout<<"        -o: The common name of output files should be provided after the prompt. It will replace the one set in the card file or the default one, that is, the name of the card file."<<endl;
