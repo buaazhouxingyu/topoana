@@ -253,8 +253,8 @@ class topoana
   public:
     topoana()
     {
-      m_pkgPath="/workfs/bes/zhouxy/topoana-02-07-07/";
-      m_verNum="v2.7.7";
+      m_pkgPath="/workfs/bes/zhouxy/topoana-02-07-08/";
+      m_verNum="v2.7.8";
       m_cardFlNm0=m_pkgPath+"share/underlying_topoana.card";
 
       m_nmsOfIptRootFls.clear();
