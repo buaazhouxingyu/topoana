@@ -227,6 +227,7 @@ void topoana::getRslt()
                   string strIOptRootFls=oss.str();
                   string newSuffix="_ta_"+strIOptRootFls+".root";
                   NmOfOptRootFl=NmOfOptRootFl.replace(NmOfOptRootFl.rfind(".root"),5,newSuffix.c_str());
+                  NmOfOptRootFl=m_comNmOfOptFls.substr(0,m_comNmOfOptFls.rfind("/")+1)+NmOfOptRootFl;
                 }
               else
                 {
