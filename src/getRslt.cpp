@@ -33,9 +33,29 @@ void topoana::getRslt()
   // The following statement instead of the one next to it ought to be used along with the Ntuple Tool MCGenKinematics with the option [200].
   const unsigned int NpsMax=200;
   // const unsigned int NpsMax=chn->GetMaximum(m_tbrNmOfNps.c_str());
-  int Nps,Pid[NpsMax],Midx[NpsMax];
+  int Nps,Pid[NpsMax],Midx[NpsMax],IdxOrg[NpsMax];
   double Npsd,Pidd[NpsMax],Midxd[NpsMax];
   int Icandi;
+  const unsigned int sAtdbPid=m_vPid_compDcyBrP.size()>0?m_vPid_compDcyBrP.size():1;
+  double Tagrecsd_compDcyBrP[sAtdbPid];
+  int Tagrecsi_compDcyBrP[sAtdbPid];
+  int Tagreca_compDcyBrP[sAtdbPid][20],Nrec_compDcyBrP[sAtdbPid];
+  const unsigned int sAtcdbPid=m_vPid_compCascDcyBrP.size()>0?m_vPid_compCascDcyBrP.size():1;
+  double Tagrecsd_compCascDcyBrP[sAtcdbPid];
+  int Tagrecsi_compCascDcyBrP[sAtcdbPid];
+  int Tagreca_compCascDcyBrP[sAtcdbPid][20],Nrec_compCascDcyBrP[sAtcdbPid];
+  const unsigned int sAtdfstPid=m_vPid_compDcyFStP.size()>0?m_vPid_compDcyFStP.size():1;
+  double Tagrecsd_compDcyFStP[sAtdfstPid];
+  int Tagrecsi_compDcyFStP[sAtdfstPid];
+  int Tagreca_compDcyFStP[sAtdfstPid][20],Nrec_compDcyFStP[sAtdfstPid];
+  const unsigned int sAtpbPid=m_vPid_compProdBrP.size()>0?m_vPid_compProdBrP.size():1;
+  double Tagrecsd_compProdBrP[sAtpbPid];
+  int Tagrecsi_compProdBrP[sAtpbPid];
+  int Tagreca_compProdBrP[sAtpbPid][20],Nrec_compProdBrP[sAtpbPid];
+  const unsigned int sAtmPid=m_vPid_compMP.size()>0?m_vPid_compMP.size():1;
+  double Tagrecsd_compMP[sAtmPid];
+  int Tagrecsi_compMP[sAtmPid];
+  int Tagreca_compMP[sAtmPid][20],Nrec_compMP[sAtmPid];
   bool isTheEvtPrcsd;
   vector<int> *pVPid=0, *pVMidx=0;
   if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI") chn->SetBranchAddress(m_tbrNmOfNps.c_str(), &Nps);
@@ -71,7 +91,18 @@ void topoana::getRslt()
           else chn->SetBranchAddress(specifierMidx.c_str(), &Midx[i]);
         }
     }
+
   if(m_avoidOverCounting==true) chn->SetBranchAddress(m_tbrNmOfIcandi.c_str(), &Icandi);
+
+  if(m_vPid_compDcyBrP.size()>0) setBranchAddress(m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, chn, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP);
+
+  if(m_vPid_compCascDcyBrP.size()>0) setBranchAddress(m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, chn, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP);
+
+  if(m_vPid_compDcyFStP.size()>0) setBranchAddress(m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, chn, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP);
+
+  if(m_vPid_compProdBrP.size()>0) setBranchAddress(m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, chn, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP);
+
+  if(m_vPid_compMP.size()>0) setBranchAddress(m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, chn, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP);
 
   const unsigned int nOthChns=m_othTtrNms.size()>0?m_othTtrNms.size():1;
   TChain * othChns[nOthChns];
@@ -111,27 +142,27 @@ void topoana::getRslt()
 
   const unsigned int nMax=200;
 
-  const unsigned int sAtdbPid=m_vPid_compDcyBrP.size()>0?m_vPid_compDcyBrP.size():1;
+  // const unsigned int sAtdbPid=m_vPid_compDcyBrP.size()>0?m_vPid_compDcyBrP.size():1;
   int iCcPDcyBr[sAtdbPid],nPDcyBr[sAtdbPid],nCcPDcyBr[sAtdbPid],nAllPDcyBr[sAtdbPid];
   int iDcyBrP[sAtdbPid][nMax],iCcDcyBrP[sAtdbPid][nMax],iDcyBrCcP[sAtdbPid][nMax];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_compDcyBrP.size();i++) iCcPDcyBr[i]=m_vICcCompDcyBrP[i];
 
-  const unsigned int sAtcdbPid=m_vPid_compCascDcyBrP.size()>0?m_vPid_compCascDcyBrP.size():1;
+  // const unsigned int sAtcdbPid=m_vPid_compCascDcyBrP.size()>0?m_vPid_compCascDcyBrP.size():1;
   int iCcPCascDcyBr[sAtcdbPid],nPCascDcyBr[sAtcdbPid],nCcPCascDcyBr[sAtcdbPid],nAllPCascDcyBr[sAtcdbPid];
   int iCascDcyBrP[sAtcdbPid][nMax],iCcCascDcyBrP[sAtcdbPid][nMax],iCascDcyBrCcP[sAtcdbPid][nMax];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_compCascDcyBrP.size();i++) iCcPCascDcyBr[i]=m_vICcCompCascDcyBrP[i];
 
-  const unsigned int sAtdfstPid=m_vPid_compDcyFStP.size()>0?m_vPid_compDcyFStP.size():1;
+  // const unsigned int sAtdfstPid=m_vPid_compDcyFStP.size()>0?m_vPid_compDcyFStP.size():1;
   int iCcPDcyFSt[sAtdfstPid],nPDcyFSt[sAtdfstPid],nCcPDcyFSt[sAtdfstPid],nAllPDcyFSt[sAtdfstPid];
   int iDcyFStP[sAtdfstPid][nMax],iCcDcyFStP[sAtdfstPid][nMax],iDcyFStCcP[sAtdfstPid][nMax];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_compDcyFStP.size();i++) iCcPDcyFSt[i]=m_vICcCompDcyFStP[i];
 
-  const unsigned int sAtpbPid=m_vPid_compProdBrP.size()>0?m_vPid_compProdBrP.size():1;
+  // const unsigned int sAtpbPid=m_vPid_compProdBrP.size()>0?m_vPid_compProdBrP.size():1;
   int iCcPProdBr[sAtpbPid],nPProdBr[sAtpbPid],nCcPProdBr[sAtpbPid],nAllPProdBr[sAtpbPid];
   int iProdBrP[sAtpbPid][nMax],iCcProdBrP[sAtpbPid][nMax],iProdBrCcP[sAtpbPid][nMax];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_compProdBrP.size();i++) iCcPProdBr[i]=m_vICcCompProdBrP[i];
 
-  const unsigned int sAtmPid=m_vPid_compMP.size()>0?m_vPid_compMP.size():1;
+  // const unsigned int sAtmPid=m_vPid_compMP.size()>0?m_vPid_compMP.size():1;
   int iCcPM[sAtmPid],nPM[sAtmPid],nCcPM[sAtmPid],nAllPM[sAtmPid];
   int MpidP[sAtmPid][nMax],iCcMP[sAtmPid][nMax],MpidCcP[sAtmPid][nMax];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_compMP.size();i++) iCcPM[i]=m_vICcCompMP[i];
@@ -197,6 +228,8 @@ void topoana::getRslt()
   string strDcyIFSts, strCcDcyIFSts;
   string strCascDcyBrP, strCascDcyBrCcP;
   string strDcyFStP, strDcyFStCcP;
+  bool _isTagMatched;
+  bool _isNoTagMatchOrTagMatched;
 
   unsigned long nEtrToBePrcsd=nEtr<m_nEtrMax?nEtr:m_nEtrMax;
   if(m_anaTasksForSigIds!="C")
@@ -471,7 +504,25 @@ void topoana::getRslt()
                 }
             }
              
-          if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx);
+          if(m_strgTpOfRawIptTopoDat=="MSD")
+            {
+              reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,IdxOrg);
+
+              for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++)
+                if(m_vTypeOfTagRec_compDcyBrP[j]=="c"||m_vTypeOfTagRec_compDcyBrP[j]=="n"||m_vTypeOfTagRec_compDcyBrP[j]=="!n"||m_vTypeOfTagRec_compDcyBrP[j]=="p"||m_vTypeOfTagRec_compDcyBrP[j]=="i") Tagrecsi_compDcyBrP[j]=Tagrecsd_compDcyBrP[j];
+
+              for(unsigned int j=0;j<m_vPid_compCascDcyBrP.size();j++)
+                if(m_vTypeOfTagRec_compCascDcyBrP[j]=="c"||m_vTypeOfTagRec_compCascDcyBrP[j]=="n"||m_vTypeOfTagRec_compCascDcyBrP[j]=="!n"||m_vTypeOfTagRec_compCascDcyBrP[j]=="p"||m_vTypeOfTagRec_compCascDcyBrP[j]=="i") Tagrecsi_compCascDcyBrP[j]=Tagrecsd_compCascDcyBrP[j];
+
+              for(unsigned int j=0;j<m_vPid_compDcyFStP.size();j++)
+                if(m_vTypeOfTagRec_compDcyFStP[j]=="c"||m_vTypeOfTagRec_compDcyFStP[j]=="n"||m_vTypeOfTagRec_compDcyFStP[j]=="!n"||m_vTypeOfTagRec_compDcyFStP[j]=="p"||m_vTypeOfTagRec_compDcyFStP[j]=="i") Tagrecsi_compDcyFStP[j]=Tagrecsd_compDcyFStP[j];
+
+              for(unsigned int j=0;j<m_vPid_compProdBrP.size();j++)
+                if(m_vTypeOfTagRec_compProdBrP[j]=="c"||m_vTypeOfTagRec_compProdBrP[j]=="n"||m_vTypeOfTagRec_compProdBrP[j]=="!n"||m_vTypeOfTagRec_compProdBrP[j]=="p"||m_vTypeOfTagRec_compProdBrP[j]=="i") Tagrecsi_compProdBrP[j]=Tagrecsd_compProdBrP[j];
+
+              for(unsigned int j=0;j<m_vPid_compMP.size();j++)
+                if(m_vTypeOfTagRec_compMP[j]=="c"||m_vTypeOfTagRec_compMP[j]=="n"||m_vTypeOfTagRec_compMP[j]=="!n"||m_vTypeOfTagRec_compMP[j]=="p"||m_vTypeOfTagRec_compMP[j]=="i") Tagrecsi_compMP[j]=Tagrecsd_compMP[j];
+            }
 
           sumOfNps=sumOfNps+Nps;
 
@@ -755,6 +806,12 @@ void topoana::getRslt()
                     {
                       if((*liit)==m_vPid_compDcyBrP[k])
                         {
+                          if(m_vTypeOfTagRec_compDcyBrP[k]!="")
+                            {
+                              if(m_vTypeOfTagRec_compDcyBrP[k]!="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], m_vPid_compDcyBrP[k]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], IdxOrg[vIdxOfHead[j]]);
+                              if(_isTagMatched==false) continue;
+                            }
                           dcyBrP=dcyTr[j];
                           int _iDcyBrP=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the particle is a new decay branch of the particle.
                           int _iCcDcyBrP=-9999;
@@ -825,6 +882,12 @@ void topoana::getRslt()
                         } // Here, "&&m_vICcCompDcyBrP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompDcyBrP[k]!=0&&(*liit)==m_vPid_ccCompDcyBrP[k])
                         {
+                          if(m_vTypeOfTagRec_compDcyBrP[k]!="")
+                            {
+                              if(m_vTypeOfTagRec_compDcyBrP[k]!="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], m_vPid_ccCompDcyBrP[k]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], IdxOrg[vIdxOfHead[j]]);
+                              if(_isTagMatched==false) continue;
+                            }
                           dcyBrCcP=dcyTr[j];
                           int _iDcyBrP=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the particle is a new decay branch of the particle.
                           for(unsigned int l=0;l<m_vVDcyBrCcP[k].size();l++)
@@ -884,7 +947,12 @@ void topoana::getRslt()
               for(unsigned int j=0;j<m_vPid_compCascDcyBrP.size();j++)
                 {
                   vCascDcyBrP.clear();
-                  getVCascDcyBrP(vCascDcyBrP, dcyTr, vIdxOfHead, vMidxOfHead, m_vPid_compCascDcyBrP[j], m_vHCascDcyBrMax[j]);
+                  _isNoTagMatchOrTagMatched=true;
+                  if(m_vTypeOfTagRec_compCascDcyBrP[j]!="")
+                    {
+                      if(m_vTypeOfTagRec_compCascDcyBrP[j]!="i") _isNoTagMatchOrTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], m_vPid_compCascDcyBrP[j]);
+                    }
+                  if(_isNoTagMatchOrTagMatched==true) getVCascDcyBrP(vCascDcyBrP, dcyTr, vIdxOfHead, vMidxOfHead, m_vPid_compCascDcyBrP[j], m_vHCascDcyBrMax[j]);
                   if(vCascDcyBrP.size()>0)
                     {
                       for(unsigned int k=0;k<vCascDcyBrP.size();k++)
@@ -988,11 +1056,16 @@ void topoana::getRslt()
                           nPCascDcyBr[j]++;
                         }
                     }
-                  vCascDcyBrCcP.clear();
                   // Here, "&&m_vICcCompCascDcyBrP[k]!=0" in the following condition can not be removed. Besides, "if" here can not be replaced by "else if".
                   if(m_ccSwitch==true&&m_vICcCompCascDcyBrP[j]!=0)
                     {
-                      getVCascDcyBrP(vCascDcyBrCcP, dcyTr, vIdxOfHead, vMidxOfHead, m_vPid_ccCompCascDcyBrP[j], m_vHCascDcyBrMax[j]);
+                      vCascDcyBrCcP.clear();
+                      _isNoTagMatchOrTagMatched=true;
+                      if(m_vTypeOfTagRec_compCascDcyBrP[j]!="")
+                        {
+                          if(m_vTypeOfTagRec_compCascDcyBrP[j]!="i") _isNoTagMatchOrTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], m_vPid_ccCompCascDcyBrP[j]);
+                        }
+                      if(_isNoTagMatchOrTagMatched==true) getVCascDcyBrP(vCascDcyBrCcP, dcyTr, vIdxOfHead, vMidxOfHead, m_vPid_ccCompCascDcyBrP[j], m_vHCascDcyBrMax[j]);
                       for(unsigned int k=0;k<vCascDcyBrCcP.size();k++)
                         {
                           cascDcyBrCcP=vCascDcyBrCcP[k];
@@ -1075,7 +1148,12 @@ void topoana::getRslt()
               for(unsigned int j=0;j<m_vPid_compDcyFStP.size();j++)
                 {
                   vDcyFStP.clear();
-                  getVDcyFStP(vDcyFStP, vPid, vMidx, m_vPid_compDcyFStP[j], m_vNDcyFStP[j]);
+                  _isNoTagMatchOrTagMatched=true;
+                  if(m_vTypeOfTagRec_compDcyFStP[j]!="")
+                    {
+                      if(m_vTypeOfTagRec_compDcyFStP[j]!="i") _isNoTagMatchOrTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], m_vPid_compDcyFStP[j]);
+                    }
+                  if(_isNoTagMatchOrTagMatched==true) getVDcyFStP(vDcyFStP, vPid, vMidx, m_vPid_compDcyFStP[j], m_vNDcyFStP[j]);
                   if(vDcyFStP.size()>0)
                     {
                       for(unsigned int k=0;k<vDcyFStP.size();k++)
@@ -1163,11 +1241,16 @@ void topoana::getRslt()
                           nPDcyFSt[j]++;
                         }
                     }
-                  vDcyFStCcP.clear();
                   // Here, "&&m_vICcCompDcyFStP[k]!=0" in the following condition can not be removed. Besides, "if" here can not be replaced by "else if".
                   if(m_ccSwitch==true&&m_vICcCompDcyFStP[j]!=0)
                     {
-                      getVDcyFStP(vDcyFStCcP, vPid, vMidx, m_vPid_ccCompDcyFStP[j], m_vNDcyFStP[j]);
+                      vDcyFStCcP.clear();
+                      _isNoTagMatchOrTagMatched=true;
+                      if(m_vTypeOfTagRec_compDcyFStP[j]!="")
+                        {
+                          if(m_vTypeOfTagRec_compDcyFStP[j]!="i") _isNoTagMatchOrTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], m_vPid_ccCompDcyFStP[j]);
+                        }
+                      if(_isNoTagMatchOrTagMatched==true) getVDcyFStP(vDcyFStCcP, vPid, vMidx, m_vPid_ccCompDcyFStP[j], m_vNDcyFStP[j]);
                       for(unsigned int k=0;k<vDcyFStCcP.size();k++)
                         {
                           dcyFStCcP=vDcyFStCcP[k];
@@ -1236,6 +1319,12 @@ void topoana::getRslt()
                     {
                       if(vPid[j]==m_vPid_compProdBrP[k])
                         {
+                          if(m_vTypeOfTagRec_compProdBrP[k]!="")
+                            {
+                              if(m_vTypeOfTagRec_compProdBrP[k]!="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], m_vPid_compProdBrP[k]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], IdxOrg[j]);
+                              if(_isTagMatched==false) continue;
+                            }
                           unsigned int mj=UINT_MAX;
                           for(unsigned int l=0;l<vIdxOfHead.size();l++)
                             {
@@ -1324,6 +1413,12 @@ void topoana::getRslt()
                         } // Here, "&&m_vICcCompProdBrP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompProdBrP[k]!=0&&vPid[j]==m_vPid_ccCompProdBrP[k])
                         {
+                          if(m_vTypeOfTagRec_compProdBrP[k]!="")
+                            {
+                              if(m_vTypeOfTagRec_compProdBrP[k]!="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], m_vPid_ccCompProdBrP[k]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], IdxOrg[j]);
+                              if(_isTagMatched==false) continue;
+                            }
                           unsigned int mj=UINT_MAX;
                           for(unsigned int l=0;l<vIdxOfHead.size();l++)
                             {
@@ -1401,6 +1496,12 @@ void topoana::getRslt()
                     {
                       if(vPid[j]==m_vPid_compMP[k])
                         {
+                          if(m_vTypeOfTagRec_compMP[k]!="")
+                            {
+                              if(m_vTypeOfTagRec_compMP[k]!="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], m_vPid_compMP[k]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], IdxOrg[j]);
+                              if(_isTagMatched==false) continue;
+                            }
                           if(((unsigned int) vMidx[j])!=j) mpid=vPid[vMidx[j]];
                           else mpid=m_pidOfISt;
                           int _iMP=-1; // If the variable is still equal to -1 after the following loop, then the mother of the particle is a new mother of the particle.
@@ -1466,6 +1567,12 @@ void topoana::getRslt()
                         } // Here, "&&m_vICcCompMP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompMP[k]!=0&&vPid[j]==m_vPid_ccCompMP[k])
                         {
+                          if(m_vTypeOfTagRec_compMP[k]!="")
+                            {
+                              if(m_vTypeOfTagRec_compMP[k]!="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], m_vPid_ccCompMP[k]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], IdxOrg[j]);
+                              if(_isTagMatched==false) continue;
+                            }
                           if(((unsigned int) vMidx[j])!=j) mpidCcP=vPid[vMidx[j]];
                           else mpidCcP=m_pidOfISt;
                           int _iMP=-1; // If the variable is still equal to -1 after the following loop, then the mother of the particle is a new mother of the particle.

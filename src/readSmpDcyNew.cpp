@@ -69,7 +69,7 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
                                   else if(txtPnm!="-")
                                     {
                                       cerr<<"Error: The input parameter \""<<txtPnm<<"\" after the second \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
-                                      cerr<<"Infor: It should be an unsigned long integer at which you want to set, or just a placeholder as a default value \"ULONG_MAX\" and for the input of the fourth parameter."<<endl;
+                                      cerr<<"Infor: It should be an unsigned long integer at which you want to set, or just a placeholder \"-\" as a default value \"ULONG_MAX\" and for the input of the fourth parameter."<<endl;
                                       cerr<<"Infor: Please check it."<<endl;
                                       exit(-1);
                                     }

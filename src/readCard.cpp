@@ -373,23 +373,23 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% Component analysis --- decay branches of particles")
         {
-          readPItem(fin,line, "% Component analysis --- decay branches of particles", m_vPid_compDcyBrP, m_vNm_compDcyBrP, &m_vNDcyBrToBePrtdMax);
+          readPItem(fin,line, "% Component analysis --- decay branches of particles", m_vPid_compDcyBrP, m_vNm_compDcyBrP, &m_vNDcyBrToBePrtdMax, &m_vNDcyBrP, &m_vTypeOfTagRec_compDcyBrP, &m_vTBrNmOfTagRec_compDcyBrP, &m_vTBrNmOfNRec_compDcyBrP);
         }
       else if(line=="% Component analysis --- cascade decay branches of particles")
         {
-          readPItem(fin,line, "% Component analysis --- cascade decay branches of particles", m_vPid_compCascDcyBrP, m_vNm_compCascDcyBrP, &m_vNCascDcyBrToBePrtdMax, &m_vHCascDcyBrMax, &m_vOptIdxAndMidxOfDcyBrInCascDcyBrP);
+          readPItem(fin,line, "% Component analysis --- cascade decay branches of particles", m_vPid_compCascDcyBrP, m_vNm_compCascDcyBrP, &m_vNCascDcyBrToBePrtdMax, &m_vHCascDcyBrMax, &m_vTypeOfTagRec_compCascDcyBrP, &m_vTBrNmOfTagRec_compCascDcyBrP, &m_vTBrNmOfNRec_compCascDcyBrP, &m_vOptIdxAndMidxOfDcyBrInCascDcyBrP);
         }
       else if(line=="% Component analysis --- decay final states of particles")
         {
-          readPItem(fin,line, "% Component analysis --- decay final states of particles", m_vPid_compDcyFStP, m_vNm_compDcyFStP, &m_vNDcyFStToBePrtdMax, &m_vNDcyFStP);
+          readPItem(fin,line, "% Component analysis --- decay final states of particles", m_vPid_compDcyFStP, m_vNm_compDcyFStP, &m_vNDcyFStToBePrtdMax, &m_vNDcyFStP, &m_vTypeOfTagRec_compDcyFStP, &m_vTBrNmOfTagRec_compDcyFStP, &m_vTBrNmOfNRec_compDcyFStP);
         }
       else if(line=="% Component analysis --- production branches of particles")
         {
-          readPItem(fin, line, "% Component analysis --- production branches of particles", m_vPid_compProdBrP, m_vNm_compProdBrP, &m_vNProdBrToBePrtdMax);
+          readPItem(fin, line, "% Component analysis --- production branches of particles", m_vPid_compProdBrP, m_vNm_compProdBrP, &m_vNProdBrToBePrtdMax, &m_vNProdBrP, &m_vTypeOfTagRec_compProdBrP, &m_vTBrNmOfTagRec_compProdBrP, &m_vTBrNmOfNRec_compProdBrP);
         }
       else if(line=="% Component analysis --- mothers of particles")
         {
-          readPItem(fin, line, "% Component analysis --- mothers of particles", m_vPid_compMP, m_vNm_compMP, &m_vNMToBePrtdMax);
+          readPItem(fin, line, "% Component analysis --- mothers of particles", m_vPid_compMP, m_vNm_compMP, &m_vNMToBePrtdMax, &m_vNMP, &m_vTypeOfTagRec_compMP, &m_vTBrNmOfTagRec_compMP, &m_vTBrNmOfNRec_compMP);
         }
       else if(line=="% Component analysis --- inclusive decay branches")
         {

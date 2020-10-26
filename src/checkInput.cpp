@@ -283,6 +283,11 @@ void topoana::checkInput()
                       allIptsAreOK=false;
                     }
                 }
+              if(m_vPid_compDcyBrP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, allIptsAreOK, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, allIptsAreOK, "% Component analysis --- cascade decay branches of particles");
+              if(m_vPid_compDcyFStP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, allIptsAreOK, "% Component analysis --- decay final states of particles");
+              if(m_vPid_compProdBrP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, allIptsAreOK, "% Component analysis --- production branches of particles");
+              if(m_vPid_compMP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, allIptsAreOK, "% Component analysis --- mothers of particles");
             }
           for(unsigned int i=0;i<m_othTtrNms.size();i++)
             {
@@ -697,6 +702,27 @@ void topoana::checkInput()
             {
               if(m_vbsLevStdOut==true) cout<<"  Maximum number of decay branches to be printed: ULONG_MAX (default)"<<endl;
             }
+          if(m_vTypeOfTagRec_compDcyBrP[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_compDcyBrP[i]=="c"||m_vTypeOfTagRec_compDcyBrP[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_compDcyBrP[i]=="n"||m_vTypeOfTagRec_compDcyBrP[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_compDcyBrP[i]=="!n"||m_vTypeOfTagRec_compDcyBrP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compDcyBrP[i]=="p"||m_vTypeOfTagRec_compDcyBrP[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_compDcyBrP[i]=="i") cout<<"index";
+              cout<<" of the particle, stored in the ";
+              if(m_vTypeOfTagRec_compDcyBrP[i]=="c"||m_vTypeOfTagRec_compDcyBrP[i]=="n"||m_vTypeOfTagRec_compDcyBrP[i]=="!n"||m_vTypeOfTagRec_compDcyBrP[i]=="p"||m_vTypeOfTagRec_compDcyBrP[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_compDcyBrP[i]=="C"||m_vTypeOfTagRec_compDcyBrP[i]=="N"||m_vTypeOfTagRec_compDcyBrP[i]=="!N"||m_vTypeOfTagRec_compDcyBrP[i]=="P") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_compDcyBrP[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_compDcyBrP[i]=="C"||m_vTypeOfTagRec_compDcyBrP[i]=="N"||m_vTypeOfTagRec_compDcyBrP[i]=="!N"||m_vTypeOfTagRec_compDcyBrP[i]=="P")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compDcyBrP[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the particle is specified (default)."<<endl;
+            }
           cout<<endl;
         }
       cout<<endl;
@@ -792,6 +818,27 @@ void topoana::checkInput()
           else
             { 
               if(m_vbsLevStdOut==true) cout<<"  Maximum hierarchy of cascade decay branches to be processed for the particle: ULONG_MAX (default)"<<endl;
+            }
+          if(m_vTypeOfTagRec_compCascDcyBrP[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_compCascDcyBrP[i]=="c"||m_vTypeOfTagRec_compCascDcyBrP[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="!n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="p"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="i") cout<<"index";
+              cout<<" of the particle, stored in the ";
+              if(m_vTypeOfTagRec_compCascDcyBrP[i]=="c"||m_vTypeOfTagRec_compCascDcyBrP[i]=="n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="p"||m_vTypeOfTagRec_compCascDcyBrP[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="C"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_compCascDcyBrP[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_compCascDcyBrP[i]=="C"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compCascDcyBrP[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the particle is specified (default)."<<endl;
             }
           if(m_vOptIdxAndMidxOfDcyBrInCascDcyBrP[i]==true)
             {
@@ -902,6 +949,27 @@ void topoana::checkInput()
             { 
               if(m_vbsLevStdOut==true) cout<<"  Number of decay final state particles to be processed for the particle: ULONG_MAX (default)"<<endl;
             }
+          if(m_vTypeOfTagRec_compDcyFStP[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_compDcyFStP[i]=="c"||m_vTypeOfTagRec_compDcyFStP[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_compDcyFStP[i]=="n"||m_vTypeOfTagRec_compDcyFStP[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_compDcyFStP[i]=="!n"||m_vTypeOfTagRec_compDcyFStP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compDcyFStP[i]=="p"||m_vTypeOfTagRec_compDcyFStP[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_compDcyFStP[i]=="i") cout<<"index";
+              cout<<" of the particle, stored in the ";
+              if(m_vTypeOfTagRec_compDcyFStP[i]=="c"||m_vTypeOfTagRec_compDcyFStP[i]=="n"||m_vTypeOfTagRec_compDcyFStP[i]=="!n"||m_vTypeOfTagRec_compDcyFStP[i]=="p"||m_vTypeOfTagRec_compDcyFStP[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_compDcyFStP[i]=="C"||m_vTypeOfTagRec_compDcyFStP[i]=="N"||m_vTypeOfTagRec_compDcyFStP[i]=="!N"||m_vTypeOfTagRec_compDcyFStP[i]=="P") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_compDcyFStP[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_compDcyFStP[i]=="C"||m_vTypeOfTagRec_compDcyFStP[i]=="N"||m_vTypeOfTagRec_compDcyFStP[i]=="!N"||m_vTypeOfTagRec_compDcyFStP[i]=="P")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compDcyFStP[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the particle is specified (default)."<<endl;
+            }
           cout<<endl;
         }
       cout<<endl;
@@ -995,6 +1063,27 @@ void topoana::checkInput()
             {
               if(m_vbsLevStdOut==true) cout<<"  Maximum number of production branches to be printed: ULONG_MAX (default)"<<endl;
             }
+          if(m_vTypeOfTagRec_compProdBrP[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_compProdBrP[i]=="c"||m_vTypeOfTagRec_compProdBrP[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_compProdBrP[i]=="n"||m_vTypeOfTagRec_compProdBrP[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_compProdBrP[i]=="!n"||m_vTypeOfTagRec_compProdBrP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compProdBrP[i]=="p"||m_vTypeOfTagRec_compProdBrP[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_compProdBrP[i]=="i") cout<<"index";
+              cout<<" of the particle, stored in the ";
+              if(m_vTypeOfTagRec_compProdBrP[i]=="c"||m_vTypeOfTagRec_compProdBrP[i]=="n"||m_vTypeOfTagRec_compProdBrP[i]=="!n"||m_vTypeOfTagRec_compProdBrP[i]=="p"||m_vTypeOfTagRec_compProdBrP[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_compProdBrP[i]=="C"||m_vTypeOfTagRec_compProdBrP[i]=="N"||m_vTypeOfTagRec_compProdBrP[i]=="!N"||m_vTypeOfTagRec_compProdBrP[i]=="P") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_compProdBrP[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_compProdBrP[i]=="C"||m_vTypeOfTagRec_compProdBrP[i]=="N"||m_vTypeOfTagRec_compProdBrP[i]=="!N"||m_vTypeOfTagRec_compProdBrP[i]=="P")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compProdBrP[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the particle is specified (default)."<<endl;
+            }
           cout<<endl;
         }
       cout<<endl;
@@ -1082,6 +1171,27 @@ void topoana::checkInput()
           else
             {
               if(m_vbsLevStdOut==true) cout<<"  Maximum number of mothers to be printed: ULONG_MAX (default)"<<endl;
+            }
+          if(m_vTypeOfTagRec_compMP[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_compMP[i]=="c"||m_vTypeOfTagRec_compMP[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_compMP[i]=="n"||m_vTypeOfTagRec_compMP[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_compMP[i]=="!n"||m_vTypeOfTagRec_compMP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compMP[i]=="p"||m_vTypeOfTagRec_compMP[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_compMP[i]=="i") cout<<"index";
+              cout<<" of the particle, stored in the ";
+              if(m_vTypeOfTagRec_compMP[i]=="c"||m_vTypeOfTagRec_compMP[i]=="n"||m_vTypeOfTagRec_compMP[i]=="!n"||m_vTypeOfTagRec_compMP[i]=="p"||m_vTypeOfTagRec_compMP[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_compMP[i]=="C"||m_vTypeOfTagRec_compMP[i]=="N"||m_vTypeOfTagRec_compMP[i]=="!N"||m_vTypeOfTagRec_compMP[i]=="P") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_compMP[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_compMP[i]=="C"||m_vTypeOfTagRec_compMP[i]=="N"||m_vTypeOfTagRec_compMP[i]=="!N"||m_vTypeOfTagRec_compMP[i]=="P")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compMP[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the particle is specified (default)."<<endl;
             }
           cout<<endl;
         }
