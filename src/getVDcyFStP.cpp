@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vPid, vector<int> & vMidx, int pid, unsigned long nDcyFStP)
+void topoana::getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vIdxOfHead_DcyFStP, vector<int> & vPid, vector<int> & vMidx, int pid, unsigned long nDcyFStP)
 {
   if(vPid.size()!=vMidx.size())
     {
@@ -20,6 +20,7 @@ void topoana::getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vPid, ve
 
   vDcyFStP.clear();
   list<int> dcyFStP;
+  vIdxOfHead_DcyFStP.clear();
   bool fromP;
   unsigned int J; // Here, J stands for j or its ancestors.
   bool fStP;
@@ -66,6 +67,7 @@ void topoana::getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vPid, ve
                   sortByPidAndPchrg(dcyFStP);
                   dcyFStP.push_front(pid);
                   vDcyFStP.push_back(dcyFStP);
+                  vIdxOfHead_DcyFStP.push_back(i);
                 }
             }
         }

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector< list<int> > & dcyTr, vector<int> & vIdxOfHead, vector<int> & vMidxOfHead, int pid, unsigned long hCascDcyBrMax)
+void topoana::getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector<int> & vIdxOfHead_CascDcyBrP, vector< list<int> > & dcyTr, vector<int> & vIdxOfHead, vector<int> & vMidxOfHead, int pid, unsigned long hCascDcyBrMax)
 {
   if(dcyTr.size()!=vIdxOfHead.size()||vIdxOfHead.size()!=vMidxOfHead.size())
     {
@@ -21,6 +21,7 @@ void topoana::getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector
 
   vCascDcyBrP.clear();
   vector< list<int> > cascDcyBrP;
+  vIdxOfHead_CascDcyBrP.clear();
   unsigned long hCascDcyBr;
   vector<int> vIdxOfHeadOld;
   unsigned int iDcyBrP;
@@ -54,6 +55,7 @@ void topoana::getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector
               vIdxOfHeadOld=vIdxOfHeadYng;
             }
           vCascDcyBrP.push_back(cascDcyBrP);
+          vIdxOfHead_CascDcyBrP.push_back(i);
         }
     }
 }
