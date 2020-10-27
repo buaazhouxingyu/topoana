@@ -959,8 +959,11 @@ void topoana::getRslt()
                     {
                       for(unsigned int k=0;k<vCascDcyBrP.size();k++)
                         {
-                          if(m_vTypeOfTagRec_compCascDcyBrP[j]=="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], IdxOrg[vIdxOfHead_CascDcyBrP[k]]);
-                          if(_isTagMatched==false) continue;
+                          if(m_vTypeOfTagRec_compCascDcyBrP[j]=="i")
+                            {
+                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], IdxOrg[vIdxOfHead_CascDcyBrP[k]]);
+                              if(_isTagMatched==false) continue;
+                            }
                           cascDcyBrP=vCascDcyBrP[k];
                           getStrFromVli(cascDcyBrP,strCascDcyBrP);
                           int _iCascDcyBrP=-1; // If the variable is still equal to -1 after the following loop, then the cascade decay branch of the particle is a new cascade decay branch of the particle.
@@ -1073,8 +1076,11 @@ void topoana::getRslt()
                       if(_isNoTagMatchOrTagMatched==true) getVCascDcyBrP(vCascDcyBrCcP, vIdxOfHead_CascDcyBrCcP, dcyTr, vIdxOfHead, vMidxOfHead, m_vPid_ccCompCascDcyBrP[j], m_vHCascDcyBrMax[j]);
                       for(unsigned int k=0;k<vCascDcyBrCcP.size();k++)
                         {
-                          if(m_vTypeOfTagRec_compCascDcyBrP[j]=="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], IdxOrg[vIdxOfHead_CascDcyBrCcP[k]]);
-                          if(_isTagMatched==false) continue;
+                          if(m_vTypeOfTagRec_compCascDcyBrP[j]=="i")
+                            {
+                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], IdxOrg[vIdxOfHead_CascDcyBrCcP[k]]);
+                              if(_isTagMatched==false) continue;
+                            }
                           cascDcyBrCcP=vCascDcyBrCcP[k];
                           getStrFromVli(cascDcyBrCcP,strCascDcyBrCcP);
                           int _iCascDcyBrP=-1; // If the variable is still equal to -1 after the following loop, then the cascade decay branch of the charge conjugate particle is a new cascade decay branch of the charge conjugate particle.
@@ -1167,8 +1173,11 @@ void topoana::getRslt()
                     {
                       for(unsigned int k=0;k<vDcyFStP.size();k++)
                         {
-                          if(m_vTypeOfTagRec_compDcyFStP[j]=="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], IdxOrg[vIdxOfHead_DcyFStP[k]]);
-                          if(_isTagMatched==false) continue;
+                          if(m_vTypeOfTagRec_compDcyFStP[j]=="i")
+                            {
+                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], IdxOrg[vIdxOfHead_DcyFStP[k]]);
+                              if(_isTagMatched==false) continue;
+                            }
                           dcyFStP=vDcyFStP[k];
                           getStrFromLi(dcyFStP,strDcyFStP);
                           int _iDcyFStP=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the intermediate-resonance-allowed decay branch is a new exclusive decay branch of the intermediate-resonance-allowed decay branch.
@@ -1265,8 +1274,11 @@ void topoana::getRslt()
                       if(_isNoTagMatchOrTagMatched==true) getVDcyFStP(vDcyFStCcP, vIdxOfHead_DcyFStCcP, vPid, vMidx, m_vPid_ccCompDcyFStP[j], m_vNDcyFStP[j]);
                       for(unsigned int k=0;k<vDcyFStCcP.size();k++)
                         {
-                          if(m_vTypeOfTagRec_compDcyFStP[j]=="i") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], IdxOrg[vIdxOfHead_DcyFStCcP[k]]);
-                          if(_isTagMatched==false) continue;
+                          if(m_vTypeOfTagRec_compDcyFStP[j]=="i")
+                            {
+                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], IdxOrg[vIdxOfHead_DcyFStCcP[k]]);
+                              if(_isTagMatched==false) continue;
+                            }
                           dcyFStCcP=vDcyFStCcP[k];
                           getStrFromLi(dcyFStCcP,strDcyFStCcP);
                           int _iDcyFStP=-1; // If the variable is still equal to -1 after the following loop, then the decay branch of the intermediate-resonance-allowed decay branch is a new exclusive decay branch of the intermediate-resonance-allowed decay branch.

@@ -55,7 +55,7 @@ void topoana::getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector
               vIdxOfHeadOld=vIdxOfHeadYng;
             }
           vCascDcyBrP.push_back(cascDcyBrP);
-          vIdxOfHead_CascDcyBrP.push_back(i);
+          vIdxOfHead_CascDcyBrP.push_back(vIdxOfHead[i]);
         }
     }
 }
