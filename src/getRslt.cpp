@@ -505,10 +505,33 @@ void topoana::getRslt()
                 }
             }
              
+          if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,IdxRaw);
+
+          if(m_vPid_compMP.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
+              if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
+              if(m_vPid_compProdBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles", m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles");
+            }
+          else if(m_vPid_compProdBrP.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
+              if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
+            }
+          else if(m_vPid_compDcyFStP.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
+            }
+          else if(m_vPid_compCascDcyBrP.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+            }
+
           if(m_strgTpOfRawIptTopoDat=="MSD")
             {
-              reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,IdxRaw);
-
               for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++)
                 if(m_vTypeOfTagRec_compDcyBrP[j]=="c"||m_vTypeOfTagRec_compDcyBrP[j]=="n"||m_vTypeOfTagRec_compDcyBrP[j]=="!n"||m_vTypeOfTagRec_compDcyBrP[j]=="p"||m_vTypeOfTagRec_compDcyBrP[j]=="i") Tagrecsi_compDcyBrP[j]=Tagrecsd_compDcyBrP[j];
 

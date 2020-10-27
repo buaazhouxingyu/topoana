@@ -466,6 +466,7 @@ class topoana
     void           setBranchAddress(vector<string> vTypeOfTagRec, vector<string> vTBrNmOfTagRec, vector<string> vTBrNmOfNRec, TChain * chn, double * Tagrecsd, int * Tagrecsi, int Tagreca[][20], int * Nrec);
     void 	   createBrs(unsigned int size, string NM1, string NM2, string NM3, string NM4, string NM5, vector<string> vNm, int * aICc, TTree * tr, unsigned int nMax, int * nq, int * iq, int * iCcq, int * nCcq, int * iqCc, int * nAllq);
     void           createBrs(unsigned int size, string NM, vector<string> vNm, int * aICc, TTree * tr, int * nq, int * nCcq, int * nAllq);
+    void           cpBrVals(vector<string> vTypeOfTagRec1, vector<string> vTBrNmOfTagRec1, vector<string> vTBrNmOfNRec1, double * Tagrecsd1, int * Tagrecsi1, int Tagreca1[][20], int * Nrec1, string prompt1, vector<string> vTypeOfTagRec2, vector<string> vTBrNmOfTagRec2, vector<string> vTBrNmOfNRec2, double * Tagrecsd2, int * Tagrecsi2, int Tagreca2[][20], int * Nrec2, string prompt2);
     void	   getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector<int> & vIdxOfHead_CascDcyBrP, vector< list<int> > & dcyTr, vector<int> & vIdxOfHead, vector<int> & vMidxOfHead, int pid, unsigned long hCascDcyBrMax=ULONG_MAX);
     void           getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vIdxOfHead_DcyFStP, vector<int> & vPid, vector<int> & vMidx, int pid, unsigned long nDcyFSt=ULONG_MAX);
     unsigned int   countIncLiaInVlib(list<int> & lia, vector< list<int> > & Vlib);
