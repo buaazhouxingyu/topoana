@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
+void topoana::sortPs(vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdxOrg)
 {
   if(vPid.size()!=vMidx.size())
     {
@@ -121,6 +121,7 @@ void topoana::sortPs(vector<int> & vPid,vector<int> & vMidx)
   vMidx.clear();
   vPid=vPidFnl;
   vMidx=vMidxFnl;
+  if(vIdxOrg!=0) (*vIdxOrg)=vIdxFnl;
 
   vector<int> vPidYngi, vPidYngj;
   vector<int> vIdxYngi, vIdxYngj;
