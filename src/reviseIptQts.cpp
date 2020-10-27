@@ -1,6 +1,6 @@
 #include "../include/topoana.h"
 #include <cmath>
-void topoana::reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & Nps, int Pid[], int Midx[], int IdxOrg[])
+void topoana::reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & Nps, int Pid[], int Midx[], int IdxRaw[])
 {
   const unsigned int Npsi=Npsd;
   int newIdx=0;
@@ -26,7 +26,7 @@ void topoana::reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & N
           Pid[newIdx]=Pidd[i];
           if((isnormal(Midxd[i])||Midxd[i]==0)&&(Midxd[i]!=-999)&&(Midxd[i]!=i)&&(NewIdx[int(Midxd[i])]!=-1)) Midx[newIdx]=NewIdx[int(Midxd[i])];
           else Midx[newIdx]=-1;
-          IdxOrg[newIdx]=i;
+          IdxRaw[newIdx]=i;
         }
     }  
 }

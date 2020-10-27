@@ -428,7 +428,7 @@ class topoana
     int 	   getPidFromTxtPnm(string pnm);
     void           writeErrInfOnPid3PchrgMap(int pid);
     void           writePnmFromPid(ostream & out,string pnmType,int pid);
-    void           reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & Nps, int Pid[], int Midx[], int IdxOrg[]);
+    void           reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & Nps, int Pid[], int Midx[], int IdxRaw[]);
     void           sortByPidAndPchrg(vector<int> &via,vector<int> &vib,vector<int> &vic,vector<int> &vid);
     void           sortBySzPidAndPchrg(vector< vector<int> > &vVia,vector< vector<int> > &vVib,vector< vector<int> >&vVic,vector< vector<int> > &vVid);
     bool           cmprBySzPidAndPchrg(vector<int> & via, vector<int> & vib);
