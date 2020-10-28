@@ -1,7 +1,7 @@
 #include "../include/topoana.h"
 #include <iostream>
 
-void topoana::writeInfOnRslt()
+void topoana::writeInforOnRslt()
 {
   if(m_anaTasksForSigIds!="T")
     {

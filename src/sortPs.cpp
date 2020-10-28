@@ -265,7 +265,7 @@ void topoana::sortPs(vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdx
                     break;
                   }
               }
-            if((vPidYngi.size()!=0)&&(vPidYngi==vPidYngj)) recurHighHierExchOrd(vIdxYngi,vIdxYngj,vPid,vMidx);
+            if((vPidYngi.size()!=0)&&(vPidYngi==vPidYngj)) recurHighHierExchOrd(vIdxYngi, vIdxYngj, vPid, vMidx, vIdxOrg);
           }
       }
 

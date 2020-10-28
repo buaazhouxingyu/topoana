@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj,vector<int> & vPid,vector<int> & vMidx)
+void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi, vector<int> & vIdxYngj, vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdxOrg)
 {
   if(vIdxYngi.size()!=vIdxYngj.size())
     {
@@ -28,25 +28,33 @@ void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj
       cout<<"Idx: "<<i<<"\t"<<"Pid: "<<vPid[i]<<"\t"<<"Midx: "<<vMidx[i]<<endl;
     }*/
 
+  // In the code below, the statements involving "IdxOrg" are added according to their counterparts involving "Pid".
+
   vector< vector<int> > vVPidYngYngi, vVPidYngYngj;
+  vector< vector<int> > vVIdxOrgYngYngi, vVIdxOrgYngYngj;
   vector<int> vPidYngYngi, vPidYngYngj;
+  vector<int> vIdxOrgYngYngi, vIdxOrgYngYngj;
   vector<int> vPidYngYngMid, vMidxYngYngMid, vIdxYngYngMid;
+  vector<int> vIdxOrgYngYngMid;
   vector<int> vIdxYngYngi, vIdxYngYngj;
   int idxYngYng;
   bool exchOrd;
   while(vIdxYngi.size()!=0)
     {
       vVPidYngYngi.clear(); vVPidYngYngj.clear();
+      vVIdxOrgYngYngi.clear(); vVIdxOrgYngYngj.clear();
       vIdxYngYngi.clear(); vIdxYngYngj.clear();
       unsigned int l=vIdxYngj[vIdxYngj.size()-1]+1;
       for(unsigned int k=0;k<vIdxYngi.size();k++)
         {
           vPidYngYngi.clear();
+          vIdxOrgYngYngi.clear();
           for(;l<vPid.size();l++)
             {
               if(vMidx[l]==vIdxYngi[k])
                 {
                   vPidYngYngi.push_back(vPid[l]);
+                  if(vIdxOrg!=0) vIdxOrgYngYngi.push_back((*vIdxOrg)[l]);
                   vIdxYngYngi.push_back(l);
                 }
               else if(vMidx[l]>vIdxYngi[k])
@@ -56,16 +64,19 @@ void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj
                 }
             }
           vVPidYngYngi.push_back(vPidYngYngi);
+          if(vIdxOrg!=0) vVIdxOrgYngYngi.push_back(vIdxOrgYngYngi);
         }
       l++;
       for(unsigned int k=0;k<vIdxYngj.size();k++)
         { 
           vPidYngYngj.clear();
+          vIdxOrgYngYngj.clear();
           for(;l<vPid.size();l++)
             { 
               if(vMidx[l]==vIdxYngj[k])
                 {
                   vPidYngYngj.push_back(vPid[l]);
+                  if(vIdxOrg!=0) vIdxOrgYngYngj.push_back((*vIdxOrg)[l]);
                   vIdxYngYngj.push_back(l);
                 }
               else if(vMidx[l]>vIdxYngj[k])
@@ -75,15 +86,18 @@ void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj
                 }
             }
           vVPidYngYngj.push_back(vPidYngYngj);
+          if(vIdxOrg!=0) vVIdxOrgYngYngj.push_back(vIdxOrgYngYngj);
         }
       if((vIdxYngYngi.size()!=0)&&(vIdxYngYngj.size()!=0))
         {
           vPidYngYngMid.clear(); vMidxYngYngMid.clear(); vIdxYngYngMid.clear();
+          vIdxOrgYngYngMid.clear();
           for(unsigned int k=((unsigned int) (vIdxYngYngi[(vIdxYngYngi.size()-1)]+1));k<((unsigned int) (vIdxYngYngj[0]));k++)
             {
               vPidYngYngMid.push_back(vPid[k]);
               vMidxYngYngMid.push_back(vMidx[k]);
               vIdxYngYngMid.push_back(k);
+              if(vIdxOrg!=0) vIdxOrgYngYngMid.push_back((*vIdxOrg)[k]);
             }
           if(vVPidYngYngi!=vVPidYngYngj)
             {
@@ -106,6 +120,7 @@ void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj
                       {
                         vPid[idxYngYng]=vVPidYngYngj[k][l1];
                         vMidx[idxYngYng]=vIdxYngi[k];
+                        if(vIdxOrg!=0) (*vIdxOrg)[idxYngYng]=vVIdxOrgYngYngj[k][l1];
                         vNewIdxYngYng.push_back(idxYngYng);
                         idxYngYng++;
                       }
@@ -113,6 +128,7 @@ void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj
                     {
                       vPid[idxYngYng]=vPidYngYngMid[k];
                       vMidx[idxYngYng]=vMidxYngYngMid[k];
+                      if(vIdxOrg!=0) (*vIdxOrg)[idxYngYng]=vIdxOrgYngYngMid[k];
                       vNewIdxYngYng.push_back(idxYngYng);
                       idxYngYng++;
                     }
@@ -121,13 +137,14 @@ void topoana::recurHighHierExchOrd(vector<int> & vIdxYngi,vector<int> & vIdxYngj
                       {
                         vPid[idxYngYng]=vVPidYngYngi[k][l2];
                         vMidx[idxYngYng]=vIdxYngj[k];
+                        if(vIdxOrg!=0) (*vIdxOrg)[idxYngYng]=vVIdxOrgYngYngi[k][l2];
                         vNewIdxYngYng.push_back(idxYngYng);
                         idxYngYng++;
                       }
                   for(unsigned int k=0;k<vIdxYngYngj.size();k++) vOldIdxYngYng.push_back(vIdxYngYngj[k]);
                   for(unsigned int k=0;k<vIdxYngYngMid.size();k++) vOldIdxYngYng.push_back(vIdxYngYngMid[k]);
                   for(unsigned int k=0;k<vIdxYngYngi.size();k++) vOldIdxYngYng.push_back(vIdxYngYngi[k]);
-                  recurHigherHierExchOrd(vNewIdxYngYng,vOldIdxYngYng,vPid,vMidx);
+                  recurHigherHierExchOrd(vNewIdxYngYng, vOldIdxYngYng, vPid, vMidx, vIdxOrg);
                   break;
                 }
               else

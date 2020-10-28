@@ -433,8 +433,8 @@ class topoana
     void           sortBySzPidAndPchrg(vector< vector<int> > &vVia,vector< vector<int> > &vVib,vector< vector<int> >&vVic,vector< vector<int> > &vVid);
     bool           cmprBySzPidAndPchrg(vector<int> & via, vector<int> & vib);
     bool	   isIgnoreFDcyBr(int mPid, vector<int> vPidYngSbst, vector< list<int> > vIgnoreFDcyBr);
-    void           recurHigherHierExchOrd(vector<int> & vNewIdx, vector<int> & vOldIdx, vector<int> & vPid, vector<int> & vMidx);
-    void           recurHighHierExchOrd(vector<int> & vIdxYngi, vector<int> & vIdxYngj, vector<int> & vPid, vector<int> & vMidx);
+    void           recurHigherHierExchOrd(vector<int> & vNewIdx, vector<int> & vOldIdx, vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdxOrg=0);
+    void           recurHighHierExchOrd(vector<int> & vIdxYngi, vector<int> & vIdxYngj, vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdxOrg=0);
     void           sortPs(vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdxOrg=0);
     int		   getCcPid(int pid);
     void           getDcyTr(vector<int> vPid, vector<int> vMidx, vector< list<int> > & dcyTr, vector<int> * vIdxOfHead=0, vector<int> * vMidxOfHead=0, vector<int> * vIIncIncOrIRACascDcyBr=0, vector<int> * vIIRAIncOrIRACascDcyBr=0);
@@ -503,7 +503,7 @@ class topoana
     void           getVIMDcyBr(vector< list<int> > & vDcyBr, vector<int> & vIMDcyBr);
     void           writeRsltIntoTexFl();
     void           getPdfFlFromTexFl();
-    void           writeInfOnRslt();
+    void           writeInforOnRslt();
 };
 
 // End the declaration of the topoana class

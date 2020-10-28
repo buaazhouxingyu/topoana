@@ -94,6 +94,6 @@ int main(int argc,char *argv[])
   ta.writeRsltIntoTxtFl();
   ta.writeRsltIntoTexFl();
   ta.getPdfFlFromTexFl();
-  ta.writeInfOnRslt();
+  ta.writeInforOnRslt();
   return 0;
 }

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::recurHigherHierExchOrd(vector<int> & vNewIdx,vector<int> & vOldIdx,vector<int> & vPid,vector<int> & vMidx)
+void topoana::recurHigherHierExchOrd(vector<int> & vNewIdx, vector<int> & vOldIdx, vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdxOrg)
 {
   if(vNewIdx.size()!=vOldIdx.size())
     {
@@ -28,15 +28,17 @@ void topoana::recurHigherHierExchOrd(vector<int> & vNewIdx,vector<int> & vOldIdx
       cout<<"Idx: "<<i<<"\t"<<"Pid: "<<vPid[i]<<"\t"<<"Midx: "<<vMidx[i]<<endl;
     }*/
 
+  // In the code below, the statements involving "IdxOrg" are added according to their counterparts involving "Pid".
+
   vector<int> vNewIdxOld=vNewIdx,vOldIdxOld=vOldIdx;
   vector<int> vNewIdxYng,vOldIdxYng;
-  vector<int> vPidYng,vNewMidxYng;
-  int newIdxYng;  
+  vector<int> vPidYng,vNewMidxYng,vIdxOrgYng;
+  int newIdxYng;
   while(vNewIdxOld.size()!=0)
     {
       vNewIdxYng.clear();vOldIdxYng.clear();
-      vPidYng.clear();vNewMidxYng.clear();
-      newIdxYng=INT_MAX;  
+      vPidYng.clear();vNewMidxYng.clear();vIdxOrgYng.clear();
+      newIdxYng=INT_MAX;
       for(unsigned int i=0;i<vNewIdxOld.size();i++)
         {
           for(unsigned int j=vNewIdxOld[vNewIdxOld.size()-1]+1;j<vPid.size();j++)
@@ -46,6 +48,7 @@ void topoana::recurHigherHierExchOrd(vector<int> & vNewIdx,vector<int> & vOldIdx
                   vOldIdxYng.push_back(j);
                   vPidYng.push_back(vPid[j]);
                   vNewMidxYng.push_back(vNewIdxOld[i]);
+                  if(vIdxOrg!=0) vIdxOrgYng.push_back((*vIdxOrg)[j]);
                   if(j<((unsigned int) newIdxYng)) newIdxYng=j;
                 }
               else if(vMidx[j]>vNewIdxOld[vNewIdxOld.size()-1])
@@ -58,6 +61,7 @@ void topoana::recurHigherHierExchOrd(vector<int> & vNewIdx,vector<int> & vOldIdx
         {
           vPid[newIdxYng]=vPidYng[i];
           vMidx[newIdxYng]=vNewMidxYng[i];
+          if(vIdxOrg!=0) (*vIdxOrg)[newIdxYng]=vIdxOrgYng[i];
           vNewIdxYng.push_back(newIdxYng);
           newIdxYng++;
         }
