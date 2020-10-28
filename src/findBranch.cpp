@@ -10,7 +10,7 @@ void topoana::findBranch(string nmOfIptRootFl, string ttrNm, TTree * tr, vector<
       if(vTypeOfTagRec[i]!="")
         {
           TBranch * br;
-          if(vTypeOfTagRec[i]=="c"||vTypeOfTagRec[i]=="n"||vTypeOfTagRec[i]=="!n"||vTypeOfTagRec[i]=="p"||vTypeOfTagRec[i]=="i"||vTypeOfTagRec[i]=="C"||vTypeOfTagRec[i]=="N"||vTypeOfTagRec[i]=="!N"||vTypeOfTagRec[i]=="P")
+          if(vTypeOfTagRec[i]=="c"||vTypeOfTagRec[i]=="n"||vTypeOfTagRec[i]=="!n"||vTypeOfTagRec[i]=="p"||vTypeOfTagRec[i]=="i"||vTypeOfTagRec[i]=="C"||vTypeOfTagRec[i]=="N"||vTypeOfTagRec[i]=="!N"||vTypeOfTagRec[i]=="P"||vTypeOfTagRec[i]=="I")
             {
               br=tr->FindBranch(vTBrNmOfTagRec[i].c_str());
               if(!br)
@@ -19,19 +19,19 @@ void topoana::findBranch(string nmOfIptRootFl, string ttrNm, TTree * tr, vector<
                   cerr<<"Infor: The tbranch is filled in the setting item prompted with \""<<prompt<<"\"."<<endl;
                   cerr<<"Infor: It is expected to be ";
                   if(vTypeOfTagRec[i]=="c"||vTypeOfTagRec[i]=="n"||vTypeOfTagRec[i]=="!n"||vTypeOfTagRec[i]=="p"||vTypeOfTagRec[i]=="i") cerr<<"a scalar";
-                  else if(vTypeOfTagRec[i]=="C"||vTypeOfTagRec[i]=="N"||vTypeOfTagRec[i]=="!N"||vTypeOfTagRec[i]=="P") cerr<<"an array";
+                  else if(vTypeOfTagRec[i]=="C"||vTypeOfTagRec[i]=="N"||vTypeOfTagRec[i]=="!N"||vTypeOfTagRec[i]=="P"||vTypeOfTagRec[i]=="I") cerr<<"an array";
                   cerr<<" tbranch, which stores the reconstructed ";
                   if(vTypeOfTagRec[i]=="c"||vTypeOfTagRec[i]=="C") cerr<<"charge";
                   else if(vTypeOfTagRec[i]=="n"||vTypeOfTagRec[i]=="N") cerr<<"neutral tag";
                   else if(vTypeOfTagRec[i]=="!n"||vTypeOfTagRec[i]=="!N") cerr<<"reverted neutral tag";
                   else if(vTypeOfTagRec[i]=="p"||vTypeOfTagRec[i]=="P") cerr<<"PDG code";
-                  else if(vTypeOfTagRec[i]=="i") cerr<<"index";
+                  else if(vTypeOfTagRec[i]=="i"||vTypeOfTagRec[i]=="I") cerr<<"index";
                   cerr<<" of the particle, in order to restrict its truth instances."<<endl;
                   cerr<<"Infor: Please check it."<<endl<<endl;
                   allIptsAreOK=false;
                 }
             }
-          if(vTypeOfTagRec[i]=="C"||vTypeOfTagRec[i]=="N"||vTypeOfTagRec[i]=="!N"||vTypeOfTagRec[i]=="P")
+          if(vTypeOfTagRec[i]=="C"||vTypeOfTagRec[i]=="N"||vTypeOfTagRec[i]=="!N"||vTypeOfTagRec[i]=="P"||vTypeOfTagRec[i]=="I")
             {
               br=tr->FindBranch(vTBrNmOfNRec[i].c_str());
               if(!br)

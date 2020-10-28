@@ -709,12 +709,12 @@ void topoana::checkInput()
               else if(m_vTypeOfTagRec_compDcyBrP[i]=="n"||m_vTypeOfTagRec_compDcyBrP[i]=="N") cout<<"neutral tag";
               else if(m_vTypeOfTagRec_compDcyBrP[i]=="!n"||m_vTypeOfTagRec_compDcyBrP[i]=="!N") cout<<"reverted neutral tag";
               else if(m_vTypeOfTagRec_compDcyBrP[i]=="p"||m_vTypeOfTagRec_compDcyBrP[i]=="P") cout<<"PDG code";
-              else if(m_vTypeOfTagRec_compDcyBrP[i]=="i") cout<<"index";
+              else if(m_vTypeOfTagRec_compDcyBrP[i]=="i"||m_vTypeOfTagRec_compDcyBrP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
               if(m_vTypeOfTagRec_compDcyBrP[i]=="c"||m_vTypeOfTagRec_compDcyBrP[i]=="n"||m_vTypeOfTagRec_compDcyBrP[i]=="!n"||m_vTypeOfTagRec_compDcyBrP[i]=="p"||m_vTypeOfTagRec_compDcyBrP[i]=="i") cout<<"scalar";
-              else if(m_vTypeOfTagRec_compDcyBrP[i]=="C"||m_vTypeOfTagRec_compDcyBrP[i]=="N"||m_vTypeOfTagRec_compDcyBrP[i]=="!N"||m_vTypeOfTagRec_compDcyBrP[i]=="P") cout<<"array";
+              else if(m_vTypeOfTagRec_compDcyBrP[i]=="C"||m_vTypeOfTagRec_compDcyBrP[i]=="N"||m_vTypeOfTagRec_compDcyBrP[i]=="!N"||m_vTypeOfTagRec_compDcyBrP[i]=="P"||m_vTypeOfTagRec_compDcyBrP[i]=="I") cout<<"array";
               cout<<" TBranch \""<<m_vTBrNmOfTagRec_compDcyBrP[i]<<"\", is specified to restrict its truth instances."<<endl;
-              if(m_vTypeOfTagRec_compDcyBrP[i]=="C"||m_vTypeOfTagRec_compDcyBrP[i]=="N"||m_vTypeOfTagRec_compDcyBrP[i]=="!N"||m_vTypeOfTagRec_compDcyBrP[i]=="P")
+              if(m_vTypeOfTagRec_compDcyBrP[i]=="C"||m_vTypeOfTagRec_compDcyBrP[i]=="N"||m_vTypeOfTagRec_compDcyBrP[i]=="!N"||m_vTypeOfTagRec_compDcyBrP[i]=="P"||m_vTypeOfTagRec_compDcyBrP[i]=="I")
                 {
                   cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compDcyBrP[i]<<"\" as the length of the array."<<endl;
                 }
@@ -826,12 +826,12 @@ void topoana::checkInput()
               else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N") cout<<"neutral tag";
               else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="!n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N") cout<<"reverted neutral tag";
               else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="p"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P") cout<<"PDG code";
-              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="i") cout<<"index";
+              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="i"||m_vTypeOfTagRec_compCascDcyBrP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
               if(m_vTypeOfTagRec_compCascDcyBrP[i]=="c"||m_vTypeOfTagRec_compCascDcyBrP[i]=="n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="p"||m_vTypeOfTagRec_compCascDcyBrP[i]=="i") cout<<"scalar";
-              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="C"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P") cout<<"array";
+              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="C"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P"||m_vTypeOfTagRec_compCascDcyBrP[i]=="I") cout<<"array";
               cout<<" TBranch \""<<m_vTBrNmOfTagRec_compCascDcyBrP[i]<<"\", is specified to restrict its truth instances."<<endl;
-              if(m_vTypeOfTagRec_compCascDcyBrP[i]=="C"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P")
+              if(m_vTypeOfTagRec_compCascDcyBrP[i]=="C"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P"||m_vTypeOfTagRec_compCascDcyBrP[i]=="I")
                 {
                   cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compCascDcyBrP[i]<<"\" as the length of the array."<<endl;
                 }
@@ -956,12 +956,12 @@ void topoana::checkInput()
               else if(m_vTypeOfTagRec_compDcyFStP[i]=="n"||m_vTypeOfTagRec_compDcyFStP[i]=="N") cout<<"neutral tag";
               else if(m_vTypeOfTagRec_compDcyFStP[i]=="!n"||m_vTypeOfTagRec_compDcyFStP[i]=="!N") cout<<"reverted neutral tag";
               else if(m_vTypeOfTagRec_compDcyFStP[i]=="p"||m_vTypeOfTagRec_compDcyFStP[i]=="P") cout<<"PDG code";
-              else if(m_vTypeOfTagRec_compDcyFStP[i]=="i") cout<<"index";
+              else if(m_vTypeOfTagRec_compDcyFStP[i]=="i"||m_vTypeOfTagRec_compDcyFStP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
               if(m_vTypeOfTagRec_compDcyFStP[i]=="c"||m_vTypeOfTagRec_compDcyFStP[i]=="n"||m_vTypeOfTagRec_compDcyFStP[i]=="!n"||m_vTypeOfTagRec_compDcyFStP[i]=="p"||m_vTypeOfTagRec_compDcyFStP[i]=="i") cout<<"scalar";
-              else if(m_vTypeOfTagRec_compDcyFStP[i]=="C"||m_vTypeOfTagRec_compDcyFStP[i]=="N"||m_vTypeOfTagRec_compDcyFStP[i]=="!N"||m_vTypeOfTagRec_compDcyFStP[i]=="P") cout<<"array";
+              else if(m_vTypeOfTagRec_compDcyFStP[i]=="C"||m_vTypeOfTagRec_compDcyFStP[i]=="N"||m_vTypeOfTagRec_compDcyFStP[i]=="!N"||m_vTypeOfTagRec_compDcyFStP[i]=="P"||m_vTypeOfTagRec_compDcyFStP[i]=="I") cout<<"array";
               cout<<" TBranch \""<<m_vTBrNmOfTagRec_compDcyFStP[i]<<"\", is specified to restrict its truth instances."<<endl;
-              if(m_vTypeOfTagRec_compDcyFStP[i]=="C"||m_vTypeOfTagRec_compDcyFStP[i]=="N"||m_vTypeOfTagRec_compDcyFStP[i]=="!N"||m_vTypeOfTagRec_compDcyFStP[i]=="P")
+              if(m_vTypeOfTagRec_compDcyFStP[i]=="C"||m_vTypeOfTagRec_compDcyFStP[i]=="N"||m_vTypeOfTagRec_compDcyFStP[i]=="!N"||m_vTypeOfTagRec_compDcyFStP[i]=="P"||m_vTypeOfTagRec_compDcyFStP[i]=="I")
                 {
                   cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compDcyFStP[i]<<"\" as the length of the array."<<endl;
                 }
@@ -1070,12 +1070,12 @@ void topoana::checkInput()
               else if(m_vTypeOfTagRec_compProdBrP[i]=="n"||m_vTypeOfTagRec_compProdBrP[i]=="N") cout<<"neutral tag";
               else if(m_vTypeOfTagRec_compProdBrP[i]=="!n"||m_vTypeOfTagRec_compProdBrP[i]=="!N") cout<<"reverted neutral tag";
               else if(m_vTypeOfTagRec_compProdBrP[i]=="p"||m_vTypeOfTagRec_compProdBrP[i]=="P") cout<<"PDG code";
-              else if(m_vTypeOfTagRec_compProdBrP[i]=="i") cout<<"index";
+              else if(m_vTypeOfTagRec_compProdBrP[i]=="i"||m_vTypeOfTagRec_compProdBrP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
               if(m_vTypeOfTagRec_compProdBrP[i]=="c"||m_vTypeOfTagRec_compProdBrP[i]=="n"||m_vTypeOfTagRec_compProdBrP[i]=="!n"||m_vTypeOfTagRec_compProdBrP[i]=="p"||m_vTypeOfTagRec_compProdBrP[i]=="i") cout<<"scalar";
-              else if(m_vTypeOfTagRec_compProdBrP[i]=="C"||m_vTypeOfTagRec_compProdBrP[i]=="N"||m_vTypeOfTagRec_compProdBrP[i]=="!N"||m_vTypeOfTagRec_compProdBrP[i]=="P") cout<<"array";
+              else if(m_vTypeOfTagRec_compProdBrP[i]=="C"||m_vTypeOfTagRec_compProdBrP[i]=="N"||m_vTypeOfTagRec_compProdBrP[i]=="!N"||m_vTypeOfTagRec_compProdBrP[i]=="P"||m_vTypeOfTagRec_compProdBrP[i]=="I") cout<<"array";
               cout<<" TBranch \""<<m_vTBrNmOfTagRec_compProdBrP[i]<<"\", is specified to restrict its truth instances."<<endl;
-              if(m_vTypeOfTagRec_compProdBrP[i]=="C"||m_vTypeOfTagRec_compProdBrP[i]=="N"||m_vTypeOfTagRec_compProdBrP[i]=="!N"||m_vTypeOfTagRec_compProdBrP[i]=="P")
+              if(m_vTypeOfTagRec_compProdBrP[i]=="C"||m_vTypeOfTagRec_compProdBrP[i]=="N"||m_vTypeOfTagRec_compProdBrP[i]=="!N"||m_vTypeOfTagRec_compProdBrP[i]=="P"||m_vTypeOfTagRec_compProdBrP[i]=="I")
                 {
                   cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compProdBrP[i]<<"\" as the length of the array."<<endl;
                 }
@@ -1179,12 +1179,12 @@ void topoana::checkInput()
               else if(m_vTypeOfTagRec_compMP[i]=="n"||m_vTypeOfTagRec_compMP[i]=="N") cout<<"neutral tag";
               else if(m_vTypeOfTagRec_compMP[i]=="!n"||m_vTypeOfTagRec_compMP[i]=="!N") cout<<"reverted neutral tag";
               else if(m_vTypeOfTagRec_compMP[i]=="p"||m_vTypeOfTagRec_compMP[i]=="P") cout<<"PDG code";
-              else if(m_vTypeOfTagRec_compMP[i]=="i") cout<<"index";
+              else if(m_vTypeOfTagRec_compMP[i]=="i"||m_vTypeOfTagRec_compMP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
               if(m_vTypeOfTagRec_compMP[i]=="c"||m_vTypeOfTagRec_compMP[i]=="n"||m_vTypeOfTagRec_compMP[i]=="!n"||m_vTypeOfTagRec_compMP[i]=="p"||m_vTypeOfTagRec_compMP[i]=="i") cout<<"scalar";
-              else if(m_vTypeOfTagRec_compMP[i]=="C"||m_vTypeOfTagRec_compMP[i]=="N"||m_vTypeOfTagRec_compMP[i]=="!N"||m_vTypeOfTagRec_compMP[i]=="P") cout<<"array";
+              else if(m_vTypeOfTagRec_compMP[i]=="C"||m_vTypeOfTagRec_compMP[i]=="N"||m_vTypeOfTagRec_compMP[i]=="!N"||m_vTypeOfTagRec_compMP[i]=="P"||m_vTypeOfTagRec_compMP[i]=="I") cout<<"array";
               cout<<" TBranch \""<<m_vTBrNmOfTagRec_compMP[i]<<"\", is specified to restrict its truth instances."<<endl;
-              if(m_vTypeOfTagRec_compMP[i]=="C"||m_vTypeOfTagRec_compMP[i]=="N"||m_vTypeOfTagRec_compMP[i]=="!N"||m_vTypeOfTagRec_compMP[i]=="P")
+              if(m_vTypeOfTagRec_compMP[i]=="C"||m_vTypeOfTagRec_compMP[i]=="N"||m_vTypeOfTagRec_compMP[i]=="!N"||m_vTypeOfTagRec_compMP[i]=="P"||m_vTypeOfTagRec_compMP[i]=="I")
                 {
                   cout<<"  In addition, the number of reconstructed instances of the particle is stored in the TBranch \""<<m_vTBrNmOfNRec_compMP[i]<<"\" as the length of the array."<<endl;
                 }

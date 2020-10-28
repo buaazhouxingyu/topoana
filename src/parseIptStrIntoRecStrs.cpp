@@ -42,7 +42,7 @@ void topoana::parseIptStrIntoRecStrs(string line, string prompt, string str, str
     }
   else
     {
-      if(typeOfTagRec=="C"||typeOfTagRec=="N"||typeOfTagRec=="!N"||typeOfTagRec=="P") isAValidType=true;
+      if(typeOfTagRec=="C"||typeOfTagRec=="N"||typeOfTagRec=="!N"||typeOfTagRec=="P"||typeOfTagRec=="I") isAValidType=true;
     }
   if(isAValidType==false)
     {
@@ -50,7 +50,7 @@ void topoana::parseIptStrIntoRecStrs(string line, string prompt, string str, str
       if(nColon==2) cerr<<"first ";
       cerr<<"colon in the string \""<<strbak<<"\" from the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is not valid!"<<endl<<endl;
       cerr<<"Infor: In the case of one colon in the string, it is allowed to be one of the following five substrings \"c\", \"n\", \"!n\", \"p\", and \"i\", which are designed to restrict the truth instances of the specified particle with its reconstructed \"charge\", \"neutral tag\", \"reverted neutral tag\", \"PDG code\", and \"index\", respectively. In this case, only the TBranch name for the scalar variable of the reconstructed tag is allowed to be put closely after the colon."<<endl<<endl;
-      cerr<<"Infor: In the case of two colons in the string, it is allowed to be one of the following four substrings \"C\", \"N\", \"!N\", and \"P\", which are designed to restrict the truth instances of the specified particle with its reconstructed \"charge\", \"neutral tag\", \"reverted neutral tag\", and \"PDG code\", respectively. In this case, the TBranch name for the array variable of the reconstructed tag should be put closely after the first colon, and the TBranch name for the scalar variable of the number of reconstructed instances of the particle should be put closely after the second colon."<<endl;
+      cerr<<"Infor: In the case of two colons in the string, it is allowed to be one of the following five substrings \"C\", \"N\", \"!N\", \"P\", and \"I\", which are designed to restrict the truth instances of the specified particle with its reconstructed \"charge\", \"neutral tag\", \"reverted neutral tag\", \"PDG code\", and \"index\", respectively. In this case, the TBranch name for the array variable of the reconstructed tag should be put closely after the first colon, and the TBranch name for the scalar variable of the number of reconstructed instances of the particle should be put closely after the second colon."<<endl;
       exit(-1);
     }
   iss>>tBrNmOfTagRec;

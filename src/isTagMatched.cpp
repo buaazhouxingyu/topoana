@@ -1,6 +1,6 @@
 #include "../include/topoana.h"
 
-// The last parameter "Tagtruth" is the PDG code of the current truth instance of the specified particle in the cases where the type of the reconstructed tag is "c", "n", "!n", "p", "C", "N", "!N", or "P", while it is the original index of the current truth instance of the specified particle in the case where the type of the reconstructed tag is "i".
+// The last parameter "Tagtruth" is the PDG code of the current truth instance of the specified particle in the cases where the type of the reconstructed tag is "c", "n", "!n", "p", "C", "N", "!N", or "P", while it is the raw index of the current truth instance of the specified particle in the case where the type of the reconstructed tag is "i" or "I".
 bool topoana::isTagMatched(string typeOfTagrec, int Tagrecs, int * Tagreca, int Nrec, int Tagtruth)
 {
   bool isTagMatched=false;
@@ -28,7 +28,7 @@ bool topoana::isTagMatched(string typeOfTagrec, int Tagrecs, int * Tagreca, int 
           if(Tagtruth==Tagrecs) isTagMatched=true;
         }
     }
-  else if(typeOfTagrec=="C"||typeOfTagrec=="N"||typeOfTagrec=="!N"||typeOfTagrec=="P")
+  else if(typeOfTagrec=="C"||typeOfTagrec=="N"||typeOfTagrec=="!N"||typeOfTagrec=="P"||typeOfTagrec=="I")
     {
       for(unsigned int i=0;i<((unsigned int) Nrec);i++)
         {
@@ -45,6 +45,10 @@ bool topoana::isTagMatched(string typeOfTagrec, int Tagrecs, int * Tagreca, int 
               if(m_pidIccPMap[Tagtruth]==(-1)*Tagreca[i]) isTagMatched=true;
             }
           else if(typeOfTagrec=="P")
+            {
+              if(Tagtruth==Tagreca[i]) isTagMatched=true;
+            }
+          else if(typeOfTagrec=="I")
             {
               if(Tagtruth==Tagreca[i]) isTagMatched=true;
             }
