@@ -1,0 +1,64 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  5155	nEtr:  3	nCEtr:  3
+  Upsilon(4S) --> B+ B-
+  B+ --> mu+ nu_mu anti-D*0
+  B- --> rho- D0
+  anti-D*0 --> pi0 anti-D0
+  rho- --> pi0 pi-
+  D0 --> pi0 pi+ K-
+  anti-D0 --> pi0 pi- K+
+( Upsilon(4S) ---> mu+ nu_mu pi0 pi0 pi0 pi0 pi+ pi- pi- K+ K- )
+
+rowNo:  2	iDcyTr:  4287	nEtr:  2	nCEtr:  5
+  Upsilon(4S) --> B+ B-
+  B+ --> rho+ omega anti-D0
+  B- --> mu- anti-nu_mu D0
+  rho+ --> pi0 pi+
+  omega --> pi0 pi+ pi-
+  anti-D0 --> pi0 pi- K+
+  D0 --> pi+ omega K-
+  omega --> pi0 pi+ pi-
+( Upsilon(4S) ---> mu- anti-nu_mu pi0 pi0 pi0 pi0 pi+ pi+ pi+ pi+ pi- pi- pi- K+ K- )
+
+rowNo:  3	iDcyTr:  587	nEtr:  2	nCEtr:  7
+  Upsilon(4S) --> B+ B-
+  B+ --> mu+ nu_mu anti-D0
+  B- --> e- anti-nu_e D0
+  anti-D0 --> K+ a_1-
+  D0 --> pi0 pi+ K-
+  a_1- --> pi0 rho-
+  rho- --> pi0 pi-
+( Upsilon(4S) ---> e- anti-nu_e mu+ nu_mu pi0 pi0 pi0 pi+ pi- K+ K- )
+
+rowNo:  4	iDcyTr:  7079	nEtr:  2	nCEtr:  9
+  Upsilon(4S) --> B+ B-
+  B+ --> e+ nu_e anti-D*0 gammaF
+  B- --> D*0 a_1-
+  anti-D*0 --> anti-D0 gamma
+  D*0 --> D0 gamma
+  a_1- --> rho0 pi-
+  anti-D0 --> pi0 pi- K+
+  D0 --> pi- rho+
+  rho0 --> pi+ pi-
+  rho+ --> pi0 pi+
+( Upsilon(4S) ---> e+ nu_e pi0 pi0 pi+ pi+ pi- pi- pi- pi- K+ gammaF gamma gamma )
+
+rowNo:  5	iDcyTr:  7656	nEtr:  2	nCEtr:  11
+  Upsilon(4S) --> B+ B-
+  B+ --> e+ nu_e anti-D*0 gammaF
+  B- --> mu- anti-nu_mu D*0
+  anti-D*0 --> pi0 anti-D0
+  D*0 --> pi0 D0
+  anti-D0 --> rho- K*+
+  D0 --> pi0 pi+ K-
+  rho- --> pi0 pi-
+  K*+ --> pi+ K0
+  K0 --> K_L0
+( Upsilon(4S) ---> e+ nu_e mu- anti-nu_mu pi0 pi0 pi0 pi0 K_L0 pi+ pi+ pi- K- gammaF )
+
+rowNo:  rest	iDcyTr:  ---	nEtr:  99989	nCEtr:  100000
+  Upsilon(4S) --> others (99963 in total)
+( Upsilon(4S) ---> corresponding to others )
+

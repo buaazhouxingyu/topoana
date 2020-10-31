@@ -1,0 +1,300 @@
+
+Reading the card file: /workfs/bes/zhouxy/topoana-02-05-04/share/underlying_topoana.card ...
+
+
+Reading the card file: ddbar.card ...
+
+The parameters set in the card file are as follows:
+
+Names of input root files:
+
+  ../../input/ddbar1.root
+  ../../input/ddbar2.root
+
+TTree name: evt
+
+The component analysis over decay trees will be performed.
+Maximum number of decay trees to be printed: 5
+The decay initial-final states in the output pdf files are put under their respective decay trees.
+
+*****************************************************************************************
+
+There are 100000 entries in total in the input root files.
+
+Number of entries processed	Number of seconds elapsed
+
+          5000			          0.69
+         10000			          1.19
+         15000			          1.69
+         20000			          2.24
+         25000			          2.76
+         30000			          3.30
+         35000			          3.81
+         40000			          4.32
+         45000			          4.82
+         50000			          5.33
+         55000			          5.83
+         60000			          6.33
+         65000			          6.84
+         70000			          7.33
+         75000			          7.84
+         80000			          8.33
+         85000			          8.83
+         90000			          9.32
+         95000			          9.84
+        100000			         10.36
+
+There are 2014815 MC generated particles in total in all the entries of the input root files.
+
+There are 20.15 MC generated particles on average in each entry of the input root files.
+
+*****************************************************************************************
+
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./ddbar.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo))
+(/workfs/bes/zhouxy/topoana-02-05-04/share/geometry.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/geometry',
+               but the package provides `geometry'.
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty)
+(/usr/share/texmf/tex/generic/oberdiek/ifpdf.sty)
+(/usr/share/texmf/tex/generic/oberdiek/ifvtex.sty)
+(/workfs/bes/zhouxy/topoana-02-05-04/share/ifxetex.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/ifxetex',
+               but the package provides `ifxetex'.
+
+)) (/usr/share/texmf/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf/tex/latex/config/hyperref.cfg)
+(/usr/share/texmf/tex/latex/oberdiek/kvoptions.sty)
+Implicit mode ON; LaTeX internals redefined
+(/usr/share/texmf/tex/latex/ltxmisc/url.sty))
+*hyperref using default driver hpdftex*
+(/usr/share/texmf/tex/latex/hyperref/hpdftex.def)
+(/usr/share/texmf/tex/latex/tools/longtable.sty)
+(/workfs/bes/zhouxy/topoana-02-05-04/share/makecell.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/makecell',
+               but the package provides `makecell'.
+
+(/usr/share/texmf/tex/latex/tools/array.sty))
+(/usr/share/texmf/tex/latex/graphics/color.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def))
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+No file ddbar.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texmf/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf/tex/latex/oberdiek/refcount.sty))
+(/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty))
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd)
+
+LaTeX Warning: No \author given.
+
+[1{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 1 on input line 118.
+
+[3]
+
+Package longtable Warning: Table widths have changed. Rerun LaTeX.
+
+(./ddbar.aux) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/
+texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type1/bluesky/
+cm/cmmi6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi9.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+r12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr/share/texmf/fo
+nts/type1/bluesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb
+></usr/share/texmf/fonts/type1/bluesky/cm/cmr9.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></us
+r/share/texmf/fonts/type1/bluesky/cm/cmsy9.pfb></usr/share/texmf/fonts/type1/bl
+uesky/ams/msam10.pfb>
+Output written on ddbar.pdf (3 pages, 67331 bytes).
+Transcript written on ddbar.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./ddbar.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo))
+(/workfs/bes/zhouxy/topoana-02-05-04/share/geometry.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/geometry',
+               but the package provides `geometry'.
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty)
+(/usr/share/texmf/tex/generic/oberdiek/ifpdf.sty)
+(/usr/share/texmf/tex/generic/oberdiek/ifvtex.sty)
+(/workfs/bes/zhouxy/topoana-02-05-04/share/ifxetex.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/ifxetex',
+               but the package provides `ifxetex'.
+
+)) (/usr/share/texmf/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf/tex/latex/config/hyperref.cfg)
+(/usr/share/texmf/tex/latex/oberdiek/kvoptions.sty)
+Implicit mode ON; LaTeX internals redefined
+(/usr/share/texmf/tex/latex/ltxmisc/url.sty))
+*hyperref using default driver hpdftex*
+(/usr/share/texmf/tex/latex/hyperref/hpdftex.def)
+(/usr/share/texmf/tex/latex/tools/longtable.sty)
+(/workfs/bes/zhouxy/topoana-02-05-04/share/makecell.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/makecell',
+               but the package provides `makecell'.
+
+(/usr/share/texmf/tex/latex/tools/array.sty))
+(/usr/share/texmf/tex/latex/graphics/color.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def))
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty)) (./ddbar.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texmf/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf/tex/latex/oberdiek/refcount.sty)) (./ddbar.out) (./ddbar.out)
+(/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty))
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd)
+
+LaTeX Warning: No \author given.
+
+[1{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./ddbar.lot) [2]
+[3] (./ddbar.aux) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type1/blue
+sky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi9.pfb></usr/share
+/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr/share/texm
+f/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8
+.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr9.pfb></usr/share/texmf/fonts/
+type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb>
+</usr/share/texmf/fonts/type1/bluesky/cm/cmsy9.pfb></usr/share/texmf/fonts/type
+1/bluesky/ams/msam10.pfb>
+Output written on ddbar.pdf (3 pages, 67627 bytes).
+Transcript written on ddbar.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./ddbar.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo))
+(/workfs/bes/zhouxy/topoana-02-05-04/share/geometry.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/geometry',
+               but the package provides `geometry'.
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty)
+(/usr/share/texmf/tex/generic/oberdiek/ifpdf.sty)
+(/usr/share/texmf/tex/generic/oberdiek/ifvtex.sty)
+(/workfs/bes/zhouxy/topoana-02-05-04/share/ifxetex.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/ifxetex',
+               but the package provides `ifxetex'.
+
+)) (/usr/share/texmf/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf/tex/latex/config/hyperref.cfg)
+(/usr/share/texmf/tex/latex/oberdiek/kvoptions.sty)
+Implicit mode ON; LaTeX internals redefined
+(/usr/share/texmf/tex/latex/ltxmisc/url.sty))
+*hyperref using default driver hpdftex*
+(/usr/share/texmf/tex/latex/hyperref/hpdftex.def)
+(/usr/share/texmf/tex/latex/tools/longtable.sty)
+(/workfs/bes/zhouxy/topoana-02-05-04/share/makecell.sty
+
+LaTeX Warning: You have requested package `/workfs/bes/zhouxy/topoana-02-05-04/
+share/makecell',
+               but the package provides `makecell'.
+
+(/usr/share/texmf/tex/latex/tools/array.sty))
+(/usr/share/texmf/tex/latex/graphics/color.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def))
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty)) (./ddbar.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texmf/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf/tex/latex/oberdiek/refcount.sty)) (./ddbar.out) (./ddbar.out)
+(/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty))
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd)
+
+LaTeX Warning: No \author given.
+
+[1{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./ddbar.lot) [2]
+[3] (./ddbar.aux) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type1/blue
+sky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi9.pfb></usr/share
+/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr/share/texm
+f/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8
+.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr9.pfb></usr/share/texmf/fonts/
+type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb>
+</usr/share/texmf/fonts/type1/bluesky/cm/cmsy9.pfb></usr/share/texmf/fonts/type
+1/bluesky/ams/msam10.pfb>
+Output written on ddbar.pdf (3 pages, 67627 bytes).
+Transcript written on ddbar.log.
+
+*****************************************************************************************
+
+Tips on the results:
+
+1. Statistics of topology are summarized in the following three files: ddbar.pdf, ddbar.tex and ddbar.txt. Although they are in different formats, they have the same information. The pdf file is the easiest to read. It is converted from the tex file by the "pdflatex" command. If necessary, you could check and see the txt file (with text processing commands).
+
+2. Tags of topology are inserted in all the entries of the TTree "evt" of the output root file (files): ddbar.root(and ddbar_n.root if any). Except for this, the TTree "evt" of The output root file is entirely the same as that (those) of the input root file (files). Besides, the topology tags are identical with those listed in the txt/tex/pdf files.

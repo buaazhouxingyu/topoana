@@ -1,0 +1,15 @@
+% Names of input root files
+{
+  ../../input/uubar1.root
+  ../../input/uubar2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Component analysis --- decay trees
+{
+  Y 	5     Y
+}

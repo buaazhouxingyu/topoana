@@ -1,0 +1,44 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  26	nEtr:  2240	nCEtr:  2240
+  e+ e- --> tau+ tau- gammaI
+  tau+ --> anti-nu_tau rho+
+  tau- --> nu_tau rho-
+  rho+ --> pi0 pi+
+  rho- --> pi0 pi-
+( e+ e- ---> nu_tau anti-nu_tau pi0 pi0 pi+ pi- gammaI )
+
+rowNo:  2	iDcyTr:  0	nEtr:  1938	nCEtr:  4178
+  e+ e- --> tau+ tau-
+  tau+ --> anti-nu_tau rho+
+  tau- --> nu_tau rho-
+  rho+ --> pi0 pi+
+  rho- --> pi0 pi-
+( e+ e- ---> nu_tau anti-nu_tau pi0 pi0 pi+ pi- )
+
+rowNo:  3	iDcyTr:  29	nEtr:  1548	nCEtr:  5726
+  e+ e- --> tau+ tau- gammaI
+  tau+ --> anti-nu_tau rho+
+  tau- --> mu- anti-nu_mu nu_tau
+  rho+ --> pi0 pi+
+( e+ e- ---> mu- anti-nu_mu nu_tau anti-nu_tau pi0 pi+ gammaI )
+
+rowNo:  4	iDcyTr:  70	nEtr:  1491	nCEtr:  7217
+  e+ e- --> tau+ tau- gammaI
+  tau+ --> mu+ nu_mu anti-nu_tau
+  tau- --> nu_tau rho-
+  rho- --> pi0 pi-
+( e+ e- ---> mu+ nu_mu nu_tau anti-nu_tau pi0 pi- gammaI )
+
+rowNo:  5	iDcyTr:  87	nEtr:  1447	nCEtr:  8664
+  e+ e- --> tau+ tau- gammaI
+  tau+ --> anti-nu_tau rho+
+  tau- --> e- anti-nu_e nu_tau
+  rho+ --> pi0 pi+
+( e+ e- ---> e- anti-nu_e nu_tau anti-nu_tau pi0 pi+ gammaI )
+
+rowNo:  rest	iDcyTr:  ---	nEtr:  91336	nCEtr:  100000
+  e+ e- --> others (4066 in total)
+( e+ e- ---> corresponding to others )
+

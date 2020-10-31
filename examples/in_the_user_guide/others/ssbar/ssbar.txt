@@ -1,0 +1,31 @@
+
+Decay trees and their respective initial-final states:
+
+rowNo:  1	iDcyTr:  44	nEtr:  817	nCEtr:  817
+  e+ e- --> K+ K- gammaI
+( e+ e- ---> K+ K- gammaI )
+
+rowNo:  2	iDcyTr:  78	nEtr:  760	nCEtr:  1577
+  e+ e- --> K+ K- gammaI gammaI
+( e+ e- ---> K+ K- gammaI gammaI )
+
+rowNo:  3	iDcyTr:  13	nEtr:  352	nCEtr:  1929
+  e+ e- --> K+ K- gammaI gammaI gammaI
+( e+ e- ---> K+ K- gammaI gammaI gammaI )
+
+rowNo:  4	iDcyTr:  178	nEtr:  182	nCEtr:  2111
+  e+ e- --> K0 anti-K0 gammaI
+  K0 --> K_L0
+  anti-K0 --> K_L0
+( e+ e- ---> K_L0 K_L0 gammaI )
+
+rowNo:  5	iDcyTr:  1292	nEtr:  174	nCEtr:  2285
+  e+ e- --> K0 anti-K0 gammaI gammaI
+  K0 --> K_L0
+  anti-K0 --> K_L0
+( e+ e- ---> K_L0 K_L0 gammaI gammaI )
+
+rowNo:  rest	iDcyTr:  ---	nEtr:  97715	nCEtr:  100000
+  e+ e- --> others (83133 in total)
+( e+ e- ---> corresponding to others )
+
