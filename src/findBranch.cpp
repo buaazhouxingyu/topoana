@@ -23,7 +23,7 @@ void topoana::findBranch(string nmOfIptRootFl, string ttrNm, TTree * tr, vector<
                   cerr<<" tbranch, which stores the reconstructed ";
                   if(vTypeOfTagRec[i]=="c"||vTypeOfTagRec[i]=="C") cerr<<"charge";
                   else if(vTypeOfTagRec[i]=="n"||vTypeOfTagRec[i]=="N") cerr<<"neutral tag";
-                  else if(vTypeOfTagRec[i]=="!n"||vTypeOfTagRec[i]=="!N") cerr<<"reverted neutral tag";
+                  else if(vTypeOfTagRec[i]=="!n"||vTypeOfTagRec[i]=="!N") cerr<<"reversed neutral tag";
                   else if(vTypeOfTagRec[i]=="p"||vTypeOfTagRec[i]=="P") cerr<<"PDG code";
                   else if(vTypeOfTagRec[i]=="i"||vTypeOfTagRec[i]=="I") cerr<<"index";
                   cerr<<" of the particle, in order to restrict its truth instances."<<endl;

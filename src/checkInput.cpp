@@ -707,7 +707,7 @@ void topoana::checkInput()
               cout<<"  The reconstructed ";
               if(m_vTypeOfTagRec_compDcyBrP[i]=="c"||m_vTypeOfTagRec_compDcyBrP[i]=="C") cout<<"charge";
               else if(m_vTypeOfTagRec_compDcyBrP[i]=="n"||m_vTypeOfTagRec_compDcyBrP[i]=="N") cout<<"neutral tag";
-              else if(m_vTypeOfTagRec_compDcyBrP[i]=="!n"||m_vTypeOfTagRec_compDcyBrP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compDcyBrP[i]=="!n"||m_vTypeOfTagRec_compDcyBrP[i]=="!N") cout<<"reversed neutral tag";
               else if(m_vTypeOfTagRec_compDcyBrP[i]=="p"||m_vTypeOfTagRec_compDcyBrP[i]=="P") cout<<"PDG code";
               else if(m_vTypeOfTagRec_compDcyBrP[i]=="i"||m_vTypeOfTagRec_compDcyBrP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
@@ -824,7 +824,7 @@ void topoana::checkInput()
               cout<<"  The reconstructed ";
               if(m_vTypeOfTagRec_compCascDcyBrP[i]=="c"||m_vTypeOfTagRec_compCascDcyBrP[i]=="C") cout<<"charge";
               else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="N") cout<<"neutral tag";
-              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="!n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="!n"||m_vTypeOfTagRec_compCascDcyBrP[i]=="!N") cout<<"reversed neutral tag";
               else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="p"||m_vTypeOfTagRec_compCascDcyBrP[i]=="P") cout<<"PDG code";
               else if(m_vTypeOfTagRec_compCascDcyBrP[i]=="i"||m_vTypeOfTagRec_compCascDcyBrP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
@@ -954,7 +954,7 @@ void topoana::checkInput()
               cout<<"  The reconstructed ";
               if(m_vTypeOfTagRec_compDcyFStP[i]=="c"||m_vTypeOfTagRec_compDcyFStP[i]=="C") cout<<"charge";
               else if(m_vTypeOfTagRec_compDcyFStP[i]=="n"||m_vTypeOfTagRec_compDcyFStP[i]=="N") cout<<"neutral tag";
-              else if(m_vTypeOfTagRec_compDcyFStP[i]=="!n"||m_vTypeOfTagRec_compDcyFStP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compDcyFStP[i]=="!n"||m_vTypeOfTagRec_compDcyFStP[i]=="!N") cout<<"reversed neutral tag";
               else if(m_vTypeOfTagRec_compDcyFStP[i]=="p"||m_vTypeOfTagRec_compDcyFStP[i]=="P") cout<<"PDG code";
               else if(m_vTypeOfTagRec_compDcyFStP[i]=="i"||m_vTypeOfTagRec_compDcyFStP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
@@ -1068,7 +1068,7 @@ void topoana::checkInput()
               cout<<"  The reconstructed ";
               if(m_vTypeOfTagRec_compProdBrP[i]=="c"||m_vTypeOfTagRec_compProdBrP[i]=="C") cout<<"charge";
               else if(m_vTypeOfTagRec_compProdBrP[i]=="n"||m_vTypeOfTagRec_compProdBrP[i]=="N") cout<<"neutral tag";
-              else if(m_vTypeOfTagRec_compProdBrP[i]=="!n"||m_vTypeOfTagRec_compProdBrP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compProdBrP[i]=="!n"||m_vTypeOfTagRec_compProdBrP[i]=="!N") cout<<"reversed neutral tag";
               else if(m_vTypeOfTagRec_compProdBrP[i]=="p"||m_vTypeOfTagRec_compProdBrP[i]=="P") cout<<"PDG code";
               else if(m_vTypeOfTagRec_compProdBrP[i]=="i"||m_vTypeOfTagRec_compProdBrP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
@@ -1177,7 +1177,7 @@ void topoana::checkInput()
               cout<<"  The reconstructed ";
               if(m_vTypeOfTagRec_compMP[i]=="c"||m_vTypeOfTagRec_compMP[i]=="C") cout<<"charge";
               else if(m_vTypeOfTagRec_compMP[i]=="n"||m_vTypeOfTagRec_compMP[i]=="N") cout<<"neutral tag";
-              else if(m_vTypeOfTagRec_compMP[i]=="!n"||m_vTypeOfTagRec_compMP[i]=="!N") cout<<"reverted neutral tag";
+              else if(m_vTypeOfTagRec_compMP[i]=="!n"||m_vTypeOfTagRec_compMP[i]=="!N") cout<<"reversed neutral tag";
               else if(m_vTypeOfTagRec_compMP[i]=="p"||m_vTypeOfTagRec_compMP[i]=="P") cout<<"PDG code";
               else if(m_vTypeOfTagRec_compMP[i]=="i"||m_vTypeOfTagRec_compMP[i]=="I") cout<<"index";
               cout<<" of the particle, stored in the ";
