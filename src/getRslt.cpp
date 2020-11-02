@@ -301,8 +301,7 @@ void topoana::getRslt()
                       sprintf(specifier2, "%sValid/I", m_tbrNmOfNps.c_str());
                       tr->Branch(specifier1, &Nps, specifier2);
 
-                      // Please note that the case with m_strgTpOfRawIptTopoDat="MSI" is not yet handled here.
-                      if(m_strgTpOfRawIptTopoDat=="MSD")
+                      if((m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true)||m_strgTpOfRawIptTopoDat=="MSD")
                         {
                           sprintf(specifier2, "MCGenRawIndex[%sValid]/I", m_tbrNmOfNps.c_str());
                           tr->Branch("MCGenRawIndex", &Ridx, specifier2);
