@@ -202,6 +202,21 @@ void topoana::checkInput()
       if(m_vbsLevStdOut==true) cout<<"TBranch name of the raw indices of particles: "<<m_tbrNmOfRidx<<" (default)"<<endl<<endl;
     }
 
+  if(m_useRidx==false&&m_vPid_compDcyBrP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compDcyBrP);
+  if(m_useRidx==false&&m_vPid_compCascDcyBrP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compCascDcyBrP);
+  if(m_useRidx==false&&m_vPid_compDcyFStP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compDcyFStP);
+  if(m_useRidx==false&&m_vPid_compProdBrP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compProdBrP);
+  if(m_useRidx==false&&m_vPid_compMP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compMP);
+
+  if(m_useRidx==true)
+    {
+      cout<<"The raw indices of particles stored in the TBranch: "<<m_tbrNmOfRidx<<" will be used."<<endl<<endl;
+    }
+  else
+    {
+      if(m_vbsLevStdOut==true) cout<<"The raw indices of particles stored in the TBranch: "<<m_tbrNmOfRidx<<" will not be used (default)."<<endl<<endl;
+    }
+
   TChain * chn=new TChain(m_ttrNm.c_str());
   for(unsigned int i=0;i<m_nmsOfIptRootFls.size();i++)
     {
@@ -253,13 +268,22 @@ void topoana::checkInput()
                       cerr<<"Error: The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" does not contain a branch named \""<<m_tbrNmOfMidx<<"\"!"<<endl<<endl;
                       allIptsAreOK=false;
                     }
+                  if(m_useRidx==true)
+                    {
+                      TBranch * br3=tr->FindBranch(m_tbrNmOfRidx.c_str());
+                      if(!br3)
+                        {
+                          cerr<<"Error: The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" does not contain a branch named \""<<m_tbrNmOfRidx<<"\"!"<<endl<<endl;
+                          allIptsAreOK=false;
+                        }
+                    }
                 }
               else
                 {
                   ostringstream oss;
                   unsigned int i=0;
-                  string strI,m_tbrNmOfPid_i,m_tbrNmOfMidx_i;
-                  TBranch * br1, * br2;
+                  string strI,m_tbrNmOfPid_i,m_tbrNmOfMidx_i,m_tbrNmOfRidx_i;
+                  TBranch * br1, * br2, * br3;
                   while(1)
                     {
                       oss.str("");
@@ -267,26 +291,35 @@ void topoana::checkInput()
                       strI=oss.str();
                       m_tbrNmOfPid_i=m_tbrNmOfPid+"_"+strI;
                       m_tbrNmOfMidx_i=m_tbrNmOfMidx+"_"+strI;
+                      if(m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true) m_tbrNmOfRidx_i=m_tbrNmOfRidx+"_"+strI;
                       br1=tr->FindBranch(m_tbrNmOfPid_i.c_str());
                       br2=tr->FindBranch(m_tbrNmOfMidx_i.c_str());
+                      if(m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true) br3=tr->FindBranch(m_tbrNmOfRidx_i.c_str());
                       if((!br1)||(!br2)) break;
+                      if(m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true&&(!br3)) break;
                       i++;
                     }
                   if(i==0)
                     {
-                      cerr<<"Error: The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" does not contain a branch named \""<<m_tbrNmOfPid<<"_i\", or \""<<m_tbrNmOfMidx<<"_i\"!"<<endl<<endl;
+                      cerr<<"Error: The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" does not contain a branch named \""<<m_tbrNmOfPid<<"_i\", ";
+                      if(m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true) cerr<<"\""<<m_tbrNmOfMidx<<"_i\", or \""<<m_tbrNmOfRidx;
+                      else cerr<<"or \""<<m_tbrNmOfMidx;
+                      cerr<<"_i\"!"<<endl<<endl;
                       allIptsAreOK=false;                      
                     }
                   else
                     {
-                      cout<<"The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" contains "<<i<<" branches named \""<<m_tbrNmOfPid<<"_i\" and contains "<<i<<" branches named \""<<m_tbrNmOfMidx<<"_i\"!"<<endl<<endl;
+                      cout<<"The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" contains "<<i<<" branches named \""<<m_tbrNmOfPid<<"_i\"";
+                      if(m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true) cout<<", "<<i<<" branches named \""<<m_tbrNmOfMidx<<"\", and "<<i<<" branches named \""<<m_tbrNmOfRidx;
+                      else cout<<" and "<<i<<" branches named \""<<m_tbrNmOfMidx;
+                      cout<<"_i\"!"<<endl<<endl;
                       if(i<m_nMinTbrOfPidMidx) m_nMinTbrOfPidMidx=i;
                     }
                 }
               if(m_avoidOverCounting==true)
                 {
-                  TBranch * br3=tr->FindBranch(m_tbrNmOfIcandi.c_str());
-                  if(!br3)
+                  TBranch * br4=tr->FindBranch(m_tbrNmOfIcandi.c_str());
+                  if(!br4)
                     {
                       cerr<<"Error: The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" does not contain a branch named \""<<m_tbrNmOfIcandi<<"\"!"<<endl<<endl;
                       allIptsAreOK=false;

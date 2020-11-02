@@ -57,18 +57,20 @@ void topoana::getRslt()
   int Tagrecsi_compMP[sAtmPid];
   int Tagreca_compMP[sAtmPid][20],Nrec_compMP[sAtmPid];
   bool isTheEvtPrcsd;
-  vector<int> *pVPid=0, *pVMidx=0;
+  vector<int> *pVPid=0, *pVMidx=0, *pVRidx=0;
   if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI") chn->SetBranchAddress(m_tbrNmOfNps.c_str(), &Nps);
   else if(m_strgTpOfRawIptTopoDat=="MSD") chn->SetBranchAddress(m_tbrNmOfNps.c_str(), &Npsd);
   if(m_strgTpOfRawIptTopoDat=="AOI")
     {
       chn->SetBranchAddress(m_tbrNmOfPid.c_str(), &Pid);
       chn->SetBranchAddress(m_tbrNmOfMidx.c_str(), &Midx);
+      if(m_useRidx==true) chn->SetBranchAddress(m_tbrNmOfRidx.c_str(), &Ridx);
     }
   else if(m_strgTpOfRawIptTopoDat=="VOI")
     {
       chn->SetBranchAddress(m_tbrNmOfPid.c_str(), &pVPid);
       chn->SetBranchAddress(m_tbrNmOfMidx.c_str(), &pVMidx);
+      if(m_useRidx==true) chn->SetBranchAddress(m_tbrNmOfRidx.c_str(), &pVRidx);
     }
   else
     {
@@ -79,7 +81,7 @@ void topoana::getRslt()
           cerr<<"Infor: To guarantee a successful topology analysis job, there should be enough TBranch objects to store all the MC generated particles."<<endl;
           exit(-1);
         }
-      char strI[10]; string specifierPid,specifierMidx;
+      char strI[10]; string specifierPid,specifierMidx,specifierRidx;
       for(unsigned int i=0;i<NpsMaxTmp;i++)
         {
           sprintf(strI, "_%d", i);
@@ -89,6 +91,8 @@ void topoana::getRslt()
           specifierMidx=m_tbrNmOfMidx+strI;
           if(m_strgTpOfRawIptTopoDat=="MSD") chn->SetBranchAddress(specifierMidx.c_str(), &Midxd[i]);
           else chn->SetBranchAddress(specifierMidx.c_str(), &Midx[i]);
+          specifierRidx=m_tbrNmOfRidx+strI;
+          if(m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true) chn->SetBranchAddress(specifierRidx.c_str(), &Ridx[i]);
         }
     }
 
@@ -594,7 +598,10 @@ void topoana::getRslt()
                 {
                   vPid.push_back(pVPid->at(j));
                   vMidx.push_back(pVMidx->at(j));
-                  //cout<<j<<"\t"<<Pid[j]<<"\t"<<Midx[j]<<endl;
+                  if(m_useRidx==true) Ridx[j]=pVRidx->at(j);
+                  /*cout<<j<<"\t"<<vPid[j]<<"\t"<<vMidx[j];
+                  if(m_useRidx==true) cout<<"\t"<<Ridx[j];
+                  cout<<endl;*/
                 }
             }
           //cout<<endl;

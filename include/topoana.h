@@ -36,6 +36,7 @@ class topoana
     bool m_avoidOverCounting;
     string m_tbrNmOfIcandi;
     string m_tbrNmOfRidx;
+    bool m_useRidx;
     string m_strgTpOfRawIptTopoDat;
     bool m_fixMidxBESIII;
     unsigned long m_nEtrMax;
@@ -285,6 +286,7 @@ class topoana
       m_avoidOverCounting=false;
       m_tbrNmOfIcandi="__candidate__";
       m_tbrNmOfRidx="MCGenRawIndex";
+      m_useRidx=false;
       m_strgTpOfRawIptTopoDat="AOI";
       m_fixMidxBESIII=false;
       m_nEtrMax=ULONG_MAX; // ULONG_MAX=9223372036854775807 is the maximum unsigned long int number. 
@@ -465,6 +467,7 @@ class topoana
     void           readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk=false);
     void           readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk=false);
     void           readCard(string cardFlNm);
+    bool           useRidx(vector<string> vTypeOfTagRec);
     void	   findBranch(string nmOfIptRootFl, string ttrNm, TTree * tr, vector<string> vTypeOfTagRec, vector<string> vTBrNmOfTagRec, vector<string> vTBrNmOfNRec, bool & allIptsAreOK, string prompt);
     void	   checkInput();
     void           setBranchAddress(vector<string> vTypeOfTagRec, vector<string> vTBrNmOfTagRec, vector<string> vTBrNmOfNRec, TChain * chn, double * Tagrecsd, int * Tagrecsi, int Tagreca[][20], int * Nrec);
