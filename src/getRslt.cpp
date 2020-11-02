@@ -33,7 +33,7 @@ void topoana::getRslt()
   // The following statement instead of the one next to it ought to be used along with the Ntuple Tool MCGenKinematics with the option [200].
   const unsigned int NpsMax=200;
   // const unsigned int NpsMax=chn->GetMaximum(m_tbrNmOfNps.c_str());
-  int Nps,Pid[NpsMax],Midx[NpsMax],IdxRaw[NpsMax];
+  int Nps,Pid[NpsMax],Midx[NpsMax],Ridx[NpsMax];
   double Npsd,Pidd[NpsMax],Midxd[NpsMax];
   int Icandi;
   const unsigned int sAtdbPid=m_vPid_compDcyBrP.size()>0?m_vPid_compDcyBrP.size():1;
@@ -287,6 +287,30 @@ void topoana::getRslt()
 
               if(m_supprOptRootFls==false) tr=chn->CloneTree(0);
 
+              if(m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSD")
+                {
+                  if(m_convtMSIMSDIntoAOI==true)
+                    {
+                      char specifier1[100],specifier2[100];
+
+                      sprintf(specifier1, "%sValid", m_tbrNmOfNps.c_str());
+                      sprintf(specifier2, "%sValid/I", m_tbrNmOfNps.c_str());
+                      tr->Branch(specifier1, &Nps, specifier2);
+
+                      // Please note that the case with m_strgTpOfRawIptTopoDat="MSI" is not yet handled here.
+                      if(m_strgTpOfRawIptTopoDat=="MSD")
+                        {
+                          sprintf(specifier2, "MCGenRawIndex[%sValid]/I", m_tbrNmOfNps.c_str());
+                          tr->Branch("MCGenRawIndex", &Ridx, specifier2);
+                        }
+
+                      sprintf(specifier2, "%s[%sValid]/I", m_tbrNmOfPid.c_str(), m_tbrNmOfNps.c_str());
+                      tr->Branch(m_tbrNmOfPid.c_str(), &Pid, specifier2);
+
+                      sprintf(specifier2, "%s[%sValid]/I", m_tbrNmOfMidx.c_str(), m_tbrNmOfNps.c_str());
+                      tr->Branch(m_tbrNmOfMidx.c_str(), &Midx, specifier2);
+                    }
+                }
               if(m_compAnaOfDcyTrs==true)
                 {
                   tr->Branch("iDcyTr", &iDcyTr, "iDcyTr/I");
@@ -505,7 +529,7 @@ void topoana::getRslt()
                 }
             }
              
-          if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,IdxRaw);
+          if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,Ridx);
 
           if(m_vPid_compMP.size()>0)
             {
@@ -833,7 +857,7 @@ void topoana::getRslt()
                           if(m_vTypeOfTagRec_compDcyBrP[k]!="")
                             {
                               if(m_vTypeOfTagRec_compDcyBrP[k]!="i"&&m_vTypeOfTagRec_compDcyBrP[k]!="I") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], m_vPid_compDcyBrP[k]);
-                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], IdxRaw[vIdxOrg[vIdxOfHead[j]]]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], Ridx[vIdxOrg[vIdxOfHead[j]]]);
                               if(_isTagMatched==false) continue;
                             }
                           dcyBrP=dcyTr[j];
@@ -909,7 +933,7 @@ void topoana::getRslt()
                           if(m_vTypeOfTagRec_compDcyBrP[k]!="")
                             {
                               if(m_vTypeOfTagRec_compDcyBrP[k]!="i"&&m_vTypeOfTagRec_compDcyBrP[k]!="I") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], m_vPid_ccCompDcyBrP[k]);
-                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], IdxRaw[vIdxOrg[vIdxOfHead[j]]]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyBrP[k], Tagrecsi_compDcyBrP[k], Tagreca_compDcyBrP[k], Nrec_compDcyBrP[k], Ridx[vIdxOrg[vIdxOfHead[j]]]);
                               if(_isTagMatched==false) continue;
                             }
                           dcyBrCcP=dcyTr[j];
@@ -985,7 +1009,7 @@ void topoana::getRslt()
                         {
                           if(m_vTypeOfTagRec_compCascDcyBrP[j]=="i"||m_vTypeOfTagRec_compCascDcyBrP[j]=="I")
                             {
-                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], IdxRaw[vIdxOrg[vIdxOfHead_CascDcyBrP[k]]]);
+                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], Ridx[vIdxOrg[vIdxOfHead_CascDcyBrP[k]]]);
                               if(_isTagMatched==false) continue;
                             }
                           cascDcyBrP=vCascDcyBrP[k];
@@ -1102,7 +1126,7 @@ void topoana::getRslt()
                         {
                           if(m_vTypeOfTagRec_compCascDcyBrP[j]=="i"||m_vTypeOfTagRec_compCascDcyBrP[j]=="I")
                             {
-                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], IdxRaw[vIdxOrg[vIdxOfHead_CascDcyBrCcP[k]]]);
+                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compCascDcyBrP[j], Tagrecsi_compCascDcyBrP[j], Tagreca_compCascDcyBrP[j], Nrec_compCascDcyBrP[j], Ridx[vIdxOrg[vIdxOfHead_CascDcyBrCcP[k]]]);
                               if(_isTagMatched==false) continue;
                             }
                           cascDcyBrCcP=vCascDcyBrCcP[k];
@@ -1199,7 +1223,7 @@ void topoana::getRslt()
                         {
                           if(m_vTypeOfTagRec_compDcyFStP[j]=="i"||m_vTypeOfTagRec_compDcyFStP[j]=="I")
                             {
-                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], IdxRaw[vIdxOrg[vIdxOfHead_DcyFStP[k]]]);
+                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], Ridx[vIdxOrg[vIdxOfHead_DcyFStP[k]]]);
                               if(_isTagMatched==false) continue;
                             }
                           dcyFStP=vDcyFStP[k];
@@ -1300,7 +1324,7 @@ void topoana::getRslt()
                         {
                           if(m_vTypeOfTagRec_compDcyFStP[j]=="i"||m_vTypeOfTagRec_compDcyFStP[j]=="I")
                             {
-                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], IdxRaw[vIdxOrg[vIdxOfHead_DcyFStCcP[k]]]);
+                              _isTagMatched=isTagMatched(m_vTypeOfTagRec_compDcyFStP[j], Tagrecsi_compDcyFStP[j], Tagreca_compDcyFStP[j], Nrec_compDcyFStP[j], Ridx[vIdxOrg[vIdxOfHead_DcyFStCcP[k]]]);
                               if(_isTagMatched==false) continue;
                             }
                           dcyFStCcP=vDcyFStCcP[k];
@@ -1372,7 +1396,7 @@ void topoana::getRslt()
                           if(m_vTypeOfTagRec_compProdBrP[k]!="")
                             {
                               if(m_vTypeOfTagRec_compProdBrP[k]!="i"&&m_vTypeOfTagRec_compProdBrP[k]!="I") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], m_vPid_compProdBrP[k]);
-                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], IdxRaw[vIdxOrg[j]]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], Ridx[vIdxOrg[j]]);
                               if(_isTagMatched==false) continue;
                             }
                           unsigned int mj=UINT_MAX;
@@ -1466,7 +1490,7 @@ void topoana::getRslt()
                           if(m_vTypeOfTagRec_compProdBrP[k]!="")
                             {
                               if(m_vTypeOfTagRec_compProdBrP[k]!="i"&&m_vTypeOfTagRec_compProdBrP[k]!="I") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], m_vPid_ccCompProdBrP[k]);
-                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], IdxRaw[vIdxOrg[j]]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compProdBrP[k], Tagrecsi_compProdBrP[k], Tagreca_compProdBrP[k], Nrec_compProdBrP[k], Ridx[vIdxOrg[j]]);
                               if(_isTagMatched==false) continue;
                             }
                           unsigned int mj=UINT_MAX;
@@ -1549,7 +1573,7 @@ void topoana::getRslt()
                           if(m_vTypeOfTagRec_compMP[k]!="")
                             {
                               if(m_vTypeOfTagRec_compMP[k]!="i"&&m_vTypeOfTagRec_compMP[k]!="I") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], m_vPid_compMP[k]);
-                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], IdxRaw[vIdxOrg[j]]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], Ridx[vIdxOrg[j]]);
                               if(_isTagMatched==false) continue;
                             }
                           if(((unsigned int) vMidx[j])!=j) mpid=vPid[vMidx[j]];
@@ -1620,7 +1644,7 @@ void topoana::getRslt()
                           if(m_vTypeOfTagRec_compMP[k]!="")
                             {
                               if(m_vTypeOfTagRec_compMP[k]!="i"&&m_vTypeOfTagRec_compMP[k]!="I") _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], m_vPid_ccCompMP[k]);
-                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], IdxRaw[vIdxOrg[j]]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_compMP[k], Tagrecsi_compMP[k], Tagreca_compMP[k], Nrec_compMP[k], Ridx[vIdxOrg[j]]);
                               if(_isTagMatched==false) continue;
                             }
                           if(((unsigned int) vMidx[j])!=j) mpidCcP=vPid[vMidx[j]];

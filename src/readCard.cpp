@@ -89,7 +89,7 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% TBranch name of the number of particles (Default: nMCGen)")
         {
           readOpenCurly(fin,line,"% TBranch name of the number of particles (Default: nMCGen)");
-          read1stLineOrCloseCurly(fin,line,false,"No branch name of the number of particles is found in the item with the prompt \"% TBranch name of the number of particles (Default: nMCGen)");
+          read1stLineOrCloseCurly(fin,line,false,"No tbranch name of the number of particles is found in the item with the prompt \"% TBranch name of the number of particles (Default: nMCGen)");
           if(line!="}")
             {
               m_tbrNmOfNps=line;
@@ -99,7 +99,7 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% TBranch name of the PDG codes of particles (Default: MCGenPDG)")
         {
           readOpenCurly(fin,line,"% TBranch name of the PDG codes of particles (Default: MCGenPDG)");
-          read1stLineOrCloseCurly(fin,line,false,"No branch name of the PDG codes of particles is found in the item with the prompt \"% TBranch name of the PDG codes of particles (Default: MCGenPDG)");
+          read1stLineOrCloseCurly(fin,line,false,"No tbranch name of the PDG codes of particles is found in the item with the prompt \"% TBranch name of the PDG codes of particles (Default: MCGenPDG)");
           if(line!="}")
             {
               m_tbrNmOfPid=line;
@@ -109,7 +109,7 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% TBranch name of the mother indices of particles (Default: MCGenMothIndex)")
         {
           readOpenCurly(fin,line,"% TBranch name of the mother indices of particles (Default: MCGenMothIndex)");
-          read1stLineOrCloseCurly(fin,line,false,"No branch name of the mother indices of particles is found in the item with the prompt \"% TBranch name of the mother indices of particles (Default: MCGenMothIndex)");
+          read1stLineOrCloseCurly(fin,line,false,"No tbranch name of the mother indices of particles is found in the item with the prompt \"% TBranch name of the mother indices of particles (Default: MCGenMothIndex)");
           if(line!="}")
             {
               m_tbrNmOfMidx=line;
@@ -123,11 +123,21 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% TBranch name of the indices of candidates in an event (Default: __candidate__)")
         {
           readOpenCurly(fin,line,"% TBranch name of the indices of candidates in an event (Default: __candidate__)");
-          read1stLineOrCloseCurly(fin,line,false,"No branch name of the number of particles is found in the item with the prompt \"% TBranch name of the indices of candidates in an event (Default: __candidate__)");
+          read1stLineOrCloseCurly(fin,line,false,"No tbranch name of the indices of candidates in an event is found in the item with the prompt \"% TBranch name of the indices of candidates in an event (Default: __candidate__)");
           if(line!="}")
             { 
               m_tbrNmOfIcandi=line;
               readCloseCurly(fin,line,"% TBranch name of the indices of candidates in an event (Default: __candidate__)");   
+            }
+        }
+      else if(line=="% TBranch name of the raw indices of particles (Default: MCGenRawIndex)")
+        {
+          readOpenCurly(fin,line,"% TBranch name of the raw indices of particles (Default: MCGenRawIndex)");
+          read1stLineOrCloseCurly(fin,line,false,"No tbranch name of the raw indices of particles is found in the item with the prompt \"% TBranch name of the raw indices of particles (Default: MCGenRawIndex)");
+          if(line!="}")
+            {
+              m_tbrNmOfRidx=line;
+              readCloseCurly(fin,line,"% TBranch name of the raw indices of particles (Default: MCGenRawIndex)");
             }
         }
       else if(line=="% Fix the mother indices of particles in BESIII experiment (Two options: Y and N. Default: N)")
@@ -538,6 +548,10 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% Remove input tbranches from output root files (Two options: Y and N. Default: N)")
         {
           readYNItem(fin, line, "% Remove input tbranches from output root files (Two options: Y and N. Default: N)", m_rmIptTBrs);
+        }
+      else if(line=="% Convert MSI/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Convert MSI/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)", m_convtMSIMSDIntoAOI);
         }
       else if(line=="% Other TTree names")
         {

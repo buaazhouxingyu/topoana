@@ -243,12 +243,17 @@
 
 }
 
+% TBranch name of the indices of candidates in an event (Default: __candidate__)
+{
+
+}
+
 % Process charge conjugate objects together (Two options: Y and N. Default: N)
 {
 
 }
 
-% TBranch name of the indices of candidates in an event (Default: __candidate__)
+% TBranch name of the raw indices of particles (Default: MCGenRawIndex)
 {
 
 }
@@ -309,6 +314,11 @@
 % Remove input tbranches from output root files (Two options: Y and N. Default: N)
 {
   
+}
+
+% Convert MSI/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)
+{
+
 }
 
 % Other TTree names

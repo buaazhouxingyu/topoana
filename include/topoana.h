@@ -35,6 +35,7 @@ class topoana
     unsigned int m_nMinTbrOfPidMidx;
     bool m_avoidOverCounting;
     string m_tbrNmOfIcandi;
+    string m_tbrNmOfRidx;
     string m_strgTpOfRawIptTopoDat;
     bool m_fixMidxBESIII;
     unsigned long m_nEtrMax;
@@ -140,6 +141,7 @@ class topoana
     unsigned long m_nEtrMaxInASngOptRootFl;
     bool m_useArrayTBrsOpt;
     bool m_rmIptTBrs;
+    bool m_convtMSIMSDIntoAOI;
     vector<string> m_othTtrNms;
     bool m_supprOptRootFls;
     bool m_flatArrayBrsLocally;
@@ -282,6 +284,7 @@ class topoana
       m_nMinTbrOfPidMidx=9999;
       m_avoidOverCounting=false;
       m_tbrNmOfIcandi="__candidate__";
+      m_tbrNmOfRidx="MCGenRawIndex";
       m_strgTpOfRawIptTopoDat="AOI";
       m_fixMidxBESIII=false;
       m_nEtrMax=ULONG_MAX; // ULONG_MAX=9223372036854775807 is the maximum unsigned long int number. 
@@ -389,6 +392,7 @@ class topoana
       m_nEtrMaxInASngOptRootFl=ULONG_MAX;
       m_useArrayTBrsOpt=false;
       m_rmIptTBrs=false;
+      m_convtMSIMSDIntoAOI=false;
       m_othTtrNms.clear();
       m_supprOptRootFls=false;
       m_flatArrayBrsLocally=false;
@@ -428,7 +432,7 @@ class topoana
     int 	   getPidFromTxtPnm(string pnm);
     void           writeErrInfOnPid3PchrgMap(int pid);
     void           writePnmFromPid(ostream & out,string pnmType,int pid);
-    void           reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & Nps, int Pid[], int Midx[], int IdxRaw[]);
+    void           reviseIptQts(double & Npsd, double Pidd[], double Midxd[], int & Nps, int Pid[], int Midx[], int Ridx[]);
     void           sortByPidAndPchrg(vector<int> &via,vector<int> &vib,vector<int> &vic,vector<int> &vid);
     void           sortBySzPidAndPchrg(vector< vector<int> > &vVia,vector< vector<int> > &vVib,vector< vector<int> >&vVic,vector< vector<int> > &vVid);
     bool           cmprBySzPidAndPchrg(vector<int> & via, vector<int> & vib);

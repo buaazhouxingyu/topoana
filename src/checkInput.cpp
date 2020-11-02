@@ -193,6 +193,15 @@ void topoana::checkInput()
       if(m_vbsLevStdOut==true) cout<<"Over counting will not be avoided for candidate based analysis (default)."<<endl<<endl;
     }
 
+  if(m_tbrNmOfRidx!="MCGenRawIndex")
+    {
+      cout<<"TBranch name of the raw indices of particles: "<<m_tbrNmOfRidx<<endl<<endl;
+    }
+  else
+    {
+      if(m_vbsLevStdOut==true) cout<<"TBranch name of the raw indices of particles: "<<m_tbrNmOfRidx<<" (default)"<<endl<<endl;
+    }
+
   TChain * chn=new TChain(m_ttrNm.c_str());
   for(unsigned int i=0;i<m_nmsOfIptRootFls.size();i++)
     {
@@ -2987,6 +2996,25 @@ void topoana::checkInput()
   else
     {
       if(m_vbsLevStdOut==true) cout<<"Input tbranches will not be removed from output root files (default)."<<endl<<endl;
+    }
+
+  if(m_convtMSIMSDIntoAOI==true)
+    {
+      if(m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSD")
+        {
+          cout<<"MSI/MSD input tbranches will be converted into AOI output tbranches."<<endl;
+
+          m_rmIptTBrs=true;
+          cerr<<"Infor: The item prompted with \"% Remove input tbranches from output root files (Two options: Y and N. Default: N)\" is set to Y in order to carry out the conversion."<<endl<<endl;
+        }
+      else
+        {
+          cerr<<"Warning: the setting with the item prompted with \"% Convert MSI/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)\" does not work for the current cases of AOI/VOI input tbranches."<<endl<<endl;
+        }
+    }
+  else
+    {
+      if(m_vbsLevStdOut==true) cout<<"MSI/MSD input tbranches will not be converted into AOI output tbranches (default)."<<endl<<endl;
     }
 
   if(m_supprOptRootFls==true)
