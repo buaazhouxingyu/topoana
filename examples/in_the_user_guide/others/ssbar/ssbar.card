@@ -1,7 +1,7 @@
 % Names of input root files
 {
-  ../../input/ssbar1.root
-  ../../input/ssbar2.root
+  ../../../in_the_paper/input/ssbar1.root
+  ../../../in_the_paper/input/ssbar2.root
 }
 
 % TTree name

@@ -1,7 +1,7 @@
 % Names of input root files
 {
-  ../../input/ccbar1.root
-  ../../input/ccbar2.root
+  ../../../in_the_paper/input/ccbar1.root
+  ../../../in_the_paper/input/ccbar2.root
 }
 
 % TTree name

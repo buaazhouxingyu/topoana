@@ -1,7 +1,7 @@
 % Names of input root files
 {
-  ../../input/uubar1.root
-  ../../input/uubar2.root
+  ../../../in_the_paper/input/uubar1.root
+  ../../../in_the_paper/input/uubar2.root
 }
 
 % TTree name
