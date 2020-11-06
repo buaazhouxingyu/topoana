@@ -8,6 +8,8 @@
 
    + All the examples in the slides can be found in the sub-directory ``examples/in_the_slides``
 
+   + Currently, two versions of the slides are provided: one for BESIII, and the other for Belle II. They are identical, except for very few contents, such as those regarding interfaces.
+
 2. A **detailed** description of the program is in the document: ``share/user_guide_v*.pdf``
 
    + All the examples in the user guide can be found in the sub-directory ``examples/in_the_user_guide``
