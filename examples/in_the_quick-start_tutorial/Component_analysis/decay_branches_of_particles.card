@@ -1,0 +1,16 @@
+% Names of input root files
+{
+  ../input/mixed1.root
+  ../input/mixed2.root
+}
+
+% TTree name
+{
+  evt
+}
+
+% Component analysis --- decay branches of particles
+{
+  D*+        Dsp       5
+  J/psi      Jpsi      5
+}

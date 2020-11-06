@@ -4,11 +4,11 @@
 
 **Documents in each version of the package:**
 
-1. A **brief** description of the program is in the document: ``share/slides_v*.pdf``
+1. A **brief** description of the program is in the document: ``share/quick-start_tutorial_v*.pdf``
 
-   + All the examples in the slides can be found in the sub-directory ``examples/in_the_slides``
+   + All the examples in the quick-start tutorial can be found in the sub-directory ``examples/in_the_quick-start_tutorial``
 
-   + Currently, two versions of the slides are provided: one for BESIII, and the other for Belle II. They are identical, except for very few contents, such as those regarding interfaces.
+   + Currently, two versions of the quick-start tutorial are provided: one for BESIII, and the other for Belle II. They are identical, except for very few contents, such as those regarding interfaces. **Apart from these contents, the quick-start tutorials can be used for other experiments as well.**
 
 2. A **detailed** description of the program is in the document: ``share/user_guide_v*.pdf``
 
@@ -20,9 +20,9 @@
 
    + **Note: The paper on the tool has been published by ``Computer Physics Communications``.** You can find this paper and the preprint corresponding to it in the links [Comput. Phys. Commun. 258 (2021) 107540](https://doi.org/10.1016/j.cpc.2020.107540) and [arXiv:2001.04016](https://arxiv.org/abs/2001.04016), respectively. If the tool really helps your researches, we would appreciate it very much if you could cite the paper in your publications.
 
-**As for the three documents, the slides are the briefest, the user guide is the most detailed, and the paper draft is composed of the essential and representative parts of the user guide.**
+**As for the three documents, the quick-start tutorial is the briefest, the user guide is the most detailed, and the paper draft is composed of the essential and representative parts of the user guide.**
 
-**It is a good practice to learn how to use the program via the examples with the slides, user guide, and paper draft as references.**
+**It is a good practice to learn how to use the program via the examples with the quick-start tutorial, user guide, and paper draft as references.**
 
 Here, we just briefly introduce how to install and use the program.
 
@@ -63,7 +63,7 @@ Here, we just briefly introduce how to install and use the program.
 
      + You can refer to the template topoana card file: ``share/template_topoana.card``.
 
-     + **For the concision of your own card file, it is recommended just to copy the setting items you need from the template card file and paste them to your own card file, just as we did for the examples in the slides, user guide and paper draft.**
+     + **For the concision of your own card file, it is recommended just to copy the setting items you need from the template card file and paste them to your own card file, just as we did for the examples in the quick-start tutorial, user guide and paper draft.**
 
      + **Since there are plenty of setting items in the template card file, it is not recommended to create your own card file simply by copying and revising the whole template card file.**
 
