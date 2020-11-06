@@ -608,9 +608,10 @@ void topoana::sortBy1stFromLrgToSml_new(unsigned long nMax, vector<int> & via, v
       vIdxTmp.push_back(i);
       viaTmp.push_back(via[i]);
       vibTmp.push_back(vib[i]);
+      vicTmp.push_back(vic[i]);
     }
 
-  unsigned int idxTmp; int iaTmp; T ibTmp;
+  unsigned int idxTmp; int iaTmp; T ibTmp; int icTmp;
   for(unsigned int i=0;i<(vIdxTmp.size()-1);i++)
     for(unsigned int j=i+1;j<vIdxTmp.size();j++)
       if(viaTmp[i]<viaTmp[j])
@@ -624,6 +625,9 @@ void topoana::sortBy1stFromLrgToSml_new(unsigned long nMax, vector<int> & via, v
           ibTmp=vibTmp[i];
           vibTmp[i]=vibTmp[j];
           vibTmp[j]=ibTmp;
+          icTmp=vicTmp[i];
+          vicTmp[i]=vicTmp[j];
+          vicTmp[j]=icTmp;
         }
 
   if(via.size()>nMax)
@@ -638,16 +642,19 @@ void topoana::sortBy1stFromLrgToSml_new(unsigned long nMax, vector<int> & via, v
                 {
                   viaTmp.push_back(viaTmp[nMax-1]);
                   vibTmp.push_back(vibTmp[nMax-1]);
+                  vicTmp.push_back(vicTmp[nMax-1]);
                   // Considering k is an unsigned integer, please do not omit "&&k!=UINT_MAX" in the condition. Otherwise, the program is very likely to break due to array index overflow.
                   for(unsigned int k=nMax-2;k>=j&&k!=UINT_MAX;k--)
                     {
                       vIdxTmp[k+1]=vIdxTmp[k];
                       viaTmp[k+1]=viaTmp[k];
                       vibTmp[k+1]=vibTmp[k];
+                      vicTmp[k+1]=vicTmp[k];
                     }
                   vIdxTmp[j]=i;
                   viaTmp[j]=via[i];
                   vibTmp[j]=vib[i];
+                  vicTmp[j]=vic[i];
                   isTop=true;
                   break;
                 }
@@ -656,14 +663,14 @@ void topoana::sortBy1stFromLrgToSml_new(unsigned long nMax, vector<int> & via, v
             {
               viaTmp.push_back(via[i]);
               vibTmp.push_back(vib[i]);
+              vicTmp.push_back(vic[i]);
             }
         }
     }
 
   for(unsigned int i=0;i<vIdxTmp.size();i++)
     {
-      //vibTmp.push_back(vib[vIdxTmp[i]]);
-      vicTmp.push_back(vic[vIdxTmp[i]]);
+      // If we handle b and c like d and e, there will be a problem related to the simultaneous component analysis of decay trees and decay initial-final states, with a specified maximum number of the decay initial-final states to be printed. So, the function could not be further simplified in this aspect.
       if(vVid!=0&&vVie!=0)
         {
           vVidTmp.push_back((*vVid)[vIdxTmp[i]]);
@@ -795,9 +802,12 @@ void topoana::sortBySumOf1stAnd2ndFromLrgToSml_new(unsigned long nMax, vector<in
       via1Tmp.push_back(via1[i]);
       via2Tmp.push_back(via2[i]);
       vib1Tmp.push_back(vib1[i]);
+      vib2Tmp.push_back(vib2[i]);
+      vic1Tmp.push_back(vic1[i]);
+      vic2Tmp.push_back(vic2[i]);
     }
 
-  unsigned int idxTmp; int ia1Tmp, ia2Tmp; T ib1Tmp;
+  unsigned int idxTmp; int ia1Tmp, ia2Tmp; T ib1Tmp, ib2Tmp; int ic1Tmp, ic2Tmp;
   for(unsigned int i=0;i<(vIdxTmp.size()-1);i++)
     for(unsigned int j=i+1;j<vIdxTmp.size();j++)
       if(via1Tmp[i]+via2Tmp[i]<via1Tmp[j]+via2Tmp[j])
@@ -814,6 +824,15 @@ void topoana::sortBySumOf1stAnd2ndFromLrgToSml_new(unsigned long nMax, vector<in
           ib1Tmp=vib1Tmp[i];
           vib1Tmp[i]=vib1Tmp[j];
           vib1Tmp[j]=ib1Tmp;
+          ib2Tmp=vib2Tmp[i];
+          vib2Tmp[i]=vib2Tmp[j];
+          vib2Tmp[j]=ib2Tmp;
+          ic1Tmp=vic1Tmp[i];
+          vic1Tmp[i]=vic1Tmp[j];
+          vic1Tmp[j]=ic1Tmp;
+          ic2Tmp=vic2Tmp[i];
+          vic2Tmp[i]=vic2Tmp[j];
+          vic2Tmp[j]=ic2Tmp;
         }
 
   if(via1.size()>nMax)
@@ -829,6 +848,9 @@ void topoana::sortBySumOf1stAnd2ndFromLrgToSml_new(unsigned long nMax, vector<in
                   via1Tmp.push_back(via1Tmp[nMax-1]);
                   via2Tmp.push_back(via2Tmp[nMax-1]);
                   vib1Tmp.push_back(vib1Tmp[nMax-1]);
+                  vib2Tmp.push_back(vib2Tmp[nMax-1]);
+                  vic1Tmp.push_back(vic1Tmp[nMax-1]);
+                  vic2Tmp.push_back(vic2Tmp[nMax-1]);
                   // Considering k is an unsigned integer, please do not omit "&&k!=UINT_MAX" in the condition. Otherwise, the program is very likely to break due to array index overflow.
                   for(unsigned int k=nMax-2;k>=j&&k!=UINT_MAX;k--)
                     {
@@ -836,11 +858,17 @@ void topoana::sortBySumOf1stAnd2ndFromLrgToSml_new(unsigned long nMax, vector<in
                       via1Tmp[k+1]=via1Tmp[k];
                       via2Tmp[k+1]=via2Tmp[k];
                       vib1Tmp[k+1]=vib1Tmp[k];
+                      vib2Tmp[k+1]=vib2Tmp[k];
+                      vic1Tmp[k+1]=vic1Tmp[k];
+                      vic2Tmp[k+1]=vic2Tmp[k];
                     }
                   vIdxTmp[j]=i;
                   via1Tmp[j]=via1[i];
                   via2Tmp[j]=via2[i];
                   vib1Tmp[j]=vib1[i];
+                  vib2Tmp[j]=vib2[i];
+                  vic1Tmp[j]=vic1[i];
+                  vic2Tmp[j]=vic2[i];
                   isTop=true;
                   break;
                 }
@@ -850,16 +878,16 @@ void topoana::sortBySumOf1stAnd2ndFromLrgToSml_new(unsigned long nMax, vector<in
               via1Tmp.push_back(via1[i]);
               via2Tmp.push_back(via2[i]);
               vib1Tmp.push_back(vib1[i]);
+              vib2Tmp.push_back(vib2[i]);
+              vic1Tmp.push_back(vic1[i]);
+              vic2Tmp.push_back(vic2[i]);
             }
         }
     }
 
   for(unsigned int i=0;i<vIdxTmp.size();i++)
     {
-      //vib1Tmp.push_back(vib1[vIdxTmp[i]]);
-      vib2Tmp.push_back(vib2[vIdxTmp[i]]);
-      vic1Tmp.push_back(vic1[vIdxTmp[i]]);
-      vic2Tmp.push_back(vic2[vIdxTmp[i]]);
+      // If we handle b and c like d and e, there will be a problem related to the simultaneous component analysis of decay trees and decay initial-final states, with a specified maximum number of the decay initial-final states to be printed. So, the function could not be further simplified in this aspect.
       if(vVid1!=0&&vVid2!=0&&vVie1!=0&&vVie2!=0)
         {
           vVid1Tmp.push_back((*vVid1)[vIdxTmp[i]]);
