@@ -84,7 +84,7 @@ void topoana::writeRsltIntoTexFl()
   fout<<"\\newcommand{\\topoTags}[1]{#1} % Use this definition to retain topology tags."<<endl;
   fout<<"% \\newcommand{\\topoTags}[1]{} % Use this definition to remove topology tags."<<endl;
   fout<<"\\begin{document}"<<endl;
-  fout<<"\\title{Topology Analysis \\footnote{\\small{Xingyu Zhou, Beihang University, zhouxy@buaa.edu.cn}} \\footnote{\\small{This package is implemented referring to a program called {\\sc Topo}, which is first developed by Prof. Shuxian Du from Zhengzhou University and later extended and maintained by Prof. Gang Li from Institute of High Energy Physics, Chinese Academy of Sciences. The {\\sc Topo} program has been widely used by colleagues in BESIII collaboration. Several years ago, when I was a Ph.D. student working on the BESIII experiment, I learned the idea of topology analysis and a lot of programming techniques from the {\\sc Topo} program. So, I really appreciate the original works of Prof. Du and Prof. Li very much. To meet my own needs and to practice developing analysis tools with C++, ROOT, and LaTeX, I wrote the package from scratch. At that time, the package functioned well but was relatively simple. At the end of 2017, my co-supervisor, Prof. Chengping Shen reminded me that it could be a useful tool for the Belle II experiment as well. So, I revised and extended it, making it more well-rounded and suitable for the Belle II experiment. Now, it also applies to many other similar high energy physics experiments. Here, I would like to thank Prof. Du and Prof. Li for their original works, and Prof. Shen for his suggestion, guidance, support, and encouragement.}} \\footnote{\\small{Besides, I would like to thank all of the people who have helped me in the development of the program. I am particularly grateful to Prof. Xingtao Huang for his comments on the principles and styles of the program, to Remco de Boer for his suggestions on the tex output and the use of GitHub, and to Xi Chen for his discussions on the core algorithms. I am especially indebted to Prof. Xiqing Hao, Longke Li, Xiaoping Qin, Ilya Komarov, Yubo Li, Guanda Gong, Suxian Li, Junhao Yin, Prof. Xiaolong Wang, Yeqi Chen, Hannah Wakeling, Hongrong Qi, Hui Li, Ning Cao, Sanjeeda Bharati Das, Kazuki Kojima, and Tingting Han for their advice in extending and perfecting the program. Also, I thank Xi'an Xiong, Runqiu Ma, Wencheng Yan, Sen Jia, Lu Cao, Dong Liu, Hongpeng Wang, Jiawei Zhang, Jiajun Liu, Maoqiang Jing, Yi Zhang, Wei Shan, and Yadi Wang for their efforts in helping me test the program.}} \\footnote{\\small{The paper on the tool has been published by {\\it Computer Physics Communications}. You can find this paper and the preprint corresponding to it in the links \\href{https://doi.org/10.1016/j.cpc.2020.107540}{Comput. Phys. Commun. 258 (2021) 107540} and \\href{https://arxiv.org/abs/2001.04016}{arXiv:2001.04016}, respectively. If the tool really helps your researches, we would appreciate it very much if you could cite the paper in your publications.}} \\\\ \\vspace{1cm} \\Large{("<<m_verNum<<")}}"<<endl;
+  fout<<"\\title{Topology Analysis \\footnote{\\small{Xingyu Zhou, Beihang University, zhouxy@buaa.edu.cn}} \\footnote{\\small{This package is implemented referring to a program called {\\sc Topo}, which is first developed by Prof. Shuxian Du from Zhengzhou University and later extended and maintained by Prof. Gang Li from Institute of High Energy Physics, Chinese Academy of Sciences. The {\\sc Topo} program has been widely used by colleagues in BESIII collaboration. Several years ago, when I was a Ph.D. student working on the BESIII experiment, I learned the idea of topology analysis and a lot of programming techniques from the {\\sc Topo} program. So, I really appreciate the original works of Prof. Du and Prof. Li very much. To meet my own needs and to practice developing analysis tools with C++, ROOT, and LaTeX, I wrote the package from scratch. At that time, the package functioned well but was relatively simple. At the end of 2017, my co-supervisor, Prof. Chengping Shen reminded me that it could be a useful tool for the Belle II experiment as well. So, I revised and extended it, making it more well-rounded and suitable for the Belle II experiment. Now, it also applies to many other similar high energy physics experiments. Here, I would like to thank Prof. Du and Prof. Li for their original works, and Prof. Shen for his suggestion, guidance, support, and encouragement.}} \\footnote{\\small{Besides, I would like to thank all of the people who have helped me in the development of the program. I am particularly grateful to Prof. Xingtao Huang for his comments on the principles and styles of the program, to Remco de Boer for his suggestions on the tex output and the use of GitHub, and to Xi Chen for his discussions on the core algorithms. I am especially indebted to Prof. Xiqing Hao, Longke Li, Xiaoping Qin, Ilya Komarov, Yubo Li, Guanda Gong, Suxian Li, Junhao Yin, Prof. Xiaolong Wang, Yeqi Chen, Hannah Wakeling, Hongrong Qi, Hui Li, Ning Cao, Sanjeeda Bharati Das, Kazuki Kojima, Tingting Han, Fang Yan, and Lin Wang for their advice in extending and perfecting the program. Also, I thank Xi'an Xiong, Runqiu Ma, Wencheng Yan, Sen Jia, Lu Cao, Dong Liu, Hongpeng Wang, Jiawei Zhang, Jiajun Liu, Maoqiang Jing, Yi Zhang, Wei Shan, and Yadi Wang for their efforts in helping me test the program.}} \\footnote{\\small{The paper on the tool has been published by {\\it Computer Physics Communications}. You can find this paper and the preprint corresponding to it in the links \\href{https://doi.org/10.1016/j.cpc.2020.107540}{Comput. Phys. Commun. 258 (2021) 107540} and \\href{https://arxiv.org/abs/2001.04016}{arXiv:2001.04016}, respectively. If the tool really helps your researches, we would appreciate it very much if you could cite the paper in your publications.}} \\\\ \\vspace{1cm} \\Large{("<<m_verNum<<")}}"<<endl;
   fout<<"\\maketitle"<<endl;
   fout<<endl<<"\\clearpage"<<endl<<endl;
   fout<<"\\newgeometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}"<<endl<<endl;
@@ -184,13 +184,6 @@ void topoana::writeRsltIntoTexFl()
               dcyBr.clear();
               dcyBr=dcyTr[j];
               list<int>::iterator liit=dcyBr.begin();
-              // Since a lot of pi0s are produced and almost all of them decay to gammma pairs, to save paper and for convenience of readers, all branches of pi0 to gamma pairs are not outputted into the tex file, and hence not printed in the pdf file. The following six statements are commmented out since the decay of pi0 to gamma gamma has been ignored by default when inputting the raw topology data.
-              // list<int>::iterator liit1=dcyBr.begin();
-              // liit1++;
-              // list<int>::iterator liit2=dcyBr.begin();
-              // liit2++;
-              // liit2++;
-              // if(((*liit)==m_pidOfPi0)&&(dcyBr.size()==3)&&((*liit1)==m_pidOfGam)&&((*liit2)==m_pidOfGam)) continue;
               nVldDcyBr++;
               writePnmFromPid(fout,"TexPnm",(*liit));
               // The condition "j==0&&((*liit)==m_pidOfISt2)" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
@@ -202,26 +195,7 @@ void topoana::writeRsltIntoTexFl()
               fout<<"\\rightarrow ";
               for(liit++;liit!=dcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
               if(m_optIdxAndMidxOfDcyBrInDcyTr==true) fout<<"\\, {\\footnotesize ["<<j<<","<<vIMDcyBr[j]<<"]}"<<" ";
-              // The following bool variable is used to judge whether the current branch is the last one outputed or not.
-              bool lastOneOrAllPi0sToGamPairsBehind=true;
-              list<int> dcyBrTmp;
-              for(unsigned int k=j+1;k<dcyTr.size();k++)
-                {
-                  dcyBrTmp.clear();
-                  dcyBrTmp=dcyTr[k];
-                  list<int>::iterator liitTmp=dcyBrTmp.begin();
-                  list<int>::iterator liitTmp1=dcyBrTmp.begin();
-                  liitTmp1++;
-                  list<int>::iterator liitTmp2=dcyBrTmp.begin();
-                  liitTmp2++;
-                  liitTmp2++;
-                  if(((*liitTmp)!=m_pidOfPi0)||(dcyBrTmp.size()!=3)||((*liitTmp1)!=m_pidOfGam)||((*liitTmp2)!=m_pidOfGam))
-                    {
-                      lastOneOrAllPi0sToGamPairsBehind=false;
-                      break;
-                    }
-                }
-              if(!lastOneOrAllPi0sToGamPairsBehind)
+              if((j+1)!=dcyTr.size())
                 {
                   fout<<","<<endl;
                   if(nVldDcyBr%nBrInALine==0) fout<<"$ \\\\ $"<<endl;
@@ -1456,13 +1430,6 @@ void topoana::writeRsltIntoTexFl()
               sigDcyBr.clear();
               sigDcyBr=sigDcyTr[j];              
               list<int>::iterator liit=sigDcyBr.begin();
-              // Since a lot of pi0s are produced and almost all of them decay to gammma pairs, to save paper and for convenience of readers, all branches of pi0 to gamma pairs are not outputted into the tex file, and hence not printed in the pdf file. The following six statements are commmented out since the decay of pi0 to gamma gamma has been ignored by default when inputting the raw topology data.
-              // list<int>::iterator liit1=sigDcyBr.begin();
-              // liit1++;
-              // list<int>::iterator liit2=sigDcyBr.begin();
-              // liit2++;
-              // liit2++;
-              // if(((*liit)==m_pidOfPi0)&&(sigDcyBr.size()==3)&&((*liit1)==m_pidOfGam)&&((*liit2)==m_pidOfGam)) continue;
               nVldDcyBr++;
               writePnmFromPid(fout,"TexPnm",(*liit));
               // The condition "j==0&&((*liit)==m_pidOfISt2)" is set for the initial state particle pair e+e-;the condition "(*liit)==1, 2, 3, 4, 5 or 6" is set for the intermediate state quark pair ddbar, uubar, ssbar, ccbar, bbbar or ttbar;
@@ -1474,26 +1441,7 @@ void topoana::writeRsltIntoTexFl()
               fout<<"\\rightarrow ";
               for(liit++;liit!=sigDcyBr.end();liit++) writePnmFromPid(fout,"TexPnm",(*liit));
               if(m_optIdxAndMidxOfSigDcyBrInSigDcyTr==true) fout<<"\\, {\\footnotesize ["<<j<<","<<vIMSigDcyBr[j]<<"]}"<<" ";
-              // The following bool variable is used to judge whether the current branch is the last one outputed or not.
-              bool lastOneOrAllPi0sToGamPairsBehind=true;
-              list<int> sigDcyBrTmp;
-              for(unsigned int k=j+1;k<sigDcyTr.size();k++)
-                {
-                  sigDcyBrTmp.clear();
-                  sigDcyBrTmp=sigDcyTr[k];
-                  list<int>::iterator liitTmp=sigDcyBrTmp.begin();
-                  list<int>::iterator liitTmp1=sigDcyBrTmp.begin();
-                  liitTmp1++;
-                  list<int>::iterator liitTmp2=sigDcyBrTmp.begin();
-                  liitTmp2++;
-                  liitTmp2++;
-                  if(((*liitTmp)!=m_pidOfPi0)||(sigDcyBrTmp.size()!=3)||((*liitTmp1)!=m_pidOfGam)||((*liitTmp2)!=m_pidOfGam))
-                    {
-                      lastOneOrAllPi0sToGamPairsBehind=false;
-                      break;
-                    }
-                }
-              if(!lastOneOrAllPi0sToGamPairsBehind)
+              if((j+1)!=sigDcyTr.size())
                 {
                   fout<<","<<endl;
                   if(nVldDcyBr%nBrInALine==0) fout<<"$ \\\\ $"<<endl;
