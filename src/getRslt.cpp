@@ -77,8 +77,11 @@ void topoana::getRslt()
       const unsigned int NpsMaxTmp=chn->GetMaximum(m_tbrNmOfNps.c_str());
       if(m_nMinTbrOfPidMidx<NpsMaxTmp)
         {
-          cerr<<"Error: The (mininum) number of the TBranch objects for the PDG codes or mother indices of the MC generated particles is less than the maximum number of the MC generated particles."<<endl;
+          cerr<<"Error: In the TTree object of the input root files, there are not enough TBranch objects to store the PDG codes and mother indices of all the MC generated particles, in some events of the input sample. That is to say, some input raw topology data are missing!"<<endl;
+          cerr<<"Infor: To be specific, there are only "<<m_nMinTbrOfPidMidx<<"/"<<m_nMinTbrOfPidMidx<<" TBranch objects for the PDG codes/mother indices of the MC generated particles, named like \""<<m_tbrNmOfPid<<"_i\"/\""<<m_tbrNmOfMidx<<"_i\"."<<endl;
+          cerr<<"Infor: However, the maximum number of the MC generated particles in an event is "<<NpsMaxTmp<<", which is the maximum value stored in the TBranch \""<<m_tbrNmOfNps<<"\"."<<endl;
           cerr<<"Infor: To guarantee a successful topology analysis job, there should be enough TBranch objects to store all the MC generated particles."<<endl;
+          cerr<<"Infor: So, please check this and re-produce the right input root files."<<endl;
           exit(-1);
         }
       char strI[10]; string specifierPid,specifierMidx,specifierRidx;
