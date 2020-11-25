@@ -3,8 +3,13 @@
 # This following statements set the package path automatically.
 
 pkgPath=`pwd`
-sed -i 's:m_pkgPath=.*:m_pkgPath=\"'$pkgPath'\/\";:g' include/topoana.h 
-sed -i 's:RequirePackage.*ifxetex:RequirePackage{'$pkgPath'/share/ifxetex:g' share/geometry.sty
+if [ ${OSTYPE:0:6} != darwin ]; then
+  sed -i 's:m_pkgPath=.*:m_pkgPath=\"'$pkgPath'\/\";:g' include/topoana.h
+  sed -i 's:RequirePackage.*ifxetex:RequirePackage{'$pkgPath'/share/ifxetex:g' share/geometry.sty
+else
+  sed -i "" 's:m_pkgPath=.*:m_pkgPath=\"'$pkgPath'\/\";:g' include/topoana.h
+  sed -i "" 's:RequirePackage.*ifxetex:RequirePackage{'$pkgPath'/share/ifxetex:g' share/geometry.sty
+fi
 
 
 # The following statements print the guidelines for adding the absolute path of the executable of the program to the envionment variable PATH.
