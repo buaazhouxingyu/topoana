@@ -31,8 +31,8 @@ void topoana::getRslt()
   cout<<"There are "<<nEtr<<" entries in total in the input root files."<<endl<<endl;
 
   // The following statement instead of the one next to it ought to be used along with the Ntuple Tool MCGenKinematics with the option [200].
-  const unsigned int NpsMax=200;
-  // const unsigned int NpsMax=chn->GetMaximum(m_tbrNmOfNps.c_str());
+  // const unsigned int NpsMax=200;
+  const unsigned int NpsMax=chn->GetMaximum(m_tbrNmOfNps.c_str());
   int Nps,Pid[NpsMax],Midx[NpsMax],Ridx[NpsMax];
   double Npsd,Pidd[NpsMax],Midxd[NpsMax];
   int Icandi;
