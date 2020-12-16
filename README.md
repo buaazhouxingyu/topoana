@@ -52,7 +52,6 @@ Here, we just briefly introduce how to install and use the program.
 
      + Executing the command once is sufficient, unless you want to alter the targeted experiment.
 
-
 2. How to use the program
 
    1.1. Prepare the input data
@@ -72,3 +71,15 @@ Here, we just briefly introduce how to install and use the program.
      + The argument cardFileName is optional, and its default value is ``topoana.card``.
 
      + Execute ``topoana.exe --help`` to see other optional arguments supported in the command line.
+
+**Welcome to TopoAna, and please let me (zhouxy@buaa.edu.cn) know:**
+
+  + if you encounter any problems with it,
+
+  + if you have any questions about it,
+
+  + if you find any bugs in it,
+
+  + if you have any suggestions on improving it,
+
+  + if you want to extend its functionalities.
