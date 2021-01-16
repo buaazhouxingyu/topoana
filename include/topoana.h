@@ -291,7 +291,7 @@ class topoana
       m_fixMidxBESIII=false;
       m_nEtrMax=ULONG_MAX; // ULONG_MAX=9223372036854775807 is the maximum unsigned long int number. 
       m_vCut.clear();
-      m_cutMethod=false;
+      m_cutMethod=true;
       m_hHdDcyBrsMax=ULONG_MAX;
       m_vIdPid.clear();
       m_vIddPid.clear();

@@ -185,7 +185,7 @@
 }
 
 # In the following item, T (F) means that true (false) as long as one instance is true (false).
-% Method to apply cut to array variables (Two options: T and F. Default: F)
+% Method to apply cut to array variables (Two options: T and F. Default: T)
 {
 
 }

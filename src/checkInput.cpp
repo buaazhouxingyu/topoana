@@ -373,13 +373,13 @@ void topoana::checkInput()
     {
       if(m_vCut.size()>1) for(unsigned int i=0;i<m_vCut.size();i++) cout<<"Cut segment in Line "<<i<<": "<<m_vCut[i]<<endl;
       cout<<"Cut to select entries: "<<m_cut<<endl<<endl;
-      if(m_cutMethod==true)
+      if(m_cutMethod==false)
         {
-          cout<<"The method to apply cut to array variables: True as long as one instance is true."<<endl<<endl;
+          cout<<"The method to apply cut to array variables: False as long as one instance is false."<<endl<<endl;
         }
       else
         {
-          if(m_vbsLevStdOut==true) cout<<"The method to apply cut to array variables: False as long as one instance is false (default)."<<endl<<endl;
+          if(m_vbsLevStdOut==true) cout<<"The method to apply cut to array variables: True as long as one instance is true (default)."<<endl<<endl;
         }
     }
 

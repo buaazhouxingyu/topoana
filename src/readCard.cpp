@@ -167,10 +167,10 @@ void topoana::readCard(string cardFlNm)
           m_cut.clear();
           for(unsigned int i=0;i<m_vCut.size();i++) m_cut=m_cut+m_vCut[i];
         }
-      else if(line=="% Method to apply cut to array variables (Two options: T and F. Default: F)")
+      else if(line=="% Method to apply cut to array variables (Two options: T and F. Default: T)")
         {
-          readOpenCurly(fin,line,"% Method to apply cut to array variables (Two options: T and F. Default: F)");
-          read1stLineOrCloseCurly(fin,line,false,"% Method to apply cut to array variables (Two options: T and F. Default: F)");
+          readOpenCurly(fin,line,"% Method to apply cut to array variables (Two options: T and F. Default: T)");
+          read1stLineOrCloseCurly(fin,line,false,"% Method to apply cut to array variables (Two options: T and F. Default: T)");
           if(line!="}")
             {
               if(line=="T")
@@ -188,7 +188,7 @@ void topoana::readCard(string cardFlNm)
                   cerr<<"Infor: Please check it."<<endl;
                   exit(-1);
                 } 
-              readCloseCurly(fin,line,"% Method to apply cut to array variables (Two options: T and F. Default: F)");
+              readCloseCurly(fin,line,"% Method to apply cut to array variables (Two options: T and F. Default: T)");
             }
         }
       else if(line=="% Maximum hierarchy of heading decay branches to be processed in each event")
