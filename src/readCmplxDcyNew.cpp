@@ -282,19 +282,27 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
     {
       if(!((dcyBr[0]==m_pidOfISt1&&dcyBr[1]==m_pidOfISt2)||(dcyBr[0]==m_pidOfISt2&&dcyBr[1]==m_pidOfISt1)))
         {
-          cerr<<"Error: The two initial-state particles in the decay branch part of the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" are not the electron and positron pair!"<<endl;
-          cerr<<"Infor: If two initial-state particles exist in the line, they should be the electron and positron pair."<<endl;
+          cerr<<"Error: The two initial-state particles in the decay branch part of the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" are not the";
+          writePnmFromPid(cerr,"TxtPnm",m_pidOfISt1);
+          cerr<<" and";
+          writePnmFromPid(cerr,"TxtPnm",m_pidOfISt2);
+          cerr<<" pair!"<<endl;
+          cerr<<"Infor: If two initial-state particles exist in the line, they should be the";
+          writePnmFromPid(cerr,"TxtPnm",m_pidOfISt1);
+          cerr<<" and";
+          writePnmFromPid(cerr,"TxtPnm",m_pidOfISt2);
+          cerr<<" pair!"<<endl;
           cerr<<"Infor: Please check it."<<endl;
           exit(-1);
         }
-      else if(dcyBr[0]==m_pidOfISt1&&dcyBr[1]==m_pidOfISt2)
+      else
         {
           // dcyBr[0]=m_pidOfISt2;
           // dcyBr[1]=m_pidOfISt1;
           dcyBr.erase(dcyBr.begin());
           dcyBr[0]=m_pidOfISt;
         }
-      if(dcyBr.size()==2)
+      if(dcyBr.size()==1)
         {
           cerr<<"Error: No final-state particle is found after the arrow (-->) in the decay branch part of the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\"!"<<endl;
           cerr<<"Infor: There should be at least one final-state particle."<<endl;
