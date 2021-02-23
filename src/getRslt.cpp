@@ -1841,11 +1841,12 @@ void topoana::getRslt()
                         } // Here, "&&m_vICcCompIncDcyBr[k]!=0" in the following condition can be removed.
                   // The following three lines of code are added in order to process the charge conjugate inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
                     }
-                  for(unsigned int j=0;j<vVCcIncDcyBr[k].size();j++)
+                  // The code segment "m_ccSwitch==true&&" in the following "for" statement can not be moved to the "if" statement therein. Otherwise, running the program over the cases with "m_ccSwitch==false" will crash.
+                  for(unsigned int j=0;m_ccSwitch==true&&j<vVCcIncDcyBr[k].size();j++)
                     {
                       // The else in the following statement is removed in order to process the charge conjugate inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
                       // else if(m_ccSwitch==true&&m_vICcCompIncDcyBr[k]!=0&&isLiaMatchedWithLib(m_vCompCcIncDcyBr[k],vVCcIncDcyBr[k][j],m_vOption_compIncDcyBr[k]))
-                      if(m_ccSwitch==true&&m_vICcCompIncDcyBr[k]!=0&&isLiaMatchedWithLib(m_vCompCcIncDcyBr[k],vVCcIncDcyBr[k][j],m_vOption_compIncDcyBr[k]))
+                      if(m_vICcCompIncDcyBr[k]!=0&&isLiaMatchedWithLib(m_vCompCcIncDcyBr[k],vVCcIncDcyBr[k][j],m_vOption_compIncDcyBr[k]))
                         {
                           dcyBrCcIncDcyBr=vVCcIncDcyBr[k][j];
                           int _iDcyBrIncDcyBrl=-1; // The variable is added to record the index of the matched, old exclusive decay branch. It differs from _iDcyBrIncDcyBr in the cases where the option is set at "Is(-IRA)", "Ig(-IRA)", "Fs(-IRA)", or "Fg(-IRA)" in order to restrict the remaining particles unspecified in the inclusive decays to strict ISR, generalized ISR, strict FSR, or generalized FSR photons, respectively. In the special cases with restrictions, _iDcyBrIncDcyBr is set to the number of strict ISR, generalized ISR, strict FSR, or generalized FSR photons found in the matched exclusive decay branches.
