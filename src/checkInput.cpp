@@ -786,20 +786,20 @@ void topoana::checkInput()
           string ordNumSufj="th";
           for(unsigned int j=0;j<i;j++)
             {
-              if(m_vPid_compDcyBrP[i]==m_vPid_compDcyBrP[j])
+              if(m_vPid_compDcyBrP[i]==m_vPid_compDcyBrP[j]&&m_vNm_compDcyBrP[i]==m_vNm_compDcyBrP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
-              else if(m_ccSwitch==true&&m_vICcCompDcyBrP[j]!=0&&m_vPid_compDcyBrP[i]==m_vPid_ccCompDcyBrP[j])
+              else if(m_ccSwitch==true&&m_vICcCompDcyBrP[j]!=0&&m_vPid_compDcyBrP[i]==m_vPid_ccCompDcyBrP[j]&&m_vNm_compDcyBrP[i]==m_vNm_compDcyBrP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
             }
@@ -914,20 +914,20 @@ void topoana::checkInput()
           string ordNumSufj="th";
           for(unsigned int j=0;j<i;j++)
             {
-              if(m_vPid_compCascDcyBrP[i]==m_vPid_compCascDcyBrP[j])
+              if(m_vPid_compCascDcyBrP[i]==m_vPid_compCascDcyBrP[j]&&m_vNm_compCascDcyBrP[i]==m_vNm_compCascDcyBrP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
-              else if(m_ccSwitch==true&&m_vICcCompCascDcyBrP[j]!=0&&m_vPid_compCascDcyBrP[i]==m_vPid_ccCompCascDcyBrP[j])
+              else if(m_ccSwitch==true&&m_vICcCompCascDcyBrP[j]!=0&&m_vPid_compCascDcyBrP[i]==m_vPid_ccCompCascDcyBrP[j]&&m_vNm_compCascDcyBrP[i]==m_vNm_compCascDcyBrP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
             }
@@ -1036,20 +1036,20 @@ void topoana::checkInput()
           string ordNumSufj="th";
           for(unsigned int j=0;j<i;j++)
             {
-              if(m_vPid_compDcyFStP[i]==m_vPid_compDcyFStP[j])
+              if(m_vPid_compDcyFStP[i]==m_vPid_compDcyFStP[j]&&m_vNm_compDcyFStP[i]==m_vNm_compDcyFStP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
-              else if(m_ccSwitch==true&&m_vICcCompDcyFStP[j]!=0&&m_vPid_compDcyFStP[i]==m_vPid_ccCompDcyFStP[j])
+              else if(m_ccSwitch==true&&m_vICcCompDcyFStP[j]!=0&&m_vPid_compDcyFStP[i]==m_vPid_ccCompDcyFStP[j]&&m_vNm_compDcyFStP[i]==m_vNm_compDcyFStP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
             }
@@ -1147,20 +1147,20 @@ void topoana::checkInput()
           string ordNumSufj="th";
           for(unsigned int j=0;j<i;j++)
             {
-              if(m_vPid_compProdBrP[i]==m_vPid_compProdBrP[j])
+              if(m_vPid_compProdBrP[i]==m_vPid_compProdBrP[j]&&m_vNm_compProdBrP[i]==m_vNm_compProdBrP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
-              else if(m_ccSwitch==true&&m_vICcCompProdBrP[j]!=0&&m_vPid_compProdBrP[i]==m_vPid_ccCompProdBrP[j])
+              else if(m_ccSwitch==true&&m_vICcCompProdBrP[j]!=0&&m_vPid_compProdBrP[i]==m_vPid_ccCompProdBrP[j]&&m_vNm_compProdBrP[i]==m_vNm_compProdBrP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
             }
@@ -1256,20 +1256,20 @@ void topoana::checkInput()
           string ordNumSufj="th";
           for(unsigned int j=0;j<i;j++)
             {
-              if(m_vPid_compMP[i]==m_vPid_compMP[j])
+              if(m_vPid_compMP[i]==m_vPid_compMP[j]&&m_vNm_compMP[i]==m_vNm_compMP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
-              else if(m_ccSwitch==true&&m_vICcCompMP[j]!=0&&m_vPid_compMP[i]==m_vPid_ccCompMP[j])
+              else if(m_ccSwitch==true&&m_vICcCompMP[j]!=0&&m_vPid_compMP[i]==m_vPid_ccCompMP[j]&&m_vNm_compMP[i]==m_vNm_compMP[j])
                 {
                   if(i==0) ordNumSufi="st"; else if(i==1) ordNumSufi="nd"; else if(i==2) ordNumSufi="rd";
                   if(j==0) ordNumSufj="st"; else if(j==1) ordNumSufj="nd"; else if(j==2) ordNumSufj="rd";
-                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle!"<<endl;
-                  cerr<<"Infor: Please check the input card and remove one of them."<<endl;
+                  cerr<<"Error: The "<<i+1<<ordNumSufi<<" particle is same as the charge conjugate counterpart of "<<j+1<<ordNumSufj<<" particle and they have the same one alias!"<<endl;
+                  cerr<<"Infor: Please check the input card and make some corrections."<<endl;
                   exit(-1);
                 }
             }
