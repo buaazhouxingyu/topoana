@@ -936,7 +936,7 @@ void topoana::getRslt()
                                 }
                             }
                           nPDcyBr[k]++;
-                          break;
+                          // break; // The break statement is commented out in order to process rightly the cases of same particles with different aliases specified in the setting item.
                         } // Here, "&&m_vICcCompDcyBrP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompDcyBrP[k]!=0&&(*liit)==m_vPid_ccCompDcyBrP[k])
                         {
@@ -980,7 +980,7 @@ void topoana::getRslt()
                               m_vVNDcyBrCcP[k][_iDcyBrP]++;
                             }
                           nCcPDcyBr[k]++;
-                          break;                                    
+                          // break; // The break statement is commented out in order to process rightly the cases of same particles with different aliases specified in the setting item.
                         }
                     }
                 }
@@ -1493,7 +1493,7 @@ void topoana::getRslt()
                                 }
                             }
                           nPProdBr[k]++;
-                          break;
+                          // break;  // The break statement is commented out in order to process rightly the cases of same particles with different aliases specified in the setting item.
                         } // Here, "&&m_vICcCompProdBrP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompProdBrP[k]!=0&&vPid[j]==m_vPid_ccCompProdBrP[k])
                         {
@@ -1555,7 +1555,7 @@ void topoana::getRslt()
                               m_vVNProdBrCcP[k][_iProdBrP]++;
                             }
                           nCcPProdBr[k]++;
-                          break;                                    
+                          // break; // The break statement is commented out in order to process rightly the cases of same particles with different aliases specified in the setting item.
                         }
                     }
                 }
@@ -1647,7 +1647,7 @@ void topoana::getRslt()
                                 }
                             }
                           nPM[k]++;
-                          break;
+                          // break; // The break statement is commented out in order to process rightly the cases of same particles with different aliases specified in the setting item.
                         } // Here, "&&m_vICcCompMP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompMP[k]!=0&&vPid[j]==m_vPid_ccCompMP[k])
                         {
@@ -1688,7 +1688,7 @@ void topoana::getRslt()
                               m_vVNMCcP[k][_iMP]++;
                             }
                           nCcPM[k]++;
-                          break;                                    
+                          // break; // The break statement is commented out in order to process rightly the cases of same particles with different aliases specified in the setting item.
                         }
                     }
                 }
