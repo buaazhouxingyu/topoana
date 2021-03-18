@@ -524,7 +524,9 @@ void topoana::writeRsltIntoTexFl()
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Decay branches of $ ";
                   writePnmFromPid(fout,"TexPnm",m_vPid_compDcyBrP[i]);
-                  fout<<"$.}"<<endl;
+                  fout<<"$";
+                  if(m_vMulti_compDcyBrP[i]>1) fout<<" (with the alias "<<replaceAllSubstr(m_vNm_compDcyBrP[i], "_", "\\_")<<")";
+                  fout<<".}"<<endl;
                   fout<<"\\tableheader";
                   if(m_cmpltHVLines==false) fout<<"P";
                   fout<<"{rowNo & \\thead{decay branch of $ ";
@@ -634,12 +636,19 @@ void topoana::writeRsltIntoTexFl()
                   fout<<"\\tablecaption{Cascade decay branches of $ ";
                   writePnmFromPid(fout,"TexPnm",m_vPid_compCascDcyBrP[i]);
                   fout<<"$";
-                  if(m_vHCascDcyBrMax[i]!=ULONG_MAX)
+                  if(m_vMulti_compCascDcyBrP[i]>1||m_vHCascDcyBrMax[i]!=ULONG_MAX)
                     {
-                      fout<<" (only the first ";
-                      if(m_nNmMap.find(m_vHCascDcyBrMax[i])!=m_nNmMap.end()) fout<<m_nNmMap[m_vHCascDcyBrMax[i]];
-                      else fout<<m_vHCascDcyBrMax[i];
-                      fout<<" hierarchies are involved)";
+                      fout<<" (";
+                      if(m_vMulti_compCascDcyBrP[i]>1) fout<<"with the alias "<<replaceAllSubstr(m_vNm_compCascDcyBrP[i], "_", "\\_");
+                      if(m_vMulti_compCascDcyBrP[i]>1&&m_vHCascDcyBrMax[i]!=ULONG_MAX) fout<<"; ";
+                      if(m_vHCascDcyBrMax[i]!=ULONG_MAX)
+                        {
+                          fout<<"only the first ";
+                          if(m_nNmMap.find(m_vHCascDcyBrMax[i])!=m_nNmMap.end()) fout<<m_nNmMap[m_vHCascDcyBrMax[i]];
+                          else fout<<m_vHCascDcyBrMax[i];
+                          fout<<" hierarchies are involved";
+                        }
+                      fout<<")";
                     }
                   fout<<".}"<<endl;
                   fout<<"\\tableheader";
@@ -767,12 +776,19 @@ void topoana::writeRsltIntoTexFl()
                   fout<<"\\tablecaption{Decay final states of $ ";
                   writePnmFromPid(fout,"TexPnm",m_vPid_compDcyFStP[i]);
                   fout<<"$";
-                  if(m_vNDcyFStP[i]!=ULONG_MAX)
+                  if(m_vMulti_compDcyFStP[i]>1||m_vNDcyFStP[i]!=ULONG_MAX)
                     {
-                      fout<<" (only ";
-                      if(m_nNmMap.find(m_vNDcyFStP[i])!=m_nNmMap.end()) fout<<m_nNmMap[m_vNDcyFStP[i]];
-                      else fout<<m_vNDcyFStP[i];
-                      fout<<"-body final states are involved)";
+                      fout<<" (";
+                      if(m_vMulti_compDcyFStP[i]>1) fout<<"with the alias "<<replaceAllSubstr(m_vNm_compDcyFStP[i], "_", "\\_");
+                      if(m_vMulti_compDcyFStP[i]>1&&m_vNDcyFStP[i]!=ULONG_MAX) fout<<"; ";
+                      if(m_vNDcyFStP[i]!=ULONG_MAX)
+                        {
+                          fout<<"only ";
+                          if(m_nNmMap.find(m_vNDcyFStP[i])!=m_nNmMap.end()) fout<<m_nNmMap[m_vNDcyFStP[i]];
+                          else fout<<m_vNDcyFStP[i];
+                          fout<<"-body final states are involved";
+                        }
+                      fout<<")";
                     }
                   fout<<".}"<<endl;
                   fout<<"\\tableheader";
@@ -875,7 +891,9 @@ void topoana::writeRsltIntoTexFl()
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Production branches of $ ";
                   writePnmFromPid(fout,"TexPnm",m_vPid_compProdBrP[i]);
-                  fout<<"$.}"<<endl;
+                  fout<<"$";
+                  if(m_vMulti_compProdBrP[i]>1) fout<<" (with the alias "<<replaceAllSubstr(m_vNm_compProdBrP[i], "_", "\\_")<<")";
+                  fout<<".}"<<endl;
                   fout<<"\\tableheader";
                   if(m_cmpltHVLines==false) fout<<"P";
                   fout<<"{rowNo & \\thead{production branch of $ ";
@@ -976,7 +994,9 @@ void topoana::writeRsltIntoTexFl()
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Mothers of $ ";
                   writePnmFromPid(fout,"TexPnm",m_vPid_compMP[i]);
-                  fout<<"$.}"<<endl;
+                  fout<<"$";
+                  if(m_vMulti_compMP[i]>1) fout<<" (with the alias "<<replaceAllSubstr(m_vNm_compMP[i], "_", "\\_")<<")";
+                  fout<<".}"<<endl;
                   fout<<"\\tableheader";
                   if(m_cmpltHVLines==false) fout<<"P";
                   fout<<"{rowNo & \\thead{mother of $ ";

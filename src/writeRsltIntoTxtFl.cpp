@@ -242,6 +242,7 @@ void topoana::writeRsltIntoTxtFl()
 
           fout<<"Decay branches of";
           writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyBrP[i]);
+          if(m_vMulti_compDcyBrP[i]>1) fout<<" (with the alias "<<m_vNm_compDcyBrP[i]<<")";
           fout<<":"<<endl<<endl;
 
           list<int> dcyBrP;
@@ -315,12 +316,19 @@ void topoana::writeRsltIntoTxtFl()
 
           fout<<"Cascade decay branches of";
           writePnmFromPid(fout,"TxtPnm",m_vPid_compCascDcyBrP[i]);
-          if(m_vHCascDcyBrMax[i]!=ULONG_MAX)
+          if(m_vMulti_compCascDcyBrP[i]>1||m_vHCascDcyBrMax[i]!=ULONG_MAX)
             {
-              fout<<" (only the first ";
-              if(m_nNmMap.find(m_vHCascDcyBrMax[i])!=m_nNmMap.end()) fout<<m_nNmMap[m_vHCascDcyBrMax[i]];
-              else fout<<m_vHCascDcyBrMax[i];
-              fout<<" hierarchies are involved)";
+              fout<<" (";
+              if(m_vMulti_compCascDcyBrP[i]>1) fout<<"with the alias "<<m_vNm_compCascDcyBrP[i];
+              if(m_vMulti_compCascDcyBrP[i]>1&&m_vHCascDcyBrMax[i]!=ULONG_MAX) fout<<"; ";
+              if(m_vHCascDcyBrMax[i]!=ULONG_MAX)
+                {
+                  fout<<"only the first ";
+                  if(m_nNmMap.find(m_vHCascDcyBrMax[i])!=m_nNmMap.end()) fout<<m_nNmMap[m_vHCascDcyBrMax[i]];
+                  else fout<<m_vHCascDcyBrMax[i];
+                  fout<<" hierarchies are involved";
+                 }
+              fout<<")";
             }
           fout<<":"<<endl<<endl;
 
@@ -404,12 +412,19 @@ void topoana::writeRsltIntoTxtFl()
 
           fout<<"Decay final states of";
           writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyFStP[i]);
-          if(m_vNDcyFStP[i]!=ULONG_MAX)
+          if(m_vMulti_compDcyFStP[i]>1||m_vNDcyFStP[i]!=ULONG_MAX)
             {
-              fout<<" (only ";
-              if(m_nNmMap.find(m_vNDcyFStP[i])!=m_nNmMap.end()) fout<<m_nNmMap[m_vNDcyFStP[i]];
-              else fout<<m_vNDcyFStP[i];
-              fout<<"-body final states are involved)";
+              fout<<" (";
+              if(m_vMulti_compDcyFStP[i]>1) fout<<"with the alias "<<m_vNm_compDcyFStP[i];
+              if(m_vMulti_compDcyFStP[i]>1&&m_vNDcyFStP[i]!=ULONG_MAX) fout<<"; ";
+              if(m_vNDcyFStP[i]!=ULONG_MAX)
+                {
+                  fout<<"only ";
+                  if(m_nNmMap.find(m_vNDcyFStP[i])!=m_nNmMap.end()) fout<<m_nNmMap[m_vNDcyFStP[i]];
+                  else fout<<m_vNDcyFStP[i];
+                  fout<<"-body final states are involved";
+                }
+              fout<<")";
             }
           fout<<":"<<endl<<endl;
 
@@ -484,6 +499,7 @@ void topoana::writeRsltIntoTxtFl()
 
           fout<<"Production branches of";
           writePnmFromPid(fout,"TxtPnm",m_vPid_compProdBrP[i]);
+          if(m_vMulti_compProdBrP[i]>1) fout<<" (with the alias "<<m_vNm_compProdBrP[i]<<")";
           fout<<":"<<endl<<endl;
 
           list<int> prodBrP;
@@ -558,6 +574,7 @@ void topoana::writeRsltIntoTxtFl()
 
           fout<<"Mothers of";
           writePnmFromPid(fout,"TxtPnm",m_vPid_compMP[i]);
+          if(m_vMulti_compMP[i]>1) fout<<" (with the alias "<<m_vNm_compMP[i]<<")";
           fout<<":"<<endl;
 
           unsigned long nCCase=0;

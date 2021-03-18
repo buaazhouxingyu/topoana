@@ -817,6 +817,11 @@ void topoana::checkInput()
               m_vVNDcyBrCcP.push_back(vNDcyBrCcP);              
             }     
         }
+      for(unsigned int i=0;i<m_vPid_compDcyBrP.size();i++)
+        {
+          m_vMulti_compDcyBrP.push_back(0);
+          for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++) if(m_vPid_compDcyBrP[j]==m_vPid_compDcyBrP[i]) m_vMulti_compDcyBrP[i]++;
+        }
     }
 
   if(m_vPid_compCascDcyBrP.size()==0)
@@ -947,6 +952,11 @@ void topoana::checkInput()
               m_vUomCascDcyBrCcP.push_back(uomCascDcyBrCcP);
             }     
         }
+      for(unsigned int i=0;i<m_vPid_compCascDcyBrP.size();i++)
+        {
+          m_vMulti_compCascDcyBrP.push_back(0);
+          for(unsigned int j=0;j<m_vPid_compCascDcyBrP.size();j++) if(m_vPid_compCascDcyBrP[j]==m_vPid_compCascDcyBrP[i]) m_vMulti_compCascDcyBrP[i]++;
+        }
     }
 
   if(m_vPid_compDcyFStP.size()==0)
@@ -1069,6 +1079,11 @@ void topoana::checkInput()
               m_vUomDcyFStCcP.push_back(uomDcyFStCcP);
             }     
         }
+      for(unsigned int i=0;i<m_vPid_compDcyFStP.size();i++)
+        {
+          m_vMulti_compDcyFStP.push_back(0);
+          for(unsigned int j=0;j<m_vPid_compDcyFStP.size();j++) if(m_vPid_compDcyFStP[j]==m_vPid_compDcyFStP[i]) m_vMulti_compDcyFStP[i]++;
+        }
     }
 
   if(m_vPid_compProdBrP.size()==0)
@@ -1178,6 +1193,11 @@ void topoana::checkInput()
               m_vVNProdBrCcP.push_back(vNProdBrCcP);              
             }     
         }
+      for(unsigned int i=0;i<m_vPid_compProdBrP.size();i++)
+        {
+          m_vMulti_compProdBrP.push_back(0);
+          for(unsigned int j=0;j<m_vPid_compProdBrP.size();j++) if(m_vPid_compProdBrP[j]==m_vPid_compProdBrP[i]) m_vMulti_compProdBrP[i]++;
+        }
     }
 
   if(m_vPid_compMP.size()==0)
@@ -1286,6 +1306,11 @@ void topoana::checkInput()
               m_vVIMCcP.push_back(vIMCcP);
               m_vVNMCcP.push_back(vNMCcP);              
             }     
+        }
+      for(unsigned int i=0;i<m_vPid_compMP.size();i++)
+        {
+          m_vMulti_compMP.push_back(0);
+          for(unsigned int j=0;j<m_vPid_compMP.size();j++) if(m_vPid_compMP[j]==m_vPid_compMP[i]) m_vMulti_compMP[i]++;
         }
     }
 

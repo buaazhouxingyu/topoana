@@ -64,6 +64,7 @@ class topoana
     vector<string> m_vTypeOfTagRec_compDcyBrP;
     vector<string> m_vTBrNmOfTagRec_compDcyBrP;
     vector<string> m_vTBrNmOfNRec_compDcyBrP;
+    vector<int> m_vMulti_compDcyBrP;
     vector<int> m_vPid_compCascDcyBrP;
     vector<string> m_vNm_compCascDcyBrP;
     vector<unsigned long> m_vNCascDcyBrToBePrtdMax;
@@ -72,6 +73,7 @@ class topoana
     vector<string> m_vTBrNmOfTagRec_compCascDcyBrP;
     vector<string> m_vTBrNmOfNRec_compCascDcyBrP;
     vector<bool> m_vOptIdxAndMidxOfDcyBrInCascDcyBrP;
+    vector<int> m_vMulti_compCascDcyBrP;
     vector<int> m_vPid_compDcyFStP;
     vector<string> m_vNm_compDcyFStP;
     vector<unsigned long> m_vNDcyFStToBePrtdMax;
@@ -79,6 +81,7 @@ class topoana
     vector<string> m_vTypeOfTagRec_compDcyFStP;
     vector<string> m_vTBrNmOfTagRec_compDcyFStP;
     vector<string> m_vTBrNmOfNRec_compDcyFStP;
+    vector<int> m_vMulti_compDcyFStP;
     vector<int> m_vPid_compProdBrP;
     vector<string> m_vNm_compProdBrP;
     vector<unsigned long> m_vNProdBrToBePrtdMax;
@@ -86,6 +89,7 @@ class topoana
     vector<string> m_vTypeOfTagRec_compProdBrP;
     vector<string> m_vTBrNmOfTagRec_compProdBrP;
     vector<string> m_vTBrNmOfNRec_compProdBrP;
+    vector<int> m_vMulti_compProdBrP;
     vector<int> m_vPid_compMP;
     vector<string> m_vNm_compMP;
     vector<unsigned long> m_vNMToBePrtdMax;
@@ -93,6 +97,7 @@ class topoana
     vector<string> m_vTypeOfTagRec_compMP;
     vector<string> m_vTBrNmOfTagRec_compMP;
     vector<string> m_vTBrNmOfNRec_compMP;
+    vector<int> m_vMulti_compMP;
     vector< vector<int> > m_vVPid_compIncDcyBr;
     vector<string> m_vNm_compIncDcyBr;
     vector<unsigned long> m_vNExcCompsToBePrtdMax;
@@ -508,6 +513,7 @@ class topoana
     void           getRslt();
     void           writeRsltIntoTxtFl();
     void           getVIMDcyBr(vector< list<int> > & vDcyBr, vector<int> & vIMDcyBr);
+    string         replaceAllSubstr(string str, string oldSubstr, string newSubstr);
     void           writeRsltIntoTexFl();
     void           getPdfFlFromTexFl();
     void           writeInforOnRslt();
