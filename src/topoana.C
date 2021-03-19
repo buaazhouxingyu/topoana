@@ -17,11 +17,12 @@ int main(int argc,char *argv[])
     }
 
   topoana ta;
+  if(argc>1&&argv[1][0]!='-') ta.setCardFlNmAndDftComNmOfOptFls(argv[1]);
+  else ta.setCardFlNmAndDftComNmOfOptFls("topoana.card");
+  ta.readCard0(ta.getCardFlNm());
   ta.makeMapsOnPdata();
   ta.makeNNmMap();
   ta.readCard(ta.getCardFlNm0());
-  if(argc>1&&argv[1][0]!='-') ta.setCardFlNmAndDftComNmOfOptFls(argv[1]);
-  else ta.setCardFlNmAndDftComNmOfOptFls("topoana.card");
   ta.readCard(ta.getCardFlNm());
   // The following loop offers a mechanism to reset the names of input root files, the common name of output files, and the maximum number of entries to be processed, with the arguments provided in the command line.
   for(int i=1;i<argc;i++)

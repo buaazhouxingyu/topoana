@@ -2971,6 +2971,15 @@ void topoana::checkInput()
       if(m_vbsLevStdOut==true) cout<<"The signals in the topology maps related to signal identifications will not be sorted (default)."<<endl<<endl;
     }
 
+  if(m_usePlistFromBelle==true)
+    {
+      cout<<"The particle list from Belle is used for the B2BII analyses."<<endl<<endl;
+    }
+  else
+    {
+      if(m_vbsLevStdOut==true) cout<<"The used particle list is not altered specially for the B2BII analyses (default)."<<endl<<endl;
+    }
+
   if((m_pidOfISt1!=m_pidOfE)||(m_pidOfISt2!=-1*m_pidOfE))
     {
       cout<<"The initial state particles are set to be";

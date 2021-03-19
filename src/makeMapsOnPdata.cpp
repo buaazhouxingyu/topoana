@@ -12,6 +12,7 @@ void topoana::makeMapsOnPdata()
   m_pidIccPMap.clear();
   int pid,i3pchrg; string txtpnm,texpnm; int iccp; // The character "i" in the variable name "i3pchrg" is inserted specially for avoiding the mistake of starting a variable name with a number.
   string DatFlNm=m_pkgPath+"share/pid_3pchrg_txtpnm_texpnm_iccp.dat";
+  if(m_usePlistFromBelle==true) DatFlNm=DatFlNm+"_Belle";
   ifstream fin(DatFlNm.c_str(),ios::in);
   if(!fin)
     {

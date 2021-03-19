@@ -138,6 +138,7 @@ class topoana
     bool m_ccSwitch;
     string m_anaTasksForSigIds;
     bool m_sortSigsInTopoMapsRltdToSigIds;
+    bool m_usePlistFromBelle;
     bool m_iStPsSwitch;
 
     string m_comNmOfOptFls;
@@ -391,6 +392,7 @@ class topoana
       m_ccSwitch=false;
       m_anaTasksForSigIds="TC";
       m_sortSigsInTopoMapsRltdToSigIds=false;
+      m_usePlistFromBelle=false;
       m_iStPsSwitch=false;
 
       m_cmpltHVLines=false;
@@ -434,6 +436,7 @@ class topoana
     void	   resetComNmOfOptFls(string comNmOfOptFls) {m_comNmOfOptFls=comNmOfOptFls;};
     void           resetNEtrMax(unsigned long nEtrMax) {m_nEtrMax=nEtrMax;};
     string &       trim(string & line);
+    void           readCard0(string cardFlNm);
     void           makeMapsOnPdata();
     void	   makeNNmMap();
     int 	   getPidFromTxtPnm(string pnm);

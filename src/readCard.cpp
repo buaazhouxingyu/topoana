@@ -480,6 +480,10 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Sort the signals in the topology maps related to signal identifications (Two options: Y and N. Default: N)", m_sortSigsInTopoMapsRltdToSigIds);
         }
+      else if(line=="% Use the particle list from Belle for the B2BII analyses (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Use the particle list from Belle for the B2BII analyses (Two options: Y and N. Default: N)", m_usePlistFromBelle);
+        }
       else if(line=="% Initial state particles (Default: e- e+)")
         {
           readOpenCurly(fin,line,"% Initial state particles (Default: e- e+)");
