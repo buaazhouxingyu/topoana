@@ -65,6 +65,7 @@ class topoana
     vector<string> m_vTBrNmOfTagRec_compDcyBrP;
     vector<string> m_vTBrNmOfNRec_compDcyBrP;
     vector<int> m_vMulti_compDcyBrP;
+    vector<int> m_vAllMulti_compDcyBrP;
     vector<int> m_vPid_compCascDcyBrP;
     vector<string> m_vNm_compCascDcyBrP;
     vector<unsigned long> m_vNCascDcyBrToBePrtdMax;
@@ -74,6 +75,7 @@ class topoana
     vector<string> m_vTBrNmOfNRec_compCascDcyBrP;
     vector<bool> m_vOptIdxAndMidxOfDcyBrInCascDcyBrP;
     vector<int> m_vMulti_compCascDcyBrP;
+    vector<int> m_vAllMulti_compCascDcyBrP;
     vector<int> m_vPid_compDcyFStP;
     vector<string> m_vNm_compDcyFStP;
     vector<unsigned long> m_vNDcyFStToBePrtdMax;
@@ -82,6 +84,7 @@ class topoana
     vector<string> m_vTBrNmOfTagRec_compDcyFStP;
     vector<string> m_vTBrNmOfNRec_compDcyFStP;
     vector<int> m_vMulti_compDcyFStP;
+    vector<int> m_vAllMulti_compDcyFStP;
     vector<int> m_vPid_compProdBrP;
     vector<string> m_vNm_compProdBrP;
     vector<unsigned long> m_vNProdBrToBePrtdMax;
@@ -90,6 +93,7 @@ class topoana
     vector<string> m_vTBrNmOfTagRec_compProdBrP;
     vector<string> m_vTBrNmOfNRec_compProdBrP;
     vector<int> m_vMulti_compProdBrP;
+    vector<int> m_vAllMulti_compProdBrP;
     vector<int> m_vPid_compMP;
     vector<string> m_vNm_compMP;
     vector<unsigned long> m_vNMToBePrtdMax;
@@ -98,6 +102,7 @@ class topoana
     vector<string> m_vTBrNmOfTagRec_compMP;
     vector<string> m_vTBrNmOfNRec_compMP;
     vector<int> m_vMulti_compMP;
+    vector<int> m_vAllMulti_compMP;
     vector< vector<int> > m_vVPid_compIncDcyBr;
     vector<string> m_vNm_compIncDcyBr;
     vector<unsigned long> m_vNExcCompsToBePrtdMax;
@@ -323,6 +328,8 @@ class topoana
       m_vTypeOfTagRec_compDcyBrP.clear();
       m_vTBrNmOfTagRec_compDcyBrP.clear();
       m_vTBrNmOfNRec_compDcyBrP.clear();
+      m_vMulti_compDcyBrP.clear();
+      m_vAllMulti_compDcyBrP.clear();
       m_vPid_compCascDcyBrP.clear();
       m_vNm_compCascDcyBrP.clear();
       m_vNCascDcyBrToBePrtdMax.clear();
@@ -331,6 +338,8 @@ class topoana
       m_vTBrNmOfTagRec_compCascDcyBrP.clear();
       m_vTBrNmOfNRec_compCascDcyBrP.clear();
       m_vOptIdxAndMidxOfDcyBrInCascDcyBrP.clear();
+      m_vMulti_compCascDcyBrP.clear();
+      m_vAllMulti_compCascDcyBrP.clear();
       m_vPid_compDcyFStP.clear();
       m_vNm_compDcyFStP.clear();
       m_vNDcyFStToBePrtdMax.clear();
@@ -338,6 +347,8 @@ class topoana
       m_vTypeOfTagRec_compDcyFStP.clear();
       m_vTBrNmOfTagRec_compDcyFStP.clear();
       m_vTBrNmOfNRec_compDcyFStP.clear();
+      m_vMulti_compDcyFStP.clear();
+      m_vAllMulti_compDcyFStP.clear();
       m_vPid_compProdBrP.clear();
       m_vNm_compProdBrP.clear();
       m_vNProdBrToBePrtdMax.clear();
@@ -345,6 +356,8 @@ class topoana
       m_vTypeOfTagRec_compProdBrP.clear();
       m_vTBrNmOfTagRec_compProdBrP.clear();
       m_vTBrNmOfNRec_compProdBrP.clear();
+      m_vMulti_compProdBrP.clear();
+      m_vAllMulti_compProdBrP.clear();
       m_vPid_compMP.clear();
       m_vNm_compMP.clear();
       m_vNMToBePrtdMax.clear();
@@ -352,6 +365,8 @@ class topoana
       m_vTypeOfTagRec_compMP.clear();
       m_vTBrNmOfTagRec_compMP.clear();
       m_vTBrNmOfNRec_compMP.clear();
+      m_vMulti_compMP.clear();
+      m_vAllMulti_compMP.clear();
       m_vVPid_compIncDcyBr.clear();
       m_vNm_compIncDcyBr.clear();
       m_vNExcCompsToBePrtdMax.clear();
