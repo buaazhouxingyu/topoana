@@ -492,6 +492,7 @@ class topoana
     void           readCard(string cardFlNm);
     bool           useRidx(vector<string> vTypeOfTagRec);
     void	   findBranch(string nmOfIptRootFl, string ttrNm, TTree * tr, vector<string> vTypeOfTagRec, vector<string> vTBrNmOfTagRec, vector<string> vTBrNmOfNRec, bool & allIptsAreOK, string prompt);
+    void 	   getVMultiAndVAllMulti(vector<int> vPid, vector<int> & vMulti, vector<int> & vAllMulti);
     void	   checkInput();
     void           setBranchAddress(vector<string> vTypeOfTagRec, vector<string> vTBrNmOfTagRec, vector<string> vTBrNmOfNRec, TChain * chn, double * Tagrecsd, int * Tagrecsi, int Tagreca[][20], int * Nrec);
     void 	   createBrs(unsigned int size, string NM1, string NM2, string NM3, string NM4, string NM5, vector<string> vNm, int * aICc, TTree * tr, unsigned int nMax, int * nq, int * iq, int * iCcq, int * nCcq, int * iqCc, int * nAllq);

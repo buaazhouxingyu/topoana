@@ -817,16 +817,7 @@ void topoana::checkInput()
               m_vVNDcyBrCcP.push_back(vNDcyBrCcP);              
             }     
         }
-      for(unsigned int i=0;i<m_vPid_compDcyBrP.size();i++)
-        {
-          m_vMulti_compDcyBrP.push_back(0);
-          m_vAllMulti_compDcyBrP.push_back(0);
-          for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++)
-            {
-              if(m_vPid_compDcyBrP[j]==m_vPid_compDcyBrP[i]) m_vMulti_compDcyBrP[i]++;
-              if(abs(m_vPid_compDcyBrP[j])==abs(m_vPid_compDcyBrP[i])) m_vAllMulti_compDcyBrP[i]++;
-            }
-        }
+      getVMultiAndVAllMulti(m_vPid_compDcyBrP, m_vMulti_compDcyBrP, m_vAllMulti_compDcyBrP);
     }
 
   if(m_vPid_compCascDcyBrP.size()==0)
@@ -957,16 +948,7 @@ void topoana::checkInput()
               m_vUomCascDcyBrCcP.push_back(uomCascDcyBrCcP);
             }     
         }
-      for(unsigned int i=0;i<m_vPid_compCascDcyBrP.size();i++)
-        {
-          m_vMulti_compCascDcyBrP.push_back(0);
-          m_vAllMulti_compCascDcyBrP.push_back(0);
-          for(unsigned int j=0;j<m_vPid_compCascDcyBrP.size();j++)
-            {
-              if(m_vPid_compCascDcyBrP[j]==m_vPid_compCascDcyBrP[i]) m_vMulti_compCascDcyBrP[i]++;
-              if(abs(m_vPid_compCascDcyBrP[j])==abs(m_vPid_compCascDcyBrP[i])) m_vAllMulti_compCascDcyBrP[i]++;
-            }
-        }
+      getVMultiAndVAllMulti(m_vPid_compCascDcyBrP, m_vMulti_compCascDcyBrP, m_vAllMulti_compCascDcyBrP);
     }
 
   if(m_vPid_compDcyFStP.size()==0)
@@ -1089,16 +1071,7 @@ void topoana::checkInput()
               m_vUomDcyFStCcP.push_back(uomDcyFStCcP);
             }     
         }
-      for(unsigned int i=0;i<m_vPid_compDcyFStP.size();i++)
-        {
-          m_vMulti_compDcyFStP.push_back(0);
-          m_vAllMulti_compDcyFStP.push_back(0);
-          for(unsigned int j=0;j<m_vPid_compDcyFStP.size();j++)
-            {
-              if(m_vPid_compDcyFStP[j]==m_vPid_compDcyFStP[i]) m_vMulti_compDcyFStP[i]++;
-              if(abs(m_vPid_compDcyFStP[j])==abs(m_vPid_compDcyFStP[i])) m_vAllMulti_compDcyFStP[i]++;
-            }
-        }
+      getVMultiAndVAllMulti(m_vPid_compDcyFStP, m_vMulti_compDcyFStP, m_vAllMulti_compDcyFStP);
     }
 
   if(m_vPid_compProdBrP.size()==0)
@@ -1208,16 +1181,7 @@ void topoana::checkInput()
               m_vVNProdBrCcP.push_back(vNProdBrCcP);              
             }     
         }
-      for(unsigned int i=0;i<m_vPid_compProdBrP.size();i++)
-        {
-          m_vMulti_compProdBrP.push_back(0);
-          m_vAllMulti_compProdBrP.push_back(0);
-          for(unsigned int j=0;j<m_vPid_compProdBrP.size();j++)
-            {
-              if(m_vPid_compProdBrP[j]==m_vPid_compProdBrP[i]) m_vMulti_compProdBrP[i]++;
-              if(abs(m_vPid_compProdBrP[j])==abs(m_vPid_compProdBrP[i])) m_vAllMulti_compProdBrP[i]++;
-            }
-        }
+      getVMultiAndVAllMulti(m_vPid_compProdBrP, m_vMulti_compProdBrP, m_vAllMulti_compProdBrP);
     }
 
   if(m_vPid_compMP.size()==0)
@@ -1327,16 +1291,7 @@ void topoana::checkInput()
               m_vVNMCcP.push_back(vNMCcP);              
             }     
         }
-      for(unsigned int i=0;i<m_vPid_compMP.size();i++)
-        {
-          m_vMulti_compMP.push_back(0);
-          m_vAllMulti_compMP.push_back(0);
-          for(unsigned int j=0;j<m_vPid_compMP.size();j++)
-            {
-              if(m_vPid_compMP[j]==m_vPid_compMP[i]) m_vMulti_compMP[i]++;
-              if(abs(m_vPid_compMP[j])==abs(m_vPid_compMP[i])) m_vAllMulti_compMP[i]++;
-            }
-        }
+      getVMultiAndVAllMulti(m_vPid_compMP, m_vMulti_compMP, m_vAllMulti_compMP);
     }
 
   if(m_vVPid_compIncDcyBr.size()==0)
