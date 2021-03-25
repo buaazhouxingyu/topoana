@@ -13,7 +13,7 @@ void topoana::getVMultiAndVAllMulti(vector<int> vPid, vector<int> & vMulti, vect
           if(vPid[j]==vPid[i]) vMulti[i]++;
           if(abs(vPid[j])==abs(vPid[i])) vAllMulti[i]++;
         }
-      cout<<"vMulti["<<i<<"]="<<vMulti[i]<<endl;
-      cout<<"vAllMulti["<<i<<"]="<<vAllMulti[i]<<endl;
+      // cout<<"vMulti["<<i<<"]="<<vMulti[i]<<endl;
+      // cout<<"vAllMulti["<<i<<"]="<<vAllMulti[i]<<endl;
     }
 }
