@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax, vector<string> * vOption)
+void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax, vector<string> * vOption, vector<string> * vTypeOfTagRec, vector<string> * vTBrNmOfTagRec, vector<string> * vTBrNmOfNRec)
 {
   int nArrow=countSubstr(line,"-->");
   if(nArrow!=1)
@@ -17,7 +17,7 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
   size_t nPos=line.find("-->");
   line.replace(nPos,3," --> ");
   nPos=line.find("&");
-  if(vNMax!=0)
+  if(vNMax!=0||vTypeOfTagRec!=0)
     {
       if(nPos!=string::npos)
         {
@@ -37,12 +37,18 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
   string nm;
   unsigned long nMax;
   string option;
+  string typeOfTagRec;
+  string tBrNmOfTagRec;
+  string tBrNmOfNRec;
 
   iss.str(line);
   int iarrow=-1;
   if(vNm!=0) nm="";
   if(vNMax!=0) nMax=ULONG_MAX;
   if(vOption!=0) option="";
+  if(vTypeOfTagRec!=0) typeOfTagRec="";
+  if(vTBrNmOfTagRec!=0) tBrNmOfTagRec="";
+  if(vTBrNmOfNRec!=0) tBrNmOfNRec="";
   while(!iss.eof())
     {
       iss>>txtPnm;
@@ -55,7 +61,7 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
                 {
                   iss>>nm;
                   if(nm=="-") nm=""; // Here, the symbol \"-\" is used as a place holder denoting the default second parameter in order to input the third parameter following it.
-                  if(vNMax!=0)
+                  if(vNMax!=0||vTypeOfTagRec!=0)
                     {
                       if(!iss.eof())
                         {
@@ -68,10 +74,11 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
                                   if(txtPnm.find_first_not_of("0123456789")==string::npos) nMax=strtoul(txtPnm.c_str(),NULL,10);
                                   else if(txtPnm!="-")
                                     {
-                                      cerr<<"Error: The input parameter \""<<txtPnm<<"\" after the second \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
-                                      cerr<<"Infor: It should be an unsigned long integer at which you want to set, or just a placeholder \"-\" as a default value \"ULONG_MAX\" and for the input of the fourth parameter."<<endl;
-                                      cerr<<"Infor: Please check it."<<endl;
-                                      exit(-1);
+                                      parseIptStrIntoRecStrs(line,prompt,txtPnm,typeOfTagRec,tBrNmOfTagRec,tBrNmOfNRec);
+                                      // cerr<<"Error: The input parameter \""<<txtPnm<<"\" after the second \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
+                                      // cerr<<"Infor: It should be an unsigned long integer at which you want to set, or just a placeholder \"-\" as a default value \"ULONG_MAX\" and for the input of the fourth parameter."<<endl;
+                                      // cerr<<"Infor: Please check it."<<endl;
+                                      // exit(-1);
                                     }
                                   if(vOption!=0)
                                     {
@@ -227,4 +234,6 @@ void topoana::readSmpDcyNew(string & line, string prompt, vector< vector<int> > 
   if(vNm!=0) (*vNm).push_back(nm);
   if(vNMax!=0) (*vNMax).push_back(nMax);
   if(vOption!=0) (*vOption).push_back(option);
-}
+  if(vTypeOfTagRec!=0) (*vTypeOfTagRec).push_back(typeOfTagRec);
+  if(vTBrNmOfTagRec!=0) (*vTBrNmOfTagRec).push_back(tBrNmOfTagRec);
+  if(vTBrNmOfNRec!=0) (*vTBrNmOfNRec).push_back(tBrNmOfNRec);}

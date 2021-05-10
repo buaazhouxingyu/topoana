@@ -1,7 +1,7 @@
 #include "../include/topoana.h"
 #include <fstream>
 
-void topoana::readSmpDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax, vector<string> * vOption)
+void topoana::readSmpDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm, vector<unsigned long> * vNMax, vector<string> * vOption, vector<string> * vTypeOfTagRec, vector<string> * vTBrNmOfTagRec, vector<string> * vTBrNmOfNRec)
 {
   readOpenCurly(fin,line,prompt);
   read1stLineOrCloseCurly(fin,line,false,prompt);
@@ -27,12 +27,12 @@ void topoana::readSmpDcyItem(ifstream & fin, string & line, string prompt, vecto
         }
       else
         {
-          readSmpDcyNew(line,prompt,vVPid,vNm,vNMax,vOption);
+          readSmpDcyNew(line,prompt,vVPid,vNm,vNMax,vOption,vTypeOfTagRec,vTBrNmOfTagRec,vTBrNmOfNRec);
           while(1)
             {
               readExtraLinesOrCloseCurly(fin,line,prompt);
               if(line=="}") break;
-              else readSmpDcyNew(line,prompt,vVPid,vNm,vNMax,vOption);
+              else readSmpDcyNew(line,prompt,vVPid,vNm,vNMax,vOption,vTypeOfTagRec,vTBrNmOfTagRec,vTBrNmOfNRec);
             }
         }
     }

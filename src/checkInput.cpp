@@ -207,6 +207,7 @@ void topoana::checkInput()
   if(m_useRidx==false&&m_vPid_compDcyFStP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compDcyFStP);
   if(m_useRidx==false&&m_vPid_compProdBrP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compProdBrP);
   if(m_useRidx==false&&m_vPid_compMP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compMP);
+  if(m_useRidx==false&&m_vSigDcyBr.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_sigDcyBr);
 
   if(m_useRidx==true)
     {
@@ -330,6 +331,7 @@ void topoana::checkInput()
               if(m_vPid_compDcyFStP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, allIptsAreOK, "% Component analysis --- decay final states of particles");
               if(m_vPid_compProdBrP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, allIptsAreOK, "% Component analysis --- production branches of particles");
               if(m_vPid_compMP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, allIptsAreOK, "% Component analysis --- mothers of particles");
+              if(m_vSigDcyBr.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, allIptsAreOK, "% Signal identification --- decay branches");
             }
           for(unsigned int i=0;i<m_othTtrNms.size();i++)
             {
@@ -2065,6 +2067,27 @@ void topoana::checkInput()
               sprintf(nm_sigDcyBr, "%d", i);
               if(m_vbsLevStdOut==true) cout<<"  Alias for the signal decay branch is set to be \""<<nm_sigDcyBr<<"\" for the branch names of the topology tags (default)."<<endl;
             }
+          if(m_vTypeOfTagRec_sigDcyBr[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_sigDcyBr[i]=="c"||m_vTypeOfTagRec_sigDcyBr[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="n"||m_vTypeOfTagRec_sigDcyBr[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="!n"||m_vTypeOfTagRec_sigDcyBr[i]=="!N") cout<<"reversed neutral tag";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="p"||m_vTypeOfTagRec_sigDcyBr[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="i"||m_vTypeOfTagRec_sigDcyBr[i]=="I") cout<<"index";
+              cout<<" of the mother particle of the decay branch, stored in the ";
+              if(m_vTypeOfTagRec_sigDcyBr[i]=="c"||m_vTypeOfTagRec_sigDcyBr[i]=="n"||m_vTypeOfTagRec_sigDcyBr[i]=="!n"||m_vTypeOfTagRec_sigDcyBr[i]=="p"||m_vTypeOfTagRec_sigDcyBr[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="C"||m_vTypeOfTagRec_sigDcyBr[i]=="N"||m_vTypeOfTagRec_sigDcyBr[i]=="!N"||m_vTypeOfTagRec_sigDcyBr[i]=="P"||m_vTypeOfTagRec_sigDcyBr[i]=="I") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_sigDcyBr[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_sigDcyBr[i]=="C"||m_vTypeOfTagRec_sigDcyBr[i]=="N"||m_vTypeOfTagRec_sigDcyBr[i]=="!N"||m_vTypeOfTagRec_sigDcyBr[i]=="P"||m_vTypeOfTagRec_sigDcyBr[i]=="I")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the mother particle of the decay branch is stored in the TBranch \""<<m_vTBrNmOfNRec_sigDcyBr[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the mother particle of the decay branch is specified (default)."<<endl;
+            }
           cout<<endl;
 	}
       cout<<endl;
@@ -2162,6 +2185,27 @@ void topoana::checkInput()
               sprintf(nm_sigDcyBr, "%d", i);
               if(m_vbsLevStdOut==true) cout<<"  Alias for the signal decay branch is set to be \""<<nm_sigDcyBr<<"\" for the branch names of the topology tags (default)."<<endl;
               m_vNm_sigDcyBr[i]=nm_sigDcyBr;
+            }
+          if(m_vTypeOfTagRec_sigDcyBr[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_sigDcyBr[i]=="c"||m_vTypeOfTagRec_sigDcyBr[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="n"||m_vTypeOfTagRec_sigDcyBr[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="!n"||m_vTypeOfTagRec_sigDcyBr[i]=="!N") cout<<"reversed neutral tag";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="p"||m_vTypeOfTagRec_sigDcyBr[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="i"||m_vTypeOfTagRec_sigDcyBr[i]=="I") cout<<"index";
+              cout<<" of the mother particle of the decay branch, stored in the ";
+              if(m_vTypeOfTagRec_sigDcyBr[i]=="c"||m_vTypeOfTagRec_sigDcyBr[i]=="n"||m_vTypeOfTagRec_sigDcyBr[i]=="!n"||m_vTypeOfTagRec_sigDcyBr[i]=="p"||m_vTypeOfTagRec_sigDcyBr[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_sigDcyBr[i]=="C"||m_vTypeOfTagRec_sigDcyBr[i]=="N"||m_vTypeOfTagRec_sigDcyBr[i]=="!N"||m_vTypeOfTagRec_sigDcyBr[i]=="P"||m_vTypeOfTagRec_sigDcyBr[i]=="I") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_sigDcyBr[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_sigDcyBr[i]=="C"||m_vTypeOfTagRec_sigDcyBr[i]=="N"||m_vTypeOfTagRec_sigDcyBr[i]=="!N"||m_vTypeOfTagRec_sigDcyBr[i]=="P"||m_vTypeOfTagRec_sigDcyBr[i]=="I")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the mother particle of the decay branch is stored in the TBranch \""<<m_vTBrNmOfNRec_sigDcyBr[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the mother particle of the decay branch is specified (default)."<<endl;
             }
           cout<<endl;
         }

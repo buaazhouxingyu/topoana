@@ -427,7 +427,7 @@ void topoana::readCard(string cardFlNm)
 	}
       else if(line=="% Signal identification --- decay branches")
         {
-          readSmpDcyItem(fin, line, "% Signal identification --- decay branches", m_vVPid_sigDcyBr, &m_vNm_sigDcyBr);
+          readSmpDcyItem(fin, line, "% Signal identification --- decay branches", m_vVPid_sigDcyBr, &m_vNm_sigDcyBr, 0, 0, &m_vTypeOfTagRec_sigDcyBr, &m_vTBrNmOfTagRec_sigDcyBr, &m_vTBrNmOfNRec_sigDcyBr);
 	} 
       else if(line=="% Signal identification --- inclusive decay branches")
         {
