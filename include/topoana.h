@@ -132,6 +132,9 @@ class topoana
     vector< vector<int> > m_vVMidx_sigCascDcyBr;
     vector<string> m_vNm_sigCascDcyBr;
     bool m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr;
+    vector<string> m_vTypeOfTagRec_sigCascDcyBr;
+    vector<string> m_vTBrNmOfTagRec_sigCascDcyBr;
+    vector<string> m_vTBrNmOfNRec_sigCascDcyBr;
     vector< vector<int> > m_vVPid_sigIncCascDcyBr;
     vector< vector<int> > m_vVMidx_sigIncCascDcyBr;
     vector<string> m_vNm_sigIncCascDcyBr;
@@ -399,6 +402,9 @@ class topoana
       m_vVMidx_sigCascDcyBr.clear();
       m_vNm_sigCascDcyBr.clear();
       m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr=false;
+      m_vTypeOfTagRec_sigCascDcyBr.clear();
+      m_vTBrNmOfTagRec_sigCascDcyBr.clear();
+      m_vTBrNmOfNRec_sigCascDcyBr.clear();
       m_vVPid_sigIncCascDcyBr.clear();
       m_vVMidx_sigIncCascDcyBr.clear();
       m_vNm_sigIncCascDcyBr.clear();
@@ -493,8 +499,8 @@ class topoana
     void           readSmpDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector<string> * vNm=0, vector<unsigned long> * vNMax=0, vector<string> * vOption=0, vector<string> * vTypeOfTagRec=0, vector<string> * vTBrNmOfTagRec=0, vector<string> * vTBrNmOfNRec=0);
     void	   getVPidandVMidx(vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx);
     void           readCmplxDcyOld(string & line, vector<int> & vPid, vector< vector<int> > & vVPid, vector<int> & vMidx, vector< vector<int> > & vVMidx, vector<string> & vNm, bool useAsterisk=false);
-    void           readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk=false);
-    void           readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk=false);
+    void           readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, string & typeOfTagRec, string & tBrNmOfTagRec, string & tBrNmOfNRec, bool useAsterisk=false);
+    void           readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, vector<string> * vTypeOfTagRec=0, vector<string> * vTBrNmOfTagRec=0, vector<string> * vTBrNmOfNRec=0, bool useAsterisk=false);
     void           readCard(string cardFlNm);
     bool           useRidx(vector<string> vTypeOfTagRec);
     void	   findBranch(string nmOfIptRootFl, string ttrNm, TTree * tr, vector<string> vTypeOfTagRec, vector<string> vTBrNmOfTagRec, vector<string> vTBrNmOfNRec, bool & allIptsAreOK, string prompt);
@@ -509,7 +515,7 @@ class topoana
     void           getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vIdxOfHead_DcyFStP, vector<int> & vPid, vector<int> & vMidx, int pid, unsigned long nDcyFSt=ULONG_MAX);
     unsigned int   countIncLiaInVlib(list<int> & lia, vector< list<int> > & Vlib);
     bool	   isLiaMatchedWithLib(list<int> & lia, list<int> & lib, string option="");
-    unsigned int   countCascDcyBrInDcyTr(vector< list<int> > & cascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);
+    unsigned int   countCascDcyBrInDcyTr(vector< list<int> > & cascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2, int * Ridx, vector<int> vIdxOrg, string typeOfTagRec, int tagrecsi, int * tagreca, int nrec);
     unsigned int   countIncCascDcyBrInDcyTr(vector<int> vIIncIncCascDcyBr, vector< list<int> > & incCascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);
     void           getSubsetsOfVPidandVMidxFromAP(vector<int> & vPid,vector<int> & vMidx, int idx);
     bool	   isPaADescendantOfPb(vector<int> vMidx, int idxA, int idxB);

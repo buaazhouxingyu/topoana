@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk)
+void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vector< vector<int> > & vVPid, vector< vector<int> > & vVMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, vector<string> * vTypeOfTagRec, vector<string> * vTBrNmOfTagRec, vector<string> * vTBrNmOfNRec, bool useAsterisk)
 {
   readOpenCurly(fin,line,prompt);
   read1stLineOrCloseCurly(fin,line,false,prompt);
@@ -42,7 +42,10 @@ void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vec
           vPid.clear();
           vector<int> vMidx;
           vMidx.clear();
-          readCmplxDcyNew(line,prompt,vDcyBr,vIMDcyBr,vPid,vMidx,vNm,bvar1,bvar2,useAsterisk);
+          string typeOfTagRec;
+          string tBrNmOfTagRec;
+          string tBrNmOfNRec;
+          readCmplxDcyNew(line,prompt,vDcyBr,vIMDcyBr,vPid,vMidx,vNm,bvar1,bvar2,typeOfTagRec,tBrNmOfTagRec,tBrNmOfNRec,useAsterisk);
           while(1)
             {
               readExtraLinesOrCloseCurly(fin,line,prompt);
@@ -55,12 +58,18 @@ void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vec
                       vVMidx.push_back(vMidx);
                       vPid.clear();
                       vMidx.clear();
+                      if(vTypeOfTagRec!=0) (*vTypeOfTagRec).push_back(typeOfTagRec);
+                      if(vTBrNmOfTagRec!=0) (*vTBrNmOfTagRec).push_back(tBrNmOfTagRec);
+                      if(vTBrNmOfNRec!=0) (*vTBrNmOfNRec).push_back(tBrNmOfNRec);
                     }
                   getVPidandVMidx(vDcyBr,vIMDcyBr,vPid,vMidx);
                   vVPid.push_back(vPid);
                   vVMidx.push_back(vMidx); 
                   vPid.clear();
                   vMidx.clear();
+                  if(vTypeOfTagRec!=0) (*vTypeOfTagRec).push_back(typeOfTagRec);
+                  if(vTBrNmOfTagRec!=0) (*vTBrNmOfTagRec).push_back(tBrNmOfTagRec);
+                  if(vTBrNmOfNRec!=0) (*vTBrNmOfNRec).push_back(tBrNmOfNRec);
                   break;
                 }
               else
@@ -71,8 +80,11 @@ void topoana::readCmplxDcyItem(ifstream & fin, string & line, string prompt, vec
                       vVMidx.push_back(vMidx);
                       vPid.clear();
                       vMidx.clear();
+                      if(vTypeOfTagRec!=0) (*vTypeOfTagRec).push_back(typeOfTagRec);
+                      if(vTBrNmOfTagRec!=0) (*vTBrNmOfTagRec).push_back(tBrNmOfTagRec);
+                      if(vTBrNmOfNRec!=0) (*vTBrNmOfNRec).push_back(tBrNmOfNRec);
                     }
-                  readCmplxDcyNew(line,prompt,vDcyBr,vIMDcyBr,vPid,vMidx,vNm,bvar1,bvar2,useAsterisk);
+                  readCmplxDcyNew(line,prompt,vDcyBr,vIMDcyBr,vPid,vMidx,vNm,bvar1,bvar2,typeOfTagRec,tBrNmOfTagRec,tBrNmOfNRec,useAsterisk);
                 }
             }
         }

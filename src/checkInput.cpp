@@ -208,6 +208,7 @@ void topoana::checkInput()
   if(m_useRidx==false&&m_vPid_compProdBrP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compProdBrP);
   if(m_useRidx==false&&m_vPid_compMP.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_compMP);
   if(m_useRidx==false&&m_vSigDcyBr.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_sigDcyBr);
+  if(m_useRidx==false&&m_vSigCascDcyBr.size()>0) m_useRidx=useRidx(m_vTypeOfTagRec_sigCascDcyBr);
 
   if(m_useRidx==true)
     {
@@ -332,6 +333,7 @@ void topoana::checkInput()
               if(m_vPid_compProdBrP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, allIptsAreOK, "% Component analysis --- production branches of particles");
               if(m_vPid_compMP.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, allIptsAreOK, "% Component analysis --- mothers of particles");
               if(m_vSigDcyBr.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, allIptsAreOK, "% Signal identification --- decay branches");
+              if(m_vSigCascDcyBr.size()>0) findBranch(chnElmt->GetTitle(), m_ttrNm, tr, m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, allIptsAreOK, "% Signal identification --- cascade decay branches");
             }
           for(unsigned int i=0;i<m_othTtrNms.size();i++)
             {
@@ -2367,6 +2369,27 @@ void topoana::checkInput()
               sprintf(nm_sigCascDcyBr, "%d", i);
               if(m_vbsLevStdOut==true) cout<<"  Alias for the signal cascade decay branch is set to be \""<<nm_sigCascDcyBr<<"\" for the branch names of the topology tags (default)."<<endl;
             }
+          if(m_vTypeOfTagRec_sigCascDcyBr[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_sigCascDcyBr[i]=="c"||m_vTypeOfTagRec_sigCascDcyBr[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="n"||m_vTypeOfTagRec_sigCascDcyBr[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="!n"||m_vTypeOfTagRec_sigCascDcyBr[i]=="!N") cout<<"reversed neutral tag";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="p"||m_vTypeOfTagRec_sigCascDcyBr[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="i"||m_vTypeOfTagRec_sigCascDcyBr[i]=="I") cout<<"index";
+              cout<<" of the mother particle of the cascade decay branch, stored in the ";
+              if(m_vTypeOfTagRec_sigCascDcyBr[i]=="c"||m_vTypeOfTagRec_sigCascDcyBr[i]=="n"||m_vTypeOfTagRec_sigCascDcyBr[i]=="!n"||m_vTypeOfTagRec_sigCascDcyBr[i]=="p"||m_vTypeOfTagRec_sigCascDcyBr[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="C"||m_vTypeOfTagRec_sigCascDcyBr[i]=="N"||m_vTypeOfTagRec_sigCascDcyBr[i]=="!N"||m_vTypeOfTagRec_sigCascDcyBr[i]=="P"||m_vTypeOfTagRec_sigCascDcyBr[i]=="I") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_sigCascDcyBr[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_sigCascDcyBr[i]=="C"||m_vTypeOfTagRec_sigCascDcyBr[i]=="N"||m_vTypeOfTagRec_sigCascDcyBr[i]=="!N"||m_vTypeOfTagRec_sigCascDcyBr[i]=="P"||m_vTypeOfTagRec_sigCascDcyBr[i]=="I")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the mother particle of the cascade decay branch is stored in the TBranch \""<<m_vTBrNmOfNRec_sigCascDcyBr[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the mother particle of the cascade decay branch is specified (default)."<<endl;
+            }
           cout<<endl;
 	}
       if(m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr==true)
@@ -2477,6 +2500,27 @@ void topoana::checkInput()
               sprintf(nm_sigCascDcyBr, "%d", i);
               if(m_vbsLevStdOut==true) cout<<"  Alias for the signal cascade decay branch is set to be \""<<nm_sigCascDcyBr<<"\" for the branch names of the topology tags (default)."<<endl;
               m_vNm_sigCascDcyBr[i]=nm_sigCascDcyBr;
+            }
+          if(m_vTypeOfTagRec_sigCascDcyBr[i]!="")
+            {
+              cout<<"  The reconstructed ";
+              if(m_vTypeOfTagRec_sigCascDcyBr[i]=="c"||m_vTypeOfTagRec_sigCascDcyBr[i]=="C") cout<<"charge";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="n"||m_vTypeOfTagRec_sigCascDcyBr[i]=="N") cout<<"neutral tag";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="!n"||m_vTypeOfTagRec_sigCascDcyBr[i]=="!N") cout<<"reversed neutral tag";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="p"||m_vTypeOfTagRec_sigCascDcyBr[i]=="P") cout<<"PDG code";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="i"||m_vTypeOfTagRec_sigCascDcyBr[i]=="I") cout<<"index";
+              cout<<" of the mother particle of the cascade decay branch, stored in the ";
+              if(m_vTypeOfTagRec_sigCascDcyBr[i]=="c"||m_vTypeOfTagRec_sigCascDcyBr[i]=="n"||m_vTypeOfTagRec_sigCascDcyBr[i]=="!n"||m_vTypeOfTagRec_sigCascDcyBr[i]=="p"||m_vTypeOfTagRec_sigCascDcyBr[i]=="i") cout<<"scalar";
+              else if(m_vTypeOfTagRec_sigCascDcyBr[i]=="C"||m_vTypeOfTagRec_sigCascDcyBr[i]=="N"||m_vTypeOfTagRec_sigCascDcyBr[i]=="!N"||m_vTypeOfTagRec_sigCascDcyBr[i]=="P"||m_vTypeOfTagRec_sigCascDcyBr[i]=="I") cout<<"array";
+              cout<<" TBranch \""<<m_vTBrNmOfTagRec_sigCascDcyBr[i]<<"\", is specified to restrict its truth instances."<<endl;
+              if(m_vTypeOfTagRec_sigCascDcyBr[i]=="C"||m_vTypeOfTagRec_sigCascDcyBr[i]=="N"||m_vTypeOfTagRec_sigCascDcyBr[i]=="!N"||m_vTypeOfTagRec_sigCascDcyBr[i]=="P"||m_vTypeOfTagRec_sigCascDcyBr[i]=="I")
+                {
+                  cout<<"  In addition, the number of reconstructed instances of the mother particle of the cascade decay branch is stored in the TBranch \""<<m_vTBrNmOfNRec_sigCascDcyBr[i]<<"\" as the length of the array."<<endl;
+                }
+            }
+          else
+            {
+              if(m_vbsLevStdOut==true) cout<<"  No reconstruction information to restrict the truth instances of the mother particle of the cascade decay branch is specified (default)."<<endl;
             }
           cout<<endl;
         }

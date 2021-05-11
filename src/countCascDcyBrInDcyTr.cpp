@@ -1,7 +1,7 @@
 #include "../include/topoana.h"
 #include <iostream>
 
-unsigned int topoana::countCascDcyBrInDcyTr(vector< list<int> > & cascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2)
+unsigned int topoana::countCascDcyBrInDcyTr(vector< list<int> > & cascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2, int * Ridx, vector<int> vIdxOrg, string typeOfTagRec, int tagrecsi, int * tagreca, int nrec)
 {
   unsigned int nCount=0;
   if(cascDcyBr.size()==0)
@@ -61,8 +61,15 @@ unsigned int topoana::countCascDcyBrInDcyTr(vector< list<int> > & cascDcyBr, vec
       vector< vector<int> > vVIDcyBr2WRTIDcyBr1;
       vVIDcyBr2WRTIDcyBr1.clear();
       vector<int> vIDcyBr2WRTIDcyBr1;
+      bool _isTagMatched;
       for(unsigned int i=0;i<dcyTr.size();i++)
         {
+          if(typeOfTagRec!="")
+            {
+              if(typeOfTagRec!="i"&&typeOfTagRec!="I") _isTagMatched=isTagMatched(typeOfTagRec, tagrecsi, tagreca, nrec, (*cascDcyBr[0].begin()));
+              else _isTagMatched=isTagMatched(typeOfTagRec, tagrecsi, tagreca, nrec, Ridx[vIdxOrg[vIdxOfHead2[i]]]);
+              if(_isTagMatched==false) continue;
+            }
           if(dcyTr[i]==cascDcyBr[0])
             {
               vIDcyBr2WRTIDcyBr1.clear();

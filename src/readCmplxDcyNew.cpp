@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, bool useAsterisk)
+void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> > & vDcyBr, vector<int> & vIMDcyBr, vector<int> & vPid, vector<int> & vMidx, vector<string> & vNm, bool & bvar1, bool & bvar2, string & typeOfTagRec, string & tBrNmOfTagRec, string & tBrNmOfNRec, bool useAsterisk)
 {
   int nArrow=countSubstr(line,"-->");
   if(nArrow!=1)
@@ -47,6 +47,7 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
   dcyBr.clear();
   int iMDcyBr;
   string nm="";  
+  bool isTagRead=false;
 
   iss.str(line);
   iss>>txtPnm;
@@ -137,10 +138,13 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
                                                       exit(-1);                                             
                                                     }
                                                   else
-                                                    {                                                       cerr<<"Error: The input parameter \""<<txtPnm<<"\", after the fourth \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\", is invalid!"<<endl;                                               
-                                                      cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                                                      cerr<<"Infor: Please check it."<<endl;
-                                                      exit(-1);
+                                                    {
+                                                      parseIptStrIntoRecStrs(line,prompt,txtPnm,typeOfTagRec,tBrNmOfTagRec,tBrNmOfNRec);
+                                                      isTagRead=true;
+                                                      // cerr<<"Error: The input parameter \""<<txtPnm<<"\", after the fourth \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\", is invalid!"<<endl;
+                                                      // cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
+                                                      // cerr<<"Infor: Please check it."<<endl;
+                                                      // exit(-1);
                                                     }
                                                 }
                                             }
@@ -171,10 +175,18 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
                                                       exit(-1);                                             
                                                     }
                                                   else
-                                                    {                                                       cerr<<"Error: The input parameter \""<<txtPnm<<"\", after the fifth \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\", is invalid!"<<endl;                                               
-                                                      cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
-                                                      cerr<<"Infor: Please check it."<<endl;
-                                                      exit(-1);
+                                                    {
+                                                      if(isTagRead==false)
+                                                        {
+                                                          parseIptStrIntoRecStrs(line,prompt,txtPnm,typeOfTagRec,tBrNmOfTagRec,tBrNmOfNRec);
+                                                        }
+                                                      else
+                                                        {
+                                                          cerr<<"Error: The input parameter \""<<txtPnm<<"\", after the fifth \"and\" (&) symbol in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\", is invalid!"<<endl;
+                                                          cerr<<"Infor: It should be \"Y\" or \"N\"."<<endl;
+                                                          cerr<<"Infor: Please check it."<<endl;
+                                                          exit(-1);
+                                                        }
                                                     }
                                                 }
                                             }

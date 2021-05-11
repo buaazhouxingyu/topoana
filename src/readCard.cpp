@@ -436,12 +436,12 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% Signal identification --- cascade decay branches")
         {
           bool bvartemp;
-          readCmplxDcyItem(fin, line, "% Signal identification --- cascade decay branches", m_vVPid_sigCascDcyBr, m_vVMidx_sigCascDcyBr, m_vNm_sigCascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr, bvartemp);
+          readCmplxDcyItem(fin, line, "% Signal identification --- cascade decay branches", m_vVPid_sigCascDcyBr, m_vVMidx_sigCascDcyBr, m_vNm_sigCascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigCascDcyBr, bvartemp, &m_vTypeOfTagRec_sigCascDcyBr, &m_vTBrNmOfTagRec_sigCascDcyBr, &m_vTBrNmOfNRec_sigCascDcyBr);
 	}
       else if(line=="% Signal identification --- inclusive cascade decay branches")
         {
           bool bvartemp;
-          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive cascade decay branches", m_vVPid_sigIncCascDcyBr, m_vVMidx_sigIncCascDcyBr, m_vNm_sigIncCascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr, bvartemp, true);
+          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive cascade decay branches", m_vVPid_sigIncCascDcyBr, m_vVMidx_sigIncCascDcyBr, m_vNm_sigIncCascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr, bvartemp, 0, 0, 0, true);
 	}
       else if(line=="% Signal identification --- intermediate-resonance-allowed decay branches")
         {
@@ -450,7 +450,7 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches")
         {
           bool bvartemp;
-          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vVPid_sigIncOrIRACascDcyBr, m_vVMidx_sigIncOrIRACascDcyBr, m_vNm_sigIncOrIRACascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr, bvartemp, true);
+          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vVPid_sigIncOrIRACascDcyBr, m_vVMidx_sigIncOrIRACascDcyBr, m_vNm_sigIncOrIRACascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr, bvartemp, 0, 0, 0, true);
 	}
       else if(line=="% Process charge conjugate objects together (Two options: Y and N. Default: N)")
         {
