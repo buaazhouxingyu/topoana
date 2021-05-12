@@ -423,7 +423,7 @@ void topoana::readCard(string cardFlNm)
 	}
       else if(line=="% Signal identification --- particles")
         {
-          readPItem(fin, line, "% Signal identification --- particles", m_vPid_sigP, m_vNm_sigP);
+          readPItem(fin, line, "% Signal identification --- particles", m_vPid_sigP, m_vNm_sigP, 0, 0, &m_vTypeOfTagRec_sigP, &m_vTBrNmOfTagRec_sigP, &m_vTBrNmOfNRec_sigP);
 	}
       else if(line=="% Signal identification --- decay branches")
         {
@@ -431,7 +431,7 @@ void topoana::readCard(string cardFlNm)
 	} 
       else if(line=="% Signal identification --- inclusive decay branches")
         {
-          readSmpDcyItem(fin, line, "% Signal identification --- inclusive decay branches", m_vVPid_sigIncDcyBr, &m_vNm_sigIncDcyBr);
+          readSmpDcyItem(fin, line, "% Signal identification --- inclusive decay branches", m_vVPid_sigIncDcyBr, &m_vNm_sigIncDcyBr, 0, 0, &m_vTypeOfTagRec_sigIncDcyBr, &m_vTBrNmOfTagRec_sigIncDcyBr, &m_vTBrNmOfNRec_sigIncDcyBr);
 	}
       else if(line=="% Signal identification --- cascade decay branches")
         {
@@ -445,7 +445,7 @@ void topoana::readCard(string cardFlNm)
 	}
       else if(line=="% Signal identification --- intermediate-resonance-allowed decay branches")
         {
-          readSmpDcyItem(fin, line, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vVPid_sigIRADcyBr, &m_vNm_sigIRADcyBr);
+          readSmpDcyItem(fin, line, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vVPid_sigIRADcyBr, &m_vNm_sigIRADcyBr, 0, 0, &m_vTypeOfTagRec_sigIRADcyBr, &m_vTBrNmOfTagRec_sigIRADcyBr, &m_vTBrNmOfNRec_sigIRADcyBr);
 	}
       else if(line=="% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches")
         {

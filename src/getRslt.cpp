@@ -57,14 +57,34 @@ void topoana::getRslt()
   double Tagrecsd_compMP[sAtmPid];
   int Tagrecsi_compMP[sAtmPid];
   int Tagreca_compMP[sAtmPid][20],Nrec_compMP[sAtmPid];
+  const unsigned int sSigP=m_vPid_sigP.size()>0?m_vPid_sigP.size():1;
+  double Tagrecsd_sigP[sSigP];
+  int Tagrecsi_sigP[sSigP];
+  int Tagreca_sigP[sSigP][20],Nrec_sigP[sSigP];
   const unsigned int sSigDcyBr=m_vSigDcyBr.size()>0?m_vSigDcyBr.size():1;
   double Tagrecsd_sigDcyBr[sSigDcyBr];
   int Tagrecsi_sigDcyBr[sSigDcyBr];
   int Tagreca_sigDcyBr[sSigDcyBr][20],Nrec_sigDcyBr[sSigDcyBr];
+  const unsigned int sSigIncDcyBr=m_vSigIncDcyBr.size()>0?m_vSigIncDcyBr.size():1;
+  double Tagrecsd_sigIncDcyBr[sSigIncDcyBr];
+  int Tagrecsi_sigIncDcyBr[sSigIncDcyBr];
+  int Tagreca_sigIncDcyBr[sSigIncDcyBr][20],Nrec_sigIncDcyBr[sSigIncDcyBr];
   const unsigned int sSigCascDcyBr=m_vSigCascDcyBr.size()>0?m_vSigCascDcyBr.size():1;
   double Tagrecsd_sigCascDcyBr[sSigCascDcyBr];
   int Tagrecsi_sigCascDcyBr[sSigCascDcyBr];
   int Tagreca_sigCascDcyBr[sSigCascDcyBr][20],Nrec_sigCascDcyBr[sSigCascDcyBr];
+  const unsigned int sSigIncCascDcyBr=m_vSigIncCascDcyBr.size()>0?m_vSigIncCascDcyBr.size():1;
+  double Tagrecsd_sigIncCascDcyBr[sSigIncCascDcyBr];
+  int Tagrecsi_sigIncCascDcyBr[sSigIncCascDcyBr];
+  int Tagreca_sigIncCascDcyBr[sSigIncCascDcyBr][20],Nrec_sigIncCascDcyBr[sSigIncCascDcyBr];
+  const unsigned int sSigIRADcyBr=m_vSigIRADcyBr.size()>0?m_vSigIRADcyBr.size():1;
+  double Tagrecsd_sigIRADcyBr[sSigIRADcyBr];
+  int Tagrecsi_sigIRADcyBr[sSigIRADcyBr];
+  int Tagreca_sigIRADcyBr[sSigIRADcyBr][20],Nrec_sigIRADcyBr[sSigIRADcyBr];
+  const unsigned int sSigIncOrIRACascDcyBr=m_vSigIncOrIRACascDcyBr.size()>0?m_vSigIncOrIRACascDcyBr.size():1;
+  double Tagrecsd_sigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr];
+  int Tagrecsi_sigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr];
+  int Tagreca_sigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr][20],Nrec_sigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr];
   bool isTheEvtPrcsd;
   vector<int> *pVPid=0, *pVMidx=0, *pVRidx=0;
   if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI") chn->SetBranchAddress(m_tbrNmOfNps.c_str(), &Nps);
@@ -120,9 +140,19 @@ void topoana::getRslt()
 
   if(m_vPid_compMP.size()>0) setBranchAddress(m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, chn, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP);
 
+  if(m_vPid_sigP.size()>0) setBranchAddress(m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, chn, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP);
+
   if(m_vSigDcyBr.size()>0) setBranchAddress(m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, chn, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr);
 
+  if(m_vSigIncDcyBr.size()>0) setBranchAddress(m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, chn, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr);
+
   if(m_vSigCascDcyBr.size()>0) setBranchAddress(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, chn, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr);
+
+  if(m_vSigIncCascDcyBr.size()>0) setBranchAddress(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, chn, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr);
+
+  if(m_vSigIRADcyBr.size()>0) setBranchAddress(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, chn, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr);
+
+  if(m_vSigIncOrIRACascDcyBr.size()>0) setBranchAddress(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, chn, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr);
 
   const unsigned int nOthChns=m_othTtrNms.size()>0?m_othTtrNms.size():1;
   TChain * othChns[nOthChns];
@@ -200,7 +230,7 @@ void topoana::getRslt()
   char nmSigDcyTr[200]; int iSigDcyTr,iCcSigDcyTr,iSigDcyIFSts_tr,iCcSigDcyIFSts_tr;
   char nmSigDcyIFSts[200]; int iSigDcyIFSts,iCcSigDcyIFSts;
 
-  const unsigned int sSigP=m_vPid_sigP.size()>0?m_vPid_sigP.size():1;
+  // const unsigned int sSigP=m_vPid_sigP.size()>0?m_vPid_sigP.size():1;
   int iCcSigP[sSigP],nSigP[sSigP],nCcSigP[sSigP],nAllSigP[sSigP];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_sigP.size();i++) iCcSigP[i]=m_vICcSigP[i];
 
@@ -208,7 +238,7 @@ void topoana::getRslt()
   int iCcSigDcyBr[sSigDcyBr],nSigDcyBr[sSigDcyBr],nCcSigDcyBr[sSigDcyBr],nAllSigDcyBr[sSigDcyBr];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vSigDcyBr.size();i++) iCcSigDcyBr[i]=m_vICcSigDcyBr[i];
 
-  const unsigned int sSigIncDcyBr=m_vSigIncDcyBr.size()>0?m_vSigIncDcyBr.size():1;
+  // const unsigned int sSigIncDcyBr=m_vSigIncDcyBr.size()>0?m_vSigIncDcyBr.size():1;
   int iCcSigIncDcyBr[sSigIncDcyBr],nSigIncDcyBr[sSigIncDcyBr],nCcSigIncDcyBr[sSigIncDcyBr],nAllSigIncDcyBr[sSigIncDcyBr];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vSigIncDcyBr.size();i++) iCcSigIncDcyBr[i]=m_vICcSigIncDcyBr[i];
 
@@ -216,15 +246,15 @@ void topoana::getRslt()
   int iCcSigCascDcyBr[sSigCascDcyBr],nSigCascDcyBr[sSigCascDcyBr],nCcSigCascDcyBr[sSigCascDcyBr],nAllSigCascDcyBr[sSigCascDcyBr];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vSigCascDcyBr.size();i++) iCcSigCascDcyBr[i]=m_vICcSigCascDcyBr[i];
 
-  const unsigned int sSigIncCascDcyBr=m_vSigIncCascDcyBr.size()>0?m_vSigIncCascDcyBr.size():1;
+  // const unsigned int sSigIncCascDcyBr=m_vSigIncCascDcyBr.size()>0?m_vSigIncCascDcyBr.size():1;
   int iCcSigIncCascDcyBr[sSigIncCascDcyBr],nSigIncCascDcyBr[sSigIncCascDcyBr],nCcSigIncCascDcyBr[sSigIncCascDcyBr],nAllSigIncCascDcyBr[sSigIncCascDcyBr];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vSigIncCascDcyBr.size();i++) iCcSigIncCascDcyBr[i]=m_vICcSigIncCascDcyBr[i];
 
-  const unsigned int sSigIRADcyBr=m_vSigIRADcyBr.size()>0?m_vSigIRADcyBr.size():1;
+  // const unsigned int sSigIRADcyBr=m_vSigIRADcyBr.size()>0?m_vSigIRADcyBr.size():1;
   int iCcSigIRADcyBr[sSigIRADcyBr],nSigIRADcyBr[sSigIRADcyBr],nCcSigIRADcyBr[sSigIRADcyBr],nAllSigIRADcyBr[sSigIRADcyBr];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vSigIRADcyBr.size();i++) iCcSigIRADcyBr[i]=m_vICcSigIRADcyBr[i];
 
-  const unsigned int sSigIncOrIRACascDcyBr=m_vSigIncOrIRACascDcyBr.size()>0?m_vSigIncOrIRACascDcyBr.size():1;
+  // const unsigned int sSigIncOrIRACascDcyBr=m_vSigIncOrIRACascDcyBr.size()>0?m_vSigIncOrIRACascDcyBr.size():1;
   int iCcSigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr],nSigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr],nCcSigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr],nAllSigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vSigIncOrIRACascDcyBr.size();i++) iCcSigIncOrIRACascDcyBr[i]=m_vICcSigIncOrIRACascDcyBr[i];
 
@@ -550,17 +580,73 @@ void topoana::getRslt()
              
           if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,Ridx);
 
+          if(m_vPid_sigP.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigP,Tagrecsd_sigP);
           if(m_vSigDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigDcyBr,Tagrecsd_sigDcyBr);
+          if(m_vSigIncDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncDcyBr,Tagrecsd_sigIncDcyBr);
           if(m_vSigCascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigCascDcyBr,Tagrecsd_sigCascDcyBr);
+          if(m_vSigIncCascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncCascDcyBr,Tagrecsd_sigIncCascDcyBr);
+          if(m_vSigIRADcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIRADcyBr,Tagrecsd_sigIRADcyBr);
+          if(m_vSigIncOrIRACascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr,Tagrecsd_sigIncOrIRACascDcyBr);
 
-          if(m_vSigCascDcyBr.size()>0)
+          if(m_vSigIncOrIRACascDcyBr.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
+              if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
+              if(m_vPid_compProdBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles");
+              if(m_vPid_compMP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles");
+              if(m_vPid_sigP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles");
+              if(m_vSigDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches");
+              if(m_vSigIncDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches");
+              if(m_vSigCascDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches");
+              if(m_vSigIncCascDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches");
+              if(m_vSigIRADcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTBrNmOfNRec_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, "% Signal identification --- inclusive or intermediate-resonance-allowed cascade decay branches", m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches");
+            }
+          else if(m_vSigIRADcyBr.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
+              if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
+              if(m_vPid_compProdBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles");
+              if(m_vPid_compMP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles");
+              if(m_vPid_sigP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles");
+              if(m_vSigDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches");
+              if(m_vSigIncDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches");
+              if(m_vSigCascDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches");
+              if(m_vSigIncCascDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIRADcyBr, m_vTBrNmOfTagRec_sigIRADcyBr, m_vTBrNmOfNRec_sigIRADcyBr, Tagrecsd_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagreca_sigIRADcyBr, Nrec_sigIRADcyBr, "% Signal identification --- intermediate-resonance-allowed decay branches", m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches");
+            }
+          else if(m_vSigIncCascDcyBr.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
+              if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
+              if(m_vPid_compProdBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles");
+              if(m_vPid_compMP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles");
+              if(m_vPid_sigP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles");
+              if(m_vSigDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches");
+              if(m_vSigIncDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches");
+              if(m_vSigCascDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncCascDcyBr, m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTBrNmOfNRec_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, "% Signal identification --- inclusive cascade decay branches", m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches");
+            }
+          else if(m_vSigCascDcyBr.size()>0)
             {
               if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
               if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
               if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
               if(m_vPid_compProdBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles");
               if(m_vPid_compMP.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles");
-              if(m_vPid_compMP.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches");
+              if(m_vPid_sigP.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles");
+              if(m_vSigDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches");
+              if(m_vSigIncDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigCascDcyBr, m_vTBrNmOfTagRec_sigCascDcyBr, m_vTBrNmOfNRec_sigCascDcyBr, Tagrecsd_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagreca_sigCascDcyBr, Nrec_sigCascDcyBr, "% Signal identification --- cascade decay branches", m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches");
+            }
+          else if(m_vSigIncDcyBr.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
+              if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
+              if(m_vPid_compProdBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches", m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles");
+              if(m_vPid_compMP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches", m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles");
+              if(m_vPid_sigP.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches", m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles");
+              if(m_vSigDcyBr.size()>0) cpBrVals(m_vTypeOfTagRec_sigIncDcyBr, m_vTBrNmOfTagRec_sigIncDcyBr, m_vTBrNmOfNRec_sigIncDcyBr, Tagrecsd_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagreca_sigIncDcyBr, Nrec_sigIncDcyBr, "% Signal identification --- inclusive decay branches", m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches");
             }
           else if(m_vSigDcyBr.size()>0)
             {
@@ -569,6 +655,15 @@ void topoana::getRslt()
               if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
               if(m_vPid_compProdBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches", m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles");
               if(m_vPid_compMP.size()>0) cpBrVals(m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches", m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles");
+              if(m_vPid_sigP.size()>0) cpBrVals(m_vTypeOfTagRec_sigDcyBr, m_vTBrNmOfTagRec_sigDcyBr, m_vTBrNmOfNRec_sigDcyBr, Tagrecsd_sigDcyBr, Tagrecsi_sigDcyBr, Tagreca_sigDcyBr, Nrec_sigDcyBr, "% Signal identification --- decay branches", m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles");
+            }
+          else if(m_vPid_sigP.size()>0)
+            {
+              if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
+              if(m_vPid_compCascDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles", m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles");
+              if(m_vPid_compDcyFStP.size()>0) cpBrVals(m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles", m_vTypeOfTagRec_compDcyFStP, m_vTBrNmOfTagRec_compDcyFStP, m_vTBrNmOfNRec_compDcyFStP, Tagrecsd_compDcyFStP, Tagrecsi_compDcyFStP, Tagreca_compDcyFStP, Nrec_compDcyFStP, "% Component analysis --- decay final states of particles");
+              if(m_vPid_compProdBrP.size()>0) cpBrVals(m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles", m_vTypeOfTagRec_compProdBrP, m_vTBrNmOfTagRec_compProdBrP, m_vTBrNmOfNRec_compProdBrP, Tagrecsd_compProdBrP, Tagrecsi_compProdBrP, Tagreca_compProdBrP, Nrec_compProdBrP, "% Component analysis --- production branches of particles");
+              if(m_vPid_compMP.size()>0) cpBrVals(m_vTypeOfTagRec_sigP, m_vTBrNmOfTagRec_sigP, m_vTBrNmOfNRec_sigP, Tagrecsd_sigP, Tagrecsi_sigP, Tagreca_sigP, Nrec_sigP, "% Signal identification --- paticles", m_vTypeOfTagRec_compMP, m_vTBrNmOfTagRec_compMP, m_vTBrNmOfNRec_compMP, Tagrecsd_compMP, Tagrecsi_compMP, Tagreca_compMP, Nrec_compMP, "% Component analysis --- mothers of particles");
             }
           else if(m_vPid_compMP.size()>0)
             {
@@ -610,11 +705,27 @@ void topoana::getRslt()
               for(unsigned int j=0;j<m_vPid_compMP.size();j++)
                 if(m_vTypeOfTagRec_compMP[j]=="c"||m_vTypeOfTagRec_compMP[j]=="n"||m_vTypeOfTagRec_compMP[j]=="!n"||m_vTypeOfTagRec_compMP[j]=="p"||m_vTypeOfTagRec_compMP[j]=="i") Tagrecsi_compMP[j]=Tagrecsd_compMP[j];
 
+              for(unsigned int j=0;j<m_vPid_sigP.size();j++)
+                if(m_vTypeOfTagRec_sigP[j]=="c"||m_vTypeOfTagRec_sigP[j]=="n"||m_vTypeOfTagRec_sigP[j]=="!n"||m_vTypeOfTagRec_sigP[j]=="p"||m_vTypeOfTagRec_sigP[j]=="i") Tagrecsi_sigP[j]=Tagrecsd_sigP[j];
+
               for(unsigned int j=0;j<m_vSigDcyBr.size();j++)
                 if(m_vTypeOfTagRec_sigDcyBr[j]=="c"||m_vTypeOfTagRec_sigDcyBr[j]=="n"||m_vTypeOfTagRec_sigDcyBr[j]=="!n"||m_vTypeOfTagRec_sigDcyBr[j]=="p"||m_vTypeOfTagRec_sigDcyBr[j]=="i") Tagrecsi_sigDcyBr[j]=Tagrecsd_sigDcyBr[j];
 
+              for(unsigned int j=0;j<m_vSigIncDcyBr.size();j++)
+                if(m_vTypeOfTagRec_sigIncDcyBr[j]=="c"||m_vTypeOfTagRec_sigIncDcyBr[j]=="n"||m_vTypeOfTagRec_sigIncDcyBr[j]=="!n"||m_vTypeOfTagRec_sigIncDcyBr[j]=="p"||m_vTypeOfTagRec_sigIncDcyBr[j]=="i") Tagrecsi_sigIncDcyBr[j]=Tagrecsd_sigIncDcyBr[j];
+
               for(unsigned int j=0;j<m_vSigCascDcyBr.size();j++)
                 if(m_vTypeOfTagRec_sigCascDcyBr[j]=="c"||m_vTypeOfTagRec_sigCascDcyBr[j]=="n"||m_vTypeOfTagRec_sigCascDcyBr[j]=="!n"||m_vTypeOfTagRec_sigCascDcyBr[j]=="p"||m_vTypeOfTagRec_sigCascDcyBr[j]=="i") Tagrecsi_sigCascDcyBr[j]=Tagrecsd_sigCascDcyBr[j];
+
+              for(unsigned int j=0;j<m_vSigIncCascDcyBr.size();j++)
+                if(m_vTypeOfTagRec_sigIncCascDcyBr[j]=="c"||m_vTypeOfTagRec_sigIncCascDcyBr[j]=="n"||m_vTypeOfTagRec_sigIncCascDcyBr[j]=="!n"||m_vTypeOfTagRec_sigIncCascDcyBr[j]=="p"||m_vTypeOfTagRec_sigIncCascDcyBr[j]=="i") Tagrecsi_sigIncCascDcyBr[j]=Tagrecsd_sigIncCascDcyBr[j];
+
+              for(unsigned int j=0;j<m_vSigIRADcyBr.size();j++)
+                if(m_vTypeOfTagRec_sigIRADcyBr[j]=="c"||m_vTypeOfTagRec_sigIRADcyBr[j]=="n"||m_vTypeOfTagRec_sigIRADcyBr[j]=="!n"||m_vTypeOfTagRec_sigIRADcyBr[j]=="p"||m_vTypeOfTagRec_sigIRADcyBr[j]=="i") Tagrecsi_sigIRADcyBr[j]=Tagrecsd_sigIRADcyBr[j];
+
+              for(unsigned int j=0;j<m_vSigIncOrIRACascDcyBr.size();j++)
+                if(m_vTypeOfTagRec_sigIncOrIRACascDcyBr[j]=="c"||m_vTypeOfTagRec_sigIncOrIRACascDcyBr[j]=="n"||m_vTypeOfTagRec_sigIncOrIRACascDcyBr[j]=="!n"||m_vTypeOfTagRec_sigIncOrIRACascDcyBr[j]=="p"||m_vTypeOfTagRec_sigIncOrIRACascDcyBr[j]=="i") Tagrecsi_sigIncOrIRACascDcyBr[j]=Tagrecsd_sigIncOrIRACascDcyBr[j];
+
             }
 
           sumOfNps=sumOfNps+Nps;
@@ -2216,12 +2327,24 @@ void topoana::getRslt()
                     {
                       if(vPid[j]==m_vPid_sigP[k])
                         {
+                          if(m_vTypeOfTagRec_sigP[k]!="")
+                            {
+                              if(m_vTypeOfTagRec_sigP[k]!="i"&&m_vTypeOfTagRec_sigP[k]!="I") _isTagMatched=isTagMatched(m_vTypeOfTagRec_sigP[k], Tagrecsi_sigP[k], Tagreca_sigP[k], Nrec_sigP[k], m_vPid_sigP[k]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_sigP[k], Tagrecsi_sigP[k], Tagreca_sigP[k], Nrec_sigP[k], Ridx[vIdxOrg[j]]);
+                              if(_isTagMatched==false) continue;
+                            }
                           if(m_anaTasksForSigIds=="TC") m_vNSigP[k]++;
                           nSigP[k]++;
                           break;
                         }
                       else if(m_ccSwitch==true&&m_vICcSigP[k]!=0&&vPid[j]==m_vPid_ccSigP[k])
                         {
+                          if(m_vTypeOfTagRec_sigP[k]!="")
+                            {
+                              if(m_vTypeOfTagRec_sigP[k]!="i"&&m_vTypeOfTagRec_sigP[k]!="I") _isTagMatched=isTagMatched(m_vTypeOfTagRec_sigP[k], Tagrecsi_sigP[k], Tagreca_sigP[k], Nrec_sigP[k], m_vPid_ccSigP[k]);
+                              else _isTagMatched=isTagMatched(m_vTypeOfTagRec_sigP[k], Tagrecsi_sigP[k], Tagreca_sigP[k], Nrec_sigP[k], Ridx[vIdxOrg[j]]);
+                              if(_isTagMatched==false) continue;
+                            }
                           if(m_anaTasksForSigIds=="TC") m_vNCcSigP[k]++;
                           nCcSigP[k]++;
                           break;
@@ -2270,11 +2393,11 @@ void topoana::getRslt()
             {
               for(unsigned int j=0;j<m_vSigIncDcyBr.size();j++)
                 {
-                  nSigIncDcyBr[j]=countIncLiaInVlib(m_vSigIncDcyBr[j],dcyTr);
+                  nSigIncDcyBr[j]=countIncLiaInVlib(m_vSigIncDcyBr[j], dcyTr, vIdxOfHead, Ridx, vIdxOrg, m_vTypeOfTagRec_sigIncDcyBr[j], Tagrecsi_sigIncDcyBr[j], Tagreca_sigIncDcyBr[j], Nrec_sigIncDcyBr[j]);
                   if(m_anaTasksForSigIds=="TC") m_vNSigIncDcyBr[j]=m_vNSigIncDcyBr[j]+nSigIncDcyBr[j];
                   if(m_ccSwitch==true)
                     {
-                      nCcSigIncDcyBr[j]=countIncLiaInVlib(m_vCcSigIncDcyBr[j],dcyTr);
+                      nCcSigIncDcyBr[j]=countIncLiaInVlib(m_vCcSigIncDcyBr[j], dcyTr, vIdxOfHead, Ridx, vIdxOrg, m_vTypeOfTagRec_sigIncDcyBr[j], Tagrecsi_sigIncDcyBr[j], Tagreca_sigIncDcyBr[j], Nrec_sigIncDcyBr[j]);
                       if(m_anaTasksForSigIds=="TC") m_vNCcSigIncDcyBr[j]=m_vNCcSigIncDcyBr[j]+nCcSigIncDcyBr[j];
                       nAllSigIncDcyBr[j]=nSigIncDcyBr[j]+nCcSigIncDcyBr[j];
                     }
@@ -2315,11 +2438,11 @@ void topoana::getRslt()
             {
               for(unsigned int j=0;j<m_vSigIRADcyBr.size();j++)
                 {
-                  nSigIRADcyBr[j]=countIRADcyBr(vPid,vMidx,m_vSigIRADcyBr[j]);
+                  nSigIRADcyBr[j]=countIRADcyBr(vPid, vMidx, m_vSigIRADcyBr[j], false, 0, 0, "", Ridx, &vIdxOrg, m_vTypeOfTagRec_sigIRADcyBr[j], Tagrecsi_sigIRADcyBr[j], Tagreca_sigIRADcyBr[j], Nrec_sigIRADcyBr[j]);
                   if(m_anaTasksForSigIds=="TC") m_vNSigIRADcyBr[j]=m_vNSigIRADcyBr[j]+nSigIRADcyBr[j];
                   if(m_ccSwitch==true)
                     {
-                      nCcSigIRADcyBr[j]=countIRADcyBr(vPid,vMidx,m_vCcSigIRADcyBr[j]);
+                      nCcSigIRADcyBr[j]=countIRADcyBr(vPid, vMidx, m_vCcSigIRADcyBr[j], false, 0, 0, "", Ridx, &vIdxOrg, m_vTypeOfTagRec_sigIRADcyBr[j], Tagrecsi_sigIRADcyBr[j], Tagreca_sigIRADcyBr[j], Nrec_sigIRADcyBr[j]);
                       if(m_anaTasksForSigIds=="TC") m_vNCcSigIRADcyBr[j]=m_vNCcSigIRADcyBr[j]+nCcSigIRADcyBr[j];
                       nAllSigIRADcyBr[j]=nSigIRADcyBr[j]+nCcSigIRADcyBr[j];
                     }

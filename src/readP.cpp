@@ -38,10 +38,24 @@ void topoana::readP(string & line, string prompt, vector<int> & vPid, vector<str
           if(txtPnm.find_first_not_of("0123456789")==string::npos) nMax=strtoul(txtPnm.c_str(),NULL,10);
           else if(txtPnm!="-")
             {
-              cerr<<"Error: The third input parameter \""<<txtPnm<<"\" in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
-              cerr<<"Infor: It should be an unsigned long integer at which you want to set, or just a placeholder \"-\" as a default value \"ULONG_MAX\" and for the input of the fourth parameter."<<endl;
-              cerr<<"Infor: Please check it."<<endl;
-              exit(-1);
+              if(vTypeOfTagRec!=0)
+                {
+                  typeOfTagRec="";
+                  tBrNmOfTagRec="";
+                  tBrNmOfNRec="";
+                  parseIptStrIntoRecStrs(line,prompt,txtPnm,typeOfTagRec,tBrNmOfTagRec,tBrNmOfNRec);
+                  (*vTypeOfTagRec).push_back(typeOfTagRec);
+                  (*vTBrNmOfTagRec).push_back(tBrNmOfTagRec);
+                  (*vTBrNmOfNRec).push_back(tBrNmOfNRec);
+                  isTagRead=true;
+                }
+              else
+                {
+                  cerr<<"Error: The third input parameter \""<<txtPnm<<"\" in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\" is invalid!"<<endl;
+                  cerr<<"Infor: It should be an unsigned long integer at which you want to set, or just a placeholder \"-\" as a default value \"ULONG_MAX\" and for the input of the fourth parameter."<<endl;
+                  cerr<<"Infor: Please check it."<<endl;
+                  exit(-1);
+                }
             }
         }
       (*vNMax).push_back(nMax);
@@ -60,7 +74,7 @@ void topoana::readP(string & line, string prompt, vector<int> & vPid, vector<str
               cerr<<"Infor: It should be an unsigned long integer at which you want to set, or just a placeholder \"-\" as a default value \"ULONG_MAX\" and for the input of the fifth parameter."<<endl;
               cerr<<"Infor: Please check it."<<endl;
               exit(-1);*/
-              if(vTypeOfTagRec!=0)
+              if(vTypeOfTagRec!=0&&isTagRead==false)
                 {
                   typeOfTagRec="";
                   tBrNmOfTagRec="";

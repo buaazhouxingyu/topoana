@@ -121,6 +121,9 @@ class topoana
     vector<string> m_vNm_sigDcyIFSts;
     vector<int> m_vPid_sigP;
     vector<string> m_vNm_sigP;
+    vector<string> m_vTypeOfTagRec_sigP;
+    vector<string> m_vTBrNmOfTagRec_sigP;
+    vector<string> m_vTBrNmOfNRec_sigP;
     vector< vector<int> > m_vVPid_sigDcyBr;
     vector<string> m_vNm_sigDcyBr;
     vector<string> m_vTypeOfTagRec_sigDcyBr;
@@ -128,6 +131,9 @@ class topoana
     vector<string> m_vTBrNmOfNRec_sigDcyBr;
     vector< vector<int> > m_vVPid_sigIncDcyBr;
     vector<string> m_vNm_sigIncDcyBr;
+    vector<string> m_vTypeOfTagRec_sigIncDcyBr;
+    vector<string> m_vTBrNmOfTagRec_sigIncDcyBr;
+    vector<string> m_vTBrNmOfNRec_sigIncDcyBr;
     vector< vector<int> > m_vVPid_sigCascDcyBr;
     vector< vector<int> > m_vVMidx_sigCascDcyBr;
     vector<string> m_vNm_sigCascDcyBr;
@@ -139,12 +145,21 @@ class topoana
     vector< vector<int> > m_vVMidx_sigIncCascDcyBr;
     vector<string> m_vNm_sigIncCascDcyBr;
     bool m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr;
+    vector<string> m_vTypeOfTagRec_sigIncCascDcyBr;
+    vector<string> m_vTBrNmOfTagRec_sigIncCascDcyBr;
+    vector<string> m_vTBrNmOfNRec_sigIncCascDcyBr;
     vector< vector<int> > m_vVPid_sigIRADcyBr;
     vector<string> m_vNm_sigIRADcyBr;
+    vector<string> m_vTypeOfTagRec_sigIRADcyBr;
+    vector<string> m_vTBrNmOfTagRec_sigIRADcyBr;
+    vector<string> m_vTBrNmOfNRec_sigIRADcyBr;
     vector< vector<int> > m_vVPid_sigIncOrIRACascDcyBr;
     vector< vector<int> > m_vVMidx_sigIncOrIRACascDcyBr;
     vector<string> m_vNm_sigIncOrIRACascDcyBr;
     bool m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr;
+    vector<string> m_vTypeOfTagRec_sigIncOrIRACascDcyBr;
+    vector<string> m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr;
+    vector<string> m_vTBrNmOfNRec_sigIncOrIRACascDcyBr;
 
     bool m_ccSwitch;
     string m_anaTasksForSigIds;
@@ -391,6 +406,9 @@ class topoana
       m_vNm_sigDcyIFSts.clear();
       m_vPid_sigP.clear();
       m_vNm_sigP.clear();
+      m_vTypeOfTagRec_sigP.clear();
+      m_vTBrNmOfTagRec_sigP.clear();
+      m_vTBrNmOfNRec_sigP.clear();
       m_vVPid_sigDcyBr.clear();
       m_vNm_sigDcyBr.clear();
       m_vTypeOfTagRec_sigDcyBr.clear();
@@ -398,6 +416,9 @@ class topoana
       m_vTBrNmOfNRec_sigDcyBr.clear();
       m_vVPid_sigIncDcyBr.clear();
       m_vNm_sigIncDcyBr.clear();
+      m_vTypeOfTagRec_sigIncDcyBr.clear();
+      m_vTBrNmOfTagRec_sigIncDcyBr.clear();
+      m_vTBrNmOfNRec_sigIncDcyBr.clear();
       m_vVPid_sigCascDcyBr.clear();
       m_vVMidx_sigCascDcyBr.clear();
       m_vNm_sigCascDcyBr.clear();
@@ -409,12 +430,21 @@ class topoana
       m_vVMidx_sigIncCascDcyBr.clear();
       m_vNm_sigIncCascDcyBr.clear();
       m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr=false;
+      m_vTypeOfTagRec_sigIncCascDcyBr.clear();
+      m_vTBrNmOfTagRec_sigIncCascDcyBr.clear();
+      m_vTBrNmOfNRec_sigIncCascDcyBr.clear();
       m_vVPid_sigIRADcyBr.clear();
       m_vNm_sigIRADcyBr.clear();
+      m_vTypeOfTagRec_sigIRADcyBr.clear();
+      m_vTBrNmOfTagRec_sigIRADcyBr.clear();
+      m_vTBrNmOfNRec_sigIRADcyBr.clear();
       m_vVPid_sigIncOrIRACascDcyBr.clear();
       m_vVMidx_sigIncOrIRACascDcyBr.clear();
       m_vNm_sigIncOrIRACascDcyBr.clear();
       m_optIdxAndMidxOfSigDcyBrInSigIncOrIRACascDcyBr=false;
+      m_vTypeOfTagRec_sigIncOrIRACascDcyBr.clear();
+      m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr.clear();
+      m_vTBrNmOfNRec_sigIncOrIRACascDcyBr.clear();
 
       m_ccSwitch=false;
       m_anaTasksForSigIds="TC";
@@ -481,7 +511,7 @@ class topoana
     void           getDcyTr(vector<int> vPid, vector<int> vMidx, vector< list<int> > & dcyTr, vector<int> * vIdxOfHead=0, vector<int> * vMidxOfHead=0, vector<int> * vIIncIncOrIRACascDcyBr=0, vector<int> * vIIRAIncOrIRACascDcyBr=0);
     void           sortByPidAndPchrg(list<int> &lia);
     void           getDcyIFSts(vector<int> & vPid,vector<int> & vMidx,list<int> & dcyIFSts);
-    unsigned int   countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched=false,vector< vector< list<int> > > * vDcyBrIRADcyBr=0,vector< list<int> > * vIRADcyBrWithRGam=0,string option="");
+    unsigned int   countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched=false, vector< vector< list<int> > > * vDcyBrIRADcyBr=0, vector< list<int> > * vIRADcyBrWithRGam=0, string option="", int * Ridx=0, vector<int> * vIdxOrg=0, string typeOfTagRec="", int tagrecsi=0, int * tagreca=0, int nrec=0);
     void           readOpenCurly(ifstream & fin, string & line, string prompt);
     void           read1stLineOrCloseCurly(ifstream & fin, string & line, bool essential, string errinforprompt);
     void           readExtraLinesOrCloseCurly(ifstream & fin, string & line, string prompt);
@@ -513,7 +543,7 @@ class topoana
     void cpBrValsTemp(vector<string> vTBrNmOfTagRec, double * Tagrecsd);
     void	   getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector<int> & vIdxOfHead_CascDcyBrP, vector< list<int> > & dcyTr, vector<int> & vIdxOfHead, vector<int> & vMidxOfHead, int pid, unsigned long hCascDcyBrMax=ULONG_MAX);
     void           getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vIdxOfHead_DcyFStP, vector<int> & vPid, vector<int> & vMidx, int pid, unsigned long nDcyFSt=ULONG_MAX);
-    unsigned int   countIncLiaInVlib(list<int> & lia, vector< list<int> > & Vlib);
+    unsigned int   countIncLiaInVlib(list<int> & lia, vector< list<int> > & Vlib, vector<int> vIdxOfHead, int * Ridx, vector<int> vIdxOrg, string typeOfTagRec, int tagrecsi, int * tagreca, int nrec);
     bool	   isLiaMatchedWithLib(list<int> & lia, list<int> & lib, string option="");
     unsigned int   countCascDcyBrInDcyTr(vector< list<int> > & cascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2, int * Ridx, vector<int> vIdxOrg, string typeOfTagRec, int tagrecsi, int * tagreca, int nrec);
     unsigned int   countIncCascDcyBrInDcyTr(vector<int> vIIncIncCascDcyBr, vector< list<int> > & incCascDcyBr, vector<int> vIdxOfHead1, vector<int> vMidxOfHead1, vector< list<int> > & dcyTr, vector<int> vIdxOfHead2, vector<int> vMidxOfHead2);

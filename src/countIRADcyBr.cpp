@@ -4,14 +4,21 @@
 
 // The fourth argument is added for the special usage in the "countIncOrIRACascDcyBrInDcyTr" method, while the fifth and sixth arguments are appendied for the functionality of the component analysis over inclusive decay branches with the options "Is-IRA", "Ig-IRA", "Fs-IRA", or "Fg-IRA".
 
-unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched, vector< vector< list<int> > > * vDcyBrIRADcyBr,vector< list<int> > * vIRADcyBrWithRGam,string option)
+unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, list<int> IRADcyBr, bool areHeadsRequiredToBeMatched, vector< vector< list<int> > > * vDcyBrIRADcyBr, vector< list<int> > * vIRADcyBrWithRGam, string option, int * Ridx, vector<int> * vIdxOrg, string typeOfTagRec, int tagrecsi, int * tagreca, int nrec)
 {
   vector<int> vIdx;
   vIdx.clear();
+  bool _isTagMatched;
   list<int>::iterator liit=IRADcyBr.begin();
   if(areHeadsRequiredToBeMatched==true)
     {
-      if(vPid.size()>0&&vPid[0]==(*liit)) vIdx.push_back(0);
+      if(typeOfTagRec!="")
+        {
+          if(typeOfTagRec!="i"&&typeOfTagRec!="I") _isTagMatched=isTagMatched(typeOfTagRec, tagrecsi, tagreca, nrec, (*liit));
+          else _isTagMatched=isTagMatched(typeOfTagRec, tagrecsi, tagreca, nrec, Ridx[(*vIdxOrg)[0]]);
+          if(_isTagMatched==true&&vPid.size()>0&&vPid[0]==(*liit)) vIdx.push_back(0);
+        }
+      else if(vPid.size()>0&&vPid[0]==(*liit)) vIdx.push_back(0);
     }
   else
     {
@@ -21,6 +28,12 @@ unsigned int topoana::countIRADcyBr(vector<int> & vPid, vector<int> & vMidx, lis
         { 
           for(unsigned int i=0;i<vPid.size();i++)
             {
+              if(typeOfTagRec!="")
+                {
+                  if(typeOfTagRec!="i"&&typeOfTagRec!="I") _isTagMatched=isTagMatched(typeOfTagRec, tagrecsi, tagreca, nrec, (*liit));
+                  else _isTagMatched=isTagMatched(typeOfTagRec, tagrecsi, tagreca, nrec, Ridx[(*vIdxOrg)[i]]);
+                  if(_isTagMatched==false) continue;
+                }
               if(vPid[i]==(*liit)) vIdx.push_back(i);
             }
         }
