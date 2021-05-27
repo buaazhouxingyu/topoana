@@ -2,18 +2,22 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::cpBrVals(vector<string> vTypeOfTagRec1, vector<string> vTBrNmOfTagRec1, vector<string> vTBrNmOfNRec1, double * Tagrecsd1, int * Tagrecsi1, int Tagreca1[][20], int * Nrec1, string prompt1, vector<string> vTypeOfTagRec2, vector<string> vTBrNmOfTagRec2, vector<string> vTBrNmOfNRec2, double * Tagrecsd2, int * Tagrecsi2, int Tagreca2[][20], int * Nrec2, string prompt2)
+void topoana::cpBrVals(vector<string> vTypeOfTagRec1, vector<string> vTBrNmOfTagRec1, vector<string> vTBrNmOfNRec1, double * Tagrecsd1, float * Tagrecsf1, int * Tagrecsi1, int Tagreca1[][20], int * Nrec1, string prompt1, vector<string> vTypeOfTagRec2, vector<string> vTBrNmOfTagRec2, vector<string> vTBrNmOfNRec2, double * Tagrecsd2, float * Tagrecsf2, int * Tagrecsi2, int Tagreca2[][20], int * Nrec2, string prompt2)
 {
   for(unsigned int j=0;j<vTypeOfTagRec1.size();j++)
     {
       if(vTypeOfTagRec1[j]=="c"||vTypeOfTagRec1[j]=="n"||vTypeOfTagRec1[j]=="!n"||vTypeOfTagRec1[j]=="p"||vTypeOfTagRec1[j]=="i")
         {
-          if(m_strgTpOfRawIptTopoDat=="MSD")
+          if(m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD")
             {
               for(unsigned int k=0;k<vTypeOfTagRec2.size();k++)
                 if(vTBrNmOfTagRec2[k]==vTBrNmOfTagRec1[j])
                   {
-                    if(vTypeOfTagRec2[k]==vTypeOfTagRec1[j]) Tagrecsd2[k]=Tagrecsd1[j];
+                    if(vTypeOfTagRec2[k]==vTypeOfTagRec1[j])
+                      {
+                        if(m_strgTpOfRawIptTopoDat=="MSF") Tagrecsf2[k]=Tagrecsf1[j];
+                        else Tagrecsd2[k]=Tagrecsd1[j];
+                      }
                     else
                       {
                         cerr<<"Error: The same one scalar TBranch \""<<vTBrNmOfTagRec1[j]<<"\" filled in the two setting items prompted with \""<<prompt1<<"\" and \""<<prompt2<<"\" follows two different prompts \""<<vTypeOfTagRec1[k]<<"\" and \""<<vTypeOfTagRec2[j]<<"\", which indicates two different types of reconstruction tags."<<endl;

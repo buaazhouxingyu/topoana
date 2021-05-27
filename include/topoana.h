@@ -174,7 +174,7 @@ class topoana
     unsigned long m_nEtrMaxInASngOptRootFl;
     bool m_useArrayTBrsOpt;
     bool m_rmIptTBrs;
-    bool m_convtMSIMSDIntoAOI;
+    bool m_convtMSIFDIntoAOI;
     vector<string> m_othTtrNms;
     bool m_supprOptRootFls;
     bool m_flatArrayBrsLocally;
@@ -306,8 +306,8 @@ class topoana
   public:
     topoana()
     {
-      m_pkgPath="/workfs/bes/zhouxy/topoana-02-09-02/";
-      m_verNum="v2.9.2";
+      m_pkgPath="/workfs/bes/zhouxy/topoana-02-09-03/";
+      m_verNum="v2.9.3";
       m_cardFlNm0=m_pkgPath+"share/underlying_topoana.card";
 
       m_nmsOfIptRootFls.clear();
@@ -458,7 +458,7 @@ class topoana
       m_nEtrMaxInASngOptRootFl=ULONG_MAX;
       m_useArrayTBrsOpt=false;
       m_rmIptTBrs=false;
-      m_convtMSIMSDIntoAOI=false;
+      m_convtMSIFDIntoAOI=false;
       m_othTtrNms.clear();
       m_supprOptRootFls=false;
       m_flatArrayBrsLocally=false;
@@ -537,11 +537,11 @@ class topoana
     void 	   getVMultiAndVAllMulti(vector<int> vPid, vector<int> & vMulti, vector<int> & vAllMulti);
     void           writeInputRecInfo(string typeOfTagRec, string tBrNmOfTagRec, string tBrNmOfNRec, string object);
     void	   checkInput();
-    void           setBranchAddress(vector<string> vTypeOfTagRec, vector<string> vTBrNmOfTagRec, vector<string> vTBrNmOfNRec, TChain * chn, double * Tagrecsd, int * Tagrecsi, int Tagreca[][20], int * Nrec);
+    void           setBranchAddress(vector<string> vTypeOfTagRec, vector<string> vTBrNmOfTagRec, vector<string> vTBrNmOfNRec, TChain * chn, double * Tagrecsd, float * Tagrecsf, int * Tagrecsi, int Tagreca[][20], int * Nrec);
     void 	   createBrs(unsigned int size, string NM1, string NM2, string NM3, string NM4, string NM5, vector<string> vNm, int * aICc, TTree * tr, unsigned int nMax, int * nq, int * iq, int * iCcq, int * nCcq, int * iqCc, int * nAllq);
     void           createBrs(unsigned int size, string NM, vector<string> vNm, int * aICc, TTree * tr, int * nq, int * nCcq, int * nAllq);
-    void           cpBrVals(vector<string> vTypeOfTagRec1, vector<string> vTBrNmOfTagRec1, vector<string> vTBrNmOfNRec1, double * Tagrecsd1, int * Tagrecsi1, int Tagreca1[][20], int * Nrec1, string prompt1, vector<string> vTypeOfTagRec2, vector<string> vTBrNmOfTagRec2, vector<string> vTBrNmOfNRec2, double * Tagrecsd2, int * Tagrecsi2, int Tagreca2[][20], int * Nrec2, string prompt2);
-    void cpBrValsTemp(vector<string> vTBrNmOfTagRec, double * Tagrecsd);
+    void           cpBrVals(vector<string> vTypeOfTagRec1, vector<string> vTBrNmOfTagRec1, vector<string> vTBrNmOfNRec1, double * Tagrecsd1, float * Tagrecsf1, int * Tagrecsi1, int Tagreca1[][20], int * Nrec1, string prompt1, vector<string> vTypeOfTagRec2, vector<string> vTBrNmOfTagRec2, vector<string> vTBrNmOfNRec2, double * Tagrecsd2, float * Tagrecsf2, int * Tagrecsi2, int Tagreca2[][20], int * Nrec2, string prompt2);
+    void           cpBrValsTemp(vector<string> vTBrNmOfTagRec, int * Tagrecsi, float * Tagrecsf, double * Tagrecsd);
     void	   getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector<int> & vIdxOfHead_CascDcyBrP, vector< list<int> > & dcyTr, vector<int> & vIdxOfHead, vector<int> & vMidxOfHead, int pid, unsigned long hCascDcyBrMax=ULONG_MAX);
     void           getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vIdxOfHead_DcyFStP, vector<int> & vPid, vector<int> & vMidx, int pid, unsigned long nDcyFSt=ULONG_MAX);
     unsigned int   countIncLiaInVlib(list<int> & lia, vector< list<int> > & Vlib, vector<int> vIdxOfHead, int * Ridx, vector<int> vIdxOrg, string typeOfTagRec, int tagrecsi, int * tagreca, int nrec);

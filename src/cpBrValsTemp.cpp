@@ -1,6 +1,6 @@
 #include "../include/topoana.h"
 
-void topoana::cpBrValsTemp(vector<string> vTBrNmOfTagRec, double * Tagrecsd)
+void topoana::cpBrValsTemp(vector<string> vTBrNmOfTagRec, int * Tagrecsi, float * Tagrecsf, double * Tagrecsd)
 {
   for(unsigned int i=0;i<vTBrNmOfTagRec.size();i++)
     {
@@ -8,7 +8,9 @@ void topoana::cpBrValsTemp(vector<string> vTBrNmOfTagRec, double * Tagrecsd)
         {
           if(vTBrNmOfTagRec[i]==vTBrNmOfTagRec[j])
             {
-              Tagrecsd[i]=Tagrecsd[j];
+              if(m_strgTpOfRawIptTopoDat=="MSI") Tagrecsi[i]=Tagrecsi[j];
+              else if(m_strgTpOfRawIptTopoDat=="MSF") Tagrecsf[i]=Tagrecsf[j];
+              else if(m_strgTpOfRawIptTopoDat=="MSD") Tagrecsd[i]=Tagrecsd[j];
               break;
             }
         }

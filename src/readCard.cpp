@@ -65,25 +65,25 @@ void topoana::readCard(string cardFlNm)
           m_ttrNm=line;
           readCloseCurly(fin,line,"% TTree name");
         }
-      else if(line=="% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)")
+      else if(line=="% Storage type of input raw topology truth information (Five options: AOI, VOI, MSI, MSF, and MSD. Default: AOI)")
         {
-          readOpenCurly(fin,line,"% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
+          readOpenCurly(fin,line,"% Storage type of input raw topology truth information (Five options: AOI, VOI, MSI, MSF, and MSD. Default: AOI)");
           m_strgTpOfRawIptTopoDat="AOI";
-          read1stLineOrCloseCurly(fin,line,false,"% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
+          read1stLineOrCloseCurly(fin,line,false,"% Storage type of input raw topology truth information (Five options: AOI, VOI, MSI, MSF, and MSD. Default: AOI)");
           if(line!="}")
             {
-              if(line=="AOI"||line=="VOI"||line=="MSI"||line=="MSD")
+              if(line=="AOI"||line=="VOI"||line=="MSI"||line=="MSF"||line=="MSD")
                 {
                   m_strgTpOfRawIptTopoDat=line;
                 }
               else
                 {
                   cerr<<"Error: The input \""<<line<<"\" for the item \"Storage type of input raw topology truth information\" is invalid!"<<endl;
-                  cerr<<"Infor: It should be \"AI\", \"VI\", \"MSI\" or \"MSD\"."<<endl;
+                  cerr<<"Infor: It should be \"AOI\", \"VOI\", \"MSI\", \"MSF\", or \"MSD\"."<<endl;
                   cerr<<"Infor: Please check it."<<endl;
                   exit(-1);
                 }
-              readCloseCurly(fin,line,"% Storage type of input raw topology truth information (Four options: AOI, VOI, MSI, and MSD. Default: AOI)");
+              readCloseCurly(fin,line,"% Storage type of input raw topology truth information (Five options: AOI, VOI, MSI, MSF, and MSD. Default: AOI)");
             }
         }
       else if(line=="% TBranch name of the number of particles (Default: nMCGen)")
@@ -553,9 +553,9 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Remove input tbranches from output root files (Two options: Y and N. Default: N)", m_rmIptTBrs);
         }
-      else if(line=="% Convert MSI/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)")
+      else if(line=="% Convert MSI/MSF/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)")
         {
-          readYNItem(fin, line, "% Convert MSI/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)", m_convtMSIMSDIntoAOI);
+          readYNItem(fin, line, "% Convert MSI/MSF/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)", m_convtMSIFDIntoAOI);
         }
       else if(line=="% Other TTree names")
         {
