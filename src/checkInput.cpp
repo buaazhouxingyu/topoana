@@ -2504,7 +2504,7 @@ void topoana::checkInput()
                 {
                   cout<<endl<<endl;
                   cerr<<"Error: The Branch is not only inclusive but also . Such Branches are not supported in the current version of the \"TopoAna\" program!"<<endl;
-                  cerr<<"Infor: If you really need the function, Please contact me (zhouxy@buaa.edu.cn) and then I will try to implement the function for you."<<endl;
+                  cerr<<"Infor: If you really need the function, Please contact me (zhouxy@lnnu.edu.cn) and then I will try to implement the function for you."<<endl;
                   exit(-1);
                 }
               cout<<"  &  "<<vIMSigDcyBr[j]<<endl;

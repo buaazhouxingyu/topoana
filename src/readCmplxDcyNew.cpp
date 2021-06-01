@@ -270,7 +270,7 @@ void topoana::readCmplxDcyNew(string & line, string prompt, vector< vector<int> 
     {
       cerr<<"Error: No arrow (-->) is found in the line \""<<line<<"\" for the item with the prompt \""<<prompt<<"\"!"<<endl;
       cerr<<"Infor: It should be a problem of the program."<<endl;                             
-      cerr<<"Infor: Please contact the author Xing-Yu Zhou via the email zhouxy@buaa.edu.cn"<<endl;
+      cerr<<"Infor: Please contact the author Xing-Yu Zhou via the email zhouxy@lnnu.edu.cn"<<endl;
       exit(-1);
     }
   else if(iarrow==0)
