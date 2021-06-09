@@ -2696,7 +2696,7 @@ void topoana::checkInput()
       if(m_vbsLevStdOut==true) cout<<"Output root files will not be suppressed (default)."<<endl<<endl;
     }
 
-  if(m_flatArrayBrsLocally==true)
+  if(m_flatArrayTBrsLocally==true)
     {
       cout<<"Flat array tbranches locally in each output root file."<<endl<<endl;
     }

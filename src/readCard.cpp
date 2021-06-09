@@ -580,7 +580,7 @@ void topoana::readCard(string cardFlNm)
         }
       else if(line=="% Flat array tbranches locally in each output root file (Two options: Y and N. Default: N)")
         {
-          readYNItem(fin, line, "% Flat array tbranches locally in each output root file (Two options: Y and N. Default: N)", m_flatArrayBrsLocally);
+          readYNItem(fin, line, "% Flat array tbranches locally in each output root file (Two options: Y and N. Default: N)", m_flatArrayTBrsLocally);
         }
       else if(line=="% Verbose level of standard output (Two options: Y and N. Default: N)")
         {

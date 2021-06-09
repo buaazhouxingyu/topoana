@@ -177,7 +177,7 @@ class topoana
     bool m_convtMSIFDIntoAOI;
     vector<string> m_othTtrNms;
     bool m_supprOptRootFls;
-    bool m_flatArrayBrsLocally;
+    bool m_flatArrayTBrsLocally;
     bool m_vbsLevStdOut;
 
     vector<int> m_vIdCcPid;
@@ -461,7 +461,7 @@ class topoana
       m_convtMSIFDIntoAOI=false;
       m_othTtrNms.clear();
       m_supprOptRootFls=false;
-      m_flatArrayBrsLocally=false;
+      m_flatArrayTBrsLocally=false;
       m_vbsLevStdOut=false;
 
       m_pidOfSISRGam=222222222;

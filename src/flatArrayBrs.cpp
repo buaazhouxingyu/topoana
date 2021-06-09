@@ -192,7 +192,7 @@ void topoana::flatArrayBrs(vector<string> nmsOfOptRootFls)
   unsigned int nIRADcyBrIMax[vAtisIRADcyBr_size],nCcIRADcyBrIMax[vAtisIRADcyBr_size];
   unsigned int nIRADcyBrIMaxMax=0,nCcIRADcyBrIMaxMax=0;
 
-  if(m_flatArrayBrsLocally==false)
+  if(m_flatArrayTBrsLocally==false)
     {
       TChain * chn=new TChain(m_ttrNm.c_str());
       for(unsigned int i=0;i<nmsOfOptRootFls.size();i++) chn->Add(nmsOfOptRootFls[i].c_str());
