@@ -2705,6 +2705,15 @@ void topoana::checkInput()
       if(m_vbsLevStdOut==true) cout<<"Flat array tbranches globally in all the output root files (default)."<<endl<<endl;
     }
 
+  if(m_addTBrsForDcyStrs==true)
+    {
+      cout<<"Add tbranches for decay strings to output root files."<<endl<<endl;
+    }
+  else
+    {
+      if(m_vbsLevStdOut==true) cout<<"No tbranches are added for decay strings to output root files (default)."<<endl<<endl;
+    }
+
   if(m_vbsLevStdOut==true)
     {
       cout<<"The level of standard output is set to \"verbose\"."<<endl<<endl;

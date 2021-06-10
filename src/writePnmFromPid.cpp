@@ -4,15 +4,19 @@
 
 void topoana::writePnmFromPid(ostream & out,string pnmType,int pid)
 {
-  if(pnmType=="TxtPnm")
+  if(pnmType=="TxtPnm"||pnmType=="TxtPnm1"||pnmType=="TxtPnm2")
     {
       if(m_pidTxtPnmMap.find(pid)!=m_pidTxtPnmMap.end())
         { 
-          out<<" "<<m_pidTxtPnmMap[pid];
+          if(pnmType=="TxtPnm") out<<" "<<m_pidTxtPnmMap[pid];
+          else if(pnmType=="TxtPnm1") out<<m_pidTxtPnmMap[pid]<<" ";
+          else out<<m_pidTxtPnmMap[pid];
         }
       else
         {
-          out<<" "<<"??";
+          if(pnmType=="TxtPnm") out<<" "<<"??";
+          else if(pnmType=="TxtPnm1") out<<"??"<<" ";
+          else out<<"??";
           string evtPdlFlNm="evt.pdl";
           string pidPsymbPdfFlNm=m_pkgPath+"docs/pid_psymb.pdf";
           string DatFlNm=m_pkgPath+"share/pid_3pchrg_txtpnm_texpnm_iccp.dat";

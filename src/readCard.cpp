@@ -582,6 +582,10 @@ void topoana::readCard(string cardFlNm)
         {
           readYNItem(fin, line, "% Flat array tbranches locally in each output root file (Two options: Y and N. Default: N)", m_flatArrayTBrsLocally);
         }
+      else if(line=="% Add tbranches for decay strings to output root files (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Add tbranches for decay strings to output root files (Two options: Y and N. Default: N)", m_addTBrsForDcyStrs);
+        }
       else if(line=="% Verbose level of standard output (Two options: Y and N. Default: N)")
         {
           readYNItem(fin, line, "% Verbose level of standard output (Two options: Y and N. Default: N)", m_vbsLevStdOut);

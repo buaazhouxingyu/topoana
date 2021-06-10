@@ -207,11 +207,13 @@ void topoana::getRslt()
   int iDcyTr,iCcDcyTr,iDcyIFSts,iCcDcyIFSts;
 
   const unsigned int nMax=200;
+  const unsigned int nMaxOfTBrsForDcyStrs=30;
 
   // const unsigned int sAtdbPid=m_vPid_compDcyBrP.size()>0?m_vPid_compDcyBrP.size():1;
   int iCcPDcyBr[sAtdbPid],nPDcyBr[sAtdbPid],nCcPDcyBr[sAtdbPid],nAllPDcyBr[sAtdbPid];
   int iDcyBrP[sAtdbPid][nMax],iCcDcyBrP[sAtdbPid][nMax],iDcyBrCcP[sAtdbPid][nMax];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_compDcyBrP.size();i++) iCcPDcyBr[i]=m_vICcCompDcyBrP[i];
+  char sDcyBrP[sAtdbPid][nMax][200],sDcyBrCcP[sAtdbPid][nMax][200];
 
   // const unsigned int sAtcdbPid=m_vPid_compCascDcyBrP.size()>0?m_vPid_compCascDcyBrP.size():1;
   int iCcPCascDcyBr[sAtcdbPid],nPCascDcyBr[sAtcdbPid],nCcPCascDcyBr[sAtcdbPid],nAllPCascDcyBr[sAtcdbPid];
@@ -293,6 +295,7 @@ void topoana::getRslt()
   string strDcyTr, strCcDcyTr;
   list<int> dcyIFSts,ccDcyIFSts;
   string strDcyIFSts, strCcDcyIFSts;
+  string strDcyBrP, strDcyBrCcP;
   string strCascDcyBrP, strCascDcyBrCcP;
   string strDcyFStP, strDcyFStCcP;
   bool _isTagMatched;
@@ -389,6 +392,25 @@ void topoana::getRslt()
               if(m_vPid_compDcyBrP.size()>0)
                 {
                   createBrs(m_vPid_compDcyBrP.size(), "PDcyBr", "P", "iDcyBr", "iCcDcyBr", "iDcyBrCc", m_vNm_compDcyBrP, iCcPDcyBr, tr, nMax, nPDcyBr, iDcyBrP[0], iCcDcyBrP[0], nCcPDcyBr, iDcyBrCcP[0], nAllPDcyBr);
+                  if(m_addTBrsForDcyStrs==true)
+                    {
+                      char specifier1[100],specifier2[120];
+                      for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++)
+                        {
+                          for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                            {
+                              sprintf(specifier1, "sDcyBrP_%s_%d", m_vNm_compDcyBrP[j].c_str(), k);
+                              sprintf(specifier2, "sDcyBrP_%s_%d/C", m_vNm_compDcyBrP[j].c_str(), k);
+                              tr->Branch(specifier1, &sDcyBrP[j][k], specifier2);
+                              if(m_ccSwitch==true&&m_vICcCompDcyBrP[j]!=0)
+                                {
+                                  sprintf(specifier1, "sDcyBrCcP_%s_%d", m_vNm_compDcyBrP[j].c_str(), k);
+                                  sprintf(specifier2, "sDcyBrCcP_%s_%d/C", m_vNm_compDcyBrP[j].c_str(), k);
+                                  tr->Branch(specifier1, &sDcyBrCcP[j][k], specifier2);
+                                }
+                            }
+                        }
+                    }
                 }
               if(m_vPid_compCascDcyBrP.size()>0)
                 {
@@ -1078,6 +1100,14 @@ void topoana::getRslt()
                       nCcPDcyBr[j]=0;
                       nAllPDcyBr[j]=0;
                     }
+                  if(m_addTBrsForDcyStrs==true)
+                    {
+                      for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                        {
+                          strcpy(sDcyBrP[j][k], "");
+                          if(m_ccSwitch==true&&m_vICcCompDcyBrP[j]!=0) strcpy(sDcyBrCcP[j][k], "");
+                        }
+                    }
                 }     
               for(unsigned int j=0;j<dcyTr.size();j++)
                 {
@@ -1114,6 +1144,11 @@ void topoana::getRslt()
                             {
                               _iDcyBrP=m_vVDcyBrP[k].size();
                               iDcyBrP[k][(unsigned int) (nPDcyBr[k])]=_iDcyBrP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  getStrFromLi(dcyBrP,strDcyBrP,"TxtPnm");
+                                  strcpy(sDcyBrP[k][(unsigned int) (nPDcyBr[k])], strDcyBrP.c_str());
+                                }
                               m_vVDcyBrP[k].push_back(dcyBrP);
                               m_vVIDcyBrP[k].push_back(_iDcyBrP);
                               m_vVNDcyBrP[k].push_back(1);
@@ -1146,6 +1181,11 @@ void topoana::getRslt()
                           else
                             {
                               iDcyBrP[k][(unsigned int) (nPDcyBr[k])]=_iDcyBrP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  getStrFromLi(dcyBrP,strDcyBrP,"TxtPnm");
+                                  strcpy(sDcyBrP[k][(unsigned int) (nPDcyBr[k])], strDcyBrP.c_str());
+                                }
                               if(m_ccSwitch==true&&m_vICcCompDcyBrP[k]==0)
                                 {
                                   iCcDcyBrP[k][(unsigned int) (nPDcyBr[k])]=_iCcDcyBrP;
@@ -1182,6 +1222,11 @@ void topoana::getRslt()
                             {
                               _iDcyBrP=m_vVDcyBrCcP[k].size();
                               iDcyBrCcP[k][(unsigned int) (nCcPDcyBr[k])]=_iDcyBrP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  getStrFromLi(dcyBrCcP,strDcyBrCcP,"TxtPnm");
+                                  strcpy(sDcyBrCcP[k][(unsigned int) (nCcPDcyBr[k])], strDcyBrCcP.c_str());
+                                }
                               m_vVDcyBrCcP[k].push_back(dcyBrCcP);
                               m_vVIDcyBrCcP[k].push_back(_iDcyBrP);
                               m_vVNDcyBrCcP[k].push_back(1);
@@ -1199,6 +1244,11 @@ void topoana::getRslt()
                           else
                             {
                               iDcyBrCcP[k][(unsigned int) (nCcPDcyBr[k])]=_iDcyBrP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  getStrFromLi(dcyBrCcP,strDcyBrCcP,"TxtPnm");
+                                  strcpy(sDcyBrCcP[k][(unsigned int) (nCcPDcyBr[k])], strDcyBrCcP.c_str());
+                                }
                               m_vVNDcyBrCcP[k][_iDcyBrP]++;
                             }
                           nCcPDcyBr[k]++;
@@ -2582,6 +2632,39 @@ void topoana::getRslt()
           if(m_avoidOverCounting==true) isTheEvtPrcsd=true;
         }
       if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(nmsOfOptRootFls);
+      if(m_vPid_compDcyBrP.size()>0&&m_addTBrsForDcyStrs==true)
+        {
+          for(unsigned int i=0;i<nmsOfOptRootFls.size();i++)
+            {
+              TFile * file=new TFile(nmsOfOptRootFls[i].c_str(), "update");
+              TTree * tree_old=(TTree *) file->Get(m_ttrNm.c_str());
+              char specifier1[100], specifier2[120];
+              for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++)
+                {
+                  sprintf(specifier1, "nPDcyBr_%s", m_vNm_compDcyBrP[j].c_str());
+                  const unsigned int NPDcyBr=tree_old->GetMaximum(specifier1);
+                  for(unsigned int k=NPDcyBr;k<nMaxOfTBrsForDcyStrs;k++)
+                    {
+                      sprintf(specifier2, "sDcyBrP_%s_%d", m_vNm_compDcyBrP[j].c_str(), k);
+                      tree_old->SetBranchStatus(specifier2, 0);
+                    }
+                  if(m_ccSwitch==true&&m_vICcCompDcyBrP[j]!=0)
+                    {
+                      sprintf(specifier1, "nCcPDcyBr_%s", m_vNm_compDcyBrP[j].c_str());
+                      const unsigned int NCcPDcyBr=tree_old->GetMaximum(specifier1);
+                      for(unsigned int k=NCcPDcyBr;k<nMaxOfTBrsForDcyStrs;k++)
+                        {
+                          sprintf(specifier2, "sDcyBrCcP_%s_%d", m_vNm_compDcyBrP[j].c_str(), k);
+                          tree_old->SetBranchStatus(specifier2, 0);
+                        }
+                    }
+                }
+              TTree * tree_new=tree_old->CloneTree();
+              tree_new->Write("",TObject::kOverwrite);
+              file->Close();
+              delete file;
+            }
+        }
       if(!m_cut.empty()) cout<<"Note that only "<<nEtrThroughTheCut<<" entries passed the cut."<<endl<<endl;
 
       cout<<"There are "<<sumOfNps<<" MC generated particles in total in all the ";

@@ -178,6 +178,7 @@ class topoana
     vector<string> m_othTtrNms;
     bool m_supprOptRootFls;
     bool m_flatArrayTBrsLocally;
+    bool m_addTBrsForDcyStrs;
     bool m_vbsLevStdOut;
 
     vector<int> m_vIdCcPid;
@@ -462,6 +463,7 @@ class topoana
       m_othTtrNms.clear();
       m_supprOptRootFls=false;
       m_flatArrayTBrsLocally=false;
+      m_addTBrsForDcyStrs=false;
       m_vbsLevStdOut=false;
 
       m_pidOfSISRGam=222222222;
@@ -571,7 +573,7 @@ class topoana
     template < typename T >
     void           countAndSort(TChain * chn, const unsigned int size, string NM, vector<string> vNm, vector<int> vN, vector<int> vNCc, vector<T> v, vector<T> vCc, vector<int> vI, vector<int> vICc, vector< vector<int> > * vVIdxOfHead=0, vector< vector<int> > * vVCcIdxOfHead=0, vector< vector<int> > * vVMidxOfHead=0, vector< vector<int> > * vVCcMidxOfHead=0);
     void	   getStrFromVli(vector< list<int> > & dcyTr, string & strDcyTr);
-    void           getStrFromLi(list<int> & dcyIFSts, string & strDcyIFSts);
+    void           getStrFromLi(list<int> & dcyIFSts, string & strDcyIFSts, string opt="");
     bool 	   isTagMatched(string typeOfTagrec, int Tagrecs, int * Tagreca, int Nrec, int Tagtruth);
     void           getRslt();
     void           writeRsltIntoTxtFl();

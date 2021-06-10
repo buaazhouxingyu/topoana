@@ -341,6 +341,11 @@
 
 }
 
+% Add tbranches for decay strings to output root files (Two options: Y and N. Default: N)
+{
+
+}
+
 % Verbose level of standard output (Two options: Y and N. Default: N)
 {
 
