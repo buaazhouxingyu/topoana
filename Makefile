@@ -1,4 +1,4 @@
-# * Author: Remco de Boer <remco.de.boer@ihep.ac.cn> (creator), Xingyu Zhou <zhouxy@buaa.edu.cn> (reviser)
+# * Author: Remco de Boer <remco.de.boer@ihep.ac.cn> (creator), Xingyu Zhou <zhouxy@lnnu.edu.cn> (reviser)
 # * Date: January 11th, 2019 (created), June 13th, 2019 (revised)
 # * Based on the BOSS_Afterburner repository (from Remco)
 # * Only the necessary things are kept in the current revised version (from Xingyu)
