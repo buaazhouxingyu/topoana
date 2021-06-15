@@ -582,6 +582,7 @@ class topoana
     void           writeRsltIntoTexFl();
     void           getPdfFlFromTexFl();
     void           writeInforOnRslt();
+    string	   cutToSelect(string strDcyBr, string aliasMP, string ccType="all", int nTBrs=1, int nCcTBrs=1, string topoType="dcyBr");
 };
 
 // End the declaration of the topoana class

@@ -11,14 +11,18 @@
 
 dirSOURCE := src
 dirSCRIPT := src
+dirINTERF := src
 dirOBJECT := bin
 dirEXE    := bin
+dirLIB    := bin
 dirDEP    := .d
 
 extSOURCE := cpp
 extSCRIPT := C
+extINTERF := cxx
 extOBJECT := o
 extEXE    := exe
+extLIB    := so
 extDEP	  := d
 
 SUFFIXES += .${extDEP}
@@ -42,6 +46,7 @@ LFLAGS     := ${ROOTLFLAGS} -lTreePlayer
 DEPFLAGS = -MT $@ -MMD -MP -MF ${dirDEP}/$*.Td
 POSTCOMPILE = @mv -f ${dirDEP}/$*.Td ${dirDEP}/$*.${extDEP} && touch $@
 
+PYTHONCFLAGS := $(shell python3-config --includes) -lboost_python
 
 # * INVENTORIES OF FILES * #
 
@@ -51,6 +56,9 @@ SOURCES := $(wildcard ${dirSOURCE}/*.${extSOURCE})
 # * for the scripts
 SCRIPTS := $(wildcard ${dirSCRIPT}/*.${extSCRIPT})
 
+# * for the interfaces
+INTERFS := $(wildcard ${dirINTERF}/*.${extINTERF})
+
 # * for the objects
 OBJECTS := $(SOURCES:${dirSOURCE}/%=${dirOBJECT}/%)
 OBJECTS := $(OBJECTS:.${extSOURCE}=.${extOBJECT})
@@ -58,6 +66,10 @@ OBJECTS := $(OBJECTS:.${extSOURCE}=.${extOBJECT})
 # * for the executables
 EXES := $(SCRIPTS:${dirSCRIPT}/%=${dirEXE}/%)
 EXES := $(EXES:.${extSCRIPT}=.${extEXE})
+
+# * for the libraries
+LIBS := $(INTERFS:${dirINTERF}/%=${dirLIB}/%)
+LIBS := $(LIBS:.${extINTERF}=.${extLIB})
 
 # * for the source dependencies
 DEPS_SOURCE := $(SOURCES:${dirSOURCE}/%=${dirDEP}/%)
@@ -67,12 +79,26 @@ DEPS_SOURCE := $(DEPS_SOURCE:.${extSOURCE}=.${extDEP})
 DEPS_SCRIPT := $(SCRIPTS:${dirSCRIPT}/%=${dirDEP}/%)
 DEPS_SCRIPT := $(DEPS_SCRIPT:.${extSCRIPT}=.${extDEP})
 
+# * for the script dependencies
+DEPS_INTERF := $(INTERFS:${dirINTERF}/%=${dirDEP}/%)
+DEPS_INTERF := $(DEPS_INTERF:.${extINTERF}=.${extDEP})
+
+# * for the sources for the libraries
+SOURCESFORLIBS := src/makeMapsOnPdata.cpp src/cutToSelect.cpp src/countSubstr.cpp src/trim.cpp src/getPidFromTxtPnm.cpp src/sortByPidAndPchrg.cpp src/writeErrInfOnPid3PchrgMap.cpp src/getStrFromLi.cpp src/writePnmFromPid.cpp src/getCcPid.cpp
 
 # * COMPILE AND LINK RULES * #
 # * (dependencies are constructed too)
 
 .PHONY: all
-all : ${EXES}
+all : ${EXES} ${LIBS}
+
+# * for the libraries
+${dirLIB}/%.${extLIB} : ${dirINTERF}/%.${extINTERF} ${SOURCESFORLIBS} ${dirDEP}/%.${extDEP}
+	@echo "Compiling interface file \"$(notdir $<)\""
+	@mkdir -p $(@D) > /dev/null
+	@${CC} $< -fPIC -shared -o $@ ${CFLAGS} ${DEPFLAGS} ${SOURCESFORLIBS} ${LFLAGS} ${PYTHONCFLAGS}
+	${POSTCOMPILE}
+	@echo -e "\e[32;1m\"$(notdir $@)\" generated successfully!\e[0m"
 
 # * for the executables
 ${dirEXE}/%.${extEXE} : ${dirSCRIPT}/%.${extSCRIPT} ${OBJECTS} ${dirDEP}/%.${extDEP}
@@ -99,7 +125,7 @@ ${dirDEP}/%.${extDEP}:
 # * CLEAN RULES * #
 
 .PHONY : clean
-clean: cleanobjects cleanexes
+clean: cleanobjects cleanexes cleanlibs
 
 # * for the objects and the dependencies associated with them
 .PHONY : cleanobjects
@@ -111,6 +137,10 @@ cleanobjects:
 cleanexes:
 	@rm -rf ${EXES} ${DEPS_SCRIPT}
 
+# * for the libraries and the dependencies associated with them
+.PHONY : cleanlibs
+cleanlibs:
+	@rm -rf ${LIBS} ${DEPS_INTERF}
 
 # * INCLUDE ALL DEPENDENCIES * #
--include ${DEPS_SOURCE} ${DEPS_SCRIPT}
+-include ${DEPS_SOURCE} ${DEPS_SCRIPT} ${DEPS_INTERF}
