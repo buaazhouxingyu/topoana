@@ -229,11 +229,13 @@ void topoana::getRslt()
   int iCcPProdBr[sAtpbPid],nPProdBr[sAtpbPid],nCcPProdBr[sAtpbPid],nAllPProdBr[sAtpbPid];
   int iProdBrP[sAtpbPid][nMax],iCcProdBrP[sAtpbPid][nMax],iProdBrCcP[sAtpbPid][nMax];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_compProdBrP.size();i++) iCcPProdBr[i]=m_vICcCompProdBrP[i];
+  char sProdBrP[sAtpbPid][nMax][200],sProdBrCcP[sAtpbPid][nMax][200];
 
   // const unsigned int sAtmPid=m_vPid_compMP.size()>0?m_vPid_compMP.size():1;
   int iCcPM[sAtmPid],nPM[sAtmPid],nCcPM[sAtmPid],nAllPM[sAtmPid];
   int MpidP[sAtmPid][nMax],iCcMP[sAtmPid][nMax],MpidCcP[sAtmPid][nMax];
   if(m_ccSwitch==true) for(unsigned int i=0;i<m_vPid_compMP.size();i++) iCcPM[i]=m_vICcCompMP[i];
+  char sMP[sAtmPid][nMax][50],sMCcP[sAtmPid][nMax][50];
 
   const unsigned int sVAtecIncDcyBr=m_vCompIncDcyBr.size()>0?m_vCompIncDcyBr.size():1;
   int iCcIncDcyBr[sVAtecIncDcyBr],nIncDcyBr[sVAtecIncDcyBr],nCcIncDcyBr[sVAtecIncDcyBr],nAllIncDcyBr[sVAtecIncDcyBr];
@@ -298,6 +300,8 @@ void topoana::getRslt()
   string strDcyBrP, strDcyBrCcP;
   string strCascDcyBrP, strCascDcyBrCcP;
   string strDcyFStP, strDcyFStCcP;
+  string strProdBrP, strProdBrCcP;
+  string strMP, strMCcP;
   bool _isTagMatched;
   bool _isNoTagMatchOrTagMatched;
 
@@ -402,6 +406,9 @@ void topoana::getRslt()
                               sprintf(specifier1, "sDcyBrP_%s_%d", m_vNm_compDcyBrP[j].c_str(), k);
                               sprintf(specifier2, "sDcyBrP_%s_%d/C", m_vNm_compDcyBrP[j].c_str(), k);
                               tr->Branch(specifier1, &sDcyBrP[j][k], specifier2);
+                            }
+                          for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                            {
                               if(m_ccSwitch==true&&m_vICcCompDcyBrP[j]!=0)
                                 {
                                   sprintf(specifier1, "sDcyBrCcP_%s_%d", m_vNm_compDcyBrP[j].c_str(), k);
@@ -423,10 +430,54 @@ void topoana::getRslt()
               if(m_vPid_compProdBrP.size()>0)
                 {
                   createBrs(m_vPid_compProdBrP.size(), "PProdBr", "P", "iProdBr", "iCcProdBr", "iProdBrCc", m_vNm_compProdBrP, iCcPProdBr, tr, nMax, nPProdBr, iProdBrP[0], iCcProdBrP[0], nCcPProdBr, iProdBrCcP[0], nAllPProdBr);
+                  if(m_addTBrsForDcyStrs==true)
+                    {
+                      char specifier1[100],specifier2[120];
+                      for(unsigned int j=0;j<m_vPid_compProdBrP.size();j++)
+                        {
+                          for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                            {
+                              sprintf(specifier1, "sProdBrP_%s_%d", m_vNm_compProdBrP[j].c_str(), k);
+                              sprintf(specifier2, "sProdBrP_%s_%d/C", m_vNm_compProdBrP[j].c_str(), k);
+                              tr->Branch(specifier1, &sProdBrP[j][k], specifier2);
+                            }
+                          for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                            {
+                              if(m_ccSwitch==true&&m_vICcCompProdBrP[j]!=0)
+                                {
+                                  sprintf(specifier1, "sProdBrCcP_%s_%d", m_vNm_compProdBrP[j].c_str(), k);
+                                  sprintf(specifier2, "sProdBrCcP_%s_%d/C", m_vNm_compProdBrP[j].c_str(), k);
+                                  tr->Branch(specifier1, &sProdBrCcP[j][k], specifier2);
+                                }
+                            }
+                        }
+                    }
                 }
               if(m_vPid_compMP.size()>0)
                 {
                   createBrs(m_vPid_compMP.size(), "PMoth", "P", "PDGMoth", "iCcMoth", "PDGMothCc", m_vNm_compMP, iCcPM, tr, nMax, nPM, MpidP[0], iCcMP[0], nCcPM, MpidCcP[0], nAllPM);
+                  if(m_addTBrsForDcyStrs==true)
+                    {
+                      char specifier1[100],specifier2[120];
+                      for(unsigned int j=0;j<m_vPid_compMP.size();j++)
+                        {
+                          for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                            {
+                              sprintf(specifier1, "sMothP_%s_%d", m_vNm_compMP[j].c_str(), k);
+                              sprintf(specifier2, "sMothP_%s_%d/C", m_vNm_compMP[j].c_str(), k);
+                              tr->Branch(specifier1, &sMP[j][k], specifier2);
+                            }
+                          for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                            {
+                              if(m_ccSwitch==true&&m_vICcCompMP[j]!=0)
+                                {
+                                  sprintf(specifier1, "sMothCcP_%s_%d", m_vNm_compMP[j].c_str(), k);
+                                  sprintf(specifier2, "sMothCcP_%s_%d/C", m_vNm_compMP[j].c_str(), k);
+                                  tr->Branch(specifier1, &sMCcP[j][k], specifier2);
+                                }
+                            }
+                        }
+                    }
                 }
               if(m_vCompIncDcyBr.size()>0)
                 {
@@ -1668,6 +1719,14 @@ void topoana::getRslt()
                       nCcPProdBr[j]=0;
                       nAllPProdBr[j]=0;
                     }
+                  if(m_addTBrsForDcyStrs==true)
+                    {
+                      for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                        {
+                          strcpy(sProdBrP[j][k], "");
+                          if(m_ccSwitch==true&&m_vICcCompProdBrP[j]!=0) strcpy(sProdBrCcP[j][k], "");
+                        }
+                    }
                 }     
               for(unsigned int j=0;j<vPid.size();j++)
                 {
@@ -1721,6 +1780,11 @@ void topoana::getRslt()
                             {
                               _iProdBrP=m_vVProdBrP[k].size();
                               iProdBrP[k][(unsigned int) (nPProdBr[k])]=_iProdBrP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  getStrFromLi(prodBrP,strProdBrP,"TxtPnm");
+                                  strcpy(sProdBrP[k][(unsigned int) (nPProdBr[k])], strProdBrP.c_str());
+                                }
                               m_vVProdBrP[k].push_back(prodBrP);
                               m_vVIProdBrP[k].push_back(_iProdBrP);
                               m_vVNProdBrP[k].push_back(1);
@@ -1753,6 +1817,11 @@ void topoana::getRslt()
                           else
                             {
                               iProdBrP[k][(unsigned int) (nPProdBr[k])]=_iProdBrP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  getStrFromLi(prodBrP,strProdBrP,"TxtPnm");
+                                  strcpy(sProdBrP[k][(unsigned int) (nPProdBr[k])], strProdBrP.c_str());
+                                }
                               if(m_ccSwitch==true&&m_vICcCompProdBrP[k]==0)
                                 {
                                   iCcProdBrP[k][(unsigned int) (nPProdBr[k])]=_iCcProdBrP;
@@ -1807,6 +1876,11 @@ void topoana::getRslt()
                             {
                               _iProdBrP=m_vVProdBrCcP[k].size();
                               iProdBrCcP[k][(unsigned int) (nCcPProdBr[k])]=_iProdBrP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  getStrFromLi(prodBrCcP,strProdBrCcP,"TxtPnm");
+                                  strcpy(sProdBrCcP[k][(unsigned int) (nCcPProdBr[k])], strProdBrCcP.c_str());
+                                }
                               m_vVProdBrCcP[k].push_back(prodBrCcP);
                               m_vVIProdBrCcP[k].push_back(_iProdBrP);
                               m_vVNProdBrCcP[k].push_back(1);
@@ -1824,6 +1898,11 @@ void topoana::getRslt()
                           else
                             {
                               iProdBrCcP[k][(unsigned int) (nCcPProdBr[k])]=_iProdBrP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  getStrFromLi(prodBrCcP,strProdBrCcP,"TxtPnm");
+                                  strcpy(sProdBrCcP[k][(unsigned int) (nCcPProdBr[k])], strProdBrCcP.c_str());
+                                }
                               m_vVNProdBrCcP[k][_iProdBrP]++;
                             }
                           nCcPProdBr[k]++;
@@ -1837,6 +1916,7 @@ void topoana::getRslt()
           if(m_vPid_compMP.size()>0)
             {
               int mpid,mpidCcP;
+              ostringstream oss;
               for(unsigned int j=0;j<m_vPid_compMP.size();j++)
                 {
                   nPM[j]=0;
@@ -1845,7 +1925,15 @@ void topoana::getRslt()
                       nCcPM[j]=0;
                       nAllPM[j]=0;
                     }
-                }     
+                  if(m_addTBrsForDcyStrs==true)
+                    {
+                      for(unsigned int k=0;k<nMaxOfTBrsForDcyStrs;k++)
+                        {
+                          strcpy(sMP[j][k], "");
+                          if(m_ccSwitch==true&&m_vICcCompMP[j]!=0) strcpy(sMCcP[j][k], "");
+                        }
+                    }
+                }
               for(unsigned int j=0;j<vPid.size();j++)
                 {
                   for(unsigned int k=0;k<m_vPid_compMP.size();k++)
@@ -1881,6 +1969,13 @@ void topoana::getRslt()
                             {
                               _iMP=m_vVMpidP[k].size();
                               MpidP[k][(unsigned int) (nPM[k])]=mpid;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  oss.str("");
+                                  writePnmFromPid(oss, "TxtPnm2", mpid);
+                                  strMP=oss.str();
+                                  strcpy(sMP[k][(unsigned int) (nPM[k])], strMP.c_str());
+                                }
                               m_vVMpidP[k].push_back(mpid);
                               m_vVIMP[k].push_back(_iMP);
                               m_vVNMP[k].push_back(1);
@@ -1907,6 +2002,13 @@ void topoana::getRslt()
                           else
                             {
                               MpidP[k][(unsigned int) (nPM[k])]=mpid;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  oss.str("");
+                                  writePnmFromPid(oss, "TxtPnm2", mpid);
+                                  strMP=oss.str();
+                                  strcpy(sMP[k][(unsigned int) (nPM[k])], strMP.c_str());
+                                }
                               if(m_ccSwitch==true&&m_vICcCompMP[k]==0)
                                 {
                                   iCcMP[k][(unsigned int) (nPM[k])]=_iCcMP;
@@ -1944,6 +2046,13 @@ void topoana::getRslt()
                             {
                               _iMP=m_vVMpidCcP[k].size();
                               MpidCcP[k][(unsigned int) (nCcPM[k])]=mpidCcP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  oss.str("");
+                                  writePnmFromPid(oss, "TxtPnm2", mpidCcP);
+                                  strMCcP=oss.str();
+                                  strcpy(sMCcP[k][(unsigned int) (nCcPM[k])], strMCcP.c_str());
+                                }
                               m_vVMpidCcP[k].push_back(mpidCcP);
                               m_vVIMCcP[k].push_back(_iMP);
                               m_vVNMCcP[k].push_back(1);
@@ -1957,6 +2066,13 @@ void topoana::getRslt()
                           else
                             {
                               MpidCcP[k][(unsigned int) (nCcPM[k])]=mpidCcP;
+                              if(m_addTBrsForDcyStrs==true)
+                                {
+                                  oss.str("");
+                                  writePnmFromPid(oss, "TxtPnm2", mpidCcP);
+                                  strMCcP=oss.str();
+                                  strcpy(sMCcP[k][(unsigned int) (nCcPM[k])], strMCcP.c_str());
+                                }
                               m_vVNMCcP[k][_iMP]++;
                             }
                           nCcPM[k]++;
@@ -2632,7 +2748,7 @@ void topoana::getRslt()
           if(m_avoidOverCounting==true) isTheEvtPrcsd=true;
         }
       if(m_useArrayTBrsOpt==false&&m_supprOptRootFls==false) flatArrayBrs(nmsOfOptRootFls);
-      if(m_vPid_compDcyBrP.size()>0&&m_addTBrsForDcyStrs==true)
+      if((m_vPid_compDcyBrP.size()>0||m_vPid_compProdBrP.size()>0||m_vPid_compMP.size()>0)&&m_addTBrsForDcyStrs==true)
         {
           for(unsigned int i=0;i<nmsOfOptRootFls.size();i++)
             {
@@ -2655,6 +2771,46 @@ void topoana::getRslt()
                       for(unsigned int k=NCcPDcyBr;k<nMaxOfTBrsForDcyStrs;k++)
                         {
                           sprintf(specifier2, "sDcyBrCcP_%s_%d", m_vNm_compDcyBrP[j].c_str(), k);
+                          tree_old->SetBranchStatus(specifier2, 0);
+                        }
+                    }
+                }
+              for(unsigned int j=0;j<m_vPid_compProdBrP.size();j++)
+                {
+                  sprintf(specifier1, "nPProdBr_%s", m_vNm_compProdBrP[j].c_str());
+                  const unsigned int NPProdBr=tree_old->GetMaximum(specifier1);
+                  for(unsigned int k=NPProdBr;k<nMaxOfTBrsForDcyStrs;k++)
+                    {
+                      sprintf(specifier2, "sProdBrP_%s_%d", m_vNm_compProdBrP[j].c_str(), k);
+                      tree_old->SetBranchStatus(specifier2, 0);
+                    }
+                  if(m_ccSwitch==true&&m_vICcCompProdBrP[j]!=0)
+                    {
+                      sprintf(specifier1, "nCcPProdBr_%s", m_vNm_compProdBrP[j].c_str());
+                      const unsigned int NCcPProdBr=tree_old->GetMaximum(specifier1);
+                      for(unsigned int k=NCcPProdBr;k<nMaxOfTBrsForDcyStrs;k++)
+                        {
+                          sprintf(specifier2, "sProdBrCcP_%s_%d", m_vNm_compProdBrP[j].c_str(), k);
+                          tree_old->SetBranchStatus(specifier2, 0);
+                        }
+                    }
+                }
+              for(unsigned int j=0;j<m_vPid_compMP.size();j++)
+                {
+                  sprintf(specifier1, "nPMoth_%s", m_vNm_compMP[j].c_str());
+                  const unsigned int NPM=tree_old->GetMaximum(specifier1);
+                  for(unsigned int k=NPM;k<nMaxOfTBrsForDcyStrs;k++)
+                    {
+                      sprintf(specifier2, "sMothP_%s_%d", m_vNm_compMP[j].c_str(), k);
+                      tree_old->SetBranchStatus(specifier2, 0);
+                    }
+                  if(m_ccSwitch==true&&m_vICcCompMP[j]!=0)
+                    {
+                      sprintf(specifier1, "nCcPMoth_%s", m_vNm_compMP[j].c_str());
+                      const unsigned int NCcPM=tree_old->GetMaximum(specifier1);
+                      for(unsigned int k=NCcPM;k<nMaxOfTBrsForDcyStrs;k++)
+                        {
+                          sprintf(specifier2, "sMothCcP_%s_%d", m_vNm_compMP[j].c_str(), k);
                           tree_old->SetBranchStatus(specifier2, 0);
                         }
                     }
