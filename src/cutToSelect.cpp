@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int nTBrs, int nCcTBrs, string topoType)
+string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int nTBrs, int nCcTBrs, string topoType, string lang)
 {
   int nArrow=countSubstr(strDcyBr, "-->");
   if(nArrow!=1)
@@ -43,6 +43,14 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
     {
       cerr<<"Error: \""<<topoType<<"\" is not a valid value for the sixth argument of the function \"cutToSelect\"!"<<endl;
       cerr<<"Infor: For the time being, only \"dcyBr\" and \"prodBr\" is valid for the argument."<<endl;
+      cerr<<"Infor: Please correct it to the right one you want."<<endl;
+      exit(-1);
+    }
+
+  if(lang!="python"&&lang!="c++")
+    {
+      cerr<<"Error: \""<<lang<<"\" is not a valid value for the seventh argument of the function \"cutToSelect\"!"<<endl;
+      cerr<<"Infor: For the time being, only \"python\" and \"c++\" is valid for the argument."<<endl;
       cerr<<"Infor: Please correct it to the right one you want."<<endl;
       exit(-1);
     }
@@ -97,35 +105,38 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
   char strI[10];
   if(ccType=="")
     {
-      if(topoType=="dcyBr") result = "(sDcyBrP_";
-      else if(topoType=="prodBr") result = "(sProdBrP_";
+      if(topoType=="dcyBr") result = "\"(sDcyBrP_";
+      else if(topoType=="prodBr") result = "\"(sProdBrP_";
       result = result + aliasMP + "_0 == \\\"" + strDcyBrNew + "\\\")";
       for(unsigned int i=1;i<((unsigned int) nTBrs);i++)
         {
           sprintf(strI, "%d", i);
-          result = result + " || ";
+          if(lang=="python") result = result + " or ";
+          else result = result + " || ";
           if(topoType=="dcyBr") result = result + "(sDcyBrP_";
           else if(topoType=="prodBr") result = result + "(sProdBrP_";
           result = result + aliasMP + "_" + strI + " == \\\"" + strDcyBrNew + "\\\")";
         }
+      result = result + "\"";
     }
   else if(ccType=="cc")
     {
       if(getCcPid(pid)!=pid)
         {
-          if(topoType=="dcyBr") result = "(sDcyBrCcP_";
-          else if(topoType=="prodBr") result = "(sProdBrCcP_";
+          if(topoType=="dcyBr") result = "\"(sDcyBrCcP_";
+          else if(topoType=="prodBr") result = "\"(sProdBrCcP_";
         }
       else
         {
-          if(topoType=="dcyBr") result = "(sDcyBrP_";
-          else if(topoType=="prodBr") result = "(sProdBrP_";
+          if(topoType=="dcyBr") result = "\"(sDcyBrP_";
+          else if(topoType=="prodBr") result = "\"(sProdBrP_";
         }
       result = result + aliasMP + "_0 == \\\"" + strCcDcyBrNew + "\\\")";
       for(unsigned int i=1;i<((unsigned int) nCcTBrs);i++)
         {
           sprintf(strI, "%d", i);
-          result = result + " || ";
+          if(lang=="python") result = result + " or ";
+          else result = result + " || ";
           if(getCcPid(pid)!=pid)
             {
               if(topoType=="dcyBr") result = result + "(sDcyBrCcP_";
@@ -138,16 +149,18 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
             }
           result = result + aliasMP + "_" + strI + " == \\\"" + strCcDcyBrNew + "\\\")";
         }
+      result = result + "\"";
     }
   else if(ccType=="all")
     {
-      if(topoType=="dcyBr") result = "(sDcyBrP_";
-      else if(topoType=="prodBr") result = "(sProdBrP_";
+      if(topoType=="dcyBr") result = "\"(sDcyBrP_";
+      else if(topoType=="prodBr") result = "\"(sProdBrP_";
       result = result + aliasMP + "_0 == \\\"" + strDcyBrNew + "\\\")";
       for(unsigned int i=1;i<((unsigned int) nTBrs);i++)
         {
           sprintf(strI, "%d", i);
-          result = result + " || ";
+          if(lang=="python") result = result + " or ";
+          else result = result + " || ";
           if(topoType=="dcyBr") result = result + "(sDcyBrP_";
           else if(topoType=="prodBr") result = result + "(sProdBrP_";
           result = result + aliasMP + "_" + strI + " == \\\"" + strDcyBrNew + "\\\")";
@@ -157,7 +170,8 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
           for(unsigned int i=0;i<((unsigned int) nCcTBrs);i++)
             {
               sprintf(strI, "%d", i);
-              result = result + " || ";
+              if(lang=="python") result = result + " or ";
+              else result = result + " || ";
               if(getCcPid(pid)!=pid)
                 {
                   if(topoType=="dcyBr") result = result + "(sDcyBrCcP_";
@@ -171,6 +185,7 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
               result = result + aliasMP + "_" + strI + " == \\\"" + strCcDcyBrNew + "\\\")";
             }
         }
+      result = result + "\"";
     }
 
   return result;
