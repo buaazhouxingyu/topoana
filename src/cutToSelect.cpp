@@ -1,6 +1,7 @@
 #include "../include/topoana.h"
 #include <iostream>
 #include <cstdlib>
+#include <sstream>
 
 string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int nTBrs, int nCcTBrs, string topoType, string lang)
 {
