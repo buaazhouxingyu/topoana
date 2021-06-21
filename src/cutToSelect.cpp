@@ -106,8 +106,7 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
   char strI[10];
   if(ccType=="")
     {
-      if(lang=="python") result = "'";
-      else if(lang=="c++") result = "\"";
+      if(lang=="c++") result = "\"";
       if(topoType=="dcyBr") result = result + "(sDcyBrP_";
       else if(topoType=="prodBr") result = result + "(sProdBrP_";
       result = result + aliasMP + "_0 == ";
@@ -128,13 +127,11 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
           if(lang=="c++") result = result + "\\";
           result = result + "\")";
         }
-      if(lang=="python") result = result + "'";
-      else if(lang=="c++") result = result + "\"";
+      if(lang=="c++") result = result + "\"";
     }
   else if(ccType=="cc")
     {
-      if(lang=="python") result = "'";
-      else if (lang=="c++") result = "\"";
+      if(lang=="c++") result = "\"";
       if(getCcPid(pid)!=pid)
         {
           if(topoType=="dcyBr") result = result + "(sDcyBrCcP_";
@@ -171,13 +168,11 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
           if(lang=="c++") result = result + "\\";
           result = result + "\")";
         }
-      if(lang=="python") result = result + "'";
-      else if(lang=="c++") result = result + "\"";
+      if(lang=="c++") result = result + "\"";
     }
   else if(ccType=="all")
     {
-      if(lang=="python") result = "'";
-      else if (lang=="c++") result = "\"";
+      if(lang=="c++") result = "\"";
       if(topoType=="dcyBr") result = result + "(sDcyBrP_";
       else if(topoType=="prodBr") result = result + "(sProdBrP_";
       result = result + aliasMP + "_0 == ";
@@ -222,8 +217,7 @@ string topoana::cutToSelect(string strDcyBr, string aliasMP, string ccType, int 
               result = result + "\")";
             }
         }
-      if(lang=="python") result = result + "'";
-      else if (lang=="c++") result = result + "\"";
+      if(lang=="c++") result = result + "\"";
     }
 
   return result;
