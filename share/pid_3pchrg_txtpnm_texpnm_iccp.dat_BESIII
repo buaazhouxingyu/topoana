@@ -222,7 +222,7 @@
             1103      -2	dd_1                    (dd)_{1}                         1
            -1103       2	anti-dd_1               \bar{(dd)}_{1}                  -1
             1114      -3	Delta-                  \Delta^{-}                       1
-           -1114       3	anti-Delta+             \bar{\Delta}^{-}                -1
+           -1114       3	anti-Delta+             \bar{\Delta}^{+}                -1
             2101       1	ud_0                    (ud)_{0}                         1
            -2101      -1	anti-ud_0               \bar{(ud)}_{0}                  -1
             2103       1	ud_1                    (ud)_{1}                         1
@@ -242,9 +242,9 @@
             2212       3	p+                      p                                1
            -2212      -3	anti-p-                 \bar{p}                         -1
             2214       3	Delta+                  \Delta^{+}                       1
-           -2214      -3	anti-Delta-             \bar{\Delta}^{+}                -1
+           -2214      -3	anti-Delta-             \bar{\Delta}^{-}                -1
             2224       6	Delta++                 \Delta^{++}                      1
-           -2224      -6	anti-Delta--            \bar{\Delta}^{++}               -1
+           -2224      -6	anti-Delta--            \bar{\Delta}^{--}               -1
             3101      -2	sd_0                    (sd)_{0}                         1
            -3101       2	anti-sd_0               \bar{(sd)}_{0}                  -1
             3103      -2	sd_1                    (sd)_{1}                         1

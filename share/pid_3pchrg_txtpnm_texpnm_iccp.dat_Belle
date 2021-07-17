@@ -181,7 +181,7 @@
             1112      -3	Delta(1620)-            \Delta(1620)^{-}                       1
            -1112       3	anti-Delta(1620)+       \bar{\Delta}(1620)^{+}                -1
             1114      -3	Delta-                  \Delta^{-}                             1
-           -1114       3	anti-Delta+             \bar{\Delta}^{-}                      -1
+           -1114       3	anti-Delta+             \bar{\Delta}^{+}                      -1
             1212       0	Delta(1620)0            \Delta(1620)^{0}                       1
            -1212       0	anti-Delta(1620)0       \bar{\Delta}(1620)^{0}                -1
             1214       0	N(1520)0                N(1520)^{0}                            1
@@ -205,11 +205,11 @@
             2212       3	p+                      p                                      1
            -2212      -3	anti-p-                 \bar{p}                               -1
             2214       3	Delta+                  \Delta^{+}                             1
-           -2214      -3	anti-Delta-             \bar{\Delta}^{+}                      -1
+           -2214      -3	anti-Delta-             \bar{\Delta}^{-}                      -1
             2222       6	Delta(1620)++           \Delta(1620)^{++}                      1
            -2222      -6	anti-Delta(1620)--      \bar{\Delta}(1620)^{--}               -1
             2224       6	Delta++                 \Delta^{++}                            1
-           -2224      -6	anti-Delta--            \bar{\Delta}^{++}                     -1
+           -2224      -6	anti-Delta--            \bar{\Delta}^{--}                     -1
             3101      -2	sd_0                    (sd)_{0}                               1
            -3101       2	anti-sd_0               \bar{(sd)}_{0}                        -1
             3103      -2	sd_1                    (sd)_{1}                               1
