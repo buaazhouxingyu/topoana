@@ -107,13 +107,13 @@ void topoana::getRslt()
     {
       chn->SetBranchAddress(m_tbrNmOfPid.c_str(), &Pid);
       chn->SetBranchAddress(m_tbrNmOfMidx.c_str(), &Midx);
-      if(m_useRidx==true) chn->SetBranchAddress(m_tbrNmOfRidx.c_str(), &Ridx);
+      if(m_useRidx==true&&m_foundRidx==true) chn->SetBranchAddress(m_tbrNmOfRidx.c_str(), &Ridx);
     }
   else if(m_strgTpOfRawIptTopoDat=="VOI")
     {
       chn->SetBranchAddress(m_tbrNmOfPid.c_str(), &pVPid);
       chn->SetBranchAddress(m_tbrNmOfMidx.c_str(), &pVMidx);
-      if(m_useRidx==true) chn->SetBranchAddress(m_tbrNmOfRidx.c_str(), &pVRidx);
+      if(m_useRidx==true&&m_foundRidx==true) chn->SetBranchAddress(m_tbrNmOfRidx.c_str(), &pVRidx);
     }
   else
     {
@@ -892,22 +892,26 @@ void topoana::getRslt()
             }
           else
             {
+              Nps=pVPid->size();
               for(unsigned int j=0;j<pVPid->size();j++)
                 {
                   vPid.push_back(pVPid->at(j));
                   vMidx.push_back(pVMidx->at(j));
-                  if(m_useRidx==true) Ridx[j]=pVRidx->at(j);
+                  if(m_useRidx==true&&m_foundRidx==true) Ridx[j]=pVRidx->at(j);
                   /*cout<<j<<"\t"<<vPid[j]<<"\t"<<vMidx[j];
                   if(m_useRidx==true) cout<<"\t"<<Ridx[j];
                   cout<<endl;*/
                 }
             }
+
+          if((m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="VOI")&&m_useRidx==true&&m_foundRidx==false) for(int j=0;j<Nps;j++) Ridx[j]=j;
           //cout<<endl;
           /*for(unsigned int j=0;j<vPid.size();j++)
             {
               cout<<j<<"\t"<<vPid[j]<<"\t"<<vMidx[j]<<endl;
             }
           cout<<endl;*/
+
           sortPs(vPid,vMidx,&vIdxOrg);
           dcyTr.clear();
           vIdxOfHead.clear();

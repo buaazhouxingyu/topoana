@@ -282,10 +282,19 @@ void topoana::checkInput()
                   if(m_useRidx==true)
                     {
                       TBranch * br3=tr->FindBranch(m_tbrNmOfRidx.c_str());
-                      if(!br3)
+                      if(br3)
+                        {
+                          m_foundRidx=true;
+                        }
+                      else if(m_tbrNmOfRidx!="MCGenRawIndex")
                         {
                           cerr<<"Error: The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" does not contain a branch named \""<<m_tbrNmOfRidx<<"\"!"<<endl<<endl;
                           allIptsAreOK=false;
+                        }
+                      else
+                        {
+                          cerr<<"Warning: The tree \""<<m_ttrNm<<"\" in the input root file \""<<chnElmt->GetTitle()<<"\" does not contain a branch named \""<<m_tbrNmOfRidx<<"\"!"<<endl<<endl;
+                          cerr<<"Infor: In this case, the integers from 0 to Nps-1 will be used as the raw indices."<<endl;
                         }
                     }
                 }
