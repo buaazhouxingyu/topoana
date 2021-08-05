@@ -33,20 +33,29 @@ SUFFIXES += .${extDEP}
 CC := g++ # clang++
 ROOTCFLAGS := $(shell root-config --cflags)
 ROOTLFLAGS := $(shell root-config --libs --glibs)
-# * The following statement is used for deciding whether to assign the argument 
-# * "-std=c++0x" to the variable "CFLAGS" according to the current version of "gcc".
-# * If the version number is lower than or equal to 4.6, then assign "-std=c++0x" 
-# * to "CFLAGS". Otherwise, no assignment is performed. Here, version 4.6 is used
-# * as the watershed because "gcc" starts to support c++ 11 from version 4.7.
+# * The following statement is used for deciding whether to assign the argument
+# * "-std=c++0x" or "-std=c++11" to the variable "CFLAGS" according to the current
+# * version of "gcc". If the version number is lower than or equal to 4.6, then
+# * assign "-std=c++0x" to "CFLAGS"; else if the version number is lower than or
+# * equal to 4.8, then assign "-std=c++11" to "CFLAGS"; otherwise, no assignment
+# * is performed. Here, versions 4.6 and 4.8 are used as the watersheds because
+# * "gcc" starts to support c++ 11 from version 4.7 and we found "-std=c++11" is
+# * still required for version 4.8.5 of "gcc".
 CFLAGS     := $(shell gcc --version | sed -n '1p' \
               | awk '{print $$3}' | awk -F \. '{print $$1$$2}' \
-              | awk '{if($$1<=46) {print "-std=c++0x"}}')
+              | awk '{if($$1<=46) {print "-std=c++0x"} \
+                      else if($$1<=48) {print "-std=c++11"}}')
 CFLAGS     += -g -Wfatal-errors -Wall -Wextra ${ROOTCFLAGS}
 LFLAGS     := ${ROOTLFLAGS} -lTreePlayer
 DEPFLAGS = -MT $@ -MMD -MP -MF ${dirDEP}/$*.Td
 POSTCOMPILE = @mv -f ${dirDEP}/$*.Td ${dirDEP}/$*.${extDEP} && touch $@
 
-PYTHONCFLAGS := $(shell python3-config --includes) -lboost_python
+# * The following statement is used for deciding whether to assign the command
+# * "python3-config" or "python-config" to the variable "PYTHONCONFIG". Normally,
+# * "python3-config" should be assigned to "PYTHONCONFIG". In case "python3-config"
+# * does not exist, "python-config" will be assigned to "PYTHONCONFIG".
+PYTHONCONFIG := $(shell command -v python3-config >/dev/null && echo python3-config || echo python-config)
+PYTHONCFLAGS := $(shell ${PYTHONCONFIG} --includes) -lboost_python
 
 # * INVENTORIES OF FILES * #
 
