@@ -241,7 +241,8 @@ void topoana::writeRsltIntoTxtFl()
           fout<<endl;
 
           fout<<"Decay branches of";
-          writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyBrP[i]);
+          if(m_vPid_compDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyBrP[i]);
+          else fout<<" \""<<m_vTBrNmOfTagRec_compDcyBrP[i]<<"\"";
           if(m_vMulti_compDcyBrP[i]>1) fout<<" (with the alias "<<m_vNm_compDcyBrP[i]<<")";
           fout<<":"<<endl<<endl;
 
@@ -300,8 +301,8 @@ void topoana::writeRsltIntoTxtFl()
               nCCase=nCCase+nCCaseOfRest;
               fout<<nCCaseOfRest<<"\tnCCase:  "<<nCCase<<endl;
               fout<<" ";
-              list<int>::iterator liit=dcyBrP.begin();
-              writePnmFromPid(fout,"TxtPnm",(*liit));
+              if(m_vPid_compDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyBrP[i]);
+              else fout<<" \""<<m_vTBrNmOfTagRec_compDcyBrP[i]<<"\"";
               fout<<" --> others ("<<m_vVDcyBrP[i].size()-nDcyBrPToBePrtd<<" in total)";
               fout<<endl<<endl;
             }
@@ -315,7 +316,8 @@ void topoana::writeRsltIntoTxtFl()
           fout<<endl;
 
           fout<<"Cascade decay branches of";
-          writePnmFromPid(fout,"TxtPnm",m_vPid_compCascDcyBrP[i]);
+          if(m_vPid_compCascDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TxtPnm",m_vPid_compCascDcyBrP[i]);
+          else fout<<" \""<<m_vTBrNmOfTagRec_compCascDcyBrP[i]<<"\"";
           if(m_vMulti_compCascDcyBrP[i]>1||m_vHCascDcyBrMax[i]!=ULONG_MAX)
             {
               fout<<" (";
@@ -397,7 +399,8 @@ void topoana::writeRsltIntoTxtFl()
               nCCase=nCCase+nCCaseOfRest;
               fout<<nCCaseOfRest<<"\tnCCase:  "<<nCCase<<endl;
               fout<<" ";
-              writePnmFromPid(fout,"TxtPnm",m_vPid_compCascDcyBrP[i]);
+              if(m_vPid_compCascDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TxtPnm",m_vPid_compCascDcyBrP[i]);
+              else fout<<" \""<<m_vTBrNmOfTagRec_compCascDcyBrP[i]<<"\"";
               fout<<" --> others ("<<m_vVCascDcyBrP[i].size()-nCascDcyBrPToBePrtd<<" in total)";
               fout<<endl<<endl;
             }
@@ -411,7 +414,8 @@ void topoana::writeRsltIntoTxtFl()
           fout<<endl;
 
           fout<<"Decay final states of";
-          writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyFStP[i]);
+          if(m_vPid_compDcyFStP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyFStP[i]);
+          else fout<<" \""<<m_vTBrNmOfTagRec_compDcyFStP[i]<<"\"";
           if(m_vMulti_compDcyFStP[i]>1||m_vNDcyFStP[i]!=ULONG_MAX)
             {
               fout<<" (";
@@ -483,8 +487,8 @@ void topoana::writeRsltIntoTxtFl()
               nCCase=nCCase+nCCaseOfRest;
               fout<<nCCaseOfRest<<"\tnCCase:  "<<nCCase<<endl;
               fout<<" ";
-              list<int>::iterator liit=dcyFStP.begin();
-              writePnmFromPid(fout,"TxtPnm",(*liit));
+              if(m_vPid_compDcyFStP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TxtPnm",m_vPid_compDcyFStP[i]);
+              else fout<<" \""<<m_vTBrNmOfTagRec_compDcyFStP[i]<<"\"";
               fout<<" ---> others ("<<m_vVDcyFStP[i].size()-nDcyFStPToBePrtd<<" in total)";
               fout<<endl<<endl;
             }
@@ -498,7 +502,8 @@ void topoana::writeRsltIntoTxtFl()
           fout<<endl;
 
           fout<<"Production branches of";
-          writePnmFromPid(fout,"TxtPnm",m_vPid_compProdBrP[i]);
+          if(m_vPid_compProdBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TxtPnm",m_vPid_compProdBrP[i]);
+          else fout<<" \""<<m_vTBrNmOfTagRec_compProdBrP[i]<<"\"";
           if(m_vMulti_compProdBrP[i]>1) fout<<" (with the alias "<<m_vNm_compProdBrP[i]<<")";
           fout<<":"<<endl<<endl;
 
@@ -532,7 +537,43 @@ void topoana::writeRsltIntoTxtFl()
                   writePnmFromPid(fout,"TxtPnm",(*liit));
                 }
               fout<<" -->";
-              for(liit++;liit!=prodBrP.end();liit++) writePnmFromPid(fout,"TxtPnm",(*liit));
+              if(m_vPid_compProdBrP[i]!=m_pidOfAnything)
+                {
+                  for(liit++;liit!=prodBrP.end();liit++)
+                    {
+                      if(((*liit)==m_vPid_compProdBrP[i])||((m_ccSwitch==true)&&((*liit)==m_vPid_ccCompProdBrP[i])))
+                        {
+                          fout<<" \"";
+                          writePnmFromPid(fout,"TxtPnm2",(*liit));
+                          fout<<"\"";
+                        }
+                      else
+                        {
+                          writePnmFromPid(fout,"TxtPnm",(*liit));
+                        }
+                    }
+                }
+              else
+                {
+                  list<int>::iterator liit2=prodBrP.end();
+                  liit2--;
+                  int iP=(*liit2)-m_constantOnAnything;
+                  int iDaughter=0; 
+                  for(liit++;liit!=liit2;liit++)
+                    {
+                      if(iDaughter==iP)
+                        {
+                          fout<<" \"";
+                          writePnmFromPid(fout,"TxtPnm2",(*liit));
+                          fout<<"\"";
+                        }
+                      else
+                        {
+                          writePnmFromPid(fout,"TxtPnm",(*liit));
+                        }
+                      iDaughter++;
+                    }
+                }
               fout<<endl<<endl;
             }
           if(nProdBrPToBePrtd<m_vVProdBrP[i].size())
@@ -573,7 +614,8 @@ void topoana::writeRsltIntoTxtFl()
           fout<<endl;
 
           fout<<"Mothers of";
-          writePnmFromPid(fout,"TxtPnm",m_vPid_compMP[i]);
+          if(m_vPid_compMP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TxtPnm",m_vPid_compMP[i]);
+          else fout<<" \""<<m_vTBrNmOfTagRec_compMP[i]<<"\"";
           if(m_vMulti_compMP[i]>1) fout<<" (with the alias "<<m_vNm_compMP[i]<<")";
           fout<<":"<<endl;
 

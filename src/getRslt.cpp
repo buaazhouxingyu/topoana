@@ -679,13 +679,18 @@ void topoana::getRslt()
             }
           if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,Ridx);
 
-          if(m_vPid_sigP.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigP, Tagrecsi_sigP, Tagrecsf_sigP, Tagrecsd_sigP);
-          if(m_vSigDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigDcyBr, Tagrecsi_sigDcyBr, Tagrecsf_sigDcyBr, Tagrecsd_sigDcyBr);
-          if(m_vSigIncDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagrecsf_sigIncDcyBr, Tagrecsd_sigIncDcyBr);
-          if(m_vSigCascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagrecsf_sigCascDcyBr, Tagrecsd_sigCascDcyBr);
-          if(m_vSigIncCascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagrecsf_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr);
-          if(m_vSigIRADcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagrecsf_sigIRADcyBr, Tagrecsd_sigIRADcyBr);
-          if(m_vSigIncOrIRACascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagrecsf_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr);
+          if(m_vPid_compDcyBrP.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_compDcyBrP, m_vTypeOfTagRec_compDcyBrP, Nrec_compDcyBrP, Tagreca_compDcyBrP, Tagrecsi_compDcyBrP, Tagrecsf_compDcyBrP, Tagrecsd_compDcyBrP);
+          if(m_vPid_compCascDcyBrP.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_compCascDcyBrP, m_vTypeOfTagRec_compCascDcyBrP, Nrec_compCascDcyBrP, Tagreca_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagrecsf_compCascDcyBrP, Tagrecsd_compCascDcyBrP);
+          if(m_vPid_compDcyFStP.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_compDcyFStP, m_vTypeOfTagRec_compDcyFStP, Nrec_compDcyFStP, Tagreca_compDcyFStP, Tagrecsi_compDcyFStP, Tagrecsf_compDcyFStP, Tagrecsd_compDcyFStP);
+          if(m_vPid_compProdBrP.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_compProdBrP, m_vTypeOfTagRec_compProdBrP, Nrec_compProdBrP, Tagreca_compProdBrP, Tagrecsi_compProdBrP, Tagrecsf_compProdBrP, Tagrecsd_compProdBrP);
+          if(m_vPid_compMP.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_compMP, m_vTypeOfTagRec_compMP, Nrec_compMP, Tagreca_compMP, Tagrecsi_compMP, Tagrecsf_compMP, Tagrecsd_compMP);
+          if(m_vPid_sigP.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigP, m_vTypeOfTagRec_sigP, Nrec_sigP, Tagreca_sigP, Tagrecsi_sigP, Tagrecsf_sigP, Tagrecsd_sigP);
+          if(m_vSigDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigDcyBr, m_vTypeOfTagRec_sigDcyBr, Nrec_sigDcyBr, Tagreca_sigDcyBr, Tagrecsi_sigDcyBr, Tagrecsf_sigDcyBr, Tagrecsd_sigDcyBr);
+          if(m_vSigIncDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncDcyBr, m_vTypeOfTagRec_sigIncDcyBr, Nrec_sigIncDcyBr, Tagreca_sigIncDcyBr, Tagrecsi_sigIncDcyBr, Tagrecsf_sigIncDcyBr, Tagrecsd_sigIncDcyBr);
+          if(m_vSigCascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigCascDcyBr, m_vTypeOfTagRec_sigCascDcyBr, Nrec_sigCascDcyBr, Tagreca_sigCascDcyBr, Tagrecsi_sigCascDcyBr, Tagrecsf_sigCascDcyBr, Tagrecsd_sigCascDcyBr);
+          if(m_vSigIncCascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncCascDcyBr, m_vTypeOfTagRec_sigIncCascDcyBr, Nrec_sigIncCascDcyBr, Tagreca_sigIncCascDcyBr, Tagrecsi_sigIncCascDcyBr, Tagrecsf_sigIncCascDcyBr, Tagrecsd_sigIncCascDcyBr);
+          if(m_vSigIRADcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIRADcyBr, m_vTypeOfTagRec_sigIRADcyBr, Nrec_sigIRADcyBr, Tagreca_sigIRADcyBr, Tagrecsi_sigIRADcyBr, Tagrecsf_sigIRADcyBr, Tagrecsd_sigIRADcyBr);
+          if(m_vSigIncOrIRACascDcyBr.size()>0) cpBrValsTemp(m_vTBrNmOfTagRec_sigIncOrIRACascDcyBr, m_vTypeOfTagRec_sigIncOrIRACascDcyBr, Nrec_sigIncOrIRACascDcyBr, Tagreca_sigIncOrIRACascDcyBr, Tagrecsi_sigIncOrIRACascDcyBr, Tagrecsf_sigIncOrIRACascDcyBr, Tagrecsd_sigIncOrIRACascDcyBr);
 
           if(m_vSigIncOrIRACascDcyBr.size()>0)
             {
@@ -1169,7 +1174,7 @@ void topoana::getRslt()
                   list<int>::iterator liit=dcyTr[j].begin();
                   for(unsigned int k=0;k<m_vPid_compDcyBrP.size();k++)
                     {
-                      if((*liit)==m_vPid_compDcyBrP[k])
+                      if((*liit)==m_vPid_compDcyBrP[k]||m_vPid_compDcyBrP[k]==m_pidOfAnything)
                         {
                           if(m_vTypeOfTagRec_compDcyBrP[k]!="")
                             {
@@ -1253,7 +1258,7 @@ void topoana::getRslt()
                                 }
                             }
                           nPDcyBr[k]++;
-                          if(m_vAllMulti_compDcyBrP[k]==1) break; // The break statement is not carried out in order to process rightly the cases of same particles with different aliases specified in the setting item.
+                          if(m_vAllMulti_compDcyBrP[k]==1&&m_vPid_compDcyBrP[k]!=m_pidOfAnything) break; // The break statement is not carried out in order to process rightly the cases of same particles with different aliases specified in the setting item. Additionally, "&&m_vPid_compDcyBrP[k]!=m_pidOfAnything" is specially added here to allow the analysis of the particles specified after "anything".
                         } // Here, "&&m_vICcCompDcyBrP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompDcyBrP[k]!=0&&(*liit)==m_vPid_ccCompDcyBrP[k])
                         {
@@ -1736,7 +1741,7 @@ void topoana::getRslt()
                 {
                   for(unsigned int k=0;k<m_vPid_compProdBrP.size();k++)
                     {
-                      if(vPid[j]==m_vPid_compProdBrP[k])
+                      if(vPid[j]==m_vPid_compProdBrP[k]||m_vPid_compProdBrP[k]==m_pidOfAnything)
                         {
                           if(m_vTypeOfTagRec_compProdBrP[k]!="")
                             {
@@ -1762,6 +1767,17 @@ void topoana::getRslt()
                               prodBrP.push_back(m_pidOfISt2);
                               prodBrP.push_back(m_pidOfISt1);
                               prodBrP.push_back(vPid[j]);
+                            }
+                          if(m_vPid_compProdBrP[k]==m_pidOfAnything)
+                            {
+                              list<int>::iterator liit=prodBrP.begin();
+                              int iDaughter=0;
+                              for(liit++;liit!=prodBrP.end();liit++)
+                                { 
+                                  if((*liit)==vPid[j]) break;
+                                  iDaughter++;
+                                }
+                              prodBrP.push_back(m_constantOnAnything+iDaughter);
                             }
                           int _iProdBrP=-1; // If the variable is still equal to -1 after the following loop, then the production branch of the particle is a new production branch of the particle.
                           int _iCcProdBrP=-9999;
@@ -1838,7 +1854,7 @@ void topoana::getRslt()
                                 }
                             }
                           nPProdBr[k]++;
-                          if(m_vAllMulti_compProdBrP[k]==1) break;  // The break statement is not carried out in order to process rightly the cases of same particles with different aliases specified in the setting item.
+                          if(m_vAllMulti_compProdBrP[k]==1&&m_vPid_compProdBrP[k]!=m_pidOfAnything) break;  // The break statement is not carried out in order to process rightly the cases of same particles with different aliases specified in the setting item. Additionally, "&&m_vPid_compProdBrP[k]!=m_pidOfAnything" is specially added here to allow the analysis of the particles specified after "anything".
                         } // Here, "&&m_vICcCompProdBrP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompProdBrP[k]!=0&&vPid[j]==m_vPid_ccCompProdBrP[k])
                         {
@@ -1942,7 +1958,7 @@ void topoana::getRslt()
                 {
                   for(unsigned int k=0;k<m_vPid_compMP.size();k++)
                     {
-                      if(vPid[j]==m_vPid_compMP[k])
+                      if(vPid[j]==m_vPid_compMP[k]||m_vPid_compMP[k]==m_pidOfAnything)
                         {
                           if(m_vTypeOfTagRec_compMP[k]!="")
                             {
@@ -2025,7 +2041,7 @@ void topoana::getRslt()
                                 }
                             }
                           nPM[k]++;
-                          if(m_vAllMulti_compMP[k]==1) break; // The break statement is not carried out in order to process rightly the cases of same particles with different aliases specified in the setting item.
+                          if(m_vAllMulti_compMP[k]==1&&m_vPid_compMP[k]!=m_pidOfAnything) break; // The break statement is not carried out in order to process rightly the cases of same particles with different aliases specified in the setting item. Additionally, "&&m_vPid_compMP[k]!=m_pidOfAnything" is specially added here to allow the analysis of the particles specified after "anything".
                         } // Here, "&&m_vICcCompMP[k]!=0" in the following condition can be removed.
                       else if(m_ccSwitch==true&&m_vICcCompMP[k]!=0&&vPid[j]==m_vPid_ccCompMP[k])
                         {

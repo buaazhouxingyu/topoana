@@ -772,6 +772,7 @@ void topoana::checkInput()
               if(m_vbsLevStdOut==true) cout<<"  Maximum number of decay branches to be printed: ULONG_MAX (default)"<<endl;
             }
           writeInputRecInfo(m_vTypeOfTagRec_compDcyBrP[i], m_vTBrNmOfTagRec_compDcyBrP[i], m_vTBrNmOfNRec_compDcyBrP[i], "particle");
+          writeErrInfOnAnything(m_vPid_compDcyBrP[i],m_vTypeOfTagRec_compDcyBrP[i]);
           cout<<endl;
         }
       cout<<endl;
@@ -878,6 +879,7 @@ void topoana::checkInput()
             {
               if(m_vbsLevStdOut==true) cout<<"  The indices and mother indices of the decay branches in the cascade decay branches of the particle are not output to the pdf file (default)."<<endl;
             }
+          writeErrInfOnAnything(m_vPid_compCascDcyBrP[i],m_vTypeOfTagRec_compCascDcyBrP[i]);
           cout<<endl;
         }
       cout<<endl;
@@ -981,6 +983,7 @@ void topoana::checkInput()
               if(m_vbsLevStdOut==true) cout<<"  Number of decay final state particles to be processed for the particle: ULONG_MAX (default)"<<endl;
             }
           writeInputRecInfo(m_vTypeOfTagRec_compDcyFStP[i], m_vTBrNmOfTagRec_compDcyFStP[i], m_vTBrNmOfNRec_compDcyFStP[i], "particle");
+          writeErrInfOnAnything(m_vPid_compDcyFStP[i],m_vTypeOfTagRec_compDcyFStP[i]);
           cout<<endl;
         }
       cout<<endl;
@@ -1076,6 +1079,7 @@ void topoana::checkInput()
               if(m_vbsLevStdOut==true) cout<<"  Maximum number of production branches to be printed: ULONG_MAX (default)"<<endl;
             }
           writeInputRecInfo(m_vTypeOfTagRec_compProdBrP[i], m_vTBrNmOfTagRec_compProdBrP[i], m_vTBrNmOfNRec_compProdBrP[i], "particle");
+          writeErrInfOnAnything(m_vPid_compProdBrP[i],m_vTypeOfTagRec_compProdBrP[i]);
           cout<<endl;
         }
       cout<<endl;
@@ -1166,6 +1170,7 @@ void topoana::checkInput()
               if(m_vbsLevStdOut==true) cout<<"  Maximum number of mothers to be printed: ULONG_MAX (default)"<<endl;
             }
           writeInputRecInfo(m_vTypeOfTagRec_compMP[i], m_vTBrNmOfTagRec_compMP[i], m_vTBrNmOfNRec_compMP[i], "particle");
+          writeErrInfOnAnything(m_vPid_compMP[i],m_vTypeOfTagRec_compMP[i]);
           cout<<endl;
         }
       cout<<endl;

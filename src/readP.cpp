@@ -20,6 +20,7 @@ void topoana::readP(string & line, string prompt, vector<int> & vPid, vector<str
   iss.clear();
   iss.str(line);
   iss>>txtPnm;
+  if(txtPnm=="*") txtPnm="anything"; // The asterisk symbol "*" is used as a short version of the word "anything" in order to simplify the user's input.
   pid=getPidFromTxtPnm(txtPnm);
   vPid.push_back(pid);
   nm="";

@@ -523,14 +523,16 @@ void topoana::writeRsltIntoTexFl()
                     }
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Decay branches of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compDcyBrP[i]);
+                  if(m_vPid_compDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compDcyBrP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compDcyBrP[i]<<"}\" ";
                   fout<<"$";
                   if(m_vMulti_compDcyBrP[i]>1) fout<<" (with the alias "<<replaceAllSubstr(m_vNm_compDcyBrP[i], "_", "\\_")<<")";
                   fout<<".}"<<endl;
                   fout<<"\\tableheader";
                   if(m_cmpltHVLines==false) fout<<"P";
                   fout<<"{rowNo & \\thead{decay branch of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compDcyBrP[i]);
+                  if(m_vPid_compDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compDcyBrP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compDcyBrP[i]<<"}\" ";
                   fout<<"$} & \\topoTags{iDcyBrP & }nCase & ";
                   if(m_ccSwitch==true) fout<<"nCcCase & nAllCase & ";
                   fout<<"nCCase \\\\}"<<endl<<endl;
@@ -562,10 +564,8 @@ void topoana::writeRsltIntoTexFl()
                   if(nDcyBrPToBePrtd<m_vVDcyBrP[i].size())
                     {
                       fout<<"rest & $ ";
-                      dcyBrP.clear();
-                      dcyBrP=m_vVDcyBrP[i][j];
-                      list<int>::iterator liit=dcyBrP.begin();
-                      writePnmFromPid(fout,"TexPnm",(*liit));
+                      if(m_vPid_compDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compDcyBrP[i]);
+                      else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compDcyBrP[i]<<"}\" ";
                       fout<<"\\rightarrow \\rm{others \\  ("<<m_vVDcyBrP[i].size()-nDcyBrPToBePrtd<<" \\  in \\  total)} $ & \\topoTags{--- & }";
                       unsigned long nCCaseOfRest=0;
                       if(m_ccSwitch==true)
@@ -634,7 +634,8 @@ void topoana::writeRsltIntoTexFl()
                     }
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Cascade decay branches of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compCascDcyBrP[i]);
+                  if(m_vPid_compCascDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compCascDcyBrP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compCascDcyBrP[i]<<"}\" ";
                   fout<<"$";
                   if(m_vMulti_compCascDcyBrP[i]>1||m_vHCascDcyBrMax[i]!=ULONG_MAX)
                     {
@@ -654,7 +655,8 @@ void topoana::writeRsltIntoTexFl()
                   fout<<"\\tableheader";
                   if(m_cmpltHVLines==false&&nLineMean<=2) fout<<"P";
                   fout<<"{rowNo & \\thead{cascade decay branch of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compCascDcyBrP[i]);
+                  if(m_vPid_compCascDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compCascDcyBrP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compCascDcyBrP[i]<<"}\" ";
                   fout<<"$} & \\topoTags{iCascDcyBrP & }nCase & ";
                   if(m_ccSwitch==true) fout<<"nCcCase & nAllCase & ";
                   fout<<"nCCase \\\\}"<<endl<<endl;
@@ -713,7 +715,8 @@ void topoana::writeRsltIntoTexFl()
                   if(nCascDcyBrPToBePrtd<m_vVCascDcyBrP[i].size())
                     {
                       fout<<"rest & $ ";
-                      writePnmFromPid(fout,"TexPnm",m_vPid_compCascDcyBrP[i]);
+                      if(m_vPid_compCascDcyBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compCascDcyBrP[i]);
+                      else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compCascDcyBrP[i]<<"}\" ";
                       fout<<"\\rightarrow \\rm{others \\  ("<<m_vVCascDcyBrP[i].size()-nCascDcyBrPToBePrtd<<" \\  in \\  total)} $ & \\topoTags{--- & }";
                       unsigned long nCCaseOfRest=0;
                       if(m_ccSwitch==true)
@@ -774,7 +777,8 @@ void topoana::writeRsltIntoTexFl()
                     }
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Decay final states of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compDcyFStP[i]);
+                  if(m_vPid_compDcyFStP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compDcyFStP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compDcyFStP[i]<<"}\" ";
                   fout<<"$";
                   if(m_vMulti_compDcyFStP[i]>1||m_vNDcyFStP[i]!=ULONG_MAX)
                     {
@@ -794,7 +798,8 @@ void topoana::writeRsltIntoTexFl()
                   fout<<"\\tableheader";
                   if(m_cmpltHVLines==false) fout<<"P";
                   fout<<"{rowNo & \\thead{decay final state of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compDcyFStP[i]);
+                  if(m_vPid_compDcyFStP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compDcyFStP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compDcyFStP[i]<<"}\" ";
                   fout<<"$} & \\topoTags{iDcyFStP & }nCase & ";
                   if(m_ccSwitch==true) fout<<"nCcCase & nAllCase & ";
                   fout<<"nCCase \\\\}"<<endl<<endl;
@@ -826,10 +831,8 @@ void topoana::writeRsltIntoTexFl()
                   if(nDcyFStPToBePrtd<m_vVDcyFStP[i].size())
                     {
                       fout<<"rest & $ ";
-                      dcyFStP.clear();
-                      dcyFStP=m_vVDcyFStP[i][j];
-                      list<int>::iterator liit=dcyFStP.begin();
-                      writePnmFromPid(fout,"TexPnm",(*liit));
+                      if(m_vPid_compDcyFStP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compDcyFStP[i]);
+                      else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compDcyFStP[i]<<"}\" ";
                       fout<<"\\dashrightarrow \\rm{others \\  ("<<m_vVDcyFStP[i].size()-nDcyFStPToBePrtd<<" \\  in \\  total)} $ & \\topoTags{--- & }";
                       unsigned long nCCaseOfRest=0;
                       if(m_ccSwitch==true)
@@ -890,14 +893,16 @@ void topoana::writeRsltIntoTexFl()
                     }
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Production branches of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compProdBrP[i]);
+                  if(m_vPid_compProdBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compProdBrP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compProdBrP[i]<<"}\" ";
                   fout<<"$";
                   if(m_vMulti_compProdBrP[i]>1) fout<<" (with the alias "<<replaceAllSubstr(m_vNm_compProdBrP[i], "_", "\\_")<<")";
                   fout<<".}"<<endl;
                   fout<<"\\tableheader";
                   if(m_cmpltHVLines==false) fout<<"P";
                   fout<<"{rowNo & \\thead{production branch of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compProdBrP[i]);
+                  if(m_vPid_compProdBrP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compProdBrP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compProdBrP[i]<<"}\" ";
                   fout<<"$} & \\topoTags{iProdBrP & }nCase & ";
                   if(m_ccSwitch==true) fout<<"nCcCase & nAllCase & ";
                   fout<<"nCCase \\\\}"<<endl<<endl;
@@ -914,11 +919,28 @@ void topoana::writeRsltIntoTexFl()
                   writePnmFromPid(fout,"TexPnm",(*liit));
                 }
               fout<<"\\rightarrow ";
-              for(liit++;liit!=prodBrP.end();liit++)
+              if(m_vPid_compProdBrP[i]!=m_pidOfAnything)
                 {
-                  if(((*liit)==m_vPid_compProdBrP[i])||((m_ccSwitch==true)&&((*liit)==m_vPid_ccCompProdBrP[i]))) fout<<"{\\color{blue}{ ";
-                  writePnmFromPid(fout,"TexPnm",(*liit));
-                  if(((*liit)==m_vPid_compProdBrP[i])||((m_ccSwitch==true)&&((*liit)==m_vPid_ccCompProdBrP[i]))) fout<<"}} ";
+                  for(liit++;liit!=prodBrP.end();liit++)
+                    {
+                      if(((*liit)==m_vPid_compProdBrP[i])||((m_ccSwitch==true)&&((*liit)==m_vPid_ccCompProdBrP[i]))) fout<<"{\\color{blue}{ ";
+                      writePnmFromPid(fout,"TexPnm",(*liit));
+                      if(((*liit)==m_vPid_compProdBrP[i])||((m_ccSwitch==true)&&((*liit)==m_vPid_ccCompProdBrP[i]))) fout<<"}} ";
+                    }
+                }
+              else
+                {
+                  list<int>::iterator liit2=prodBrP.end();
+                  liit2--;
+                  int iP=(*liit2)-m_constantOnAnything;
+                  int iDaughter=0; 
+                  for(liit++;liit!=liit2;liit++)
+                    {
+                      if(iDaughter==iP) fout<<"{\\color{blue}{ ";
+                      writePnmFromPid(fout,"TexPnm",(*liit));
+                      if(iDaughter==iP) fout<<"}} ";
+                      iDaughter++;
+                    }
                 }
               fout<<"$ & \\topoTags{"<<m_vVIProdBrP[i][j]<<" & }"<<m_vVNProdBrP[i][j]<<" & ";
               if(m_ccSwitch==true)
@@ -993,14 +1015,16 @@ void topoana::writeRsltIntoTexFl()
                     }
                   fout<<"}"<<endl;
                   fout<<"\\tablecaption{Mothers of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compMP[i]);
+                  if(m_vPid_compMP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compMP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compMP[i]<<"}\" ";
                   fout<<"$";
                   if(m_vMulti_compMP[i]>1) fout<<" (with the alias "<<replaceAllSubstr(m_vNm_compMP[i], "_", "\\_")<<")";
                   fout<<".}"<<endl;
                   fout<<"\\tableheader";
                   if(m_cmpltHVLines==false) fout<<"P";
                   fout<<"{rowNo & \\thead{mother of $ ";
-                  writePnmFromPid(fout,"TexPnm",m_vPid_compMP[i]);
+                  if(m_vPid_compMP[i]!=m_pidOfAnything) writePnmFromPid(fout,"TexPnm",m_vPid_compMP[i]);
+                  else fout<<"``{\\rm "<<m_vTBrNmOfTagRec_compMP[i]<<"}\" ";
                   fout<<"$} & \\topoTags{PDGMoth & }nCase & ";
                   if(m_ccSwitch==true) fout<<"nCcCase & nAllCase & ";
                   fout<<"nCCase \\\\}"<<endl<<endl;

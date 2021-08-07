@@ -26,7 +26,7 @@ void topoana::getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vIdxOfHe
   bool fStP;
   for(unsigned int i=0;i<vPid.size();i++)
     {
-      if(vPid[i]==pid)
+      if(vPid[i]==pid||pid==m_pidOfAnything)
         {
           dcyFStP.clear();
 
@@ -65,7 +65,7 @@ void topoana::getVDcyFStP(vector< list<int> > & vDcyFStP, vector<int> & vIdxOfHe
               if(nDcyFStP==ULONG_MAX||dcyFStP.size()==nDcyFStP)
                 {
                   sortByPidAndPchrg(dcyFStP);
-                  dcyFStP.push_front(pid);
+                  dcyFStP.push_front(vPid[i]);
                   vDcyFStP.push_back(dcyFStP);
                   vIdxOfHead_DcyFStP.push_back(i);
                 }

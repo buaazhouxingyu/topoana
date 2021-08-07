@@ -28,7 +28,7 @@ void topoana::getVCascDcyBrP(vector< vector< list<int> > > & vCascDcyBrP, vector
   vector<int> vIdxOfHeadYng;
   for(unsigned int i=0;i<dcyTr.size();i++)
     {
-      if((*(dcyTr[i].begin()))==pid)
+      if((*(dcyTr[i].begin()))==pid||pid==m_pidOfAnything)
         {
           cascDcyBrP.clear();
           cascDcyBrP.push_back(dcyTr[i]);
