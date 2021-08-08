@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void topoana::cpBrValsTemp(vector<string> vTBrNmOfTagRec, vector<string> vTypeOfTagRec, int * Nrec, int Tagreca[][20], int * Tagrecsi, float * Tagrecsf, double * Tagrecsd)
+void topoana::cpBrVals2(vector<string> vTBrNmOfTagRec, vector<string> vTypeOfTagRec, int * Nrec, int Tagreca[][20], int * Tagrecsi, float * Tagrecsf, double * Tagrecsd)
 {
   for(unsigned int i=0;i<vTBrNmOfTagRec.size();i++)
     {
