@@ -20,6 +20,7 @@ void topoana::writePnmFromPid(ostream & out,string pnmType,int pid)
           string evtPdlFlNm="evt.pdl";
           string pidPsymbPdfFlNm=m_pkgPath+"docs/pid_psymb.pdf";
           string DatFlNm=m_pkgPath+"share/pid_3pchrg_txtpnm_texpnm_iccp.dat";
+          if(m_usePlistFromBelle==true) DatFlNm=DatFlNm+"_Belle";
           cerr<<"Error: The 3 times charge, txt name, tex name and index for the charge conjugate property of the particle of the PDG code \""<<pid<<"\" does not exist!"<<endl;
           cerr<<"Infor: 1) Please refer to the pdl file \""<<evtPdlFlNm<<"\" related to your BOSS, BASF, or BASF2 release release, find the 3 times charge and txt name of the particle."<<endl;
           cerr<<"Infor: 2) Please refer to the pdf file \""<<pidPsymbPdfFlNm<<"\", find the symbol of the particle, and then convert the symbol into the tex name."<<endl;
@@ -40,6 +41,7 @@ void topoana::writePnmFromPid(ostream & out,string pnmType,int pid)
           string evtPdlFlNm="evt.pdl";
           string pidPsymbPdfFlNm=m_pkgPath+"docs/pid_psymb.pdf";
           string DatFlNm=m_pkgPath+"share/pid_3pchrg_txtpnm_texpnm_iccp.dat";
+          if(m_usePlistFromBelle==true) DatFlNm=DatFlNm+"_Belle";
           cerr<<"Error: The 3 times charge, txt name, tex name and index for the charge conjugate property of the particle of the PDG code \""<<pid<<"\" does not exist!"<<endl;
           cerr<<"Infor: 1) Please refer to the pdl file \""<<evtPdlFlNm<<"\" related to your BOSS, BASF, or BASF2 release release, find the 3 times charge and txt name of the particle."<<endl;
           cerr<<"Infor: 2) Please refer to the pdf file \""<<pidPsymbPdfFlNm<<"\", find the symbol of the particle, and then convert the symbol into the tex name."<<endl;

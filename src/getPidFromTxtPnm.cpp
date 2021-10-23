@@ -25,6 +25,7 @@ int topoana::getPidFromTxtPnm(string pnm)
       string evtPdlFlNm="evt.pdl";
       string pidPsymbPdfFlNm=m_pkgPath+"docs/pid_psymb.pdf";
       string DatFlNm=m_pkgPath+"share/pid_3pchrg_txtpnm_texpnm_iccp.dat";
+      if(m_usePlistFromBelle==true) DatFlNm=DatFlNm+"_Belle";
       cerr<<"Error: The PDG code of the particle of the txt name \""<<pnm<<"\" does not exist!"<<endl;
       cerr<<"Infor: Please check whether the txt name \""<<pnm<<"\" written in your card file is right."<<endl;
       cerr<<"Infor: If no, please correct it to the right one."<<endl;
