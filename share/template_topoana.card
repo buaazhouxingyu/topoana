@@ -226,14 +226,20 @@
 
 }
 
-# In 'Ys' and 'Yg', 's' and 'g' are the initials of the words 'strict' and 'generalized', respectively. While strict ISR photons are marked beforehand with a special PDG code (222222222 by default), generalized ISR photons are defned as photons who have no mothers recorded in the arrays of the PDG codes and mother indices.
+# In 'Ys' and 'Yg', 's' and 'g' are the initials of the words 'strict' and 'generalized', respectively. While strict ISR photons are marked beforehand with a special PDG code (222222222 by default), generalized ISR photons are defined as photons who have no mothers recorded in the arrays of the PDG codes and mother indices.
 % Ignore ISR photons (Three options: Ys, Yg and N. Default: N)
 {
 
 }
 
-# In 'Ys' and 'Yg', 's' and 'g' are the initials of the words 'strict' and 'generalized', respectively. While strict FSR photons are marked beforehand with a special PDG code (-22 by default), generalized FSR photons are defned as photons who have at least one e+, e-, mu+, mu-, pi+, pi-, K+, K-, p, or anti-p sister.
+# In 'Ys' and 'Yg', 's' and 'g' are the initials of the words 'strict' and 'generalized', respectively. While strict FSR photons are marked beforehand with a special PDG code (-22 by default), generalized FSR photons are defined as photons who have at least one e+, e-, mu+, mu-, pi+, pi-, K+, K-, p, or anti-p sister.
 % Ignore FSR photons (Three options: Ys, Yg and N. Default: N)
+{
+
+}
+
+# Normally, the generalized FSR photons are defined as photons who have at least one e+, e-, mu+, mu-, pi+, pi-, K+, K-, p, or anti-p sister. Sometimes, we need to consider photons whose sisters are not limited to these charged particles but extended to all charged particles. In such cases, we need to fill in the following setting item with "Y".
+% Extend generalized FSR photons to relate them to all charged particles (Two options: Y and N. Default: N)
 {
 
 }

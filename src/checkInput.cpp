@@ -665,6 +665,15 @@ void topoana::checkInput()
       if(m_vbsLevStdOut==true) cout<<"FSR photons will not be ignored (default)."<<endl<<endl;
     }
 
+  if(m_extendGFSRGams==true)
+    {
+      cout<<"The generalized FSR photons are extended and related to all charged particles."<<endl<<endl;
+    }
+  else
+    {
+      if(m_vbsLevStdOut==true) cout<<"The generalized FSR photons are not extended and thus only related to e+, e-, mu+, mu-, pi+, pi-, K+, K-, p, and anti-p (default)."<<endl<<endl;
+    }
+
   if(m_compAnaOfDcyTrs==true)
     {
       cout<<"The component analysis over decay trees will be performed."<<endl;

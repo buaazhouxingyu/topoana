@@ -51,6 +51,7 @@ class topoana
     vector< vector<int> > m_vVPid_ignoreFDcyBr;
     string m_ignoreISR;
     string m_ignoreFSR;
+    bool m_extendGFSRGams;
 
     bool m_compAnaOfDcyTrs;
     unsigned long m_nDcyTrsToBePrtdMax;
@@ -338,6 +339,7 @@ class topoana
       m_vVPid_ignoreFDcyBr.clear();
       m_ignoreISR="N";
       m_ignoreFSR="N";
+      m_extendGFSRGams=false;
 
       m_compAnaOfDcyTrs=false;
       m_nDcyTrsToBePrtdMax=ULONG_MAX;

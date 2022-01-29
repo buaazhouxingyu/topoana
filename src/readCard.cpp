@@ -259,6 +259,10 @@ void topoana::readCard(string cardFlNm)
               readCloseCurly(fin,line,"% Ignore FSR photons (Three options: Ys, Yg and N. Default: N)");
             }
         }
+      else if(line=="% Extend generalized FSR photons to relate them to all charged particles (Two options: Y and N. Default: N)")
+        {
+          readYNItem(fin, line, "% Extend generalized FSR photons to relate them to all charged particles (Two options: Y and N. Default: N)", m_extendGFSRGams);
+        }
       else if(line=="% Component analysis --- decay trees")
         {
           readOpenCurly(fin,line,"% Component analysis --- decay trees");

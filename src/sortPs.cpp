@@ -144,7 +144,21 @@ void topoana::sortPs(vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdx
                                   if(vMidx[k+l]==vMidx[k])
                                     {
                                       if(vPid[k+l]!=m_pidOfGam) nSister++;
-                                      if(abs(vPid[k+l])==m_pidOfE||abs(vPid[k+l])==m_pidOfMu||abs(vPid[k+l])==m_pidOfPi||abs(vPid[k+l])==m_pidOfK||abs(vPid[k+l])==m_pidOfP) hasAemupiKpSister=true;
+                                      if(m_extendGFSRGams==true)
+                                        {
+                                          if(m_pid3PchrgMap.find(vPid[k+l])==m_pid3PchrgMap.end())
+                                            {
+                                              writeErrInfOnPid3PchrgMap(vPid[k+l]);
+                                            }
+                                          else
+                                            {
+                                              if(m_pid3PchrgMap[vPid[k+l]]!=0) hasAemupiKpSister=true;
+                                            }
+                                        }
+                                      else
+                                        {
+                                          if(abs(vPid[k+l])==m_pidOfE||abs(vPid[k+l])==m_pidOfMu||abs(vPid[k+l])==m_pidOfPi||abs(vPid[k+l])==m_pidOfK||abs(vPid[k+l])==m_pidOfP) hasAemupiKpSister=true;
+                                        }
                                       if(nSister>=2&&hasAemupiKpSister==true)
                                         {
                                           isGFSR=true;
@@ -157,7 +171,21 @@ void topoana::sortPs(vector<int> & vPid, vector<int> & vMidx, vector<int> * vIdx
                                   if(vMidx[k-l]==vMidx[k])
                                     {
                                       if(vPid[k-l]!=m_pidOfGam) nSister++;
-                                      if(abs(vPid[k-l])==m_pidOfE||abs(vPid[k-l])==m_pidOfMu||abs(vPid[k-l])==m_pidOfPi||abs(vPid[k-l])==m_pidOfK||abs(vPid[k-l])==m_pidOfP) hasAemupiKpSister=true;
+                                      if(m_extendGFSRGams==true)
+                                        {
+                                          if(m_pid3PchrgMap.find(vPid[k-l])==m_pid3PchrgMap.end())
+                                            {
+                                              writeErrInfOnPid3PchrgMap(vPid[k-l]);
+                                            }
+                                          else
+                                            {
+                                              if(m_pid3PchrgMap[vPid[k-l]]!=0) hasAemupiKpSister=true;
+                                            }
+                                        }
+                                      else
+                                        {
+                                          if(abs(vPid[k-l])==m_pidOfE||abs(vPid[k-l])==m_pidOfMu||abs(vPid[k-l])==m_pidOfPi||abs(vPid[k-l])==m_pidOfK||abs(vPid[k-l])==m_pidOfP) hasAemupiKpSister=true;
+                                        }
                                       if(nSister>=2&&hasAemupiKpSister==true)
                                         {
                                           isGFSR=true;
