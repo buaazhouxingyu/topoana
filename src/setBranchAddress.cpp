@@ -9,7 +9,7 @@ void topoana::setBranchAddress(vector<string> vTypeOfTagRec, vector<string> vTBr
         {
           if(vTypeOfTagRec[i]=="c"||vTypeOfTagRec[i]=="n"||vTypeOfTagRec[i]=="!n"||vTypeOfTagRec[i]=="p"||vTypeOfTagRec[i]=="i")
             {
-              if(m_strgTpOfRawIptTopoDat=="MSD") chn->SetBranchAddress(vTBrNmOfTagRec[i].c_str(), &Tagrecsd[i]); 
+              if(m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID") chn->SetBranchAddress(vTBrNmOfTagRec[i].c_str(), &Tagrecsd[i]);
               else if(m_strgTpOfRawIptTopoDat=="MSF") chn->SetBranchAddress(vTBrNmOfTagRec[i].c_str(), &Tagrecsf[i]);
               else chn->SetBranchAddress(vTBrNmOfTagRec[i].c_str(), &Tagrecsi[i]);
             }

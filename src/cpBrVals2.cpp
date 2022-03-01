@@ -14,7 +14,7 @@ void topoana::cpBrVals2(vector<string> vTBrNmOfTagRec, vector<string> vTypeOfTag
                 {
                   if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="VOI"||m_strgTpOfRawIptTopoDat=="MSI") Tagrecsi[i]=Tagrecsi[j];
                   else if(m_strgTpOfRawIptTopoDat=="MSF") Tagrecsf[i]=Tagrecsf[j];
-                  else if(m_strgTpOfRawIptTopoDat=="MSD") Tagrecsd[i]=Tagrecsd[j];
+                  else if(m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID") Tagrecsd[i]=Tagrecsd[j];
                 }
               else if(vTypeOfTagRec[i]=="C"||vTypeOfTagRec[i]=="N"||vTypeOfTagRec[i]=="!N"||vTypeOfTagRec[i]=="P"||vTypeOfTagRec[i]=="I")
                 {

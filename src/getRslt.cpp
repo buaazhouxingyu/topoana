@@ -100,7 +100,7 @@ void topoana::getRslt()
   int Tagreca_sigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr][20],Nrec_sigIncOrIRACascDcyBr[sSigIncOrIRACascDcyBr];
   bool isTheEvtPrcsd;
   vector<int> *pVPid=0, *pVMidx=0, *pVRidx=0;
-  if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI") chn->SetBranchAddress(m_tbrNmOfNps.c_str(), &Nps);
+  if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSID") chn->SetBranchAddress(m_tbrNmOfNps.c_str(), &Nps);
   else if(m_strgTpOfRawIptTopoDat=="MSF") chn->SetBranchAddress(m_tbrNmOfNps.c_str(), &Npsf);
   else if(m_strgTpOfRawIptTopoDat=="MSD") chn->SetBranchAddress(m_tbrNmOfNps.c_str(), &Npsd);
   if(m_strgTpOfRawIptTopoDat=="AOI")
@@ -132,11 +132,11 @@ void topoana::getRslt()
         {
           sprintf(strI, "_%d", i);
           specifierPid=m_tbrNmOfPid+strI;
-          if(m_strgTpOfRawIptTopoDat=="MSD") chn->SetBranchAddress(specifierPid.c_str(), &Pidd[i]);
+          if(m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID") chn->SetBranchAddress(specifierPid.c_str(), &Pidd[i]);
           else if(m_strgTpOfRawIptTopoDat=="MSF") chn->SetBranchAddress(specifierPid.c_str(), &Pidf[i]);
           else chn->SetBranchAddress(specifierPid.c_str(), &Pid[i]);
           specifierMidx=m_tbrNmOfMidx+strI;
-          if(m_strgTpOfRawIptTopoDat=="MSD") chn->SetBranchAddress(specifierMidx.c_str(), &Midxd[i]);
+          if(m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID") chn->SetBranchAddress(specifierMidx.c_str(), &Midxd[i]);
           else if(m_strgTpOfRawIptTopoDat=="MSF") chn->SetBranchAddress(specifierMidx.c_str(), &Midxf[i]);
           else chn->SetBranchAddress(specifierMidx.c_str(), &Midx[i]);
           specifierRidx=m_tbrNmOfRidx+strI;
@@ -360,7 +360,7 @@ void topoana::getRslt()
 
               if(m_supprOptRootFls==false) tr=chn->CloneTree(0);
 
-              if(m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD")
+              if(m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID")
                 {
                   if(m_convtMSIFDIntoAOI==true)
                     {
@@ -370,7 +370,7 @@ void topoana::getRslt()
                       sprintf(specifier2, "%sValid/I", m_tbrNmOfNps.c_str());
                       tr->Branch(specifier1, &Nps, specifier2);
 
-                      if((m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true)||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD")
+                      if((m_strgTpOfRawIptTopoDat=="MSI"&&m_useRidx==true)||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID")
                         {
                           sprintf(specifier2, "MCGenRawIndex[%sValid]/I", m_tbrNmOfNps.c_str());
                           tr->Branch("MCGenRawIndex", &Ridx, specifier2);
@@ -677,7 +677,15 @@ void topoana::getRslt()
                 }
               reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,Ridx);
             }
-          if(m_strgTpOfRawIptTopoDat=="MSD") reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,Ridx);
+          else if(m_strgTpOfRawIptTopoDat=="MSD")
+            {
+              reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,Ridx);
+            }
+          else if(m_strgTpOfRawIptTopoDat=="MSID") 
+            {
+              Npsd=Nps;
+              reviseIptQts(Npsd,Pidd,Midxd,Nps,Pid,Midx,Ridx);
+            }
 
           if(m_vPid_compDcyBrP.size()>0) cpBrVals2(m_vTBrNmOfTagRec_compDcyBrP, m_vTypeOfTagRec_compDcyBrP, Nrec_compDcyBrP, Tagreca_compDcyBrP, Tagrecsi_compDcyBrP, Tagrecsf_compDcyBrP, Tagrecsd_compDcyBrP);
           if(m_vPid_compCascDcyBrP.size()>0) cpBrVals2(m_vTBrNmOfTagRec_compCascDcyBrP, m_vTypeOfTagRec_compCascDcyBrP, Nrec_compCascDcyBrP, Tagreca_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagrecsf_compCascDcyBrP, Tagrecsd_compCascDcyBrP);
@@ -792,7 +800,7 @@ void topoana::getRslt()
               if(m_vPid_compDcyBrP.size()>0) cpBrVals(m_vTypeOfTagRec_compCascDcyBrP, m_vTBrNmOfTagRec_compCascDcyBrP, m_vTBrNmOfNRec_compCascDcyBrP, Tagrecsd_compCascDcyBrP, Tagrecsf_compCascDcyBrP, Tagrecsi_compCascDcyBrP, Tagreca_compCascDcyBrP, Nrec_compCascDcyBrP, "% Component analysis --- cascade decay branches of particles", m_vTypeOfTagRec_compDcyBrP, m_vTBrNmOfTagRec_compDcyBrP, m_vTBrNmOfNRec_compDcyBrP, Tagrecsd_compDcyBrP, Tagrecsf_compDcyBrP, Tagrecsi_compDcyBrP, Tagreca_compDcyBrP, Nrec_compDcyBrP, "% Component analysis --- decay branches of particles");
             }
 
-          if(m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD")
+          if(m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID")
             {
               for(unsigned int j=0;j<m_vPid_compDcyBrP.size();j++)
                 if(m_vTypeOfTagRec_compDcyBrP[j]=="c"||m_vTypeOfTagRec_compDcyBrP[j]=="n"||m_vTypeOfTagRec_compDcyBrP[j]=="!n"||m_vTypeOfTagRec_compDcyBrP[j]=="p"||m_vTypeOfTagRec_compDcyBrP[j]=="i")
@@ -886,7 +894,7 @@ void topoana::getRslt()
 
           vPid.clear();
           vMidx.clear();
-          if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD")
+          if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID")
             {
               for(int j=0;j<Nps;j++)
                 {

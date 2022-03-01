@@ -147,15 +147,19 @@ void topoana::checkInput()
     {
       cout<<"Storage type of input raw topology truth information: multiple scalar double-precision numbers."<<endl<<endl;
     }
+  else if(m_strgTpOfRawIptTopoDat=="MSID")
+    {
+      cout<<"Storage type of input raw topology truth information: multiple scalar integer and double-precision numbers."<<endl<<endl;
+    }
 
   if(m_tbrNmOfNps!="nMCGen")
     {
-      if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD") cout<<"TBranch name of the number of particles: "<<m_tbrNmOfNps<<endl<<endl;
+      if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID") cout<<"TBranch name of the number of particles: "<<m_tbrNmOfNps<<endl<<endl;
       else cout<<"The item with the prompt \"% TBranch name of the number of particles (Default: nMCGen)\" is not used since the storage type of the input raw topology truth information is \"vector of integers\"."<<endl<<endl; 
     }
   else
     {
-      if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD")
+      if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID")
         {
           if(m_vbsLevStdOut==true) cout<<"TBranch name of the number of particles: "<<m_tbrNmOfNps<<" (default)"<<endl<<endl;
         }
@@ -256,7 +260,7 @@ void topoana::checkInput()
             }
           else
             {
-              if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD")
+              if(m_strgTpOfRawIptTopoDat=="AOI"||m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID")
                 {
                   TBranch * br0=tr->FindBranch(m_tbrNmOfNps.c_str());
                   if(!br0)
@@ -2693,21 +2697,21 @@ void topoana::checkInput()
 
   if(m_convtMSIFDIntoAOI==true)
     {
-      if(m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD")
+      if(m_strgTpOfRawIptTopoDat=="MSI"||m_strgTpOfRawIptTopoDat=="MSF"||m_strgTpOfRawIptTopoDat=="MSD"||m_strgTpOfRawIptTopoDat=="MSID")
         {
-          cout<<"MSI/MSF/MSD input tbranches will be converted into AOI output tbranches."<<endl;
+          cout<<"MSI/MSF/MSD/MSID input tbranches will be converted into AOI output tbranches."<<endl;
 
           m_rmIptTBrs=true;
           cerr<<"Infor: The item prompted with \"% Remove input tbranches from output root files (Two options: Y and N. Default: N)\" is set to Y in order to carry out the conversion."<<endl<<endl;
         }
       else
         {
-          cerr<<"Warning: the setting with the item prompted with \"% Convert MSI/MSF/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)\" does not work for the current cases of AOI/VOI input tbranches."<<endl<<endl;
+          cerr<<"Warning: the setting with the item prompted with \"% Convert MSI/MSF/MSD/MSID input tbranches into AOI output tbranches (Two options: Y and N. Default: N)\" does not work for the current cases of AOI/VOI input tbranches."<<endl<<endl;
         }
     }
   else
     {
-      if(m_vbsLevStdOut==true) cout<<"MSI/MSF/MSD input tbranches will not be converted into AOI output tbranches (default)."<<endl<<endl;
+      if(m_vbsLevStdOut==true) cout<<"MSI/MSF/MSD/MSID input tbranches will not be converted into AOI output tbranches (default)."<<endl<<endl;
     }
 
   if(m_supprOptRootFls==true)

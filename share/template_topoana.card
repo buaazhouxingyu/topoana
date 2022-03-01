@@ -16,7 +16,7 @@
 # The following thirty-two items are optional. They can be removed or left empty.
 
 # Here, AOI, VOI, MSI, MSF, and MSD are short for array of integers, vector of integers, multiple scalar integers, multiple scalar floats, and multiple scalar doubles, respectively.
-% Storage type of input raw topology truth information (Five options: AOI, VOI, MSI, MSF, and MSD. Default: AOI)
+% Storage type of input raw topology truth information (Six options: AOI, VOI, MSI, MSF, MSD, and MSID. Default: AOI)
 {
 
 }
@@ -327,7 +327,7 @@
   
 }
 
-% Convert MSI/MSF/MSD input tbranches into AOI output tbranches (Two options: Y and N. Default: N)
+% Convert MSI/MSF/MSD/MSID input tbranches into AOI output tbranches (Two options: Y and N. Default: N)
 {
 
 }
