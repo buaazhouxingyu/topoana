@@ -6,7 +6,7 @@ unsigned int topoana::countIncCascDcyBrInDcyTr(vector<int> vIIncIncCascDcyBr, ve
   unsigned int nCount=0;
   if(incCascDcyBr.size()==0)
     {
-      cerr<<"Infor: The size of the vector for the inclusive cascade decay branches is zero!"<<endl<<endl;
+      cerr<<"Infor: The size of the vector for the inclusive cascade decay branch is zero!"<<endl<<endl;
       return nCount;
     }
   if(dcyTr.size()==0)
