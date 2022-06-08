@@ -445,7 +445,7 @@ void topoana::readCard(string cardFlNm)
       else if(line=="% Signal identification --- inclusive cascade decay branches")
         {
           bool bvartemp;
-          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive cascade decay branches", m_vVPid_sigIncCascDcyBr, m_vVMidx_sigIncCascDcyBr, m_vNm_sigIncCascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr, bvartemp, 0, 0, 0, true);
+          readCmplxDcyItem(fin, line, "% Signal identification --- inclusive cascade decay branches", m_vVPid_sigIncCascDcyBr, m_vVMidx_sigIncCascDcyBr, m_vNm_sigIncCascDcyBr, m_optIdxAndMidxOfSigDcyBrInSigIncCascDcyBr, bvartemp, &m_vTypeOfTagRec_sigIncCascDcyBr, &m_vTBrNmOfTagRec_sigIncCascDcyBr, &m_vTBrNmOfNRec_sigIncCascDcyBr, true);
 	}
       else if(line=="% Signal identification --- intermediate-resonance-allowed decay branches")
         {
