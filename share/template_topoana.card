@@ -15,7 +15,7 @@
 
 # The following thirty-two items are optional. They can be removed or left empty.
 
-# Here, AOI, VOI, MSI, MSF, and MSD are short for array of integers, vector of integers, multiple scalar integers, multiple scalar floats, and multiple scalar doubles, respectively.
+# Here, AOI, VOI, MSI, MSF, MSD, and MSID are short for array of integers, vector of integers, multiple scalar integers, multiple scalar floats, multiple scalar doubles, and multiple scalar integer (nMCGen) and doubles (MCGenPDG_* and MCGenMothIndex_*), respectively.
 % Storage type of input raw topology truth information (Six options: AOI, VOI, MSI, MSF, MSD, and MSID. Default: AOI)
 {
 
