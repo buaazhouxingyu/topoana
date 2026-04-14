@@ -1,6 +1,6 @@
 #### TopoAna: A generic tool for the event type analysis of inclusive Monte-Carlo samples in high energy physics experiments
 
-**Abstract:** Inclusive Monte-Carlo samples are indispensable for signal selection and background suppression in many high energy physics experiments. A clear knowledge of the physics processes involved in the samples, including the types of processes and the number of processes in each type, is a great help to investigating signals and backgrounds. To help analysts obtain the physics process information from the truth information of the samples, we develop a physics process analysis program, TopoAna, with C++, ROOT, and LaTeX. The program implements the functionalities of component analysis and signal identification with many kinds of fine, customizable classification and matching algorithms. It tags physics processes in individual events accurately in the output root files, and exports the physics process information at the sample level clearly to the output plain text, tex source, and pdf files. Independent of specific software frameworks, the program is applicable to many experiments. At present, it has come into use in three e+e- colliding experiments: the BESIII, Belle, and Belle II experiments. The use of the program in other similar experiments is also prospective. (**Please contact me (zhouxy@lnnu.edu.cn) if you want to employ the program for other experiments. Now, you can try the program with examples under the directory ``examples``**)
+**Abstract:** Inclusive Monte-Carlo samples are indispensable for signal selection and background suppression in many high energy physics experiments. A clear knowledge of the physics processes involved in the samples, including the types of processes and the number of processes in each type, is a great help to investigating signals and backgrounds. To help analysts obtain the physics process information from the truth information of the samples, we develop a physics process analysis program, TopoAna, with C++, ROOT, and LaTeX. The program implements the functionalities of component analysis and signal identification with many kinds of fine, customizable classification and matching algorithms. It tags physics processes in individual events accurately in the output root files, and exports the physics process information at the sample level clearly to the output plain text, tex source, and pdf files. Independent of specific software frameworks, the program is applicable to many experiments. At present, it has come into use in four e+e- colliding experiments: the BESIII, Belle, Belle II, and STCF experiments. The use of the program in other similar experiments is also prospective. (**Please contact me (zhouxy@lnnu.edu.cn) if you want to employ the program for other experiments. Now, you can try the program with examples under the directory ``examples``**)
 
 **Documents in each version of the package:**
 
@@ -40,13 +40,15 @@ Here, we just briefly introduce how to install and use the program.
 
    1.3. Set up the experiment name with the following command: ``./Setup ExpNm``
 
-     + Here, the formal argument ``ExpNm`` is short for experiment name, and the actual values supported at present are ``BESIII``, ``Belle``, ``Belle_II``, and ``Example``.
+     + Here, the formal argument ``ExpNm`` is short for experiment name, and the actual values supported at present are ``BESIII``, ``Belle``, ``Belle_II``, ``STCF``, and ``Example``.
 
        - If you want to employ the program for the BESIII experiment, please execute: ``./Setup BESIII``.
 
        - If you want to employ the program for the Belle experiment, please execute: ``./Setup Belle``.
 
        - If you want to employ the program for the Belle II experiment, please execute: ``./Setup Belle_II``.
+
+       - If you want to employ the program for the STCF experiment, please execute: ``./Setup STCF``.
 
        - If you want to try the program with examples under the directory ``examples``, please execute: ``./Setup Example``.
 
@@ -56,7 +58,7 @@ Here, we just briefly introduce how to install and use the program.
 
    1.1. Prepare the input data
 
-     + The input data of the program, namely the raw topology truth information of the inclusive MC samples, can be obtained with the interface to the program in the software system of your experiment. For the BESIII, Belle, and Belle II experiments, such interfaces have already been developed. 
+     + The input data of the program, namely the raw topology truth information of the inclusive MC samples, can be obtained with the interface to the program in the software system of your experiment. For the BESIII, Belle, and Belle II experiments, such interfaces have already been developed.
 
    1.2. Fill in the card file
 

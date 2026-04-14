@@ -1,0 +1,14 @@
+% TBranch name of the number of particles (Default: nMCGen)
+{
+  indexmc 
+}
+
+% TBranch name of the PDG codes of particles (Default: MCGenPDG)
+{
+  pdgid
+}
+
+% TBranch name of the mother indices of particles (Default: MCGenMothIndex)
+{
+  motheridx
+}
